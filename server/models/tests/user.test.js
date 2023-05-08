@@ -12,11 +12,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const user_1 = require("../models/user");
-const Routes = express_1.default.Router();
-Routes.post("/user", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const user = new user_1.User();
-    user.createUser(req, res);
-}));
-exports.default = Routes;
+const supertest_1 = __importDefault(require("supertest"));
+const server_1 = __importDefault(require("../../server"));
+const globals_1 = require("@jest/globals");
+const admin = {
+    nickname: "ecoSempre",
+    email: "sac@ecosempre.com",
+    password: "teste123"
+};
+(0, globals_1.describe)("POST /user", () => {
+    // it("it should return 201 if  user was created", async() =>{
+    //     const res:Response = await supertest(app)
+    //     .post("/user")
+    //     .send(admin);
+    //     expect(res.status).toBe(201);
+    // })
+    (0, globals_1.it)("it should return status 400", () => __awaiter(void 0, void 0, void 0, function* () {
+        const res = yield (0, supertest_1.default)(server_1.default)
+            .post("/user")
+            .send(admin);
+        console.log(res.error);
+        (0, globals_1.expect)(res.status).toBe(400);
+    }));
+});
