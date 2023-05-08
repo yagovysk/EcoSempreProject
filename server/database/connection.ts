@@ -1,4 +1,4 @@
-import knex, {Knex} from 'knex';
+import knex, {Knex, } from 'knex';
 import dotenv from 'dotenv';
 dotenv.config();
 const host:string = "172.17.0.2";
@@ -16,7 +16,7 @@ const knexConfig: Knex.Config = {
     }
 }
 
-const Connection:unknown = knex(knexConfig);
+const Connection:Knex = knex(knexConfig);
 
 
 export default Connection;
