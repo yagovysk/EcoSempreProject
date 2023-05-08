@@ -11,6 +11,7 @@
   "author": "Yrllan Brandão",
   "license": "ISC",
   "devDependencies": {
+    "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17"
   },
   "dependencies": {
