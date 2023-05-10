@@ -98,4 +98,4 @@ Content-Type: text/plain
 Content-Type: text/plain
 
 The article already exists!
-``
+
