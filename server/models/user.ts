@@ -5,14 +5,13 @@ import Connection from "../database/connection";
 
 
 
-export interface IUser {
+interface IUser {
   nickname: string;
   email: string
   password: string
 
 }
-
-export class User {
+ class User {
      private async verifyUserByEmail(email:string)
     {
         const query: string[] = await Connection("Users").select("*").where({email});
@@ -47,9 +46,5 @@ export class User {
   };
 }
 
-const exported = Object.freeze({
-  IUser: {} as IUser,
-  User,
-});
 
-export default exported;
+export default User;

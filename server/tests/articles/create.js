@@ -12,17 +12,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const user_1 = __importDefault(require("../models/user"));
-const article_1 = __importDefault(require("../models/article"));
-const Routes = express_1.default.Router();
-Routes.post("/user", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const user = new user_1.default();
-    user.createUser(req, res);
-}));
-// articles
-Routes.post("/article", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const article = new article_1.default();
-    article.creatArticle(req, res);
-}));
-exports.default = Routes;
+const globals_1 = require("@jest/globals");
+const supertest_1 = __importDefault(require("supertest"));
+const server_1 = __importDefault(require("../../server"));
+(0, globals_1.describe)("POST /article", () => {
+    const article = {
+        title: "Como criar um server express2",
+        author: "Ecosempre",
+        content: "this is only a test"
+    };
+    (0, globals_1.it)("it should returns status 201", () => __awaiter(void 0, void 0, void 0, function* () {
+        const res = yield (0, supertest_1.default)(server_1.default)
+            .post("/article")
+            .send(article);
+        console.log(res.text);
+        (0, globals_1.expect)(res.status).toBe(201);
+    }));
+});
