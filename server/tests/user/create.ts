@@ -22,8 +22,6 @@ describe("POST /user", ()=>{
         const res:Response = await supertest(app)
         .post("/user")
         .send(admin);   
-        
-        console.log(res.error)
         expect(res.status).toBe(400);
     })
 })

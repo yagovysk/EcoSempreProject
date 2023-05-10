@@ -31,7 +31,6 @@ const admin = {
         const res = yield (0, supertest_1.default)(server_1.default)
             .post("/user")
             .send(admin);
-        console.log(res.error);
         (0, globals_1.expect)(res.status).toBe(400);
     }));
 });
