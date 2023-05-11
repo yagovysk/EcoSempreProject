@@ -25,7 +25,12 @@ const server_1 = __importDefault(require("../../server"));
         const res = yield (0, supertest_1.default)(server_1.default)
             .post("/article")
             .send(article);
-        console.log(res.text);
         (0, globals_1.expect)(res.status).toBe(201);
+    }));
+    globals_1.it.only("it should returns status 409", () => __awaiter(void 0, void 0, void 0, function* () {
+        const res = yield (0, supertest_1.default)(server_1.default)
+            .post("/article")
+            .send(article);
+        (0, globals_1.expect)(res.status).toBe(409);
     }));
 });

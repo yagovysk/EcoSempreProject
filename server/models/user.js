@@ -12,9 +12,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const bcrypt_1 = __importDefault(require("bcrypt"));
 const connection_1 = __importDefault(require("../database/connection"));
 class User {
     constructor() {
+        this.confirmPassword = (credentails) => __awaiter(this, void 0, void 0, function* () {
+            const user = yield (0, connection_1.default)("users").select("*").where({ email: credentails.email }).first();
+            // check if the pass is most longer then 8 
+            const length = credentails.password.length;
+            if (length < 8) {
+                return false;
+            }
+            const correct = bcrypt_1.default.compareSync(credentails.password, user.password);
+            if (correct) {
+                return true;
+            }
+            return false;
+        });
         this.createUser = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const user = req.body;
@@ -22,17 +36,53 @@ class User {
                 if (exist) {
                     throw new Error("The user already exist");
                 }
-                const result = yield (0, connection_1.default)("Users").insert(user);
+                const hashedPassword = this.hashPassword(user.password);
+                user.password = hashedPassword;
+                const result = yield (0, connection_1.default)("users").insert(user);
                 res.status(201).send(`Created! ${result[0]}`);
             }
             catch (error) {
                 res.status(400).send(error.message);
             }
         });
+        this.login = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const credentials = req.body;
+                const exist = yield this.verifyUserByEmail(credentials.email);
+                if (exist) {
+                    const confirmed = yield this.confirmPassword(credentials);
+                    if (confirmed) {
+                        // need create a session?!
+                        res.status(200).send("ok");
+                    }
+                    else {
+                        res.status(400).send("Incorrect Password");
+                    }
+                }
+                else {
+                    res.status(404).send("The user doesn't exist");
+                }
+            }
+            catch (error) {
+                res.status(400).send(error.message);
+            }
+        });
+    }
+    hashPassword(password) {
+        // check if the pass is most longer then 8 
+        const length = password.length;
+        if (length < 8) {
+            throw new Error("the password is short, min length is 8");
+        }
+        // hashing the pass
+        const SALT_ROUNDS = 10;
+        const SALT = bcrypt_1.default.genSaltSync(SALT_ROUNDS);
+        const hashedPassword = bcrypt_1.default.hashSync(password, SALT);
+        return hashedPassword;
     }
     verifyUserByEmail(email) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = yield (0, connection_1.default)("Users").select("*").where({ email });
+            const query = yield (0, connection_1.default)("users").select("*").where({ email });
             if (query[0] === undefined) {
                 return false;
             }
