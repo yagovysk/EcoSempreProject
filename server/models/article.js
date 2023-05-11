@@ -55,6 +55,9 @@ class Article {
                 res.status(400).send(error.sqlMessage);
             }
         });
+        this.deleteArticle = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.body;
+        });
     }
 }
 exports.default = Article;

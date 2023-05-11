@@ -70,6 +70,12 @@ class Article{
             res.status(400).send(error.sqlMessage)
         }
     }
+
+    public deleteArticle = async (req:Request, res:Response) =>{
+        const {id}:{id:string} = req.body; 
+
+        
+    }
 }
 
 

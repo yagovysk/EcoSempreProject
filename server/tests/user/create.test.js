@@ -21,13 +21,13 @@ const admin = {
     password: "teste123"
 };
 (0, globals_1.describe)("POST /user", () => {
-    // it("it should return 201 if  user was created", async() =>{
-    //     const res:Response = await supertest(app)
-    //     .post("/user")
-    //     .send(admin);
-    //     expect(res.status).toBe(201);
-    // })
-    (0, globals_1.it)("it should return status 400", () => __awaiter(void 0, void 0, void 0, function* () {
+    (0, globals_1.it)("it should return 201 if  user was created", () => __awaiter(void 0, void 0, void 0, function* () {
+        const res = yield (0, supertest_1.default)(server_1.default)
+            .post("/user")
+            .send(admin);
+        (0, globals_1.expect)(res.status).toBe(201);
+    }));
+    globals_1.it.only("it should return status 400", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
             .post("/user")
             .send(admin);

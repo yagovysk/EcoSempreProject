@@ -11,14 +11,14 @@ const admin = {
 }
 describe("POST /user", ()=>{
    
-    // it("it should return 201 if  user was created", async() =>{
-    //     const res:Response = await supertest(app)
-    //     .post("/user")
-    //     .send(admin);
-    //     expect(res.status).toBe(201);
-    // })
+    it("it should return 201 if  user was created", async() =>{
+        const res:Response = await supertest(app)
+        .post("/user")
+        .send(admin);
+        expect(res.status).toBe(201);
+    })
 
-    it("it should return status 400", async()=>{
+    it.only("it should return status 400", async()=>{
         const res:Response = await supertest(app)
         .post("/user")
         .send(admin);   

@@ -16,7 +16,12 @@ describe("POST /article", ()=>{
         const res:Response = await supertest(app)
         .post("/article")
         .send(article);
-        console.log(res.text)
         expect(res.status).toBe(201);
+    })
+    it.only("it should returns status 409", async ()=>{
+        const res:Response = await supertest(app)
+        .post("/article")
+        .send(article);
+        expect(res.status).toBe(409);
     })
 })

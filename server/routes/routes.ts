@@ -6,13 +6,22 @@ const Routes:Router = express.Router();
 
 
 Routes.post("/user", async(req:Request, res:Response)=>{
-    const user:any = new User();
+    const user:User = new User();
     user.createUser(req, res);
+})
+
+
+Routes.post("/authentication",  async (req:Request, res:Response) =>{
+
+    const user:User = new User();
+
+    user.login(req, res);
+
 })
 
 // articles
 Routes.post("/article", async(req:Request, res:Response)=>{
-    const article: any = new Article();
+    const article:Article = new Article();
     article.creatArticle(req, res);
 })
 

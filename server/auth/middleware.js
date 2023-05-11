@@ -12,21 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const user_1 = __importDefault(require("../models/user"));
-const article_1 = __importDefault(require("../models/article"));
-const Routes = express_1.default.Router();
-Routes.post("/user", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const user = new user_1.default();
-    user.createUser(req, res);
-}));
-Routes.post("/authentication", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const user = new user_1.default();
-    user.login(req, res);
-}));
-// articles
-Routes.post("/article", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const article = new article_1.default();
-    article.creatArticle(req, res);
-}));
-exports.default = Routes;
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
+class Middleware {
+    constructor() {
+        this.adminAuth = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+            // const {id}:{id:string} = req.session.user;
+        });
+    }
+}
+exports.default = Middleware;
