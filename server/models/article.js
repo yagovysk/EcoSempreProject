@@ -24,9 +24,17 @@ class Article {
             }
             return false;
         });
+        this.verifyArticleById = (id) => __awaiter(this, void 0, void 0, function* () {
+            const exist = yield (0, connection_1.default)("articles").select("*").where({ id });
+            if (exist[0] !== undefined) {
+                return true;
+            }
+            return false;
+        });
+        // reavaliate this private method, may be unnecessary
         this.articleValidate = (article) => {
-            const { title, author, content } = article;
-            if (!title || !author || !content) {
+            const { title, author, content, author_id } = article;
+            if (!title || !author || !content || !author_id) {
                 return false;
             }
             return true;
@@ -50,6 +58,20 @@ class Article {
                 else {
                     throw new Error("is not valid");
                 }
+            }
+            catch (error) {
+                res.status(400).send(error);
+            }
+        });
+        this.deleteArticle = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const id = Number(req.params.id);
+                const exist = yield this.verifyArticleById(id);
+                if (!exist) {
+                    res.status(404).send("the articles dosn't exists!");
+                }
+                yield (0, connection_1.default)("articles").delete("*").where({ id });
+                res.status(200).send("Deleted");
             }
             catch (error) {
                 res.status(400).send(error.sqlMessage);
