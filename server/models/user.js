@@ -53,7 +53,7 @@ class User {
                     const confirmed = yield this.confirmPassword(credentials);
                     if (confirmed) {
                         // need create a session?!
-                        res.status(200).send("ok");
+                        return res.status(200).send("ok");
                     }
                     else {
                         res.status(400).send("Incorrect Password");

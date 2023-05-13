@@ -7,11 +7,13 @@ const secret = process.env.SESSION;
 const maxAge = 200000000;
 
 if (!secret) {
-  throw new Error('Variável de ambiente SESSION não está definida');
+  throw new Error("Enviroment variable doesn't exist");
 }
 
 const Session = session({
   secret: secret as string,
+  resave: true,
+  saveUninitialized: true,
   cookie: {
     maxAge
   }

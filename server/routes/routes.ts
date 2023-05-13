@@ -23,6 +23,10 @@ Routes.post("/authentication",  async (req:Request, res:Response) =>{
 Routes.post("/article", async(req:Request, res:Response)=>{
     const article:Article = new Article();
     article.creatArticle(req, res);
+    
 })
-
+Routes.delete("/articles/:id", async(req:Request, res:Response) =>{
+    const article:Article = new Article();
+    article.deleteArticle(req, res);
+})
 export default Routes;
