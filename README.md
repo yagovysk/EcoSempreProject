@@ -169,4 +169,3 @@ The article doesn't exist!
 ### PS 
 Please note that you need to replace `{article_id}` in the request example with the actual ID of the article you want to delete.
 
-Let me know if there's anything else I can help you with!
