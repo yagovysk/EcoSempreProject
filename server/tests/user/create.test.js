@@ -12,20 +12,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const globals_1 = require("@jest/globals");
 const supertest_1 = __importDefault(require("supertest"));
 const server_1 = __importDefault(require("../../server"));
-(0, globals_1.describe)("POST /article", () => {
-    const article = {
-        title: "Como criar um server express2",
-        author: "Ecosempre",
-        content: "this is only a test"
-    };
-    (0, globals_1.it)("it should returns status 201", () => __awaiter(void 0, void 0, void 0, function* () {
+const globals_1 = require("@jest/globals");
+const admin = {
+    nickname: "ecoSempre",
+    email: "sac@ecosempre.com",
+    password: "teste123"
+};
+(0, globals_1.describe)("POST /user", () => {
+    (0, globals_1.it)("it should return 201 if  user was created", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
-            .post("/article")
-            .send(article);
-        console.log(res.text);
+            .post("/user")
+            .send(admin);
         (0, globals_1.expect)(res.status).toBe(201);
+    }));
+    globals_1.it.only("it should return status 400", () => __awaiter(void 0, void 0, void 0, function* () {
+        const res = yield (0, supertest_1.default)(server_1.default)
+            .post("/user")
+            .send(admin);
+        (0, globals_1.expect)(res.status).toBe(400);
     }));
 });
