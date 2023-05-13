@@ -9,10 +9,12 @@ dotenv_1.default.config();
 const secret = process.env.SESSION;
 const maxAge = 200000000;
 if (!secret) {
-    throw new Error('Variável de ambiente SESSION não está definida');
+    throw new Error("Enviroment variable doesn't exist");
 }
 const Session = (0, express_session_1.default)({
     secret: secret,
+    resave: true,
+    saveUninitialized: true,
     cookie: {
         maxAge
     }

@@ -29,4 +29,8 @@ Routes.post("/article", (req, res) => __awaiter(void 0, void 0, void 0, function
     const article = new article_1.default();
     article.creatArticle(req, res);
 }));
+Routes.delete("/articles/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const article = new article_1.default();
+    article.deleteArticle(req, res);
+}));
 exports.default = Routes;

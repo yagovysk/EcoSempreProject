@@ -15,12 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const globals_1 = require("@jest/globals");
 const supertest_1 = __importDefault(require("supertest"));
 const server_1 = __importDefault(require("../../server"));
+const article = {
+    title: "Como criar um server express2",
+    author: "Ecosempre",
+    content: "this is only a test",
+    author_id: 1
+};
 (0, globals_1.describe)("POST /article", () => {
-    const article = {
-        title: "Como criar um server express2",
-        author: "Ecosempre",
-        content: "this is only a test"
-    };
     (0, globals_1.it)("it should returns status 201", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
             .post("/article")

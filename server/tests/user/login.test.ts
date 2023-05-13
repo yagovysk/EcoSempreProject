@@ -1,5 +1,5 @@
-import {it, describe, test, expect} from '@jest/globals';
-import supertest, {Response} from 'supertest';
+import { it, describe, test, expect } from '@jest/globals';
+import supertest, { Response } from 'supertest';
 import app from '../../server';
 
 
@@ -9,25 +9,23 @@ const user = {
 }
 
 
-describe("POST /authenticate", () =>{
-    
-    it("it should  returns status 400 and text", async() =>{
-        const res:Response = await supertest(app)
-        .post("/authentication")
-        .send(user);
+describe("POST /authenticate", () => {
+
+    it("it should  returns status 400 and text", async () => {
+        const res: Response = await supertest(app)
+            .post("/authentication")
+            .send(user);
 
 
         expect(res.status).toBe(400);
     })
 
-    it("it should returns  200", async () =>{
+    it("it should returns  200", async () => {
         user.password = "YzuUG6kWt.";
-
-        console.log(user)
-        const res:Response = await supertest(app)
-        .post("/authentication")
-        .send(user);
+        const res: Response = await supertest(app)
+            .post("/authentication")
+            .send(user);
         expect(res.status).toBe(200);
     })
-    
+
 })
