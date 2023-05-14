@@ -72,7 +72,7 @@ Retrieves a list of articles.
 
 ### Request Example
 ```
-curl -X GET http://api.example.com/articles?limit=10&page=1
+curl -X GET http://api.example.com/articles?limit=5&page=1
 ```
 
 ## Create Article
