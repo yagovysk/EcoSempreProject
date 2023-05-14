@@ -25,7 +25,7 @@ Routes.post("/article", async(req:Request, res:Response)=>{
     article.creatArticle(req, res);
     
 })
-Routes.delete("/articles/:id", async(req:Request, res:Response) =>{
+Routes.delete("/article/:id", async(req:Request, res:Response) =>{
     const article:Article = new Article();
     article.deleteArticle(req, res);
 })
