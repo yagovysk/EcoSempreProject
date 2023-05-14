@@ -19,12 +19,12 @@ const server_1 = __importDefault(require("../../server"));
     const id = 3;
     (0, globals_1.it)("it should returns 404", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
-            .delete(`/articles/${id}`);
+            .delete(`/article/${id}`);
         (0, globals_1.expect)(res.status).toBe(200);
     }));
     globals_1.it.only("it should returns 404", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
-            .delete(`/articles/${id}`);
+            .delete(`/article/${id}`);
         (0, globals_1.expect)(res.status).toBe(404);
     }));
 });
