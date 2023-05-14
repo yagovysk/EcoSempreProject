@@ -20,6 +20,10 @@ Routes.post("/authentication",  async (req:Request, res:Response) =>{
 })
 
 // articles
+Routes.get("/articles", async(req:Request, res:Response)=>{
+    const article:Article = new Article();
+    article.getArticles(req, res);
+})
 Routes.post("/article", async(req:Request, res:Response)=>{
     const article:Article = new Article();
     article.creatArticle(req, res);

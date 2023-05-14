@@ -25,6 +25,10 @@ Routes.post("/authentication", (req, res) => __awaiter(void 0, void 0, void 0, f
     user.login(req, res);
 }));
 // articles
+Routes.get("/articles", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const article = new article_1.default();
+    article.getArticles(req, res);
+}));
 Routes.post("/article", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const article = new article_1.default();
     article.creatArticle(req, res);
