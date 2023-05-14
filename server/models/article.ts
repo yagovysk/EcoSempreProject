@@ -39,6 +39,13 @@ class Article {
         }
         return true;
     }
+    private verifyPagination = (page ?:string,  limit  ?:string) =>{
+        if( limit === undefined || page === undefined)
+        {
+            return false;
+        }
+        return true;
+    }
     public creatArticle = async (req: Request, res: Response) => {
 
         try {
@@ -91,13 +98,36 @@ class Article {
         }
 
     }
-    public getArticles = async() =>{
+    public getArticles = async(req:Request, res:Response) =>{
         try{
+            const  {limit, page}:{limit ?: string, page ?: string} = req.query;
 
+
+            // verifying if contain pagination in query
+            const pagination:boolean = this.verifyPagination(limit, page);
+            if(pagination)
+            {
+                const offset = (Number(page)-1)*Number(limit)
+                const articles: string[] = await Connection("articles").select("*").limit(Number(limit)).offset(Number(offset))
+
+                if(articles [0] === undefined)
+                {
+                    res.status(404).send("doesn't exists articles");
+                }
+                res.status(200).send(articles);
+            }
+            else{
+             const articles: string[] = await Connection("articles").select("*");
+             
+             if (articles[0] === undefined) {
+                 res.status(404).send("doesn't exists articles");
+             }
+             res.status(200).send(articles);
+            }
         }
         catch(error:any)
         {
-            
+            res.status(400).send(error.sqlMessage)
         }
     }
 }
