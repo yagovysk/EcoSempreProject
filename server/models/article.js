@@ -31,7 +31,6 @@ class Article {
             }
             return false;
         });
-        // reavaliate this private method, may be unnecessary
         this.articleValidate = (article) => {
             const { title, author, content, author_id } = article;
             if (!title || !author || !content || !author_id) {
@@ -75,6 +74,12 @@ class Article {
             }
             catch (error) {
                 res.status(400).send(error.sqlMessage);
+            }
+        });
+        this.getArticles = () => __awaiter(this, void 0, void 0, function* () {
+            try {
+            }
+            catch (error) {
             }
         });
     }
