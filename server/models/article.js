@@ -38,6 +38,12 @@ class Article {
             }
             return true;
         };
+        this.verifyPagination = (page, limit) => {
+            if (limit === undefined || page === undefined) {
+                return false;
+            }
+            return true;
+        };
         this.creatArticle = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const article = req.body;
@@ -76,10 +82,29 @@ class Article {
                 res.status(400).send(error.sqlMessage);
             }
         });
-        this.getArticles = () => __awaiter(this, void 0, void 0, function* () {
+        this.getArticles = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
+                const { limit, page } = req.query;
+                // verifying if contain pagination in query
+                const pagination = this.verifyPagination(limit, page);
+                if (pagination) {
+                    const offset = (Number(page) - 1) * Number(limit);
+                    const articles = yield (0, connection_1.default)("articles").select("*").limit(Number(limit)).offset(Number(offset));
+                    if (articles[0] === undefined) {
+                        res.status(404).send("doesn't exists articles");
+                    }
+                    res.status(200).send(articles);
+                }
+                else {
+                    const articles = yield (0, connection_1.default)("articles").select("*");
+                    if (articles[0] === undefined) {
+                        res.status(404).send("doesn't exists articles");
+                    }
+                    res.status(200).send(articles);
+                }
             }
             catch (error) {
+                res.status(400).send(error.sqlMessage);
             }
         });
     }
