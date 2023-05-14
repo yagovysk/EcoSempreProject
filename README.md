@@ -138,7 +138,7 @@ Deletes an article.
 
 ### Request Example
 ```
-curl -X DELETE http://api.example.com/articles/{article_id}
+curl -X DELETE http://api.example.com/article/{article_id}
 ```
 
 ### Success Request Example
