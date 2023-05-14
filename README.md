@@ -47,7 +47,33 @@ Content-Type: text/plain
 {error_message}
 ```
 
+## Get Articles
 
+Retrieves a list of articles.
+
+### Method
+- GET
+
+### Route
+- /articles
+
+### Query Parameters
+| Name  | Type   | Description                           |
+|-------|--------|-------------------------------------|
+| limit | string | (Optional) The maximum number of articles to retrieve. |
+| page  | string | (Optional) The page number for pagination. |
+
+### Responses
+| Code | Description                 |
+|--------|---------------------------|
+| 200    | Success - Articles retrieved successfully. |
+| 400    | Error - There was a problem with the request. |
+| 404    | Not Found - There are no articles available. |
+
+### Request Example
+```
+curl -X GET http://api.example.com/articles?limit=5&page=1
+```
 
 ## Create Article
 
@@ -138,7 +164,7 @@ Deletes an article.
 
 ### Request Example
 ```
-curl -X DELETE http://api.example.com/article/{article_id}
+curl -X DELETE http://api.example.com/articles/{article_id}
 ```
 
 ### Success Request Example
@@ -166,6 +192,6 @@ The article doesn't exist!
 
 ```
 
-### PS 
+### ps
 Please note that you need to replace `{article_id}` in the request example with the actual ID of the article you want to delete.
 
