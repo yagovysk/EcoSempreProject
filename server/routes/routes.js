@@ -37,4 +37,8 @@ Routes.delete("/article/:id", (req, res) => __awaiter(void 0, void 0, void 0, fu
     const article = new article_1.default();
     article.deleteArticle(req, res);
 }));
+Routes.put("/article/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const article = new article_1.default();
+    article.updateArticle(req, res);
+}));
 exports.default = Routes;
