@@ -107,6 +107,22 @@ class Article {
                 res.status(400).send(error.sqlMessage);
             }
         });
+        this.updateArticle = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const id = Number(req.params.id);
+                const article = req.body;
+                const exists = yield this.verifyArticleById(id);
+                const updatedArticle = Object.assign(Object.assign({}, article), { updatedAt: this.currentDate });
+                if (!exists) {
+                    return res.status(404).send("The articles Doesn't exists");
+                }
+                yield (0, connection_1.default)("articles").update(updatedArticle).where({ id });
+                return res.sendStatus(200);
+            }
+            catch (error) {
+                return res.sendStatus(400);
+            }
+        });
     }
 }
 exports.default = Article;

@@ -9,8 +9,6 @@ describe("GET /articles", ()=>{
     it("it should returns an Array", async () =>{
         const res:Response = await supertest(app)
         .get("/articles");
-
-        console.log(res.body);
         expect(Array.isArray(res.body)).toBe(true);
     })
     it("it should returns a response with max length 2", async () =>{
