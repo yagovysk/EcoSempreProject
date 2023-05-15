@@ -33,4 +33,8 @@ Routes.delete("/article/:id", async(req:Request, res:Response) =>{
     const article:Article = new Article();
     article.deleteArticle(req, res);
 })
+Routes.put("/article/:id", async(req:Request, res:Response) =>{
+    const article:Article = new Article();
+    article.updateArticle(req, res);
+})
 export default Routes;
