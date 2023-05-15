@@ -1,3 +1,5 @@
+// THIS FILES WAS CREATED TO ADDING STATIC FUNCTIONS// 
+
 class Static{
     public getCurrentDate = () =>
     {
