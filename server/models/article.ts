@@ -9,7 +9,12 @@ interface IArticle {
     content: string
     author_id: number
 }
-
+interface updateArticle {
+    title ?: string,
+    author ?: string,
+    content ?: string,
+   
+}
 class Article {
     private currentDate: string = new Static().getCurrentDate();
 
@@ -129,6 +134,33 @@ class Article {
         {
             res.status(400).send(error.sqlMessage)
         }
+    }
+
+    public updateArticle = async (req:Request, res:Response) =>{
+       
+        try{
+            const id:number = Number(req.params.id);
+            const article:updateArticle = req.body;
+            const exists:boolean = await this.verifyArticleById(id);
+            
+            const updatedArticle:object = {
+                ...article,
+                updatedAt: this.currentDate
+            }
+            if(!exists)
+            {
+               return res.status(404).send("The articles Doesn't exists");
+            }
+
+            await Connection("articles").update(updatedArticle).where({id});
+
+            return res.sendStatus(200);
+        }
+        catch(error:any)
+        {
+          return res.sendStatus(400);
+        }
+
     }
 }
 

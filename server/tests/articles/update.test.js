@@ -15,15 +15,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const globals_1 = require("@jest/globals");
 const supertest_1 = __importDefault(require("supertest"));
 const server_1 = __importDefault(require("../../server"));
-(0, globals_1.describe)("GET /articles", () => {
-    (0, globals_1.it)("it should returns an Array", () => __awaiter(void 0, void 0, void 0, function* () {
+const article = {
+    title: "____TITLE"
+};
+(0, globals_1.describe)("PUT /articles/[ID]", () => {
+    (0, globals_1.it)("it should return status 200", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
-            .get("/articles");
-        (0, globals_1.expect)(Array.isArray(res.body)).toBe(true);
+            .put("/article/5")
+            .send(article);
+        (0, globals_1.expect)(res.status).toBe(200);
     }));
-    (0, globals_1.it)("it should returns a response with max length 2", () => __awaiter(void 0, void 0, void 0, function* () {
+    (0, globals_1.it)("it should return status 404", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
-            .get("/articles?page=1&limit=2");
-        (0, globals_1.expect)(res.body.length).toBe(2);
+            .put("/article/100")
+            .send(article);
+        (0, globals_1.expect)(res.status).toBe(404);
     }));
 });
