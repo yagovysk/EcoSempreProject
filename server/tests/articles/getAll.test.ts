@@ -1,4 +1,4 @@
-import {it, expect, test, describe}  from '@jest/globals';
+import {it, expect, test, describe, beforeEach, beforeAll}  from '@jest/globals';
 import supertest, {Response} from 'supertest';
 import app from '../../server';
 
@@ -6,7 +6,8 @@ import app from '../../server';
 
 
 describe("GET /articles", ()=>{
-    it("it should returns an Array", async () =>{
+
+    it.only("it should returns an Array", async () =>{
         const res:Response = await supertest(app)
         .get("/articles");
         expect(Array.isArray(res.body)).toBe(true);
