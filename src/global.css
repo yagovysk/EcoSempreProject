@@ -1,9 +1,3 @@
 :root {
-    --white: #fff;
-    --fundo: #1E1E1E;
-    background: var(--fundo);
-}
-div {
-    display: flex;
-    width: 100%;
+    -webkit-font-smoothing: antialiased;
 }
