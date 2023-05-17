@@ -1,13 +1,14 @@
+import { Header } from './components/Header.jsx';
+import { Home } from './components/Home.jsx';
 import './global.css'
-
-import { Home } from './components/Home.jsx'
-
 
 export function App() {
   return (
     <div>
-      <Home />
+    <Header />
+    <Home />
     </div>
   )
 }
+
 

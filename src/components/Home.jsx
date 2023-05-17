@@ -1,20 +1,20 @@
 import styles from './Home.module.css'
 
-import logo from '../assets/ecologo.png'
-
-export function Home (){
+export function Home() {
     return(
-        <nav className={styles.home}>
-            <div className={styles.title}>
-                <h1>Web site EcoSempre</h1>
-            </div>
-            <div className={styles.logo}>
-                <img src={logo} alt="ecologo" />
-            </div>
-            <div className={styles.paragraph}>
-                <p className={styles.p1}>Cliente solicitante:</p>
-                <p className={styles.p2}>Sempretech LTDA</p>
-            </div>
-        </nav>
+        <div className={styles.home}>
+            <nav className={styles.hometitle}>
+                <h1>
+                    Logística Reversa de Eletrônicos
+                </h1>
+            </nav>
+            <nav className={ styles.homeparagraph }>
+                <p> 
+                    Trabalhamos em conjunto com comunidades e parceiros
+                    para desenvolver soluções inovadoras em Logística
+                    Reversa.
+                </p>
+            </nav>
+        </div>
     )
 }
