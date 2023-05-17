@@ -1,6 +1,7 @@
-import express, { Router, Request, Response }  from 'express';
+import express, { Router, Request, Response,NextFunction }  from 'express';
 import User from '../models/user';
 import Article from '../models/article';
+import Middleware from '../auth/middleware';
 const Routes:Router = express.Router();
 
 
@@ -11,7 +12,7 @@ Routes.post("/user", async(req:Request, res:Response)=>{
 })
 
 
-Routes.post("/authentication",  async (req:Request, res:Response) =>{
+Routes.post("/authentication",   async (req:Request, res:Response) =>{
 
     const user:User = new User();
 
@@ -20,7 +21,7 @@ Routes.post("/authentication",  async (req:Request, res:Response) =>{
 })
 
 // articles
-Routes.get("/articles", async(req:Request, res:Response)=>{
+Routes.get("/articles",Middleware, async(req:Request, res:Response)=>{
     const article:Article = new Article();
     article.getArticles(req, res);
 })

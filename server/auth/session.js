@@ -13,8 +13,8 @@ if (!secret) {
 }
 const Session = (0, express_session_1.default)({
     secret: secret,
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
     cookie: {
         maxAge
     }
