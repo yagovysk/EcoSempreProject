@@ -1,13 +1,12 @@
-import './global.css'
+import { useState } from 'react'
 
-import { Home } from './components/Home.jsx'
-
+import { Header } from './components/Header.jsx';
+import './Global.css'
 
 export function App() {
   return (
-    <div>
-      <Home />
-    </div>
+    <Header />
   )
 }
+
 
