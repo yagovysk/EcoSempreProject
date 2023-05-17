@@ -12,8 +12,8 @@ if (!secret) {
 
 const Session = session({
   secret: secret as string,
-  resave: true,
-  saveUninitialized: true,
+  resave: false,
+  saveUninitialized: false,
   cookie: {
     maxAge
   }
