@@ -16,7 +16,7 @@ const globals_1 = require("@jest/globals");
 const supertest_1 = __importDefault(require("supertest"));
 const server_1 = __importDefault(require("../../server"));
 (0, globals_1.describe)("GET /articles", () => {
-    (0, globals_1.it)("it should returns an Array", () => __awaiter(void 0, void 0, void 0, function* () {
+    globals_1.it.only("it should returns an Array", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
             .get("/articles");
         (0, globals_1.expect)(Array.isArray(res.body)).toBe(true);
