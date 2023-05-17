@@ -3,12 +3,13 @@
     background: url('../assets/fundohome.png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 35rem;
+    height: 40rem;
     width: auto;
 }
 .hometitle {
     display: flex;
-    margin-left: 3rem;
+    margin-left: 19rem;
+    margin-top: 2.5rem;
     color: #FFFFFF;
     width: 36rem;
     font-family: 'IBM Plex Sans';
@@ -21,12 +22,37 @@
     display: flex;
     position: absolute;
     width: 35rem;
-    margin-left: 3rem;
-    margin-top: 12rem;
+    margin-left: 19rem;
+    margin-top: 16rem;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 18.9867px;
     line-height: 33px;
     color: #FFFFFF;
+}
+.home a {
+    position: absolute;
+    display: flex;
+    margin-top: 8rem;
+    align-items: center;
+    padding: 0.6rem 1.875rem;
+    gap: 26px;
+    padding-left: 3.5rem;
+    width: 175px;
+    height: 59px;
+    text-decoration: none;
+    color: #FFFFFF;
+    background: #00C756;
+    border-radius: 5px;
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 41px;
+    transition: 0.3s;
+}
+.home a:hover {
+    background: #22f07b;
 }
