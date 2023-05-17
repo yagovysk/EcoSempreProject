@@ -16,6 +16,14 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const connection_1 = __importDefault(require("../database/connection"));
 class User {
     constructor() {
+        this.getRole = (email) => __awaiter(this, void 0, void 0, function* () {
+            const role = yield (0, connection_1.default)("roles")
+                .join("users", "roles.user_id", "=", "users.id")
+                .select("roles.*")
+                .where("users.email", email)
+                .first();
+            return role.role;
+        });
         this.confirmPassword = (credentails) => __awaiter(this, void 0, void 0, function* () {
             const user = yield (0, connection_1.default)("users").select("*").where({ email: credentails.email }).first();
             // check if the pass is most longer then 8 
@@ -48,11 +56,15 @@ class User {
         this.login = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const credentials = req.body;
+                const session = req.session;
                 const exist = yield this.verifyUserByEmail(credentials.email);
                 if (exist) {
                     const confirmed = yield this.confirmPassword(credentials);
                     if (confirmed) {
-                        // need create a session?!
+                        const userRole = yield this.getRole(credentials.email);
+                        session.user = {
+                            role: userRole
+                        };
                         return res.status(200).send("ok");
                     }
                     else {
