@@ -21,7 +21,7 @@ Routes.post("/authentication",   async (req:Request, res:Response) =>{
 })
 
 // articles
-Routes.get("/articles",Middleware, async(req:Request, res:Response)=>{
+Routes.get("/articles", async(req:Request, res:Response)=>{
     const article:Article = new Article();
     article.getArticles(req, res);
 })
