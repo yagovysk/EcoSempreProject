@@ -15,23 +15,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const globals_1 = require("@jest/globals");
 const supertest_1 = __importDefault(require("supertest"));
 const server_1 = __importDefault(require("../../server"));
-const user = {
-    email: 'sac2@ecosempre.com',
-    password: ''
-};
-(0, globals_1.describe)("POST /authenticate", () => {
-    (0, globals_1.it)("it should  returns status 400 and text", () => __awaiter(void 0, void 0, void 0, function* () {
+(0, globals_1.describe)("testing middlware", () => {
+    (0, globals_1.it)("it should returns 401", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
-            .post("/authentication")
-            .send(user);
-        (0, globals_1.expect)(res.status).toBe(400);
+            .get("/articles");
+        (0, globals_1.expect)(res.status).toBe(401);
     }));
-    (0, globals_1.it)("it should returns  200", () => __awaiter(void 0, void 0, void 0, function* () {
-        user.email = "sac10@ecosempre.com";
-        user.password = "YzuUG6kWt.";
+    globals_1.it.only("it should returns 200 if don't have middleware", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
-            .post("/authentication")
-            .send(user);
+            .get("/articles");
         (0, globals_1.expect)(res.status).toBe(200);
     }));
 });

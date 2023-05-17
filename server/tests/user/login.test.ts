@@ -21,6 +21,7 @@ describe("POST /authenticate", () => {
     })
 
     it("it should returns  200", async () => {
+        user.email = "sac10@ecosempre.com"
         user.password = "YzuUG6kWt.";
         const res: Response = await supertest(app)
             .post("/authentication")
