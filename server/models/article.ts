@@ -135,6 +135,21 @@ class Article {
             res.status(400).send(error.sqlMessage)
         }
     }
+    public getArticleById = async(req:Request, res:Response) =>{
+
+        const id:number = Number(req.params.id);
+        const exists: boolean = await this.verifyArticleById(id);
+
+        if(exists)
+        {
+            const article: object = await Connection("articles").select("*").where({id}).first();
+
+            res.status(200).send(article);
+        }
+        else{
+            res.sendStatus(404);
+        }
+    }
 
     public updateArticle = async (req:Request, res:Response) =>{
        
