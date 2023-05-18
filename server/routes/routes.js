@@ -33,6 +33,10 @@ Routes.post("/article", (req, res) => __awaiter(void 0, void 0, void 0, function
     const article = new article_1.default();
     article.creatArticle(req, res);
 }));
+Routes.get("/article/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const article = new article_1.default();
+    article.getArticleById(req, res);
+}));
 Routes.delete("/article/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const article = new article_1.default();
     article.deleteArticle(req, res);

@@ -30,6 +30,10 @@ Routes.post("/article", async(req:Request, res:Response)=>{
     article.creatArticle(req, res);
     
 })
+Routes.get("/article/:id", async(req:Request, res:Response) =>{
+    const article:Article = new Article();
+    article.getArticleById(req, res);
+})
 Routes.delete("/article/:id", async(req:Request, res:Response) =>{
     const article:Article = new Article();
     article.deleteArticle(req, res);

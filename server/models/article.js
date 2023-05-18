@@ -107,6 +107,17 @@ class Article {
                 res.status(400).send(error.sqlMessage);
             }
         });
+        this.getArticleById = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const id = Number(req.params.id);
+            const exists = yield this.verifyArticleById(id);
+            if (exists) {
+                const article = yield (0, connection_1.default)("articles").select("*").where({ id }).first();
+                res.status(200).send(article);
+            }
+            else {
+                res.sendStatus(404);
+            }
+        });
         this.updateArticle = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const id = Number(req.params.id);
