@@ -1,5 +1,6 @@
 import { Header } from './components/Header.jsx';
 import { Home } from './components/Home.jsx';
+import { Sobre } from './components/Sobre.jsx'
 import './global.css'
 
 export function App() {
@@ -7,6 +8,7 @@ export function App() {
     <div>
     <Header />
     <Home />
+    <Sobre />
     </div>
   )
 }
