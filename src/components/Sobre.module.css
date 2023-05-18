@@ -1,0 +1,11 @@
+.sobre {
+    display: flex;
+    height: 40rem;
+}
+.sobre img {
+    margin-top: 8rem;
+    border-radius: 0.625rem;
+    margin-left: 25rem;
+    width: 25rem;
+    height: 30rem;
+}
