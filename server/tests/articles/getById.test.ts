@@ -6,7 +6,7 @@ import app from '../../server';
 
 
 
-describe("GET /articles/[id]", ()=>{
+describe("GET /article/[id]", ()=>{
 
     it("it should returns 404 status", async () =>{
 
@@ -18,7 +18,7 @@ describe("GET /articles/[id]", ()=>{
     it("it should returns 200 status", async () =>{
 
         const res:Response = await supertest(app)
-        .get("/article/5");
+        .get("/article/8");
 
         expect(res.status).toBe(200);
 
