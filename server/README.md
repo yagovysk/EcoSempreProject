@@ -47,130 +47,151 @@ Content-Type: text/plain
 {error_message}
 ```
 
+## Get Articles
+
+Retrieves a list of articles.
+
+### Method
+- GET
+
+### Route
+- /articles
+
+### Query Parameters
+| Name  | Type   | Description                           |
+|-------|--------|-------------------------------------|
+| limit | string | (Optional) The maximum number of articles to retrieve. |
+| page  | string | (Optional) The page number for pagination. |
+
+### Responses
+| Code | Description                 |
+|--------|---------------------------|
+| 200    | Success - Articles retrieved successfully. |
+| 400    | Error - There was a problem with the request. |
+| 404    | Not Found - There are no articles available. |
+
+### Request Example
+```
+curl -X GET http://api.example.com/articles?limit=5&page=1
 ```
 
-## API Documentation
+## Create Article
 
-### User Routes
+Creates a new article.
 
-#### Create User
+### Method
+- POST
 
-- URL: `/user`
-- Method: POST
-- Description: Creates a new user.
-- Request Body:
-  - Required Fields:
-    - `username` (string): The username of the user.
-    - `password` (string): The password of the user.
-  - Example:
-    ```json
-    {
-      "username": "john_doe",
-      "password": "password123"
-    }
-    ```
-- Response:
-  - Status: 200 OK
-  - Description: Returns the created user object.
-  - Example:
-    ```json
-    {
-      "id": "user_id",
-      "username": "john_doe"
-    }
-    ```
+### Route
+- /article
 
-#### User Authentication
+### Request Parameters
+| Name        | Type   | Description        |
+|-------------|--------|------------------|
+| title       | string | The article's title. |
+| author      | string | The article's author. |
+| content     | string | The article's content. |
+| author_id   | number | The ID of the article's author. |
 
-- URL: `/authentication`
-- Method: POST
-- Description: Authenticates a user.
-- Request Body:
-  - Required Fields:
-    - `username` (string): The username of the user.
-    - `password` (string): The password of the user.
-  - Example:
-    ```json
-    {
-      "username": "john_doe",
-      "password": "password123"
-    }
-    ```
-- Response:
-  - Status: 200 OK
-  - Description: Returns an authentication token.
-  - Example:
-    ```json
-    {
-      "token": "authentication_token"
-    }
-    ```
+### Responses
+| Code | Description                 |
+|--------|---------------------------|
+| 201    | Success - The article was created successfully. |
+| 400    | Error - There was a problem with the request. |
+| 409    | Conflict - The article already exists. |
 
-## Article Routes
+### Request Example
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{
+  "title": "Article Title",
+  "author": "Author Name",
+  "content": "Article Content",
+  "author_id": 123
+}' http://api.example.com/article
 
-...
+```
 
-#### Get Article by ID
+### Success Request Example
+```
+HTTP/1.1 201 Created
+Content-Type: text/plain
 
-- URL: `/article/:id`
-- Method: GET
-- Description: Retrieves a specific article by its ID.
-- Path Parameters:
-  - `id` (string): The ID of the article.
-- Response:
-  - Status: 200 OK
-  - Description: Returns the article object.
-  - Example:
-    ```json
-    {
-      "id": "article_id",
-      "title": "Article Title",
-      "author": "John Doe",
-      "content": "Lorem ipsum dolor sit amet...",
-      "createdAt": "2023-05-19T12:00:00Z",
-      "updatedAt": "2023-05-19T14:30:00Z"
-    }
-    ```
+Created Successfully!
 
-#### Delete Article
+```
 
-- URL: `/article/:id`
-- Method: DELETE
-- Description: Deletes a specific article by its ID.
-- Path Parameters:
-  - `id` (string): The ID of the article.
-- Response:
-  - Status: 200 OK
-  - Description: Returns a success message.
-  - Example:
-    ```
-    Deleted
-    ```
+### Error Request Example
+```
+HTTP/1.1 400 Bad Request
+Content-Type: text/plain
 
-#### Update Article
+{error_message}
 
-- URL: `/article/:id`
-- Method: PUT
-- Description: Updates a specific article by its ID.
-- Path Parameters:
-  - `id` (string): The ID of the article.
-- Request Body:
-  - Optional Fields:
-    - `title` (string): The updated title of the article.
-    - `author` (string): The updated author of the article.
-    - `content` (string): The updated content of the article.
-  - Example:
-    ```json
-    {
-      "title": "Updated Article",
-      "author": "Jane Smith",
-      "content": "Updated content"
-    }
-    ```
-- Response:
-  - Status: 200 OK
-  - Description: Returns a success message.
-  - Example:
-    ```
-    OK
-    ```
+```
+
+### Conflict Request Example
+```
+HTTP/1.1 409 Conflict
+Content-Type: text/plain
+
+The article already exists!
+
+```
+
+
+
+## Delete Article
+
+Deletes an article.
+
+### Method
+- DELETE
+
+### Route
+- /article/:id
+
+### Path Parameters
+| Name  | Type   | Description        |
+|-------|--------|------------------|
+| id    | number | The ID of the article to delete. |
+
+### Responses
+| Code | Description                 |
+|--------|---------------------------|
+| 200    | Success - The article was deleted successfully. |
+| 400    | Error - There was a problem with the request. |
+| 404    | Not Found - The article does not exist. |
+
+### Request Example
+```
+curl -X DELETE http://api.example.com/articles/{article_id}
+```
+
+### Success Request Example
+```
+HTTP/1.1 200 OK
+Content-Type: text/plain
+
+Deleted
+
+```
+### Error Request Example
+```
+HTTP/1.1 400 Bad Request
+Content-Type: text/plain
+
+{error_message}
+
+```
+### Not Found Request Example
+```
+HTTP/1.1 404 Not Found
+Content-Type: text/plain
+
+The article doesn't exist!
+
+```
+
+### ps
+Please note that you need to replace `{article_id}` in the request example with the actual ID of the article you want to delete.
+
