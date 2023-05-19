@@ -24,6 +24,13 @@ class Article {
             }
             return false;
         });
+        this.verifyArticleBySlug = (slug) => __awaiter(this, void 0, void 0, function* () {
+            const exist = yield (0, connection_1.default)("articles").select("*").where({ slug });
+            if (exist[0] !== undefined) {
+                return true;
+            }
+            return false;
+        });
         this.verifyArticleById = (id) => __awaiter(this, void 0, void 0, function* () {
             const exist = yield (0, connection_1.default)("articles").select("*").where({ id });
             if (exist[0] !== undefined) {
@@ -107,15 +114,35 @@ class Article {
                 res.status(400).send(error.sqlMessage);
             }
         });
-        this.getArticleById = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            const id = Number(req.params.id);
-            const exists = yield this.verifyArticleById(id);
-            if (exists) {
-                const article = yield (0, connection_1.default)("articles").select("*").where({ id }).first();
-                res.status(200).send(article);
+        this.getArticleByKey = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const regex = /^\d+$/g;
+                const key = req.params.key;
+                const result = key.match(regex);
+                //is string/slug
+                if (result === null) {
+                    const exists = yield this.verifyArticleBySlug(key);
+                    if (exists) {
+                        const article = yield (0, connection_1.default)("articles").select("*").where({ slug: key }).first();
+                        res.status(200).send(article);
+                    }
+                    else {
+                        res.sendStatus(404);
+                    }
+                }
+                else {
+                    const exists = yield this.verifyArticleById(Number(key));
+                    if (exists) {
+                        const article = yield (0, connection_1.default)("articles").select("*").where({ id: key }).first();
+                        res.status(200).send(article);
+                    }
+                    else {
+                        res.sendStatus(404);
+                    }
+                }
             }
-            else {
-                res.sendStatus(404);
+            catch (error) {
+                res.sendStatus(400);
             }
         });
         this.updateArticle = (req, res) => __awaiter(this, void 0, void 0, function* () {
