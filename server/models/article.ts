@@ -1,5 +1,5 @@
 import Connection from "../database/connection";
-
+import slugify from 'slugify';
 import Static from "../static";
 import { Request, Response } from "express";
 
@@ -7,6 +7,7 @@ interface IArticle {
     title: string,
     author: string,
     content: string
+    slug: string,
     author_id: number
 }
 interface updateArticle {
@@ -67,7 +68,8 @@ class Article {
                     const fullArticle: object = {
                         ...article,
                         createdAt: this.currentDate,
-                        updatedAt: this.currentDate
+                        updatedAt: this.currentDate,
+                        slug: slugify(article.title)
                     }
 
                     await Connection("articles").insert(fullArticle);
