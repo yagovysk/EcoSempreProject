@@ -15,15 +15,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const globals_1 = require("@jest/globals");
 const supertest_1 = __importDefault(require("supertest"));
 const server_1 = __importDefault(require("../../server"));
-(0, globals_1.describe)("GET /article/[id]", () => {
-    (0, globals_1.it)("it should returns 404 status", () => __awaiter(void 0, void 0, void 0, function* () {
+(0, globals_1.describe)("GET /article/[slug]", () => {
+    (0, globals_1.it)("it should returns 404", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
-            .get("/article/4");
+            .get("/article/invalid-slug");
         (0, globals_1.expect)(res.status).toBe(404);
     }));
     (0, globals_1.it)("it should returns 200 status", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
-            .get("/article/8");
+            .get("/article/5-things-that-you-could-lear233___");
         (0, globals_1.expect)(res.status).toBe(200);
     }));
 });
