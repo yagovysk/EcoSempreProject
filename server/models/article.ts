@@ -28,6 +28,15 @@ class Article {
         }
         return false;
     }
+    private verifyArticleBySlug = async (slug: string) => {
+        const exist: string[] = await Connection("articles").select("*").where({ slug });
+
+
+        if (exist[0] !== undefined) {
+            return true;
+        }
+        return false;
+    }
     private verifyArticleById = async (id: number) => {
         const exist: string[] = await Connection("articles").select("*").where({ id });
 
@@ -137,21 +146,50 @@ class Article {
             res.status(400).send(error.sqlMessage)
         }
     }
-    public getArticleById = async(req:Request, res:Response) =>{
+    public getArticleByKey = async(req:Request, res:Response) =>{
 
-        const id:number = Number(req.params.id);
-        const exists: boolean = await this.verifyArticleById(id);
+        try{
+            const regex:RegExp =  /^\d+$/g;
+            const key:string = req.params.key;
+            const result: RegExpMatchArray | null = key.match(regex);
 
-        if(exists)
-        {
-            const article: object = await Connection("articles").select("*").where({id}).first();
+            //is string/slug
+            if(result === null)
+            {
+                const exists: boolean = await this.verifyArticleBySlug(key);
 
-            res.status(200).send(article);
+                if(exists)
+                {
+                    const article: boolean = await Connection("articles").select("*").where({slug: key}).first();
+
+                    res.status(200).send(article);
+                }
+                else{
+                    res.sendStatus(404);
+                }
+            }
+            else
+            {
+                const exists: boolean = await this.verifyArticleById(Number(key));
+
+                if(exists)
+                {
+                    const article: boolean = await Connection("articles").select("*").where({id: key}).first();
+
+                    res.status(200).send(article);
+                }
+                else{
+                res.sendStatus(404);
+                }
+            }
+            
         }
-        else{
-            res.sendStatus(404);
+        catch(error:any)
+        {
+            res.sendStatus(400);
         }
     }
+
 
     public updateArticle = async (req:Request, res:Response) =>{
        
