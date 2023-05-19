@@ -22,6 +22,7 @@ describe("GET /articles/[id]", ()=>{
 
         expect(res.status).toBe(200);
 
-        
+
     })
+    
 })

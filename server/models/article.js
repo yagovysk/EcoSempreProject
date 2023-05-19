@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const connection_1 = __importDefault(require("../database/connection"));
+const slugify_1 = __importDefault(require("slugify"));
 const static_1 = __importDefault(require("../static"));
 class Article {
     constructor() {
@@ -54,7 +55,7 @@ class Article {
                         res.status(409).send("The article already exists!");
                     }
                     else {
-                        const fullArticle = Object.assign(Object.assign({}, article), { createdAt: this.currentDate, updatedAt: this.currentDate });
+                        const fullArticle = Object.assign(Object.assign({}, article), { createdAt: this.currentDate, updatedAt: this.currentDate, slug: (0, slugify_1.default)(article.title) });
                         yield (0, connection_1.default)("articles").insert(fullArticle);
                         res.status(201).send("Created Successfully!");
                         9;
