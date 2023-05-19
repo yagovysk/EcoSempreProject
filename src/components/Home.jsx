@@ -14,7 +14,12 @@ export function Home() {
                     para desenvolver soluções inovadoras em Logística
                     Reversa.
                 </p>
-                <a href="#">Saiba Mais <span> 🡢 </span></a>
+                <a href="#">
+                    Saiba Mais
+                    <span>
+                         🡢 
+                    </span>
+                </a>
             </nav>
         </div>
     )

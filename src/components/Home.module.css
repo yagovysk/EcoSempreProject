@@ -1,29 +1,29 @@
 .home {
     display: flex;
     background: url('../assets/fundohome.png');
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
-    height: 40rem;
-    width: auto;
+    height: 28rem;
 }
 .hometitle {
     display: flex;
-    margin-left: 19rem;
-    margin-top: 2.5rem;
+    margin-left: 15rem;
+    margin-top: 2rem;
     color: #FFFFFF;
-    width: 36rem;
+    height: 8rem;
+    width: 28rem;
     font-family: 'IBM Plex Sans';
     font-style: normal;
     font-weight: 700;
-    font-size: 2.8125rem;
-    line-height: 5.125rem;
+    font-size: 2.8rem;
+    line-height: 3rem;
 }
 .homeparagraph {
     display: flex;
     position: absolute;
     width: 35rem;
-    margin-left: 19rem;
-    margin-top: 16rem;
+    margin-left: 15rem;
+    margin-top: 11rem;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -34,13 +34,14 @@
 .home a {
     position: absolute;
     display: flex;
-    margin-top: 8rem;
+    margin-top: 7rem;
+    margin-left: -0.2rem;
     align-items: center;
-    padding: 0.6rem 1.875rem;
-    gap: 1.625rem;
-    padding-left: 3.5rem;
-    width: 11rem;
-    height: 4rem;
+    padding: 0.6rem 1.5rem;
+    padding-left: 1.5rem;
+    gap: 1rem;
+    width: 5.5rem;
+    height: 2.5rem;
     text-decoration: none;
     color: #FFFFFF;
     background: #00C756;
@@ -49,10 +50,11 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 1.25rem;
-    line-height: 2.5625rem;
+    font-size: 0.7rem;
+    line-height: 1rem;
     transition: 0.3s;
 }
 .home a:hover {
     background: #22f07b;
+    transform: translateY(-4px);
 }
