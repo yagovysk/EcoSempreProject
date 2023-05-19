@@ -192,6 +192,3 @@ The article doesn't exist!
 
 ```
 
-### ps
-Please note that you need to replace `{article_id}` in the request example with the actual ID of the article you want to delete.
-
