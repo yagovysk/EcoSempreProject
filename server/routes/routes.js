@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const user_1 = __importDefault(require("../models/user"));
 const article_1 = __importDefault(require("../models/article"));
+const middleware_1 = __importDefault(require("../auth/middleware"));
 const Routes = express_1.default.Router();
 Routes.post("/user", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = new user_1.default();
@@ -25,23 +26,23 @@ Routes.post("/authentication", (req, res) => __awaiter(void 0, void 0, void 0, f
     user.login(req, res);
 }));
 // articles
-Routes.get("/articles", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+Routes.get("/articles", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const article = new article_1.default();
     article.getArticles(req, res);
 }));
-Routes.post("/article", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+Routes.post("/article", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const article = new article_1.default();
     article.creatArticle(req, res);
 }));
-Routes.get("/article/:key", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+Routes.get("/article/:key", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const article = new article_1.default();
     article.getArticleByKey(req, res);
 }));
-Routes.delete("/article/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+Routes.delete("/article/:id", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const article = new article_1.default();
     article.deleteArticle(req, res);
 }));
-Routes.put("/article/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+Routes.put("/article/:id", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const article = new article_1.default();
     article.updateArticle(req, res);
 }));
