@@ -1,0 +1,61 @@
+.sustentabilidadeTitle {
+    font-size: 0.8rem;
+    color: #00C756;
+    margin-top: 4rem;
+    margin-left: 5.5rem;
+}
+.porque {
+    color: #FFFFFF;
+    font-size: 2.2rem;
+    width: 28rem;
+    height: 8rem;
+    margin-left: 5.5rem;
+    font-style: normal;
+    font-family: 'IBM Plex Sans';
+    font-weight: 700;
+    line-height: 2rem;
+    text-align: left;
+    align-items: center;
+    margin-top: 1rem;
+}
+.sustentabilidadeP {
+    font-size: 0.9rem;
+    text-align: left;
+    width: 27rem;
+    margin-left: 5.5rem;
+    color: #FFFFFF;
+    margin-top: -2.3rem;
+}
+.sustentabilidadeBox {
+    width: 100%;
+    display: flex;
+    background: url('../assets/fundob.png');
+    gap: 2rem;
+}
+.img {
+    width: 40rem;
+    height: 30rem;
+}
+.saibamais {
+    display: flex;
+    width: 9rem;
+    height: 3rem;
+    margin-top: 3rem;
+    text-decoration: none;
+    font-size: 1.1rem;
+    background: #00C756;
+    padding-left: 3.8rem;
+    padding-top: 1.6rem;
+    margin-left: 5.4rem;
+    border-radius: 0.3125rem;
+    font-size: 0.9rem; 
+    color: #FFFFFF;
+    transition: 0.3s;
+}
+.saibamais span {
+    margin-left: 1rem;
+}
+.saibamais:hover {
+    background: #1df179;
+    transform: translateY(-4px);
+}
