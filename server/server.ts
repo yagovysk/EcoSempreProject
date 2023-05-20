@@ -2,8 +2,10 @@ import express, {Application} from 'express';
 import Routes from './routes/routes';
 import cors from 'cors';
 import Session from './auth/session';
+import createAdminUser from './createAdminUserScript';
 
-
+// setup admin
+createAdminUser();
 const app:Application = express();
 
 

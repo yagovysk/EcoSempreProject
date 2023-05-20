@@ -17,7 +17,7 @@ interface IUser {
     nickname: string;
     email: string;
     password: string;
-    createAt?: string;
+    createdAt?: string;
     updatedAt?: string;
 }
 class User {
