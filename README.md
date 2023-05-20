@@ -1,194 +1,261 @@
-## Create User
+**[EN-US]**
+# Routes
+## User
+
+### POST /user
 
 Creates a new user.
 
-### Method
-- POST
+**Parameters:**
 
-### Route
-- /user
+- Request Body (JSON):
+  - `nickname` (string): The username.
+  - `email` (string): The user's email address.
+  - `password` (string): The user's password.
 
-### Request Parameters
-| Name        | Type   | Description        |
-|-------------|--------|------------------|
-| nickname    | string | The user's nickname. |
-| email       | string | The user's email. |
-| password    | string | The user's password. |
+**Responses:**
 
-### Responses
-| Code | Description                 |
-|--------|---------------------------|
-| 201    | Success - The user was created successfully. |
-| 400    | Error - There was a problem with the request. |
+- 201 Created: User created successfully.
+  - Response Body: A message indicating the success of the operation.
+- 400 Bad Request: Request error.
+  - Response Body: Error message indicating the problem.
 
-### Request Example
-```
-curl -X POST -H "Content-Type: application/json" -d '{
-  "nickname": "john_doe",
-  "email": "john@example.com",
-  "password": "secret123"
-}' http://api.example.com/user
-```
-### Success Example Response
+### POST /authentication
 
-```
-HTTP/1.1 201 Created
-Content-Type: text/plain
+Performs user authentication.
 
-Created! {user_id}
-```
+**Parameters:**
 
-### Error Example Response
+- Request Body (JSON):
+  - `email` (string): The user's email address.
+  - `password` (string): The user's password.
 
-```
-HTTP/1.1 400 Bad Request
-Content-Type: text/plain
+**Responses:**
 
-{error_message}
-```
+- 200 OK: Authentication successful.
+  - Response Body: A message indicating the success of the authentication.
+- 400 Bad Request: Request error or incorrect password.
+  - Response Body: Error message indicating the problem.
+- 404 Not Found: User not found.
+  - Response Body: Error message indicating that the user does not exist.
 
-## Get Articles
+---
 
-Retrieves a list of articles.
+# Article
 
-### Method
-- GET
+### `GET /articles`
 
-### Route
-- /articles
+Retrieves all articles.
 
-### Query Parameters
-| Name  | Type   | Description                           |
-|-------|--------|-------------------------------------|
-| limit | string | (Optional) The maximum number of articles to retrieve. |
-| page  | string | (Optional) The page number for pagination. |
+**Parameters:**
 
-### Responses
-| Code | Description                 |
-|--------|---------------------------|
-| 200    | Success - Articles retrieved successfully. |
-| 400    | Error - There was a problem with the request. |
-| 404    | Not Found - There are no articles available. |
+- None.
 
-### Request Example
-```
-curl -X GET http://api.example.com/articles?limit=5&page=1
-```
+**Responses:**
 
-## Create Article
+- `200 OK`: Successful request.
+  - Response Body: An array of objects containing the articles.
+- `404 Not Found`: No articles found.
+  - Response Body: Message indicating that there are no available articles.
+
+### `POST /article`
 
 Creates a new article.
 
-### Method
-- POST
+**Parameters:**
 
-### Route
-- /article
+- Request Body (JSON):
+  - `title` (string): The title of the article.
+  - `author` (string): The author of the article.
+  - `content` (string): The content of the article.
 
-### Request Parameters
-| Name        | Type   | Description        |
-|-------------|--------|------------------|
-| title       | string | The article's title. |
-| author      | string | The article's author. |
-| content     | string | The article's content. |
-| author_id   | number | The ID of the article's author. |
+**Responses:**
 
-### Responses
-| Code | Description                 |
-|--------|---------------------------|
-| 201    | Success - The article was created successfully. |
-| 400    | Error - There was a problem with the request. |
-| 409    | Conflict - The article already exists. |
+- `201 Created`: Article created successfully.
+  - Response Body: Message indicating that the article has been created.
+- `400 Bad Request`: Request error.
+  - Response Body: Error message indicating the problem.
+- `409 Conflict`: The article already exists.
+  - Response Body: Message indicating that the article already exists.
 
-### Request Example
-```bash
-curl -X POST -H "Content-Type: application/json" -d '{
-  "title": "Article Title",
-  "author": "Author Name",
-  "content": "Article Content",
-  "author_id": 123
-}' http://api.example.com/article
+### `GET /article/:key`
 
-```
+Retrieves an article by ID or slug.
 
-### Success Request Example
-```
-HTTP/1.1 201 Created
-Content-Type: text/plain
+**Parameters:**
 
-Created Successfully!
+- `key` (string): The numerical ID or slug of the article.
 
-```
+**Responses:**
 
-### Error Request Example
-```
-HTTP/1.1 400 Bad Request
-Content-Type: text/plain
+- `200 OK`: Successful request.
+  - Response Body: Object containing the found article.
+- `404 Not Found`: Article not found.
+  - Response Body: Message indicating that the article was not found.
 
-{error_message}
+### `DELETE /article/:id`
 
-```
+Deletes an article by ID.
 
-### Conflict Request Example
-```
-HTTP/1.1 409 Conflict
-Content-Type: text/plain
+**Parameters:**
 
-The article already exists!
+- `id` (string): The numerical ID of the article to be deleted.
 
-```
+**Responses:**
 
+- `200 OK`: Article deleted successfully.
+  - Response Body: Message indicating that the article has been deleted.
+- `404 Not Found`: Article not found.
+  - Response Body: Message indicating that the article was not found.
 
+### `PUT /article/:id`
 
-## Delete Article
+Updates an article by ID.
 
-Deletes an article.
+**Parameters:**
 
-### Method
-- DELETE
+- `id` (string): The numerical ID of the article to be updated.
+- Request Body (JSON):
+  - `title` (string): The new title of the article.
+  - `author` (string): The new author of the article.
+  - `content` (string): The new content of the article.
 
-### Route
-- /article/:id
+**Responses:**
 
-### Path Parameters
-| Name  | Type   | Description        |
-|-------|--------|------------------|
-| id    | number | The ID of the article to delete. |
+- `200 OK`: Article updated successfully.
+  - Response Body: None.
+- `400 Bad Request`: Request error.
+  - Response Body: None.
+- `404 Not Found`: Article not found.
+  - Response Body: Message indicating that the article was not found.
 
-### Responses
-| Code | Description                 |
-|--------|---------------------------|
-| 200    | Success - The article was deleted successfully. |
-| 400    | Error - There was a problem with the request. |
-| 404    | Not Found - The article does not exist. |
+---
+**[PT-BR]**
+# Rotas 
+## Usuário
 
-### Request Example
-```
-curl -X DELETE http://api.example.com/articles/{article_id}
-```
+### POST /user
 
-### Success Request Example
-```
-HTTP/1.1 200 OK
-Content-Type: text/plain
+Cria um novo usuário.
 
-Deleted
+**Parâmetros:**
 
-```
-### Error Request Example
-```
-HTTP/1.1 400 Bad Request
-Content-Type: text/plain
+- Corpo da requisição (JSON):
+  - `nickname` (string): O nome de usuário.
+  - `email` (string): O endereço de e-mail do usuário.
+  - `password` (string): A senha do usuário.
 
-{error_message}
+**Respostas:**
 
-```
-### Not Found Request Example
-```
-HTTP/1.1 404 Not Found
-Content-Type: text/plain
+- 201 Created: Usuário criado com sucesso.
+  - Corpo da resposta: Uma mensagem indicando o sucesso da operação.
+- 400 Bad Request: Erro na requisição.
+  - Corpo da resposta: Mensagem de erro indicando o problema.
 
-The article doesn't exist!
+### POST /authentication
 
-```
+Realiza a autenticação do usuário.
 
+**Parâmetros:**
+
+- Corpo da requisição (JSON):
+  - `email` (string): O endereço de e-mail do usuário.
+  - `password` (string): A senha do usuário.
+
+**Respostas:**
+
+- 200 OK: Autenticação bem-sucedida.
+  - Corpo da resposta: Uma mensagem indicando o sucesso da autenticação.
+- 400 Bad Request: Erro na requisição ou senha incorreta.
+  - Corpo da resposta: Mensagem de erro indicando o problema.
+- 404 Not Found: Usuário não encontrado.
+  - Corpo da resposta: Mensagem de erro indicando que o usuário não existe.
+
+---
+# Artigo
+
+### `GET /articles`
+
+Recupera todos os artigos.
+
+**Parâmetros:**
+
+- Nenhum.
+
+**Respostas:**
+
+- `200 OK`: Requisição bem-sucedida.
+  - Corpo da resposta: Uma matriz de objetos contendo os artigos.
+- `404 Not Found`: Nenhum artigo encontrado.
+  - Corpo da resposta: Mensagem indicando que não há artigos disponíveis.
+
+### `POST /article`
+
+Cria um novo artigo.
+
+**Parâmetros:**
+
+- Corpo da requisição (JSON):
+  - `title` (string): O título do artigo.
+  - `author` (string): O autor do artigo.
+  - `content` (string): O conteúdo do artigo.
+
+**Respostas:**
+
+- `201 Created`: Artigo criado com sucesso.
+  - Corpo da resposta: Mensagem indicando que o artigo foi criado.
+- `400 Bad Request`: Erro na requisição.
+  - Corpo da resposta: Mensagem de erro indicando o problema.
+- `409 Conflict`: O artigo já existe.
+  - Corpo da resposta: Mensagem indicando que o artigo já existe.
+
+### `GET /article/:key`
+
+Recupera um artigo pelo ID ou slug.
+
+**Parâmetros:**
+
+- `key` (string): O ID numérico ou o slug do artigo.
+
+**Respostas:**
+
+- `200 OK`: Requisição bem-sucedida.
+  - Corpo da resposta: Objeto contendo o artigo encontrado.
+- `404 Not Found`: Artigo não encontrado.
+  - Corpo da resposta: Mensagem indicando que o artigo não foi encontrado.
+
+### `DELETE /article/:id`
+
+Exclui um artigo pelo ID.
+
+**Parâmetros:**
+
+- `id` (string): O ID numérico do artigo a ser excluído.
+
+**Respostas:**
+
+- `200 OK`: Artigo excluído com sucesso.
+  - Corpo da resposta: Mensagem indicando que o artigo foi excluído.
+- `404 Not Found`: Artigo não encontrado.
+  - Corpo da resposta: Mensagem indicando que o artigo não foi encontrado.
+
+### `PUT /article/:id`
+
+Atualiza um artigo pelo ID.
+
+**Parâmetros:**
+
+- `id` (string): O ID numérico do artigo a ser atualizado.
+- Corpo da requisição (JSON):
+  - `title` (string): O novo título do artigo.
+  - `author` (string): O novo autor do artigo.
+  - `content` (string): O novo conteúdo do artigo.
+
+**Respostas:**
+
+- `200 OK`: Artigo atualizado com sucesso.
+  - Corpo da resposta: Nenhum.
+- `400 Bad Request`: Erro na requisição.
+  - Corpo da resposta: Nenhum.
+- `404 Not Found`: Artigo não encontrado.
+  - Corpo da resposta: Mensagem indicando que o artigo não foi encontrado.
