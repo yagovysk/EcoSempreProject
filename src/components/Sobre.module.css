@@ -107,14 +107,14 @@
     margin-left: 1rem;
 }
 .button:hover {
-    background: #33e982;
+    background: #0E2B5C;
     transform: translateY(-4px);
 }
 .card {
     display: flex;
-    height: 11rem;
+    height: 10.5rem;
     width: 10rem;
-    background: url('../assets/card.png');
+    background: url('../assets/Rectangle.svg');
     background-size: contain;
     background-repeat: no-repeat;
     border-radius: 0.6rem;
@@ -122,4 +122,77 @@
     left: 14rem;
     margin-top: 8rem;
 }
+.iconplant {
+    margin-top: 1rem;
+    width: 6rem;
+    height: 3.5rem;
+}
+.linha1 {
+    height: 0.8rem;
+    width: 0.5rem;
+    position: absolute;
+    margin-top: 2.55rem;
+    margin-left: 1.1rem;
 
+}
+.linha2 {
+    height: 0.8rem;
+    width: 0.5rem;
+    margin-top: 2.5rem;
+    margin-left: -1.7rem;
+}
+.linha3 {
+    height: 1rem;
+    width: 0.5rem;
+    position: absolute;
+    margin-top: 3.2rem;
+    margin-left: 1.5rem;
+}
+.linha4 {
+    height: 1rem;
+    width: 0.4rem;
+    margin-top: 1.5rem;
+    margin-left: -0.5rem;
+}
+.linha5 {
+    position: absolute;
+    height: 0.8rem;
+    width: 0.4rem;
+    margin-top: 1.8rem;
+    margin-left: 1.4rem;
+}
+.linha6 {
+    height: 0.8rem;
+    width: 0.4rem;
+    margin-top: 3.3rem;
+    margin-left: -0.5rem;
+}
+.linhameio {
+    width: 0.8rem;
+    height: 1rem;
+    position: inherit;
+    margin-left: 2.6rem;
+    margin-top: 1.9rem;
+}
+.numbers {
+    position: absolute;
+    margin-top: 13rem;
+    margin-left: 14.7rem;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    width: 9rem;
+    font-weight: bold;
+    font-family: 'IBM Plex Sans';
+    line-height: 2.3rem;
+    font-style: normal;
+}
+.residuos {
+    position: absolute;
+    color: #FFFFFF;
+    width: 9rem;
+    font-size: 0.8rem;
+    margin-top: 15.5rem;
+    margin-left: 15rem;
+    font-weight: bold;
+    font-family: 'IBM Plex Sans';
+}

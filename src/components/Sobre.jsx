@@ -1,13 +1,27 @@
 import styles from './Sobre.module.css';
 import sobreimg from '../assets/sobreimg.png';
 import checkicon from '../assets/checkicon.png';
+import plantaicon from '../assets/plantaicon.svg';
+import linha from '../assets/linhaicon.svg';
+import linhaB from '../assets/linhaB.svg';
+import linhaC from '../assets/linhaC.svg';
 
 export function Sobre() {
     return(
         <div className={styles.sobre}>
             <img className={ styles.sobreimg } src={sobreimg} alt="imagem ilustrativa" />
-            <nav className={ styles.card }> 
+            <nav className={ styles.card }>
+                <img className={styles.iconplant} src={ plantaicon } alt="iconedeplanta" /> 
+                <img className={ styles.linhameio } src={ linha } alt="linhaicon" />
+                <img className={ styles.linha1 } src={ linha } alt="linhaicon" />
+                <img className={ styles.linha2 } src={ linha } alt="linhaicon" />
+                <img className={ styles.linha3 } src={ linhaB } alt="linhaicon" />
+                <img className={ styles.linha4 } src={ linhaB } alt="linhaicon" />
+                <img className={ styles.linha5 } src={ linhaC } alt="linhaicon" />
+                <img className={ styles.linha6 } src={ linhaC } alt="linhaicon" />
             </nav>
+                <p className={styles.numbers}>+ 778 KG</p>
+                <p className={styles.residuos}> Resíduos Eletrônicos Descartados </p>
             <article className={styles.text}>
                 <h1> 
                     Nossa História 
@@ -15,7 +29,7 @@ export function Sobre() {
                     Sustentável 
                 </h1>
                 <h2> 
-                    Somos Pioneiros em Sustentabilidade 
+                    Somos referência em Sustentabilidade 
                     e Logística Reversa de Eletrônicos! 
                 </h2>
                 <p className={styles.paragraph1}> 
