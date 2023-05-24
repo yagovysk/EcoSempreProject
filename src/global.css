@@ -1,4 +1,30 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  height: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.btn {
+  padding: 0.5625rem 1.875rem; /* 9px 30px */
+  background-color: #00c756;
+  border-radius: 0.3125rem; /* 5px */
+  border: 0;
 }
