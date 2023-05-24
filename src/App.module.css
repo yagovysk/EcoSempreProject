@@ -1,6 +1,49 @@
+:root {
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+}
 .div {
     width: 100%;
 }
 .idhome {
     width: 100%;
+}
+.idlogisticard {
+    display: flex;
+    background: #F6F7F8;
+    padding-top: 4rem;
+    height: 30rem;
+}
+.idlogisticard article {
+    margin-left: 22rem;
+    position: absolute;
+    height: 8rem;
+    width: 40rem;
+}
+.idlogisticard h1 {
+    margin-left: 17rem;
+    position: absolute;
+    font-size: 0.8rem;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    color: #00C756;
+}
+.idlogisticard h2 {
+    position: absolute;
+    font-size: 1.8rem;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 700;
+    line-height: 2.5rem;
+    margin-top: 2rem;
+    margin-left: 8rem;
+    text-align: center;
+    width: 25rem;
+    color: #0E2B5C;
+}
+.idlogisticard img {
+    margin-top: 10rem;
+    width: 18rem;
+    height: 15rem;
+    margin-left: 33.9rem;
 }
