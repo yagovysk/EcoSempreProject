@@ -1,6 +1,6 @@
 import logo from '../assets/logoEcoSempre.png';
 import styles from './Header.module.css';
-import lupa from '../assets/lupaicon.png';
+import lupa from '../assets/lupaicon.svg';
 
 
 export function Header() {
@@ -34,9 +34,7 @@ export function Header() {
                 </a>
             </li>
         </ul>
-        <img className={styles.lupaicon}
-                src={ lupa } alt="iconlupa"
-             />
+       <img className={styles.lupaicon} src={ lupa } alt="iconlupa"/>
             <nav>
             <a className={ styles.contato } href="#">
                 Entre em contato 

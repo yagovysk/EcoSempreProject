@@ -4,6 +4,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     height: 28rem;
+    width: 100%;
 }
 .hometitle {
     display: flex;
@@ -55,6 +56,7 @@
     transition: 0.3s;
 }
 .home a:hover {
-    background: #22f07b;
+    color: #0E2B5C;
+    background: #FFFFFF;
     transform: translateY(-4px);
 }
