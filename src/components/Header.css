@@ -41,9 +41,10 @@
   font-style: normal;
   font-weight: 600;
   font-size: 0.9375rem; /* 15px */
-  line-height: 2.56rem;
+  line-height: 6rem;
   letter-spacing: 0.01875rem;
   transition: 0.3s;
+  padding: 2.5rem 0;
 }
 .menu a:hover,
 .menu a.active {
@@ -79,15 +80,13 @@
 .contato {
   display: flex;
   align-items: center;
-  padding: 0.756rem 0;
-
+  gap: 1rem;
   font-family: "Roboto", sans-serif;
   font-style: normal;
   text-align: center;
   font-weight: 700;
   font-size: 0.9375rem;
-  line-height: 1rem;
+  line-height: 2.56rem;
   color: #ffffff;
   -webkit-font-smoothing: antialiased;
-  gap: 1rem;
 }
