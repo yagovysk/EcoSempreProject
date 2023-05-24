@@ -9,12 +9,7 @@ interface IArticle {
     content: string
     author_id: number
 }
-interface updateArticle {
-    title ?: string,
-    author ?: string,
-    content ?: string,
-   
-}
+
 class Article {
     private currentDate: string = new Static().getCurrentDate();
 
@@ -193,7 +188,7 @@ class Article {
        
         try{
             const id:number = Number(req.params.id);
-            const article:updateArticle = req.body;
+            const article:Partial<IArticle> = req.body;
             const exists:boolean = await this.verifyArticleById(id);
             
             const updatedArticle:object = {
