@@ -17,13 +17,13 @@ const user_1 = __importDefault(require("../models/user"));
 const article_1 = __importDefault(require("../models/article"));
 const middleware_1 = __importDefault(require("../auth/middleware"));
 const Routes = express_1.default.Router();
-Routes.post("/user", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const user = new user_1.default();
-    user.createUser(req, res);
-}));
 Routes.post("/authentication", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = new user_1.default();
     user.login(req, res);
+}));
+Routes.post("/user", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = new user_1.default();
+    user.createUser(req, res);
 }));
 // articles
 Routes.get("/articles", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
