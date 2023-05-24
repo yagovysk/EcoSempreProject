@@ -5,23 +5,11 @@ import plantaicon from "../assets/plantaicon.svg";
 import linha from "../assets/linhaicon.svg";
 import linhaB from "../assets/linhaB.svg";
 import linhaC from "../assets/linhaC.svg";
-import { useEffect, useRef, useState } from "react";
+import { useIncreaseNumber } from "../helpers";
 
 export function Sobre() {
-  const [numberGarbage, setNumberGarbage] = useState(0);
-
-  const increaseNumberInterval = useRef(null);
-  useEffect(() => {
-    increaseNumberInterval.current = setInterval(() => {
-      if (numberGarbage < 778) {
-        setNumberGarbage(numberGarbage + 2);
-      } else {
-        clearInterval(increaseNumberInterval.current);
-      }
-    }, 10);
-
-    return () => clearInterval(increaseNumberInterval.current);
-  });
+  // 778 = discarded E-Waste number, 10 = duration of number update per ms
+  const numberGarbage = useIncreaseNumber(778, 10);
 
   return (
     <div className={styles.sobre}>
