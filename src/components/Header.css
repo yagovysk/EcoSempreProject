@@ -4,6 +4,7 @@
   height: 4rem;
   width: 100%;
   gap: 2rem;
+  background-color: white;
 }
 .logo {
   margin-left: 14%;
@@ -28,10 +29,14 @@
   font-size: 0.8rem;
   line-height: 6rem;
   text-decoration: none;
-  align-items: center;
   letter-spacing: 0.01875rem;
   transition: 0.3s;
 }
+
+.menu a.active {
+  color: #00c756;
+}
+
 .menu li {
   position: relative;
 }
@@ -53,11 +58,13 @@
 .menu a:hover {
   color: #00c756;
 }
+
 .lupaicon {
   width: 1rem;
   height: 1rem;
   margin-left: -12rem;
 }
+
 .contato {
   display: flex;
   padding: 0.4375rem 1.125rem;
@@ -77,13 +84,16 @@
   -webkit-font-smoothing: antialiased;
   transition: 0.3s;
   gap: 1rem;
+  cursor: pointer;
 }
-.header nav {
-  display: grid;
-  height: 4rem;
-  align-items: center;
-}
+
 .contato:hover {
   background: #00c756;
   transform: translateY(-4px);
+}
+
+.btnContato {
+  border: 0;
+  background: none;
+  outline: 1px solid transparent;
 }
