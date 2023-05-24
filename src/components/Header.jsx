@@ -24,13 +24,16 @@ export function Header() {
           <a href="#">Blog</a>
         </li>
       </ul>
-      <img className="lupaicon" src={lupa} alt="iconlupa" />
-      <button className="btnContato">
-        <a className="contato" to="/">
-          Entre em contato
-          <span>🡢</span>
-        </a>
-      </button>
+
+      <div className="contact-container">
+        <img className="lupaicon" src={lupa} alt="iconlupa" />
+        <button className="btnContato">
+          <a className="contato" to="/">
+            Entre em contato
+            <span>🡢</span>
+          </a>
+        </button>
+      </div>
     </header>
   );
 }
