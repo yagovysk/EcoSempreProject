@@ -3,9 +3,11 @@ import { Header } from "../components/Header";
 
 export function Default() {
   return (
-    <div>
-      <Header />
+    <>
+      <div className="container">
+        <Header />
+      </div>
       <Outlet />
-    </div>
+    </>
   );
 }
