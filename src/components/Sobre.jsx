@@ -1,6 +1,6 @@
 import styles from "./Sobre.module.css";
 import sobreimg from "../assets/sobreimg.png";
-import checkicon from "../assets/checkicon.png";
+import checkIcon from "../assets/checkIcon.svg";
 import plantaicon from "../assets/plantaicon.svg";
 import { useIncreaseNumber } from "../helpers";
 
@@ -57,24 +57,24 @@ export function Sobre() {
             <li>
               <img
                 className={styles.culturaListImg}
-                src={checkicon}
-                alt="checkicon"
+                src={checkIcon}
+                alt="checkIcon"
               />
               Cultura Regenerativa Positiva
             </li>
             <li>
               <img
                 className={styles.culturaListImg}
-                src={checkicon}
-                alt="checkicon"
+                src={checkIcon}
+                alt="checkIcon"
               />
               Descarte Correto de Resíduos
             </li>
             <li>
               <img
                 className={styles.culturaListImg}
-                src={checkicon}
-                alt="checkicon"
+                src={checkIcon}
+                alt="checkIcon"
               />
               Consciência Ambiental
             </li>
