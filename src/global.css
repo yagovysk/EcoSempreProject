@@ -17,6 +17,8 @@ a {
   color: inherit;
 }
 
+/* Global classes */
+
 .container {
   max-width: 1220px;
   margin: 0 auto;
@@ -27,4 +29,11 @@ a {
   background-color: #00c756;
   border-radius: 0.3125rem; /* 5px */
   border: 0;
+  transition: 0.3s;
+}
+
+.small-text {
+  font: 600 1rem "Roboto", sans-serif;
+  color: #00c756;
+  line-height: 1.6rem; /* 25.31px */
 }
