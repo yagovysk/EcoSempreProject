@@ -5,9 +5,9 @@ export function Sustentabilidade() {
   return (
     <div className={styles.sustentabilidadeBox}>
       <img src={sustentabilidadeImg} className={styles.img} />
-      <article className={styles.textsContainer}>
+      <article className={`textsContainer`}>
         <span className={`small-text`}>Sustentabilidade</span>
-        <section className={styles.texts}>
+        <section className={`texts`}>
           <h2 className={styles.porque}>
             Por que é tão Importante Realizar o Descarte Correto do Lixo
             Eletrônico?
