@@ -1,63 +1,56 @@
-.sustentabilidadeTitle {
-    font-size: 0.8rem;
-    color: #00C756;
-    margin-top: 3rem;
-    margin-left: 4.5rem;
-}
-.porque {
-    color: #FFFFFF;
-    font-size: 2rem;
-    width: 28rem;
-    height: 8rem;
-    margin-left: 4.5rem;
-    font-style: normal;
-    font-family: 'IBM Plex Sans';
-    font-weight: 700;
-    line-height: 2rem;
-    text-align: left;
-    align-items: center;
-    margin-top: 1rem;
-}
-.sustentabilidadeP {
-    font-size: 0.9rem;
-    position: absolute;
-    text-align: left;
-    width: 27rem;
-    margin-left: 4.8rem;
-    color: #FFFFFF;
-}
 .sustentabilidadeBox {
-    width: 100%;
-    display: flex;
-    background: url('../assets/fundob.png');
-    gap: 2rem;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  width: 100%;
+  background: url("../assets/fundob.png") no-repeat top center / cover;
+  gap: 7.9rem;
 }
 .img {
-    width: 40rem;
-    height: 30rem;
+  justify-self: flex-end;
+  max-width: 59.5rem;
+}
+
+.textsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+  max-width: 37.8125rem;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem; /* 40px */
+  color: white;
+}
+
+.porque {
+  font-size: 2.5rem;
+  font-family: "IBM Plex Sans";
+  font-weight: 700;
+  line-height: 3.375rem;
+}
+.sustentabilidadeP {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.6875rem;
+  max-width: 27rem;
 }
 .saibamais {
-    position: absolute;
-    display: flex;
-    width: 8rem;
-    height: 2.5rem;
-    margin-top: 7rem;
-    padding-top: 1.4rem;
-    text-decoration: none;
-    font-size: 1.1rem;
-    background: #00C756;
-    padding-left: 3.2rem;
-    margin-left: 4.6rem;
-    border-radius: 0.3125rem;
-    font-size: 0.9rem; 
-    color: #FFFFFF;
-    transition: 0.3s;
-}
-.saibamais span {
-    margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.625rem;
+  width: max-content;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.9375rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
 }
 .saibamais:hover {
-    color: #0E2B5C;
-    background: #FFFFFF;
-    transform: translateY(-4px);
+  color: #0e2b5c;
+  background: #ffffff;
+  transform: translateY(-4px);
 }
