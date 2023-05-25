@@ -32,6 +32,27 @@ a {
   transition: 0.3s;
 }
 
+.textsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+  max-width: 36.8125rem;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* 40px */
+}
+
+.title {
+  color: #0e2b5c;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 3.375rem;
+}
+
 .small-text {
   font: 600 1rem "Roboto", sans-serif;
   color: #00c756;

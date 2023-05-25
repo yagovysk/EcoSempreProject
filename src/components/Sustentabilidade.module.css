@@ -11,32 +11,19 @@
   max-width: 59.5rem;
 }
 
-.textsContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem; /* 8px */
-  max-width: 37.8125rem;
-}
-
-.texts {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem; /* 40px */
-  color: white;
-}
-
 .porque {
   font-size: 2.5rem;
   font-family: "IBM Plex Sans";
   font-weight: 700;
   line-height: 3.375rem;
+  color: white;
 }
 .sustentabilidadeP {
   font-family: "Roboto", sans-serif;
   font-size: 1.0625rem;
   font-weight: 500;
   line-height: 1.6875rem;
-  max-width: 27rem;
+  color: white;
 }
 .saibamais {
   display: flex;
