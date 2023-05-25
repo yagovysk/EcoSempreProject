@@ -1,0 +1,22 @@
+.idParceiros {
+    display: grid;
+    background: #F6F7F8;
+}
+.idParceiros article h1 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-family: 'Roboto', sans-serif;
+    color: #00C756;
+}
+.idParceiros article h2 {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2rem;
+    font-size: 2rem;
+    color: #0E2B5C;
+    text-align: center;
+    width: 30%;
+}
