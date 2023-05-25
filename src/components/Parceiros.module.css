@@ -9,12 +9,11 @@
   flex-direction: column;
   gap: 5rem;
   text-align: center;
-  margin-top: 3.125rem;
 }
 
 .texts {
   max-width: 42.75rem;
-  margin: 0 auto;
+  margin: 3.125rem auto 0 auto;
 }
 
 .parceirosCard {

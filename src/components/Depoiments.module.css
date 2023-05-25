@@ -1,44 +1,53 @@
 .idDepoiments {
-    display: flex;
-    background: url("../assets/fundoDepoiments.png");
+  background: url("../assets/fundoDepoiments.png") no-repeat center / cover;
+  width: 100%;
+  height: 40.5rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
 }
-.idDepoiments article h1 {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 0.9rem;
-    font-family: 'Roboto', sans-serif;
-    color: #00C756;
-    line-height: 1rem;
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  color: #fff;
 }
-.idDepoiments article h2 {
-    font-size: 2rem;
-    width: 45%;
-    font-family: 'IBM Plex Sans';
-    font-style: normal;
-    text-align: left;
-    font-weight: 700;
-    color: #FFFFFF;
-    line-height: 2.5rem;
+
+.titleFeedback {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 3.375rem;
 }
-.idDepoiments article a {
-    background: #00C756;
-    display: flex;
-    padding: 1.5rem 0.9rem;
-    font-family: 'Robotp', sans-serif;
-    font-size: 0.9rem;
-    width: max-content;
-    color: #FFFFFF;
-    border-radius: 0.2rem;
-    transition: 0.3s;
-    font-style: normal;
-    font-weight: 700;
+
+.paragraph {
+  font: 500 1.0625rem "Roboto", sans-serif;
+  line-height: 1.6875rem;
 }
-.idDepoiments article span {
-    margin-left: 1.8rem;
-    margin-top: -0.1rem;
+
+.btnFeedback {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  width: max-content;
+  color: #e7ebef;
 }
-.idDepoiments article a:hover {
-    background: #FFFFFF;
-    color: #0E2B5C;
-    transform: translateY(-4px);
+
+.btnFeedback:hover {
+  background: #ffffff;
+  color: #0e2b5c;
+  transform: translateY(-4px);
+}
+
+.carrousel {
+  display: flex;
+  gap: 3.125rem;
+  width: 900px;
+}
+
+.carrousel div {
+  flex: 0 0 auto;
 }

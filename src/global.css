@@ -58,3 +58,10 @@ a {
   color: #00c756;
   line-height: 1.6rem; /* 25.31px */
 }
+
+.btn-link {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  line-height: 2.5rem;
+  font-size: 0.9375rem;
+}
