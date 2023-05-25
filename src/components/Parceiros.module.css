@@ -1,22 +1,27 @@
 .idParceiros {
-    display: grid;
-    background: #F6F7F8;
+  display: grid;
+  background: #f6f7f8;
+  height: 28.3rem;
 }
-.idParceiros article h1 {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 0.9rem;
-    font-family: 'Roboto', sans-serif;
-    color: #00C756;
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  text-align: center;
+  margin-top: 3.125rem;
 }
-.idParceiros article h2 {
-    font-family: 'IBM Plex Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 2rem;
-    line-height: 2rem;
-    font-size: 2rem;
-    color: #0E2B5C;
-    text-align: center;
-    width: 30%;
+
+.texts {
+  max-width: 42.75rem;
+  margin: 0 auto;
+}
+
+.parceirosCard {
+  display: flex;
+  align-items: center;
+  gap: 4.5rem;
+}
+
+.parceiro {
 }
