@@ -15,9 +15,3 @@
   max-width: 42.75rem;
   margin: 3.125rem auto 0 auto;
 }
-
-.parceirosCard {
-  display: flex;
-  align-items: center;
-  gap: 4.5rem;
-}
