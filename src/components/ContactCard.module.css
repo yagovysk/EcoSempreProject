@@ -1,0 +1,38 @@
+.content {
+  display: grid;
+  gap: 2.5rem;
+  width: max-content;
+
+  background-color: white;
+  border-radius: 0.25rem;
+  padding: 1.95rem 3rem;
+}
+
+.wrapper {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.title {
+  font: 700 1rem "Roboto", sans-serif;
+  line-height: 1.7rem;
+  color: #232323;
+}
+
+.address {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 0.375rem 0.625rem;
+}
+
+.address_item {
+  color: #8c8a97;
+  font: 500 0.75rem "Roboto", sans-serif;
+  line-height: 1rem;
+}
+
+.opening_hours {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
