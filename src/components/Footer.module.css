@@ -1,0 +1,257 @@
+.wrapper {
+  position: relative;
+}
+
+.wrapper_main_content {
+  padding-top: 6.625rem;
+  background-color: #0b2653;
+  height: 496px;
+  color: white;
+}
+
+.container_main_content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main_content {
+  display: flex;
+  gap: 2.625rem;
+}
+
+.subtitle {
+  font: 700 1rem "Roboto", sans-serif;
+  line-height: 0.9rem;
+}
+
+.paragraph {
+  font: 500 0.75rem "Roboto", sans-serif;
+  line-height: 1.4rem;
+}
+
+.intro {
+  display: grid;
+  gap: 1.18rem;
+  max-width: 16.375rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.logo_title {
+  display: flex;
+  flex-direction: column;
+  font: 600 1.56rem "IBM Plex Sans", sans-serif;
+  line-height: 1.9rem;
+}
+
+.logo_subtitle {
+  font: 400 0.75rem "Roboto", sans-serif;
+  line-height: 1rem;
+}
+
+.talk_with_us {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.text_talk_with_us {
+  color: #00c756;
+  font: 700 1rem "Roboto", sans-serif;
+  line-height: 0.9rem;
+}
+
+.contact,
+.company {
+  display: grid;
+  gap: 2rem;
+}
+
+.contact {
+  max-width: 16rem;
+}
+
+.address_content {
+  display: grid;
+  gap: 1.2rem; /* 19px */
+}
+
+.address_content .paragraph {
+  line-height: 1.5rem;
+}
+
+.tel_address {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #00c756;
+}
+
+.tel_address img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.tel {
+  font: 500 1.5rem "Roboto", sans-serif;
+  line-height: 1.5rem;
+}
+
+.list_links_company {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  list-style-type: none;
+  font: 500 0.75rem "Roboto", sans-serif;
+  line-height: 1rem;
+}
+
+.list_links_company a {
+  transition: 0.1s;
+}
+
+.list_links_company a:hover {
+  color: #00c756;
+}
+
+.newsletter_wrapper {
+  display: grid;
+  gap: 1rem;
+  max-width: 23rem;
+}
+
+.newsletter_content {
+  display: grid;
+  gap: 1.7rem;
+  background-color: #061b49;
+  padding: 2.3125rem 2.5rem;
+}
+
+.paragraph_newsletter {
+  font: 400 0.75rem "Roboto", sans-serif;
+  line-height: 1rem;
+  max-width: 15.75rem;
+}
+
+.wrapper_input {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  width: 18rem;
+}
+
+.input {
+  background-color: transparent;
+  border: 0;
+  outline: 1px solid transparent;
+  font: 500 0.75rem "Roboto", sans-serif;
+  line-height: 1rem;
+  padding-left: 0.25rem;
+  color: white;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.34);
+}
+
+.social_medias {
+  display: flex;
+  justify-content: end;
+  gap: 1.125rem;
+  opacity: 0.5;
+}
+
+.wrapper_second_content {
+  position: relative;
+  background-color: #081e46;
+  height: 8.3rem;
+  color: white;
+  padding: 1.8rem;
+}
+
+.second_content {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.copyright {
+  align-self: end;
+  font: 500 0.75rem "Roboto", sans-serif;
+  line-height: 1rem;
+  text-align: center;
+}
+
+.schedule_card {
+  display: flex;
+  position: absolute;
+  top: -4rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: white;
+  border-radius: 0.25rem;
+  color: #232323;
+}
+
+.box_schedule {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 292.75px;
+  padding: 1.9rem 2.25rem;
+}
+
+.box_schedule + .box_schedule {
+  border-left: 1px solid #e7ebef;
+}
+
+.box_schedule img {
+  width: 20px;
+  height: 20px;
+}
+
+.box_schedule address {
+  display: flex;
+  flex-direction: column;
+  font: 500 0.75rem "Roboto", sans-serif;
+  line-height: 1.5rem;
+}
+
+.btn_schedule {
+  color: white;
+  width: 100%;
+}
+
+.btn_schedule:hover {
+  background: #0e2b5c;
+  transform: translateY(-4px);
+}
+
+.back_to_top {
+  position: absolute;
+  right: 2rem;
+  bottom: 6rem;
+  background-color: #00c756;
+  border: 0;
+  border-radius: 0.25rem;
+  padding: 0.8rem 0.9rem;
+  width: max-content;
+  transition: 0.3s;
+}
+
+.back_to_top:hover {
+  transform: translateY(-4px);
+}
+
+.back_to_top img {
+  width: 0.9375rem;
+  height: 0.9375rem;
+}
