@@ -9,7 +9,7 @@ import { Logistica } from "../components/Logistica.jsx";
 
 export function Home() {
   return (
-    <div>
+    <main>
       <Intro />
       <Sobre />
       <Sustentabilidade />
@@ -18,6 +18,6 @@ export function Home() {
       <Coletas />
       <Parceiros />
       <Depoiments />
-    </div>
+    </main>
   );
 }

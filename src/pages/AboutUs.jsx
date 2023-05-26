@@ -9,14 +9,14 @@ import { ParceirosCard } from "../components/ParceirosCard";
 
 export function AboutUs() {
   return (
-    <>
+    <main>
       <Header />
       <Information />
       <Contact />
       <div className={styles.partners_content}>
         <ParceirosCard />
       </div>
-    </>
+    </main>
   );
 }
 
