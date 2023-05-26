@@ -5,7 +5,7 @@ import "./Header.css";
 
 export function Header() {
   return (
-    <header className="header">
+    <header id="header" className="header">
       <img className="logo" src={logo} alt="logo" />
       <ul className="menu">
         <li>
