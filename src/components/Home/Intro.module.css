@@ -1,0 +1,54 @@
+.home {
+  background: url("../../assets/fundohome.png") no-repeat center top / cover;
+  height: 40.5rem;
+  width: 100%;
+}
+
+.homeContent {
+  display: grid;
+  grid-auto-rows: max-content;
+  justify-content: start;
+  gap: 2.25rem;
+  height: 100%;
+}
+
+.hometitle {
+  max-width: 61rem;
+  margin-top: 7rem;
+  color: #ffffff;
+  font-size: 4.375rem; /* 70px */
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 700;
+  line-height: 5.125rem /* 82px */;
+  letter-spacing: 1.76px;
+}
+
+.homeparagraph {
+  max-width: 33.06rem;
+  font-size: 1.1875rem; /* 19px */
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  line-height: 2.0625rem;
+  color: #ffffff;
+}
+
+.btnHome {
+  width: max-content;
+  color: #ffffff;
+  background: #00c756;
+  transition: 0.3s;
+}
+
+.home a {
+  display: flex;
+  gap: 1rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  line-height: 2.56rem /* 41px */;
+}
+.home .btnHome:hover {
+  color: #0e2b5c;
+  background: #ffffff;
+  transform: translateY(-4px);
+}

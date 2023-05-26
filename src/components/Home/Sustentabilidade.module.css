@@ -1,0 +1,43 @@
+.sustentabilidadeBox {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  width: 100%;
+  background: url("../../assets/fundob.png") no-repeat top center / cover;
+  gap: 7.9rem;
+}
+.img {
+  justify-self: flex-end;
+  max-width: 59.5rem;
+}
+
+.porque {
+  font-size: 2.5rem;
+  font-family: "IBM Plex Sans";
+  font-weight: 700;
+  line-height: 3.375rem;
+  color: white;
+}
+.sustentabilidadeP {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.6875rem;
+  color: white;
+}
+.saibamais {
+  display: flex;
+  align-items: center;
+  gap: 1.625rem;
+  width: max-content;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.9375rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+.saibamais:hover {
+  color: #0e2b5c;
+  background: #ffffff;
+  transform: translateY(-4px);
+}

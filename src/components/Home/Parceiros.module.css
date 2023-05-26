@@ -1,0 +1,17 @@
+.idParceiros {
+  display: grid;
+  background: #f6f7f8;
+  height: 28.3rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  text-align: center;
+}
+
+.texts {
+  max-width: 42.75rem;
+  margin: 3.125rem auto 0 auto;
+}

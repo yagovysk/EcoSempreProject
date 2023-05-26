@@ -1,0 +1,16 @@
+.idlogisticard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #f6f7f8;
+  height: 51rem;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 42.75rem;
+  margin-bottom: 3.75rem;
+}
