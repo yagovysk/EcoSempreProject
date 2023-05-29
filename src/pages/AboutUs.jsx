@@ -1,12 +1,11 @@
 import imgInformation1 from "../assets/construction2.jpg";
 import imgInformation2 from "../assets/houses.jpg";
-import smallArrow from "../assets/small-arrow.svg";
 import styles from "./AboutUs.module.css";
 
-import { Link } from "react-router-dom";
 import { useIncreaseNumber } from "../helpers";
 import { ContactCard } from "../components/ContactCard";
 import { ParceirosCard } from "../components/ParceirosCard";
+import { Submenu } from "../components/Submenu";
 
 export function AboutUs() {
   return (
@@ -22,26 +21,24 @@ export function AboutUs() {
 }
 
 function Header() {
+  const linksMenu = [
+    {
+      name: "Home",
+      path: "/",
+    },
+    {
+      name: "EcoSempre",
+      path: "/about_us",
+    },
+    {
+      name: "Sobre Nós",
+    },
+  ];
+
   return (
     <div className={styles.header}>
       <h1 className={styles.titleHeader}>Sobre Nós</h1>
-      <div className={styles.menu}>
-        <Link
-          to="/"
-          className={`${styles.menu_item} ${styles.menu_item_active}`}
-        >
-          Home
-        </Link>
-        <img src={smallArrow} alt="Seta pequena" />
-        <Link
-          to="/about_us"
-          className={`${styles.menu_item} ${styles.menu_item_active}`}
-        >
-          EcoSempre
-        </Link>
-        <img src={smallArrow} alt="Seta pequena" />
-        <span className={styles.menu_item}>Sobre Nós</span>
-      </div>
+      <Submenu content={linksMenu} />
     </div>
   );
 }

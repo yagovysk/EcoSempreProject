@@ -1,13 +1,10 @@
 import styles from "./Footer.module.css";
 import ecoLogo from "../assets/ecoIcon.svg";
-import phone from "../assets/phone.svg";
 import mail from "../assets/mail.svg";
-import clock from "../assets/clock.svg";
-import arrowCircle from "../assets/arrow-circle.svg";
 import instagram from "../assets/instagram.svg";
 import facebook from "../assets/facebook.svg";
 import whatsapp from "../assets/whatsapp.svg";
-import arrowUp from "../assets/arrow-up.svg";
+import { Phone, ArrowCircleRight, Clock, ArrowUp } from "@phosphor-icons/react";
 
 export function Footer() {
   return (
@@ -23,12 +20,16 @@ export function Footer() {
                 ações que beneficiam o meio ambiente e a sociedade.
               </p>
 
-              <div className={styles.talk_with_us}>
-                <img src={arrowCircle} alt="Seta preenchida com um círculo" />
+              <a href="#" className={styles.talk_with_us}>
+                <ArrowCircleRight
+                  weight="fill"
+                  className={styles.arrow_circle_icon}
+                  alt="Seta preenchida com um círculo"
+                />
                 <span className={styles.text_talk_with_us}>
                   <strong>Fale Conosco</strong>
                 </span>
-              </div>
+              </a>
             </section>
 
             <section className={styles.contact}>
@@ -39,12 +40,14 @@ export function Footer() {
                   a nossa equipe.
                 </p>
                 <div className={styles.tel_address}>
-                  <img
+                  <Phone
+                    weight="fill"
                     className={styles.tel_img}
-                    src={phone}
                     alt="Ícone de telefone"
                   />
-                  <strong className={styles.tel}>(61) 98378-1438</strong>
+                  <a className={styles.tel} href="tel:+(61) 98378-1438">
+                    (61) 98378-1438
+                  </a>
                 </div>
                 <p className={styles.paragraph}>
                   71939-540, Alfa Mix Loja 11 e 12, Águas Claras, Brasília - DF.
@@ -87,7 +90,7 @@ export function Footer() {
         </div>
         <a title="Voltar ao topo" href="#header">
           <button className={styles.back_to_top}>
-            <img src={arrowUp} alt="Seta apontando para frente" />
+            <ArrowUp weight="bold" alt="Seta apontando para frente" />
           </button>
         </a>
       </div>
@@ -123,7 +126,11 @@ function Newsletter() {
             type="email"
             placeholder="Digite seu email"
           />
-          <img src={arrowCircle} alt="Seta preenchida com um círculo" />
+          <ArrowCircleRight
+            weight="fill"
+            className={styles.arrow_circle_icon}
+            alt="Seta preenchida com um círculo"
+          />
         </div>
       </section>
 
@@ -146,7 +153,11 @@ function ScheduleCard() {
   return (
     <div className={styles.schedule_card}>
       <div className={styles.box_schedule}>
-        <img className={styles.tel_img} src={phone} alt="Ícone de telefone" />
+        <Phone
+          weight="fill"
+          className={styles.tel_img}
+          alt="Ícone de telefone"
+        />
         <address>
           Telefone: <strong>(61) 98378-1438</strong>
         </address>
@@ -158,7 +169,7 @@ function ScheduleCard() {
         </address>
       </div>
       <div className={styles.box_schedule}>
-        <img src={clock} alt="Ícone de relógio" />
+        <Clock weight="fill" alt="Ícone de relógio" />
         <address>
           Horário de Atendimento: <strong>Seg-Sex: 8h às 18h</strong>
         </address>
