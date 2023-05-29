@@ -22,7 +22,9 @@ export function Saiba() {
             desde smartphones antigos, até pilhas, baterias e eletrodomésticos.
           </p>
           <button className={`btn ${styles.saibabutton}`}>
-            <a href="#">Ver Lista Completa</a>
+            <a className={`btn-link`} href="#">
+              Ver Lista Completa
+            </a>
             <span>🡢</span>
           </button>
         </section>
