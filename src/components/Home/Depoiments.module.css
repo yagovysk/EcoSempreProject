@@ -36,6 +36,11 @@
   color: #e7ebef;
 }
 
+.btnFeedback a {
+  display: flex;
+  gap: 1.6rem;
+}
+
 .btnFeedback:hover {
   background: #ffffff;
   color: #0e2b5c;
