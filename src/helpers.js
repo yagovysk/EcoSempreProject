@@ -1,20 +1,17 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-export function useIncreaseNumber(n, duration) {
+export function useIncreaseNumber(n, duration, increase) {
   const [number, setNumber] = useState(0);
 
-  const increaseNumberInterval = useRef(null);
   useEffect(() => {
-    increaseNumberInterval.current = setInterval(() => {
+    const increaseNumberInterval = setInterval(() => {
       if (number < n) {
-        setNumber(number + 2);
-      } else {
-        clearInterval(increaseNumberInterval.current);
+        setNumber(number + increase);
       }
     }, duration);
 
-    return () => clearInterval(increaseNumberInterval.current);
-  });
+    return () => clearInterval(increaseNumberInterval);
+  }, [number]);
 
   return number;
 }

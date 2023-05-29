@@ -6,7 +6,8 @@ import { useIncreaseNumber } from "../../helpers";
 
 export function Sobre() {
   // 778 = discarded E-Waste number, 10 = duration of number update per ms
-  const numberGarbage = useIncreaseNumber(778, 10);
+  // 2 = amount that will increase per ms
+  const numberGarbage = useIncreaseNumber(778, 10, 2);
 
   return (
     <div className="container">
