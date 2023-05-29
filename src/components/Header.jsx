@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logoEcoSempre.png";
-import lupa from "../assets/lupaicon.svg";
 import "./Header.css";
+import { ArrowRight, CaretDown, MagnifyingGlass } from "@phosphor-icons/react";
 
 export function Header() {
   return (
@@ -12,10 +12,16 @@ export function Header() {
           <NavLink to="/">Início</NavLink>
         </li>
         <li>
-          <NavLink to="/about_us">EcoSempre ⌄</NavLink>
+          <NavLink to="/about_us">
+            EcoSempre
+            <CaretDown weight="bold" />
+          </NavLink>
         </li>
         <li>
-          <a href="#">Programas ⌄</a>
+          <a href="#">
+            Programas
+            <CaretDown weight="bold" />
+          </a>
         </li>
         <li>
           <a href="">Pontos de coleta</a>
@@ -26,11 +32,11 @@ export function Header() {
       </ul>
 
       <div className="contact-container">
-        <img className="lupaicon" src={lupa} alt="iconlupa" />
+        <MagnifyingGlass className="lupaicon" />
         <button className="btnContato">
           <a className="contato" to="/">
             Entre em contato
-            <span>🡢</span>
+            <ArrowRight weight="bold" />
           </a>
         </button>
       </div>

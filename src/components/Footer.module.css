@@ -58,12 +58,23 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  cursor: pointer;
+  color: #00c756;
+  transition: 0.2s;
+}
+
+.talk_with_us:hover {
+  color: white;
 }
 
 .text_talk_with_us {
-  color: #00c756;
   font: 700 1rem "Roboto", sans-serif;
   line-height: 0.9rem;
+}
+
+.arrow_circle_icon {
+  height: 1.75rem;
+  width: 1.75rem;
 }
 
 .contact,
@@ -79,6 +90,7 @@
 
 .tel_img {
   transform: rotateY(180deg);
+  transition: 0.2s;
 }
 
 .address_content {
@@ -97,7 +109,12 @@
   color: #00c756;
 }
 
-.tel_address img {
+.tel_address:hover {
+  color: #fff;
+  /* fill: #fff; */
+}
+
+.tel_address svg {
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -105,6 +122,8 @@
 .tel {
   font: 500 1.5rem "Roboto", sans-serif;
   line-height: 1.5rem;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .list_links_company {
@@ -167,6 +186,10 @@
   color: rgba(255, 255, 255, 0.34);
 }
 
+.wrapper_input svg {
+  color: #00c756;
+}
+
 .social_medias {
   display: flex;
   justify-content: end;
@@ -219,9 +242,11 @@
   border-left: 1px solid #e7ebef;
 }
 
+.box_schedule svg,
 .box_schedule img {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #00c756;
 }
 
 .box_schedule address {
@@ -238,7 +263,6 @@
 
 .btn_schedule:hover {
   background: #0e2b5c;
-  transform: translateY(-4px);
 }
 
 .back_to_top {
@@ -246,6 +270,7 @@
   right: 2rem;
   bottom: 6rem;
   background-color: #00c756;
+  color: white;
   border: 0;
   border-radius: 0.25rem;
   padding: 0.8rem 0.9rem;
@@ -257,7 +282,7 @@
   transform: translateY(-4px);
 }
 
-.back_to_top img {
-  width: 0.9375rem;
-  height: 0.9375rem;
+.back_to_top svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }

@@ -25,6 +25,12 @@
   gap: 0.375rem 0.625rem;
 }
 
+.address svg {
+  color: #00c756;
+  width: 0.93rem;
+  height: 0.93rem;
+}
+
 .address_item {
   color: #8c8a97;
   font: 500 0.75rem "Roboto", sans-serif;
