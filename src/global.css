@@ -6,6 +6,7 @@
 
 :root {
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 button {
