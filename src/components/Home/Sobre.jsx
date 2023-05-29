@@ -1,8 +1,8 @@
 import styles from "./Sobre.module.css";
 import sobreimg from "../../assets/sobreimg.png";
-import checkIcon from "../../assets/checkIcon.svg";
 import plantaicon from "../../assets/plantaicon.svg";
 import { useIncreaseNumber } from "../../helpers";
+import { CheckCircle } from "@phosphor-icons/react";
 
 export function Sobre() {
   // 778 = discarded E-Waste number, 10 = duration of number update per ms
@@ -56,27 +56,15 @@ export function Sobre() {
 
           <ul className={styles.culturaList}>
             <li>
-              <img
-                className={styles.culturaListImg}
-                src={checkIcon}
-                alt="checkIcon"
-              />
+              <CheckCircle weight="fill" className={styles.culturaListImg} />
               Cultura Regenerativa Positiva
             </li>
             <li>
-              <img
-                className={styles.culturaListImg}
-                src={checkIcon}
-                alt="checkIcon"
-              />
+              <CheckCircle weight="fill" className={styles.culturaListImg} />
               Descarte Correto de Resíduos
             </li>
             <li>
-              <img
-                className={styles.culturaListImg}
-                src={checkIcon}
-                alt="checkIcon"
-              />
+              <CheckCircle weight="fill" className={styles.culturaListImg} />
               Consciência Ambiental
             </li>
           </ul>

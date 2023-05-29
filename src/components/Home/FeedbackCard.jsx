@@ -1,6 +1,6 @@
 import styles from "./FeedbackCard.module.css";
-import star from "../../assets/star.svg";
 import quotes from "../../assets/quotes.svg";
+import { Star } from "@phosphor-icons/react";
 
 export function FeedbackCard({ img, imgAlt, stars, name, job, feedback }) {
   return (
@@ -11,31 +11,11 @@ export function FeedbackCard({ img, imgAlt, stars, name, job, feedback }) {
         </div>
         <div className={styles.information}>
           <div className={styles.starsWrapper}>
-            <img
-              className={styles.starIcon}
-              src={star}
-              alt="Ícone de estrela"
-            />
-            <img
-              className={styles.starIcon}
-              src={star}
-              alt="Ícone de estrela"
-            />
-            <img
-              className={styles.starIcon}
-              src={star}
-              alt="Ícone de estrela"
-            />
-            <img
-              className={styles.starIcon}
-              src={star}
-              alt="Ícone de estrela"
-            />
-            <img
-              className={styles.starIcon}
-              src={star}
-              alt="Ícone de estrela"
-            />
+            <Star weight="fill" className={styles.starIcon} />
+            <Star weight="fill" className={styles.starIcon} />
+            <Star weight="fill" className={styles.starIcon} />
+            <Star weight="fill" className={styles.starIcon} />
+            <Star weight="fill" className={styles.starIcon} />
           </div>
           <p className={styles.feedback}>{feedback}</p>
           <div className={styles.person}>

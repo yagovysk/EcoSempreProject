@@ -21,8 +21,8 @@ export function Depoiments() {
             <button type="button" className={`btn ${style.btnFeedback}`}>
               <a className="btn-link" href="#">
                 Sobre Nós
+                <span>🡢</span>
               </a>
-              <span>🡢</span>
             </button>
           </div>
         </div>
