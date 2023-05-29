@@ -40,7 +40,7 @@ function Header() {
 }
 
 function Information() {
-  const experienceNumber = useIncreaseNumber(10, 100);
+  const experienceNumber = useIncreaseNumber(10, 100, 1);
 
   return (
     <div className={`${styles.content_information} container`}>
