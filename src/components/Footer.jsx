@@ -39,7 +39,11 @@ export function Footer() {
                   a nossa equipe.
                 </p>
                 <div className={styles.tel_address}>
-                  <img src={phone} alt="Ícone de telefone" />
+                  <img
+                    className={styles.tel_img}
+                    src={phone}
+                    alt="Ícone de telefone"
+                  />
                   <strong className={styles.tel}>(61) 98378-1438</strong>
                 </div>
                 <p className={styles.paragraph}>
@@ -142,7 +146,7 @@ function ScheduleCard() {
   return (
     <div className={styles.schedule_card}>
       <div className={styles.box_schedule}>
-        <img src={phone} alt="Ícone de telefone" />
+        <img className={styles.tel_img} src={phone} alt="Ícone de telefone" />
         <address>
           Telefone: <strong>(61) 98378-1438</strong>
         </address>

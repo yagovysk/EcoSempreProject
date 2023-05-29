@@ -30,7 +30,8 @@
 }
 
 .intro {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 1.18rem;
   max-width: 16.375rem;
 }
@@ -67,12 +68,17 @@
 
 .contact,
 .company {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
 }
 
 .contact {
   max-width: 16rem;
+}
+
+.tel_img {
+  transform: rotateY(180deg);
 }
 
 .address_content {
