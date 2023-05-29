@@ -18,10 +18,10 @@ export function Header() {
           </NavLink>
         </li>
         <li>
-          <a href="#">
+          <NavLink to="/programs">
             Programas
             <CaretDown weight="bold" />
-          </a>
+          </NavLink>
         </li>
         <li>
           <a href="">Pontos de coleta</a>

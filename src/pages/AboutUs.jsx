@@ -5,22 +5,9 @@ import styles from "./AboutUs.module.css";
 import { useIncreaseNumber } from "../helpers";
 import { ContactCard } from "../components/ContactCard";
 import { ParceirosCard } from "../components/ParceirosCard";
-import { Submenu } from "../components/Submenu";
+import { HeaderSection } from "../components/HeaderSection";
 
 export function AboutUs() {
-  return (
-    <main>
-      <Header />
-      <Information />
-      <Contact />
-      <div className={styles.partners_content}>
-        <ParceirosCard />
-      </div>
-    </main>
-  );
-}
-
-function Header() {
   const linksMenu = [
     {
       name: "Home",
@@ -36,10 +23,18 @@ function Header() {
   ];
 
   return (
-    <div className={styles.header}>
-      <h1 className={styles.titleHeader}>Sobre Nós</h1>
-      <Submenu content={linksMenu} />
-    </div>
+    <main>
+      <HeaderSection
+        className={styles.header}
+        title="Sobre Nós"
+        linksMenu={linksMenu}
+      />
+      <Information />
+      <Contact />
+      <div className={styles.partners_content}>
+        <ParceirosCard />
+      </div>
+    </main>
   );
 }
 
