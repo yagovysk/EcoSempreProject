@@ -81,11 +81,11 @@ export function Footer() {
             @2023 EcoSempre. Todos Direitos Reservados.
           </h5>
         </div>
-        <button className={styles.back_to_top}>
-          <a title="Voltar ao topo" href="#header">
+        <a title="Voltar ao topo" href="#header">
+          <button className={styles.back_to_top}>
             <img src={arrowUp} alt="Seta apontando para frente" />
-          </a>
-        </button>
+          </button>
+        </a>
       </div>
     </footer>
   );
