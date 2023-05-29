@@ -3,6 +3,7 @@ import imgInformation2 from "../assets/houses.jpg";
 import smallArrow from "../assets/small-arrow.svg";
 import styles from "./AboutUs.module.css";
 
+import { Link } from "react-router-dom";
 import { useIncreaseNumber } from "../helpers";
 import { ContactCard } from "../components/ContactCard";
 import { ParceirosCard } from "../components/ParceirosCard";
@@ -25,13 +26,19 @@ function Header() {
     <div className={styles.header}>
       <h1 className={styles.titleHeader}>Sobre Nós</h1>
       <div className={styles.menu}>
-        <span className={`${styles.menu_item} ${styles.menu_item_active}`}>
+        <Link
+          to="/"
+          className={`${styles.menu_item} ${styles.menu_item_active}`}
+        >
           Home
-        </span>
+        </Link>
         <img src={smallArrow} alt="Seta pequena" />
-        <span className={`${styles.menu_item} ${styles.menu_item_active}`}>
+        <Link
+          to="/about_us"
+          className={`${styles.menu_item} ${styles.menu_item_active}`}
+        >
           EcoSempre
-        </span>
+        </Link>
         <img src={smallArrow} alt="Seta pequena" />
         <span className={styles.menu_item}>Sobre Nós</span>
       </div>
