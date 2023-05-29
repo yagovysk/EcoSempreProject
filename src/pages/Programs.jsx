@@ -29,6 +29,14 @@ export function Programs() {
       name: "Notebooks",
     },
     {
+      icon: notebook,
+      name: "Notebooks",
+    },
+    {
+      icon: impressora,
+      name: "Impressoras",
+    },
+    {
       icon: impressora,
       name: "Impressoras",
     },
