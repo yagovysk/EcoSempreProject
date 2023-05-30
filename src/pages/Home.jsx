@@ -6,6 +6,8 @@ import { Coletas } from "../components/Home/Coletas.jsx";
 import { Parceiros } from "../components/Home/Parceiros.jsx";
 import { Depoiments } from "../components/Home/Depoiments.jsx";
 import { Logistica } from "../components/Home/Logistica.jsx";
+import { Faq } from "../components/Home/Faq.jsx";
+import { Callwithus } from "../components/Home/Callwithus.jsx";
 
 export function Home() {
   return (
@@ -18,6 +20,8 @@ export function Home() {
       <Coletas />
       <Parceiros />
       <Depoiments />
+      <Faq />
+      <Callwithus />
     </main>
   );
 }
