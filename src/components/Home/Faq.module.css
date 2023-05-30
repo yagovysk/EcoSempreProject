@@ -1,0 +1,62 @@
+.idFaq {
+    display: flex;
+    gap: 2rem;
+}
+.idFaq article h1 {
+    font-size: 0.9rem;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1rem;
+    color: #00C756;
+}
+.idFaq article h2 {
+    font-size: 2rem;
+    color: #0E2B5C;
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 700;
+}
+.duvidas1 {
+    display: grid;
+    list-style: none;
+    gap: 2rem;
+}
+.duvidas1 li {
+    border: 2px solid #EAEAEA;
+    padding: 1rem 1rem;
+}
+.duvidas1 li a {
+    display: flex;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 1rem;
+    font-family: 'Roboto', sans-serif;
+    transition: 0.3s;
+    gap: 2rem;
+}
+.duvidas2 {
+    display: grid;
+    list-style: none;
+    gap: 2rem;
+}
+.duvidas2 li {
+    border: 2px solid #EAEAEA;
+    padding: 1.5rem 1rem;
+}
+.duvidas2 li a {
+    display: flex;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 1rem;
+    font-family: 'Roboto', sans-serif;
+    transition: 0.3s;
+}
+.duvidas1 li a:hover {
+    color: #00C756;
+} 
+.duvidas2 li a:hover {
+    color: #00C756;
+}

@@ -1,0 +1,82 @@
+.form_wrapper {
+  display: grid;
+  gap: 2rem;
+
+  border-radius: 0.25rem;
+  max-width: 47.7rem;
+}
+
+.form_title {
+  font: 700 2rem "IBM Plex Sans", sans-serif;
+  line-height: 2.875rem;
+  color: #0e2b5c;
+  margin-bottom: 0.75rem;
+}
+
+.form_description {
+  font: 400 1rem "Roboto", sans-serif;
+  line-height: 1.5rem;
+  color: #525252;
+}
+
+.form_content {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.form_inputs {
+  display: grid;
+  grid-template-areas:
+    "name email"
+    "tel subject"
+    "msg msg";
+  gap: 2rem;
+}
+
+.form_inputs input,
+.form_inputs textarea {
+  font: 400 1rem "Roboto", sans-serif;
+  line-height: 0.9rem;
+  border: 1.5px solid #e7ebef;
+  border-radius: 0.25rem;
+  outline: 1px solid transparent;
+  padding: 1.4rem;
+  color: #525252;
+}
+
+.form_inputs input:focus,
+.form_inputs textarea:focus {
+  border: 1.5px solid #00c756;
+}
+
+.form_inputs input::placeholder,
+.form_inputs textarea::placeholder {
+  color: #929090;
+}
+
+.form_title {
+  font: 700 2rem "IBM Plex Sans", sans-serif;
+  line-height: 2.875rem;
+  color: #0e2b5c;
+  margin-bottom: 0.75rem;
+}
+.input_message {
+  grid-area: msg;
+  resize: none;
+  height: 9.875rem;
+}
+
+.btnForm {
+  width: max-content;
+  color: white;
+  transition: 0.3s;
+}
+
+.btnForm:hover {
+  background: #0e2b5c;
+}
+
+.btn_text {
+  font: 700 0.9rem "Roboto", sans-serif;
+  line-height: 2.5rem;
+}
