@@ -42,9 +42,10 @@
   gap: 2.375rem 3.68rem;
 }
 
-.device img {
+.device svg {
   width: 4rem;
   height: 4rem;
+  color: #00c756;
   margin-bottom: 1.625rem;
 }
 

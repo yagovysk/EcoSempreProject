@@ -1,7 +1,7 @@
+import { Icon } from "@iconify/react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logoEcoSempre.png";
 import "./Header.css";
-import { ArrowRight, CaretDown, MagnifyingGlass } from "@phosphor-icons/react";
 
 export function Header() {
   return (
@@ -14,13 +14,13 @@ export function Header() {
         <li>
           <NavLink to="/about_us">
             EcoSempre
-            <CaretDown weight="bold" />
+            <Icon icon="mdi:caret" rotate={2} />
           </NavLink>
         </li>
         <li>
           <NavLink to="/material_list">
             Programas
-            <CaretDown weight="bold" />
+            <Icon icon="mdi:caret" rotate={2} />
           </NavLink>
         </li>
         <li>
@@ -32,11 +32,11 @@ export function Header() {
       </ul>
 
       <div className="contact-container">
-        <MagnifyingGlass className="lupaicon" />
+        <Icon icon="ph:magnifying-glass" className="lupaicon" />
         <button className="btnContato">
           <a className="contato" to="/">
             Entre em contato
-            <ArrowRight weight="bold" />
+            <Icon icon="octicon:arrow-right-16" />
           </a>
         </button>
       </div>

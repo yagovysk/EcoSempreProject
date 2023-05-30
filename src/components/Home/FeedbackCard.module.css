@@ -41,9 +41,13 @@
 
 .starsWrapper {
   display: flex;
-  gap: 1px;
   margin-bottom: 1.5rem;
   color: #00c756;
+}
+
+.starIcon {
+  width: 1.3rem;
+  height: 1.3rem;
 }
 
 .feedback {
