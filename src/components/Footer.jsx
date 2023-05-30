@@ -1,13 +1,6 @@
 import styles from "./Footer.module.css";
 import ecoLogo from "../assets/ecoIcon.svg";
-import phone from "../assets/phone.svg";
-import mail from "../assets/mail.svg";
-import clock from "../assets/clock.svg";
-import arrowCircle from "../assets/arrow-circle.svg";
-import instagram from "../assets/instagram.svg";
-import facebook from "../assets/facebook.svg";
-import whatsapp from "../assets/whatsapp.svg";
-import arrowUp from "../assets/arrow-up.svg";
+import { Icon } from "@iconify/react";
 
 export function Footer() {
   return (
@@ -23,12 +16,16 @@ export function Footer() {
                 ações que beneficiam o meio ambiente e a sociedade.
               </p>
 
-              <div className={styles.talk_with_us}>
-                <img src={arrowCircle} alt="Seta preenchida com um círculo" />
+              <a href="#" className={styles.talk_with_us}>
+                <Icon
+                  icon="material-symbols:arrow-circle-right-rounded"
+                  className={styles.arrow_circle_icon}
+                  alt="Seta preenchida com um círculo"
+                />
                 <span className={styles.text_talk_with_us}>
                   <strong>Fale Conosco</strong>
                 </span>
-              </div>
+              </a>
             </section>
 
             <section className={styles.contact}>
@@ -39,8 +36,14 @@ export function Footer() {
                   a nossa equipe.
                 </p>
                 <div className={styles.tel_address}>
-                  <img src={phone} alt="Ícone de telefone" />
-                  <strong className={styles.tel}>(61) 98378-1438</strong>
+                  <Icon
+                    icon="ant-design:phone-filled"
+                    className={styles.tel_img}
+                    alt="Ícone de telefone"
+                  />
+                  <a className={styles.tel} href="tel:+(61) 98378-1438">
+                    (61) 98378-1438
+                  </a>
                 </div>
                 <p className={styles.paragraph}>
                   71939-540, Alfa Mix Loja 11 e 12, Águas Claras, Brasília - DF.
@@ -81,9 +84,13 @@ export function Footer() {
             @2023 EcoSempre. Todos Direitos Reservados.
           </h5>
         </div>
+
         <a title="Voltar ao topo" href="#header">
           <button className={styles.back_to_top}>
-            <img src={arrowUp} alt="Seta apontando para frente" />
+            <Icon
+              icon="material-symbols:arrow-upward-rounded"
+              alt="Seta apontando para frente"
+            />
           </button>
         </a>
       </div>
@@ -119,19 +126,26 @@ function Newsletter() {
             type="email"
             placeholder="Digite seu email"
           />
-          <img src={arrowCircle} alt="Seta preenchida com um círculo" />
+          <Icon
+            icon="material-symbols:arrow-circle-right-rounded"
+            className={styles.arrow_circle_icon}
+            alt="Seta preenchida com um círculo"
+          />
         </div>
       </section>
 
       <div className={styles.social_medias}>
         <a className={styles.link_social_medias} href="">
-          <img src={instagram} alt="Ícone do Instagram" />
+          <Icon
+            icon="entypo-social:instagram-with-circle"
+            alt="Ícone do Instagram"
+          />
         </a>
         <a className={styles.link_social_medias} href="">
-          <img src={facebook} alt="Ícone do Facebook" />
+          <Icon icon="ic:baseline-facebook" alt="Ícone do Facebook" />
         </a>
         <a className={styles.link_social_medias} href="">
-          <img src={whatsapp} alt="Ícone do Whatsapp" />
+          <Icon icon="ri:whatsapp-fill" alt="Ícone do Whatsapp" />
         </a>
       </div>
     </div>
@@ -142,19 +156,23 @@ function ScheduleCard() {
   return (
     <div className={styles.schedule_card}>
       <div className={styles.box_schedule}>
-        <img src={phone} alt="Ícone de telefone" />
+        <Icon
+          icon="ant-design:phone-filled"
+          className={styles.tel_img}
+          alt="Ícone de telefone"
+        />
         <address>
           Telefone: <strong>(61) 98378-1438</strong>
         </address>
       </div>
       <div className={styles.box_schedule}>
-        <img src={mail} alt="Ícone de e-mail" />
+        <Icon icon="material-symbols:mail-rounded" alt="Ícone de e-mail" />
         <address>
           Email: <strong>ecosempre@gmail.com</strong>
         </address>
       </div>
       <div className={styles.box_schedule}>
-        <img src={clock} alt="Ícone de relógio" />
+        <Icon icon="mdi:clock-time-four" alt="Ícone de relógio" />
         <address>
           Horário de Atendimento: <strong>Seg-Sex: 8h às 18h</strong>
         </address>

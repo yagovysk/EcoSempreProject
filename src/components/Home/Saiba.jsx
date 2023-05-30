@@ -1,8 +1,5 @@
 import styles from "./Saiba.module.css";
-import smartPhoneImg from "../../assets/smartphone.svg";
-import computadorImg from "../../assets/computador.svg";
-import impressoraImg from "../../assets/impressora.svg";
-import cameraImg from "../../assets/camera.svg";
+import { Icon } from "@iconify/react";
 
 export function Saiba() {
   return (
@@ -22,7 +19,9 @@ export function Saiba() {
             desde smartphones antigos, até pilhas, baterias e eletrodomésticos.
           </p>
           <button className={`btn ${styles.saibabutton}`}>
-            <a href="#">Ver Lista Completa</a>
+            <a className={`btn-link`} href="#">
+              Ver Lista Completa
+            </a>
             <span>🡢</span>
           </button>
         </section>
@@ -31,16 +30,14 @@ export function Saiba() {
       <article className={styles.dispositivos}>
         <Device
           title="Smartphones"
-          img={smartPhoneImg}
-          altImg="Ícone de celular"
+          icon="mdi:smartphone-wireless"
           description={`Atualize seus dispositivos eletrônicos e descarte os antigos com
             segurança e responsabilidade.`}
           classes={styles}
         />
         <Device
           title="Computadores"
-          img={computadorImg}
-          altImg="Ícone de laptop"
+          icon="mdi:computer"
           description={`Ao substituir seu equipamento antigo, você pode dar a ele uma
             segunda vida ao doar ou reciclar de maneira responsável.`}
           classes={styles}
@@ -48,8 +45,7 @@ export function Saiba() {
 
         <Device
           title="Impressoras"
-          img={impressoraImg}
-          altImg="Ícone de impressora"
+          icon="mdi:printer"
           description={`Recicle com responsabilidade, garanta que materiais como cartuchos
             de tinta e toners sejam descartados corretamente.`}
           classes={styles}
@@ -57,8 +53,7 @@ export function Saiba() {
 
         <Device
           title="Câmeras"
-          img={cameraImg}
-          altImg="Ícone de câmera"
+          icon="material-symbols:linked-camera"
           description={`Recicle corretamente para evitar que ela se torne lixo eletrônico e
             contribuir para a preservação do meio ambiente.`}
           classes={styles}
@@ -68,10 +63,10 @@ export function Saiba() {
   );
 }
 
-function Device({ classes, img, altImg, title, description }) {
+function Device({ classes, icon, title, description }) {
   return (
     <div className={classes.device}>
-      <img src={img} alt={altImg} />
+      <Icon icon={icon} />
       <h3 className={classes.title}>{title}</h3>
       <p className={classes.description}>{description}</p>
     </div>

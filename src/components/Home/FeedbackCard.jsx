@@ -1,6 +1,6 @@
 import styles from "./FeedbackCard.module.css";
-import star from "../../assets/star.svg";
 import quotes from "../../assets/quotes.svg";
+import { Icon } from "@iconify/react";
 
 export function FeedbackCard({ img, imgAlt, stars, name, job, feedback }) {
   return (
@@ -11,30 +11,25 @@ export function FeedbackCard({ img, imgAlt, stars, name, job, feedback }) {
         </div>
         <div className={styles.information}>
           <div className={styles.starsWrapper}>
-            <img
+            <Icon
+              icon="material-symbols:star-rounded"
               className={styles.starIcon}
-              src={star}
-              alt="Ícone de estrela"
             />
-            <img
+            <Icon
+              icon="material-symbols:star-rounded"
               className={styles.starIcon}
-              src={star}
-              alt="Ícone de estrela"
             />
-            <img
+            <Icon
+              icon="material-symbols:star-rounded"
               className={styles.starIcon}
-              src={star}
-              alt="Ícone de estrela"
             />
-            <img
+            <Icon
+              icon="material-symbols:star-rounded"
               className={styles.starIcon}
-              src={star}
-              alt="Ícone de estrela"
             />
-            <img
+            <Icon
+              icon="material-symbols:star-rounded"
               className={styles.starIcon}
-              src={star}
-              alt="Ícone de estrela"
             />
           </div>
           <p className={styles.feedback}>{feedback}</p>
@@ -44,7 +39,11 @@ export function FeedbackCard({ img, imgAlt, stars, name, job, feedback }) {
           </div>
         </div>
 
-        <img className={styles.quotes} src={quotes} alt="" />
+        <img
+          className={styles.quotes}
+          src={quotes}
+          alt="Ícone de aspas duplas"
+        />
       </div>
     </div>
   );

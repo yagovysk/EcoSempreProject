@@ -1,35 +1,6 @@
-/* Header section */
+/* Header */
 .header {
-  display: grid;
-  grid-auto-rows: max-content;
-  place-content: center;
-  place-items: center;
-  gap: 1.5rem;
-  height: 29.375rem;
-
   background: url("../assets/construction1.jpg") no-repeat bottom center / cover;
-  color: white;
-  margin-bottom: 7.375rem;
-}
-
-.titleHeader {
-  font: 700 4.375rem "IBM Plex Sans", sans-serif;
-  line-height: 5.125rem;
-  letter-spacing: 0.11rem;
-}
-
-.header .menu {
-  display: flex;
-  gap: 3px;
-  font: 400 1rem "Roboto", sans-serif;
-}
-
-.header .menu_item {
-  line-height: 1.5rem;
-}
-
-.header .menu_item_active {
-  border-bottom: 2px solid #00c756;
 }
 
 /* Information section */
