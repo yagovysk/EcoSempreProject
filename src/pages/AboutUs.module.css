@@ -100,6 +100,13 @@
   align-content: center;
 }
 
+.card_style {
+  background-color: white;
+  border-radius: 0.25rem;
+  padding: 1.95rem 3rem;
+  width: max-content;
+}
+
 /* Partners section */
 .partners_content {
   display: grid;
