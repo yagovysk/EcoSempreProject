@@ -1,0 +1,40 @@
+.idfaleconosco {
+    display: flex;
+    width: 100%;
+    background-image: url('../../assets/Callwithusimg.png');
+    height: 46rem;
+    align-items: center;
+    padding-left: 25rem;
+    padding-top: 8rem;
+}
+.cardFale {
+    display: grid;
+    width: 28%;
+    padding-top: 3.5rem;
+    padding-left: 3.5rem;
+}
+.cardFale article {
+    display: grid;
+    height: 40%;
+}
+.cardFale h1 {
+    color: #0E2B5C;
+    font-family: 'IBM Plex Sans';
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2rem;
+}
+.cardFale p {
+    color: #525252;
+    font-style: normal;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    width: 80%;
+    text-align: left;
+}
+.cardFale {
+    height: 41rem;
+    background: #FFFF;
+    position: absolute;
+}

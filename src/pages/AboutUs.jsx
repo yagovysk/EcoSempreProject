@@ -122,7 +122,9 @@ function Contact() {
   return (
     <div className={styles.contact_content}>
       <div className={`${styles.card_wrapper} container`}>
-        <ContactCard />
+        <div className={styles.card_style}>
+          <ContactCard />
+        </div>
       </div>
     </div>
   );
