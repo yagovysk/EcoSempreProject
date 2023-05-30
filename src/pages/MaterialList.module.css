@@ -37,18 +37,20 @@
 
   background-color: white;
   border-radius: 0.625rem;
-  padding: 2.5rem;
+  padding: 2.5rem 1.5rem;
 }
 
 .material_icon {
-  width: 3.75rem;
-  height: 3.75rem;
+  color: #00c756;
+  width: 4rem;
+  height: 4rem;
 }
 
 .material_name {
   color: #0e2b5c;
+  text-align: center;
   font: 600 1rem "Roboto", sans-serif;
-  line-height: 0.9rem;
+  line-height: 1.2rem;
 }
 
 .link_complete_list {

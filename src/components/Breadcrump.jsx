@@ -1,9 +1,9 @@
+import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
-import styles from "./Submenu.module.css";
-import { CaretRight } from "@phosphor-icons/react";
 import { Fragment } from "react";
+import styles from "./Breadcrump.module.css";
 
-export function Submenu({ content }) {
+export function Breadcrump({ content }) {
   const contentWithoutLastLink = content.slice(0, content.length - 1);
   const contentWithLastLink = content.slice(content.length - 1);
   return (
@@ -16,7 +16,7 @@ export function Submenu({ content }) {
           >
             {link.name}
           </Link>
-          <CaretRight weight="bold" className={styles.small_arrow} />
+          <Icon icon="iconamoon:arrow-right-2" className={styles.small_arrow} />
         </Fragment>
       ))}
       {contentWithLastLink.map((link) => (

@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Default } from "./layouts/Default";
 import { AboutUs } from "./pages/AboutUs";
-import { Programs } from "./pages/Programs";
+import { MaterialList } from "./pages/MaterialList";
 
 export const router = createBrowserRouter([
   {
@@ -18,8 +18,8 @@ export const router = createBrowserRouter([
         element: <AboutUs />,
       },
       {
-        path: "/programs",
-        element: <Programs />,
+        path: "/material_list",
+        element: <MaterialList />,
       },
     ],
   },
