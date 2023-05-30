@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const user_1 = __importDefault(require("../models/user"));
 const article_1 = __importDefault(require("../models/article"));
+const contact_1 = __importDefault(require("../models/contact"));
 const middleware_1 = __importDefault(require("../auth/middleware"));
 const Routes = express_1.default.Router();
 Routes.post("/authentication", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -24,6 +25,11 @@ Routes.post("/authentication", (req, res) => __awaiter(void 0, void 0, void 0, f
 Routes.post("/user", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = new user_1.default();
     user.createUser(req, res);
+}));
+// contact
+Routes.post("/contact", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const contact = new contact_1.default();
+    contact.registerContact(req, res);
 }));
 // articles
 Routes.get("/articles", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
