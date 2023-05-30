@@ -2,10 +2,6 @@
   display: grid;
   gap: 2.5rem;
   width: max-content;
-
-  background-color: white;
-  border-radius: 0.25rem;
-  padding: 1.95rem 3rem;
 }
 
 .wrapper {
