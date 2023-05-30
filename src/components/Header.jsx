@@ -18,7 +18,7 @@ export function Header() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/programs">
+          <NavLink to="/material_list">
             Programas
             <CaretDown weight="bold" />
           </NavLink>

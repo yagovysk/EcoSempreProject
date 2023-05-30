@@ -1,11 +1,11 @@
 import { HeaderSection } from "../components/HeaderSection";
-import styles from "./Programs.module.css";
+import styles from "./MaterialList.module.css";
 import smartphone from "../assets/smartphone.svg";
 import camera from "../assets/camera.svg";
 import notebook from "../assets/computador.svg";
 import impressora from "../assets/impressora.svg";
 
-export function Programs() {
+export function MaterialList() {
   const linksMenu = [
     {
       name: "Home",
@@ -13,7 +13,7 @@ export function Programs() {
     },
     {
       name: "Programas",
-      path: "/programs",
+      path: "/material_list",
     },
     {
       name: "Lista de Materiais",
