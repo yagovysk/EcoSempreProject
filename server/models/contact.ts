@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 
 
 
-interface IContact{
+export interface IContact{
     name:  string,
     email: string,
     subject: string,
