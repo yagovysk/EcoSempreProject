@@ -1,5 +1,5 @@
 import style from "./Faq.module.css";
-import mais from "../../assets/mais.svg";
+import { Icon } from "@iconify/react";
 
 export function Faq() {
     return(
@@ -20,7 +20,7 @@ export function Faq() {
                         Por que devo
                         reciclar eletroeletrônicos
                         de forma correta?
-                        <img src={ mais } alt="+ icon" />
+                        <Icon icon="ic:round-plus" />
                     </a>
                 </li>
                 <li>
@@ -28,7 +28,7 @@ export function Faq() {
                         Quais tipos
                         de eletroeletrônicos
                         a EcoSempre coleta?
-                        <img src={ mais } alt="+ icon" />
+                        <Icon icon="ic:round-plus" />
                     </a>
                 </li>
                 <li>
@@ -36,7 +36,7 @@ export function Faq() {
                         Como faço para 
                         descartar corretamente
                         esses materiais?
-                        <img src={ mais } alt="+ icon" />
+                        <Icon icon="ic:round-plus" />
                     </a>
                 </li>
                 <li>
@@ -45,7 +45,7 @@ export function Faq() {
                         EcoSempre para destinar 
                         adequadamente  eletroeletrônicos
                         da minha empresa?
-                        <img src={ mais } alt="+ icon" />
+                        <Icon icon="ic:round-plus" />
                     </a>
                 </li>
             </ul>
@@ -54,21 +54,21 @@ export function Faq() {
                     <a href="#">
                         O que é Logística
                         Reversa?
-                        <img src={ mais } alt="+ icon" />
+                        <Icon icon="ic:round-plus" />
                     </a>
                 </li>
                 <li>
                     <a href="#">
                         Quais são os benefícios
                         da Logística Reversa?
-                        <img src={ mais } alt="+ icon" />
+                        <Icon icon="ic:round-plus" />
                     </a>
                 </li>
                 <li>
                     <a href="#">
                         Como faço para trabalhar
                         em parceria com a EcoSempre?
-                        <img src={ mais } alt="+ icon" />
+                        <Icon icon="ic:round-plus" />
                     </a>
                 </li>
                 <li>
@@ -78,7 +78,7 @@ export function Faq() {
                         adequado de eletrônicos.
                         Podemos contar com o
                         apoio da EcoSempre?
-                        <img src={ mais } alt="+ icon" />
+                        <Icon icon="ic:round-plus" />
                     </a>
                 </li>
             </ul>
