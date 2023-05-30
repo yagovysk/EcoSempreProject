@@ -1,0 +1,17 @@
+.header {
+  display: grid;
+  grid-auto-rows: max-content;
+  place-content: center;
+  place-items: center;
+  gap: 1.5rem;
+  height: 29.375rem;
+
+  color: white;
+  margin-bottom: 7.375rem;
+}
+
+.titleHeader {
+  font: 700 4.375rem "IBM Plex Sans", sans-serif;
+  line-height: 5.125rem;
+  letter-spacing: 0.11rem;
+}

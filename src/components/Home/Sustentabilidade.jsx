@@ -19,7 +19,9 @@ export function Sustentabilidade() {
             para um mundo mais limpo e saudável.
           </p>
           <button className={`btn ${styles.saibamais}`} type="button">
-            <a href="#">Saiba Mais</a>
+            <a className="btn-link" href="#">
+              Saiba Mais
+            </a>
             <span>🡢</span>
           </button>
         </section>

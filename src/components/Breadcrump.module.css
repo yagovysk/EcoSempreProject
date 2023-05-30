@@ -1,0 +1,25 @@
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font: 400 1rem "Roboto", sans-serif;
+}
+
+.menu_item {
+  line-height: 1.5rem;
+  transition: 0.2s;
+}
+
+.menu_item_active {
+  cursor: pointer;
+  border-bottom: 2px solid #00c756;
+}
+
+.menu_item_active:hover {
+  color: #00c756;
+}
+
+.small_arrow {
+  width: 1rem;
+  height: 1rem;
+}

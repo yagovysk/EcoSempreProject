@@ -1,41 +1,40 @@
 import imgInformation1 from "../assets/construction2.jpg";
 import imgInformation2 from "../assets/houses.jpg";
-import smallArrow from "../assets/small-arrow.svg";
 import styles from "./AboutUs.module.css";
 
 import { useIncreaseNumber } from "../helpers";
 import { ContactCard } from "../components/ContactCard";
 import { ParceirosCard } from "../components/ParceirosCard";
+import { HeaderSection } from "../components/HeaderSection";
 
 export function AboutUs() {
+  const linksMenu = [
+    {
+      name: "Home",
+      path: "/",
+    },
+    {
+      name: "EcoSempre",
+      path: "/about_us",
+    },
+    {
+      name: "Sobre Nós",
+    },
+  ];
+
   return (
     <main>
-      <Header />
+      <HeaderSection
+        className={styles.header}
+        title="Sobre Nós"
+        linksMenu={linksMenu}
+      />
       <Information />
       <Contact />
       <div className={styles.partners_content}>
         <ParceirosCard />
       </div>
     </main>
-  );
-}
-
-function Header() {
-  return (
-    <div className={styles.header}>
-      <h1 className={styles.titleHeader}>Sobre Nós</h1>
-      <div className={styles.menu}>
-        <span className={`${styles.menu_item} ${styles.menu_item_active}`}>
-          Home
-        </span>
-        <img src={smallArrow} alt="Seta pequena" />
-        <span className={`${styles.menu_item} ${styles.menu_item_active}`}>
-          EcoSempre
-        </span>
-        <img src={smallArrow} alt="Seta pequena" />
-        <span className={styles.menu_item}>Sobre Nós</span>
-      </div>
-    </div>
   );
 }
 

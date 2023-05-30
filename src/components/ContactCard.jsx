@@ -1,7 +1,4 @@
-import location from "../assets/location.svg";
-import mail from "../assets/mail.svg";
-import phone from "../assets/phone.svg";
-
+import { Icon } from "@iconify/react";
 import styles from "./ContactCard.module.css";
 
 export function ContactCard() {
@@ -11,13 +8,13 @@ export function ContactCard() {
         <h4 className={styles.title}>Nosso Contato</h4>
 
         <address className={styles.address}>
-          <img src={location} alt="Ícone de localização" />
+          <Icon icon="fluent:location-20-filled" alt="Ícone de localização" />
           <p className={styles.address_item}>
             Alfa Mix Loja 11e 12, Águas Claras, Brasília.
           </p>
-          <img src={mail} alt="Ícone de e-mail" />
+          <Icon icon="material-symbols:mail-rounded" alt="Ícone de e-mail" />
           <p className={styles.address_item}>Email: ecosempre@gmail.com</p>
-          <img src={phone} alt="Ícone de telefone" />
+          <Icon icon="mingcute:phone-fill" alt="Ícone de telefone" />
           <p className={styles.address_item}>(61) 98378-1438</p>
         </address>
       </section>

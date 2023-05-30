@@ -1,6 +1,6 @@
+import { Icon } from "@iconify/react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logoEcoSempre.png";
-import lupa from "../assets/lupaicon.svg";
 import "./Header.css";
 
 export function Header() {
@@ -12,10 +12,16 @@ export function Header() {
           <NavLink to="/">Início</NavLink>
         </li>
         <li>
-          <NavLink to="/about_us">EcoSempre ⌄</NavLink>
+          <NavLink to="/about_us">
+            EcoSempre
+            <Icon icon="mdi:caret" rotate={2} />
+          </NavLink>
         </li>
         <li>
-          <a href="#">Programas ⌄</a>
+          <NavLink to="/material_list">
+            Programas
+            <Icon icon="mdi:caret" rotate={2} />
+          </NavLink>
         </li>
         <li>
           <a href="">Pontos de coleta</a>
@@ -26,11 +32,11 @@ export function Header() {
       </ul>
 
       <div className="contact-container">
-        <img className="lupaicon" src={lupa} alt="iconlupa" />
+        <Icon icon="ph:magnifying-glass" className="lupaicon" />
         <button className="btnContato">
           <a className="contato" to="/">
             Entre em contato
-            <span>🡢</span>
+            <Icon icon="octicon:arrow-right-16" />
           </a>
         </button>
       </div>
