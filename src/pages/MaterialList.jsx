@@ -1,9 +1,129 @@
 import { HeaderSection } from "../components/HeaderSection";
+import { Icon } from "@iconify/react";
 import styles from "./MaterialList.module.css";
-import smartphone from "../assets/smartphone.svg";
-import camera from "../assets/camera.svg";
-import notebook from "../assets/computador.svg";
-import impressora from "../assets/impressora.svg";
+
+const listMaterials = [
+  {
+    icon: "mdi:smartphone-wireless",
+    name: "Smartphones",
+  },
+  {
+    icon: "mdi:computer",
+    name: "Notebooks",
+  },
+  {
+    icon: "mdi:printer",
+    name: "Impressoras",
+  },
+  {
+    icon: "material-symbols:linked-camera",
+    name: "Câmeras",
+  },
+  {
+    icon: "bi:router-fill",
+    name: "Roteadores",
+  },
+  {
+    icon: "game-icons:battery-pack",
+    name: "Pilhas",
+  },
+  {
+    icon: "ic:outline-desktop-mac",
+    name: "Computadores",
+  },
+  {
+    icon: "zondicons:tablet",
+    name: "Tablets",
+  },
+  {
+    icon: "mdi:vacuum-cleaner",
+    name: "Aspiradores de Pó",
+  },
+  {
+    icon: "material-symbols:multicooker",
+    name: "Panelas de Pressão Elétrica",
+  },
+  {
+    icon: "mingcute:router-modem-fill",
+    name: "Modens",
+  },
+  {
+    icon: "ic:baseline-keyboard",
+    name: "Teclados",
+  },
+  {
+    icon: "mingcute:game-2-fill",
+    name: "Videogames",
+  },
+  {
+    icon: "ri:dvd-fill",
+    name: "DVDPlayers",
+  },
+  {
+    icon: "ion:headset-sharp",
+    name: "Fones de Ouvido",
+  },
+  {
+    icon: "material-symbols:scanner",
+    name: "Scanners",
+  },
+  {
+    icon: "ion:scale-sharp",
+    name: "Balanças",
+  },
+  {
+    icon: "ph:television-simple-bold",
+    name: "Televisões",
+  },
+  {
+    icon: "icon-park-solid:sound-one",
+    name: "Caixas de Som",
+  },
+  {
+    icon: "ph:fan-fill",
+    name: "Ventiladores",
+  },
+  {
+    icon: "game-icons:toaster",
+    name: "Torradeiras",
+  },
+  {
+    icon: "ic:round-flashlight-on",
+    name: "Lanternas",
+  },
+  {
+    icon: "mdi:projector",
+    name: "Projetores de Video",
+  },
+  {
+    icon: "material-symbols:tools-power-drill",
+    name: "Furadeiras",
+  },
+  {
+    icon: "mingcute:air-condition-fill",
+    name: "Ar Condicionado",
+  },
+  {
+    icon: "vaadin:harddrive",
+    name: "External Hard Drive (HDD)",
+  },
+  {
+    icon: "jam:hairdryer-f",
+    name: "Secadores de Cabelo",
+  },
+  {
+    icon: "mdi:grill",
+    name: "Churrasqueiras Elétricas",
+  },
+  {
+    icon: "icon-park-solid:oven",
+    name: "Fornos Elétricos",
+  },
+  {
+    icon: "mdi:washing-machine",
+    name: "Máquinas de Lavar",
+  },
+];
 
 export function MaterialList() {
   const linksMenu = [
@@ -17,36 +137,6 @@ export function MaterialList() {
     },
     {
       name: "Lista de Materiais",
-    },
-  ];
-  const listMaterials = [
-    {
-      icon: smartphone,
-      name: "Smartphones",
-    },
-    {
-      icon: notebook,
-      name: "Notebooks",
-    },
-    {
-      icon: notebook,
-      name: "Notebooks",
-    },
-    {
-      icon: impressora,
-      name: "Impressoras",
-    },
-    {
-      icon: impressora,
-      name: "Impressoras",
-    },
-    {
-      icon: camera,
-      name: "Câmeras",
-    },
-    {
-      icon: camera,
-      name: "Câmeras",
     },
   ];
 
@@ -67,7 +157,7 @@ export function MaterialList() {
         <div className={styles.grid_materials}>
           {listMaterials.map((material) => (
             <Box key={material.name}>
-              <img className={styles.material_icon} src={material.icon} />
+              <Icon className={styles.material_icon} icon={material.icon} />
               <span className={styles.material_name}>{material.name}</span>
             </Box>
           ))}

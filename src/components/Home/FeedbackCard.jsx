@@ -1,6 +1,6 @@
 import styles from "./FeedbackCard.module.css";
 import quotes from "../../assets/quotes.svg";
-import { Star } from "@phosphor-icons/react";
+import { Icon } from "@iconify/react";
 
 export function FeedbackCard({ img, imgAlt, stars, name, job, feedback }) {
   return (
@@ -11,11 +11,26 @@ export function FeedbackCard({ img, imgAlt, stars, name, job, feedback }) {
         </div>
         <div className={styles.information}>
           <div className={styles.starsWrapper}>
-            <Star weight="fill" className={styles.starIcon} />
-            <Star weight="fill" className={styles.starIcon} />
-            <Star weight="fill" className={styles.starIcon} />
-            <Star weight="fill" className={styles.starIcon} />
-            <Star weight="fill" className={styles.starIcon} />
+            <Icon
+              icon="material-symbols:star-rounded"
+              className={styles.starIcon}
+            />
+            <Icon
+              icon="material-symbols:star-rounded"
+              className={styles.starIcon}
+            />
+            <Icon
+              icon="material-symbols:star-rounded"
+              className={styles.starIcon}
+            />
+            <Icon
+              icon="material-symbols:star-rounded"
+              className={styles.starIcon}
+            />
+            <Icon
+              icon="material-symbols:star-rounded"
+              className={styles.starIcon}
+            />
           </div>
           <p className={styles.feedback}>{feedback}</p>
           <div className={styles.person}>
@@ -24,7 +39,11 @@ export function FeedbackCard({ img, imgAlt, stars, name, job, feedback }) {
           </div>
         </div>
 
-        <img className={styles.quotes} src={quotes} alt="" />
+        <img
+          className={styles.quotes}
+          src={quotes}
+          alt="Ícone de aspas duplas"
+        />
       </div>
     </div>
   );

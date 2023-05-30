@@ -1,10 +1,6 @@
 import styles from "./Footer.module.css";
 import ecoLogo from "../assets/ecoIcon.svg";
-import mail from "../assets/mail.svg";
-import instagram from "../assets/instagram.svg";
-import facebook from "../assets/facebook.svg";
-import whatsapp from "../assets/whatsapp.svg";
-import { Phone, ArrowCircleRight, Clock, ArrowUp } from "@phosphor-icons/react";
+import { Icon } from "@iconify/react";
 
 export function Footer() {
   return (
@@ -21,8 +17,8 @@ export function Footer() {
               </p>
 
               <a href="#" className={styles.talk_with_us}>
-                <ArrowCircleRight
-                  weight="fill"
+                <Icon
+                  icon="material-symbols:arrow-circle-right-rounded"
                   className={styles.arrow_circle_icon}
                   alt="Seta preenchida com um círculo"
                 />
@@ -40,8 +36,8 @@ export function Footer() {
                   a nossa equipe.
                 </p>
                 <div className={styles.tel_address}>
-                  <Phone
-                    weight="fill"
+                  <Icon
+                    icon="ant-design:phone-filled"
                     className={styles.tel_img}
                     alt="Ícone de telefone"
                   />
@@ -88,9 +84,13 @@ export function Footer() {
             @2023 EcoSempre. Todos Direitos Reservados.
           </h5>
         </div>
+
         <a title="Voltar ao topo" href="#header">
           <button className={styles.back_to_top}>
-            <ArrowUp weight="bold" alt="Seta apontando para frente" />
+            <Icon
+              icon="material-symbols:arrow-upward-rounded"
+              alt="Seta apontando para frente"
+            />
           </button>
         </a>
       </div>
@@ -126,8 +126,8 @@ function Newsletter() {
             type="email"
             placeholder="Digite seu email"
           />
-          <ArrowCircleRight
-            weight="fill"
+          <Icon
+            icon="material-symbols:arrow-circle-right-rounded"
             className={styles.arrow_circle_icon}
             alt="Seta preenchida com um círculo"
           />
@@ -136,13 +136,16 @@ function Newsletter() {
 
       <div className={styles.social_medias}>
         <a className={styles.link_social_medias} href="">
-          <img src={instagram} alt="Ícone do Instagram" />
+          <Icon
+            icon="entypo-social:instagram-with-circle"
+            alt="Ícone do Instagram"
+          />
         </a>
         <a className={styles.link_social_medias} href="">
-          <img src={facebook} alt="Ícone do Facebook" />
+          <Icon icon="ic:baseline-facebook" alt="Ícone do Facebook" />
         </a>
         <a className={styles.link_social_medias} href="">
-          <img src={whatsapp} alt="Ícone do Whatsapp" />
+          <Icon icon="ri:whatsapp-fill" alt="Ícone do Whatsapp" />
         </a>
       </div>
     </div>
@@ -153,8 +156,8 @@ function ScheduleCard() {
   return (
     <div className={styles.schedule_card}>
       <div className={styles.box_schedule}>
-        <Phone
-          weight="fill"
+        <Icon
+          icon="ant-design:phone-filled"
           className={styles.tel_img}
           alt="Ícone de telefone"
         />
@@ -163,13 +166,13 @@ function ScheduleCard() {
         </address>
       </div>
       <div className={styles.box_schedule}>
-        <img src={mail} alt="Ícone de e-mail" />
+        <Icon icon="material-symbols:mail-rounded" alt="Ícone de e-mail" />
         <address>
           Email: <strong>ecosempre@gmail.com</strong>
         </address>
       </div>
       <div className={styles.box_schedule}>
-        <Clock weight="fill" alt="Ícone de relógio" />
+        <Icon icon="mdi:clock-time-four" alt="Ícone de relógio" />
         <address>
           Horário de Atendimento: <strong>Seg-Sex: 8h às 18h</strong>
         </address>
