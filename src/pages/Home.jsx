@@ -8,6 +8,7 @@ import { Depoiments } from "../components/Home/Depoiments.jsx";
 import { Logistica } from "../components/Home/Logistica.jsx";
 import { Faq } from "../components/Home/Faq.jsx";
 import { Callwithus } from "../components/Home/Callwithus.jsx";
+import { Blog } from "../components/Home/Blog.jsx";
 
 export function Home() {
   return (
@@ -22,6 +23,7 @@ export function Home() {
       <Depoiments />
       <Faq />
       <Callwithus />
+      <Blog />
     </main>
   );
 }
