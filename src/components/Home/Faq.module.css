@@ -1,62 +1,94 @@
 .idFaq {
+  min-height: 58.5rem;
+}
+.texts {
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 8rem;
+  padding-bottom: 3.75rem;
+}
+
+.container_faq {
   display: flex;
-  gap: 2rem;
+  gap: 4.6rem;
 }
-.idFaq article h1 {
-  font-size: 0.9rem;
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 1rem;
-  color: #00c756;
-}
-.idFaq article h2 {
-  font-size: 2rem;
-  color: #0e2b5c;
-  font-family: "IBM Plex Sans";
-  font-style: normal;
-  font-weight: 700;
-}
-.duvidas1 {
+
+.list_faq {
   display: grid;
-  list-style: none;
-  gap: 2rem;
+  gap: 2.125rem;
+  list-style-type: none;
+  height: max-content;
 }
-.duvidas1 li {
-  border: 2px solid #eaeaea;
-  padding: 1rem 1rem;
-}
-.duvidas1 li a {
-  display: flex;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.9rem;
-  line-height: 1rem;
-  font-family: "Roboto", sans-serif;
-  transition: 0.3s;
-  gap: 2rem;
-}
-.duvidas2 {
+
+.wrapper_box {
   display: grid;
-  list-style: none;
-  gap: 2rem;
-}
-.duvidas2 li {
-  border: 2px solid #eaeaea;
-  padding: 1.5rem 1rem;
-}
-.duvidas2 li a {
-  display: flex;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.9rem;
-  line-height: 1rem;
+  gap: 1rem;
   font-family: "Roboto", sans-serif;
+  background-color: white;
+  border: 2px solid #eaeaea;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  overflow: hidden;
+  height: 4.5rem;
+  padding: 1.4rem 1.6rem;
+}
+
+.wrapper_box:hover {
+  border: 2px solid #00c756;
+}
+
+.wrapper_box.last_question {
+  height: 5.7rem;
+}
+
+.wrapper_box.show_answer {
+  border: 2px solid #00c756;
+  height: 15rem;
   transition: 0.3s;
 }
-.duvidas1 li a:hover {
+
+.question_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #232323;
+}
+
+.wrapper_box:hover .question_wrapper {
   color: #00c756;
 }
-.duvidas2 li a:hover {
+
+.question_title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  transition: 0.3s ease;
+}
+
+.wrapper_box.show_answer .question_title {
+  color: #00c756;
+}
+
+.answer {
+  line-height: 1.6rem;
+  font-weight: 500;
+  color: #9b9b9b;
+}
+
+.icon_plus,
+.icon_minus {
+  transition: 0.3s ease;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.wrapper_box.last_question .icon_plus,
+.wrapper_box.last_question .icon_minus {
+  width: 2.5rem;
+  width: 2.5rem;
+}
+
+.icon_minus {
   color: #00c756;
 }
