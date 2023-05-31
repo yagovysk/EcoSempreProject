@@ -27,3 +27,8 @@
 
   transform: translateY(-4rem);
 }
+
+.wrapper_form input,
+.wrapper_form textarea {
+  padding: 1.4rem;
+}

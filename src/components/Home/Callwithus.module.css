@@ -1,40 +1,43 @@
 .idfaleconosco {
-    display: flex;
-    width: 100%;
-    background-image: url('../../assets/Callwithusimg.png');
-    height: 46rem;
-    align-items: center;
-    padding-left: 25rem;
-    padding-top: 8rem;
+  width: 100%;
+  background-image: url("../../assets/Callwithusimg.png");
+  height: 49rem;
 }
-.cardFale {
-    display: grid;
-    width: 28%;
-    padding-top: 3.5rem;
-    padding-left: 3.5rem;
+
+.wrapper_content {
+  display: flex;
+  align-items: center;
+  gap: 7rem;
 }
-.cardFale article {
-    display: grid;
-    height: 40%;
+
+.wrapper_form {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0px 0.375rem 3.875rem 0px #1b1a1a26;
+  padding: 3.5rem;
+  transform: translateY(7rem);
+  z-index: 2;
 }
-.cardFale h1 {
-    color: #0E2B5C;
-    font-family: 'IBM Plex Sans';
-    font-weight: 700;
-    font-size: 2rem;
-    line-height: 2rem;
+
+.wrapper_form input,
+.wrapper_form textarea {
+  padding: 1.25rem;
 }
-.cardFale p {
-    color: #525252;
-    font-style: normal;
-    font-weight: 400;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.9rem;
-    width: 80%;
-    text-align: left;
+
+.wrapper_form button {
+  width: 100%;
 }
-.cardFale {
-    height: 41rem;
-    background: #FFFF;
-    position: absolute;
+
+.title {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 3.375rem;
+  color: white;
+}
+
+.description {
+  font: 500 1rem "Roboto", sans-serif;
+  line-height: 1.6rem;
+  color: white;
 }
