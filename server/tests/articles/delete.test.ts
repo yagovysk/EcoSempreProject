@@ -1,7 +1,17 @@
-import {it, describe, test, expect} from '@jest/globals';
+import {it, describe, jest, expect} from '@jest/globals';
 import supertest, {Response} from "supertest";
 import app from '../../server';
 
+// Mock do express-session para simular autenticação
+jest.mock("express-session", () => ({
+    __esModule: true,
+    default: () => (req: any, res: any, next: any) => {
+      req.session = {
+        userId: 1, // Define o ID do usuário logado
+      };
+      next();
+    },
+  }));
 describe("DELETE /article/id", () =>{
     
     const id:number = 3;
