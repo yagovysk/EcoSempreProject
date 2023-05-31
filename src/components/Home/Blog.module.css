@@ -1,0 +1,30 @@
+.idBlog {
+    display: flex;
+    background: #FFFFFF;
+    justify-content: center;
+    padding-top: 10rem;
+}
+.idBlog article {
+    display: grid;
+    justify-items: center;
+    height: 30%;
+}
+.idBlog article h1 {
+    color: #00C756;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5rem;
+    text-align: center;
+    width: 20%;
+}
+.idBlog article h2 {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 700;
+    color: #0E2B5C;
+    text-align: center;
+    width: 70%;
+    font-size: 2rem;
+}
