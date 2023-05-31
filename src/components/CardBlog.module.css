@@ -14,7 +14,7 @@
 }
 
 .img_wrapper img {
-  transition: 0.2s;
+  transition: 0.4s ease;
   border-bottom-right-radius: 0.6rem;
 }
 
@@ -73,6 +73,7 @@
   border: 2px solid #0e2b5c;
   border-radius: 0.25rem;
   color: #0e2b5c;
+  transition: 0.4s ease;
 }
 
 .card_wrapper:hover .btn {
@@ -103,7 +104,7 @@
   height: 10px;
   width: 90%;
   border-radius: 0 0 10px 0;
-  transition: 0.2s;
+  transition: 0.4s ease;
 }
 
 .card_wrapper:hover .trace {
