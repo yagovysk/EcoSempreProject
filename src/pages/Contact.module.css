@@ -25,4 +25,5 @@
 .wrapper_form input,
 .wrapper_form textarea {
   padding: 1.4rem;
+  width: 100%;
 }

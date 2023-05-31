@@ -33,6 +33,13 @@
   gap: 2rem;
 }
 
+.error_message {
+  color: red;
+  font: 400 0.75rem "Roboto", sans-serif;
+  line-height: 2rem;
+  margin-left: 0.2rem;
+}
+
 .form_inputs input,
 .form_inputs textarea {
   font: 400 1rem "Roboto", sans-serif;
@@ -41,6 +48,11 @@
   border-radius: 0.25rem;
   outline: 1px solid transparent;
   color: #525252;
+}
+
+.form_inputs div.error_wrapper_input input,
+.form_inputs div.error_wrapper_input textarea {
+  border: 1.5px solid red;
 }
 
 .form_inputs input:focus,
@@ -59,8 +71,13 @@
   color: #0e2b5c;
   margin-bottom: 0.75rem;
 }
-.input_message {
+
+.wrapper_input_textarea {
   grid-area: msg;
+}
+
+.input_message {
+  width: 100%;
   resize: none;
   height: 9.875rem;
 }
