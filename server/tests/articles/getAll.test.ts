@@ -1,4 +1,4 @@
-import {it, expect, test, describe, beforeEach, beforeAll}  from '@jest/globals';
+import {it, expect, test, describe, afterAll, beforeAll}  from '@jest/globals';
 import supertest, {Response} from 'supertest';
 import app from '../../server';
 
@@ -7,6 +7,12 @@ import app from '../../server';
 
 describe("GET /articles", ()=>{
 
+    beforeAll(()=>{
+        process.env.NODE_ENV="test";
+      })
+      afterAll(()=>{
+        process.env.NODE_ENV="development";
+      })
     it.only("it should returns an Array", async () =>{
         const res:Response = await supertest(app)
         .get("/articles");

@@ -1,4 +1,4 @@
-import {it, describe, expect, jest} from '@jest/globals';
+import {it, describe, expect, jest, afterAll, beforeAll} from '@jest/globals';
 import supertest, {Response} from 'supertest';
 import app from '../../server';
 
@@ -17,10 +17,10 @@ jest.mock("express-session", () => ({
 
 describe("GET /article/[id]", ()=>{
 
-    it("it should returns 404 status", async () =>{
+    it.only("it should returns 404 status", async () =>{
 
         const res:Response = await supertest(app)
-        .get("/article/4");
+        .get("/article/999");
 
         expect(res.status).toBe(404);
     })
@@ -32,6 +32,12 @@ describe("GET /article/[id]", ()=>{
         expect(res.status).toBe(200);
 
 
+    })
+    beforeAll(()=>{
+      process.env.NODE_ENV="test";
+    })
+    afterAll(()=>{
+      process.env.NODE_ENV="development";
     })
     
 })

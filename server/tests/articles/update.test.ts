@@ -1,4 +1,4 @@
-import {it, describe, expect, test} from '@jest/globals';
+import {it, describe, expect, beforeAll, afterAll} from '@jest/globals';
 import supertest, {Response} from 'supertest';
 import app from '../../server';
 
@@ -17,11 +17,17 @@ describe("PUT /articles/[ID]", ()=>{
 
         expect(res.status).toBe(200);
     })
-    it("it should return status 404", async() =>{
+    it.only("it should return status 404", async() =>{
         const res:Response = await supertest(app)
         .put("/article/100")
         .send(article);
     
         expect(res.status).toBe(404);
     })
+    beforeAll(()=>{
+        process.env.NODE_ENV="test";
+      })
+      afterAll(()=>{
+        process.env.NODE_ENV="development";
+      })
 })

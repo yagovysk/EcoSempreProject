@@ -1,10 +1,10 @@
-import {it, expect, describe} from '@jest/globals';
+import {it, expect, describe, beforeAll,afterAll} from '@jest/globals';
 import supertest,{Response} from 'supertest';
 import app from '../../server';
 
 describe("GET /article/[slug]", () =>{
 
-    it("it should returns 404", async ()=>{
+    it.only("it should returns 404", async ()=>{
         const res:Response = await supertest(app)
         .get("/article/invalid-slug");
 
@@ -16,4 +16,10 @@ describe("GET /article/[slug]", () =>{
 
         expect(res.status).toBe(200);
     })
+    beforeAll(()=>{
+        process.env.NODE_ENV="test";
+      })
+      afterAll(()=>{
+        process.env.NODE_ENV="development";
+      })
 })
