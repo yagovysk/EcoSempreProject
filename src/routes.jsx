@@ -5,6 +5,7 @@ import { AboutUs } from "./pages/AboutUs";
 import { MaterialList } from "./pages/MaterialList";
 import { Blog } from "./pages/Blog";
 import { Contact } from "./pages/Contact";
+import { PontosDeColeta } from "./pages/PontosDeColeta";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: "/material_list",
         element: <MaterialList />,
+      },
+      {
+        path: "/coletas",
+        element: <PontosDeColeta />,
       },
       {
         path: "/blog",
