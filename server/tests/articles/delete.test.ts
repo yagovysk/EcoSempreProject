@@ -1,9 +1,12 @@
-import {it, describe, test, expect} from '@jest/globals';
+import {it, describe, afterAll, beforeAll, expect} from '@jest/globals';
 import supertest, {Response} from "supertest";
 import app from '../../server';
 
+
 describe("DELETE /article/id", () =>{
-    
+    beforeAll(()=>{
+      process.env.NODE_ENV="test";
+    })
     const id:number = 3;
     it("it should returns 404", async () =>{
         const res: Response = await supertest(app)
@@ -15,5 +18,9 @@ describe("DELETE /article/id", () =>{
         const res: Response = await supertest(app)
         .delete(`/article/${id}`);
         expect(res.status).toBe(404);
+    })
+  
+    afterAll(()=>{
+      process.env.NODE_ENV="development";
     })
 })
