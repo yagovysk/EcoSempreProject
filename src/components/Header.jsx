@@ -27,7 +27,7 @@ export function Header() {
           <a href="">Pontos de coleta</a>
         </li>
         <li>
-          <NavLink to="/Blog">Blog</NavLink>
+          <NavLink to="/blog">Blog</NavLink>
         </li>
       </ul>
 

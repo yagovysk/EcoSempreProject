@@ -1,6 +1,7 @@
 import { CardBlog } from "../CardBlog";
 import styles from "../Home/Blog.module.css";
 import florest from "../../assets/florestImg.jpg";
+import { Link } from "react-router-dom";
 
 export function Blog() {
   return (
@@ -42,9 +43,9 @@ export function Blog() {
         />
       </div>
 
-      <a href="" className={styles.link_more}>
+      <Link to="/blog" className={styles.link_more}>
         Veja Mais Notícias!
-      </a>
+      </Link>
     </div>
   );
 }
