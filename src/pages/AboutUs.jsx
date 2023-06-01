@@ -6,6 +6,7 @@ import { useIncreaseNumber } from "../helpers";
 import { ContactCard } from "../components/ContactCard";
 import { ParceirosCard } from "../components/ParceirosCard";
 import { HeaderSection } from "../components/HeaderSection";
+import { Map } from "../components/Map";
 
 export function AboutUs() {
   const linksMenu = [
@@ -121,6 +122,9 @@ function Information() {
 function Contact() {
   return (
     <div className={styles.contact_content}>
+      <div className={styles.wrapper_map}>
+        <Map />
+      </div>
       <div className={`${styles.card_wrapper} container`}>
         <div className={styles.card_style}>
           <ContactCard />
