@@ -12,9 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const globals_1 = require("@jest/globals");
 const supertest_1 = __importDefault(require("supertest"));
 const server_1 = __importDefault(require("../../server"));
-const globals_1 = require("@jest/globals");
 const admin = {
     nickname: "ecoSempre",
     email: "sac@ecosempre.com",
@@ -33,4 +33,10 @@ const admin = {
             .send(admin);
         (0, globals_1.expect)(res.status).toBe(400);
     }));
+    (0, globals_1.beforeAll)(() => {
+        process.env.NODE_ENV = "test";
+    });
+    (0, globals_1.afterAll)(() => {
+        process.env.NODE_ENV = "development";
+    });
 });

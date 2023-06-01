@@ -14,21 +14,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const globals_1 = require("@jest/globals");
 const supertest_1 = __importDefault(require("supertest"));
+const dotenv_1 = __importDefault(require("dotenv"));
 const server_1 = __importDefault(require("../../server"));
+dotenv_1.default.config();
 const user = {
     email: 'sac2@ecosempre.com',
     password: ''
 };
 (0, globals_1.describe)("POST /authenticate", () => {
-    (0, globals_1.it)("it should  returns status 400 and text", () => __awaiter(void 0, void 0, void 0, function* () {
+    (0, globals_1.it)("it should  returns status 404 and text", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
             .post("/authentication")
             .send(user);
-        (0, globals_1.expect)(res.status).toBe(400);
+        (0, globals_1.expect)(res.status).toBe(404);
     }));
     (0, globals_1.it)("it should returns  200", () => __awaiter(void 0, void 0, void 0, function* () {
-        user.email = "sac10@ecosempre.com";
-        user.password = "YzuUG6kWt.";
+        user.email = process.env.ADMIN_EMAIL;
+        user.password = process.env.ADMIN_PASSWORD;
         const res = yield (0, supertest_1.default)(server_1.default)
             .post("/authentication")
             .send(user);

@@ -1,0 +1,30 @@
+.wrapper_pagination {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn_pagination {
+  display: grid;
+  place-items: center;
+  width: 3.125rem;
+  height: 3.125rem;
+  background-color: transparent;
+  border: 0.125rem solid #919aa2;
+  border-radius: 0.25rem;
+  color: #0e2b5c;
+  transition: 0.3s;
+  font: 700 1.5rem "Roboto", sans-serif;
+  line-height: 1.7rem;
+}
+
+.btn_pagination.active,
+.btn_pagination:hover {
+  border: 0.125rem solid #00c756;
+  background-color: #00c756;
+  color: white;
+}
+
+.btn_arrow {
+  margin-left: 0.5rem;
+}

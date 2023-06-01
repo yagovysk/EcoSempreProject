@@ -16,6 +16,9 @@ const globals_1 = require("@jest/globals");
 const supertest_1 = __importDefault(require("supertest"));
 const server_1 = __importDefault(require("../../server"));
 (0, globals_1.describe)("DELETE /article/id", () => {
+    (0, globals_1.beforeAll)(() => {
+        process.env.NODE_ENV = "test";
+    });
     const id = 3;
     (0, globals_1.it)("it should returns 404", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
@@ -27,4 +30,7 @@ const server_1 = __importDefault(require("../../server"));
             .delete(`/article/${id}`);
         (0, globals_1.expect)(res.status).toBe(404);
     }));
+    (0, globals_1.afterAll)(() => {
+        process.env.NODE_ENV = "development";
+    });
 });

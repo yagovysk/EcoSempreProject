@@ -1,3 +1,16 @@
 .header {
-    background: url("../assets/Blogfundo.png") no-repeat bottom center / cover;
+  background: url("../assets/Blogfundo.png") no-repeat bottom center / cover;
+}
+
+.posts_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20.125rem, 1fr));
+  gap: 3rem 3.5rem;
+  padding-bottom: 3rem;
+}
+
+.pagination_container {
+  width: max-content;
+  margin: 0 auto;
+  margin-bottom: 6.875rem;
 }
