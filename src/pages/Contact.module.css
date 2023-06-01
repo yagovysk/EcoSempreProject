@@ -6,12 +6,6 @@
   height: 31.25rem;
 }
 
-.map {
-  border: 0;
-  width: 100%;
-  height: 100%;
-}
-
 .wrapper_content {
   display: flex;
   gap: 5.25rem;
@@ -31,4 +25,5 @@
 .wrapper_form input,
 .wrapper_form textarea {
   padding: 1.4rem;
+  width: 100%;
 }

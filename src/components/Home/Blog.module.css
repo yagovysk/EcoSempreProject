@@ -1,30 +1,35 @@
 .idBlog {
-    display: flex;
-    background: #FFFFFF;
-    justify-content: center;
-    padding-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 77rem;
 }
-.idBlog article {
-    display: grid;
-    justify-items: center;
-    height: 30%;
+
+.texts {
+  text-align: center;
+  margin-top: 5rem;
+  margin-bottom: 3.75rem;
 }
-.idBlog article h1 {
-    color: #00C756;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 1.5rem;
-    text-align: center;
-    width: 20%;
+
+.grid_cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(23.125rem, 1fr));
+  gap: 1.5rem;
+  width: 100%;
 }
-.idBlog article h2 {
-    font-family: 'IBM Plex Sans';
-    font-style: normal;
-    font-weight: 700;
-    color: #0E2B5C;
-    text-align: center;
-    width: 70%;
-    font-size: 2rem;
+
+.link_more {
+  color: #0e2b5c;
+  font: 700 1rem "Roboto", sans-serif;
+  line-height: 0.9rem;
+  border-bottom: 2px solid #00c756;
+  padding-bottom: 0.25rem;
+  margin-top: 3rem;
+  transition: 0.2s;
+}
+
+.link_more:hover {
+  color: #00c756;
+  border-bottom: 2px solid transparent;
 }
