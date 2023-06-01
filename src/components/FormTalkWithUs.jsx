@@ -45,9 +45,7 @@ export function FormTalkWithUs() {
               aria-label="Seu nome"
             />
             {errors.name && (
-              <span className={styles.error_message}>
-                {errors.name.message}
-              </span>
+              <span className={`error_message`}>{errors.name.message}</span>
             )}
           </div>
 
@@ -60,9 +58,7 @@ export function FormTalkWithUs() {
               aria-label="Seu email"
             />
             {errors.email && (
-              <span className={styles.error_message}>
-                {errors.email.message}
-              </span>
+              <span className={`error_message`}>{errors.email.message}</span>
             )}
           </div>
 
@@ -75,9 +71,7 @@ export function FormTalkWithUs() {
               aria-label="Seu telefone"
             />
             {errors.phone && (
-              <span className={styles.error_message}>
-                {errors.phone.message}
-              </span>
+              <span className={`error_message`}>{errors.phone.message}</span>
             )}
           </div>
 
@@ -90,9 +84,7 @@ export function FormTalkWithUs() {
               aria-label="Assunto do email"
             />
             {errors.subject && (
-              <span className={styles.error_message}>
-                {errors.subject.message}
-              </span>
+              <span className={`error_message`}>{errors.subject.message}</span>
             )}
           </div>
 
@@ -108,9 +100,7 @@ export function FormTalkWithUs() {
               placeholder="Mensagem"
             ></textarea>
             {errors.message && (
-              <span className={styles.error_message}>
-                {errors.message.message}
-              </span>
+              <span className={`error_message`}>{errors.message.message}</span>
             )}
           </div>
         </div>

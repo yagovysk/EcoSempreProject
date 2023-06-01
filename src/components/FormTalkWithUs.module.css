@@ -33,13 +33,6 @@
   gap: 2rem;
 }
 
-.error_message {
-  color: red;
-  font: 400 0.75rem "Roboto", sans-serif;
-  line-height: 2rem;
-  margin-left: 0.2rem;
-}
-
 .form_inputs input,
 .form_inputs textarea {
   font: 400 1rem "Roboto", sans-serif;
