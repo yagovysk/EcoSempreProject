@@ -11,6 +11,7 @@
   height: 15.25rem;
   overflow: hidden;
   margin-right: 2rem;
+  border-bottom-right-radius: 0.6rem;
 }
 
 .img_wrapper img {
