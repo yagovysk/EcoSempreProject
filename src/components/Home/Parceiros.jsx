@@ -3,7 +3,7 @@ import { ParceirosCard } from "../ParceirosCard";
 
 export function Parceiros() {
   return (
-    <article className={styles.idParceiros}>
+    <article id="parceiros" className={styles.idParceiros}>
       <section className={`container ${styles.content}`}>
         <div className={styles.texts}>
           <span className={`small-text`}>Nossos Parceiros</span>

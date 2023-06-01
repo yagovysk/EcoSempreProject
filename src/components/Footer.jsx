@@ -1,6 +1,7 @@
 import styles from "./Footer.module.css";
 import ecoLogo from "../assets/ecoIcon.svg";
 import { Icon } from "@iconify/react";
+import { Link } from "react-router-dom";
 
 export function Footer() {
   return (
@@ -55,19 +56,19 @@ export function Footer() {
               <h4 className={styles.subtitle}>Empresa</h4>
               <ul className={styles.list_links_company}>
                 <li>
-                  <a href="#quem_somos">Quem Somos</a>
+                  <Link to="/home">Quem Somos</Link>
                 </li>
                 <li>
-                  <a href="#coletas">Pontos de Coleta</a>
+                  <Link to="/coletas">Pontos de Coleta</Link>
                 </li>
                 <li>
-                  <a href="#blog">Nosso Blog</a>
+                  <Link to="/blog">Nosso Blog</Link>
                 </li>
                 <li>
-                  <a href="#fale_conosco">Fale Conosco</a>
+                  <Link to="/contact">Fale Conosco</Link>
                 </li>
                 <li>
-                  <a href="#parceiros">Parceiros</a>
+                  <a href="/#parceiros">Parceiros</a>
                 </li>
               </ul>
             </section>
