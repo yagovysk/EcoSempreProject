@@ -25,10 +25,16 @@ const article = {
             .send(article);
         (0, globals_1.expect)(res.status).toBe(200);
     }));
-    (0, globals_1.it)("it should return status 404", () => __awaiter(void 0, void 0, void 0, function* () {
+    globals_1.it.only("it should return status 404", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
             .put("/article/100")
             .send(article);
         (0, globals_1.expect)(res.status).toBe(404);
     }));
+    (0, globals_1.beforeAll)(() => {
+        process.env.NODE_ENV = "test";
+    });
+    (0, globals_1.afterAll)(() => {
+        process.env.NODE_ENV = "development";
+    });
 });
