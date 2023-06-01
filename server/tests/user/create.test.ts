@@ -1,8 +1,8 @@
 
+import {describe, expect, it, afterAll, beforeAll}  from '@jest/globals';
 import supertest, {Response} from 'supertest';
 
 import app from '../../server';
-import {describe, test, expect, it}  from '@jest/globals';
 
 const admin = {
     nickname: "ecoSempre",
@@ -24,4 +24,10 @@ describe("POST /user", ()=>{
         .send(admin);   
         expect(res.status).toBe(400);
     })
+    beforeAll(()=>{
+        process.env.NODE_ENV="test";
+      })
+      afterAll(()=>{
+        process.env.NODE_ENV="development";
+      })
 })
