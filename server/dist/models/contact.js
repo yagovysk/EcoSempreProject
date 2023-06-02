@@ -13,16 +13,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const connection_1 = __importDefault(require("../database/connection"));
+const static_1 = __importDefault(require("../static"));
 class Contact {
     constructor() {
+        this.currentDate = new static_1.default().getCurrentDate();
+        this.findAll = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const contacts = yield (0, connection_1.default)("contacts").select("*");
+                yield connection_1.default.destroy();
+                res.status(200).send(contacts);
+            }
+            catch (error) {
+                res.sendStatus(400);
+            }
+        });
         this.registerContact = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const newContact = req.body;
-                const contactId = yield (0, connection_1.default)("contacts").insert(newContact);
+                const fullContact = Object.assign(Object.assign({}, newContact), { createdAt: this.currentDate });
+                const contactId = yield (0, connection_1.default)("contacts").insert(fullContact);
+                yield connection_1.default.destroy();
                 res.status(201).send(contactId);
             }
             catch (error) {
-                console.log("[CONTACT] - ERROR:", error.statusCode);
                 res.sendStatus(400);
             }
         });

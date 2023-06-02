@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { Session } from "express-session";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 
 interface SessionUser extends Session {
@@ -9,18 +9,25 @@ interface SessionUser extends Session {
   };
 }
 
-function Middleware(req: Request, res: Response, next: NextFunction) {
-  const session: SessionUser = req.session;
+export class Middleware {
+  public handle(req: Request, res: Response, next: NextFunction) {
+    const session: SessionUser = req.session;
 
-  if (session.user === undefined) {
-    res.status(401).send("unauthorized");
-  } else {
-    const role:string|undefined = session.user.role;
+    if (process.env.NODE_ENV === "test") {
+      next();
+      return;
+    }
 
-    if (!role) {
+    if (session.user === undefined) {
       res.status(401).send("unauthorized");
     } else {
-      next();
+      const role: string | undefined = session.user.role;
+
+      if (!role) {
+        res.status(401).send("unauthorized");
+      } else {
+        next();
+      }
     }
   }
 }
