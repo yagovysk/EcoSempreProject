@@ -12,7 +12,6 @@ const queryCollectFormSchema = z.object({
   // category: z.array(z.string()),
 });
 
-const categories = ["Lorem", "Lorem ipsum", "Lorem", "Lorem ipsum"];
 const pontosColeta = [
   {
     id: 1,
@@ -170,7 +169,7 @@ function QueryCollectForm({ setPontosColeta }) {
     // Chamada na API
     // Coloco os dados recebidos num estado
     setPontosColeta(pontosColeta);
-    console.log(data);
+    window.scrollBy(0, window.innerHeight);
   }
 
   return (
@@ -178,7 +177,7 @@ function QueryCollectForm({ setPontosColeta }) {
       <form
         onSubmit={handleSubmit(queryPontosColeta)}
         className={styles.form}
-        action=""
+        method="post"
       >
         <div className={`${errors.address && styles.error_input}`}>
           <input
