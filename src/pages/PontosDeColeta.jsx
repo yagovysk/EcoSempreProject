@@ -5,11 +5,88 @@ import styles from "./PontosDeColeta.module.css";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 
 const queryCollectFormSchema = z.object({
   address: z.string().nonempty("Digite um endereço"),
-  category: z.array(z.string()),
+  // category: z.array(z.string()),
 });
+
+const categories = ["Lorem", "Lorem ipsum", "Lorem", "Lorem ipsum"];
+const pontosColeta = [
+  {
+    id: 1,
+    title: "Ministério do Meio Ambiente",
+    address:
+      "Esplanada dos Ministérios Bloco B, Bloco B, 9. Zona Cívica Administrativa. Área Central de Brasília",
+    cep: "70068-900",
+    state: "Brasília - DF",
+  },
+  {
+    id: 2,
+    title: "Ministério do Meio Ambiente",
+    address:
+      "Esplanada dos Ministérios Bloco B, Bloco B, 9. Zona Cívica Administrativa. Área Central de Brasília",
+    cep: "70068-900",
+    state: "Brasília - DF",
+  },
+  {
+    id: 3,
+    title: "Ministério do Meio Ambiente",
+    address:
+      "Esplanada dos Ministérios Bloco B, Bloco B, 9. Zona Cívica Administrativa. Área Central de Brasília",
+    cep: "70068-900",
+    state: "Brasília - DF",
+  },
+  {
+    id: 4,
+    title: "Ministério do Meio Ambiente",
+    address:
+      "Esplanada dos Ministérios Bloco B, Bloco B, 9. Zona Cívica Administrativa. Área Central de Brasília",
+    cep: "70068-900",
+    state: "Brasília - DF",
+  },
+  {
+    id: 5,
+    title: "Ministério do Meio Ambiente",
+    address:
+      "Esplanada dos Ministérios Bloco B, Bloco B, 9. Zona Cívica Administrativa. Área Central de Brasília",
+    cep: "70068-900",
+    state: "Brasília - DF",
+  },
+  {
+    id: 6,
+    title: "Ministério do Meio Ambiente",
+    address:
+      "Esplanada dos Ministérios Bloco B, Bloco B, 9. Zona Cívica Administrativa. Área Central de Brasília",
+    cep: "70068-900",
+    state: "Brasília - DF",
+  },
+  {
+    id: 7,
+    title: "Ministério do Meio Ambiente",
+    address:
+      "Esplanada dos Ministérios Bloco B, Bloco B, 9. Zona Cívica Administrativa. Área Central de Brasília",
+    cep: "70068-900",
+    state: "Brasília - DF",
+  },
+  {
+    id: 8,
+    title: "Ministério do Meio Ambiente",
+    address:
+      "Esplanada dos Ministérios Bloco B, Bloco B, 9. Zona Cívica Administrativa. Área Central de Brasília",
+    cep: "70068-900",
+    state: "Brasília - DF",
+  },
+  {
+    id: 9,
+    title: "Ministério do Meio Ambiente",
+    address:
+      "Esplanada dos Ministérios Bloco B, Bloco B, 9. Zona Cívica Administrativa. Área Central de Brasília",
+    cep: "70068-900",
+    state: "Brasília - DF",
+  },
+];
 
 const linksMenu = [
   {
@@ -22,6 +99,8 @@ const linksMenu = [
 ];
 
 export function PontosDeColeta() {
+  const [pontosColeta, setPontosColeta] = useState("");
+
   return (
     <main className={styles.main_content}>
       <HeaderSection
@@ -46,18 +125,39 @@ export function PontosDeColeta() {
             </section>
           </div>
 
-          <QueryCollectForm />
+          <QueryCollectForm setPontosColeta={setPontosColeta} />
         </article>
 
-        <div className={styles.map_wrapper}>
-          <Map />
+        <div className={styles.map_content_wrapper}>
+          <div className={styles.map_wrapper}>
+            <Map />
+          </div>
+
+          {pontosColeta && (
+            <article className={styles.pontos_coleta_wrapper}>
+              <h3 className={styles.title_pontos_coleta}>
+                Pontos de Coleta Mais Próximos:
+              </h3>
+              <div className={styles.data_pontos_coleta}>
+                {pontosColeta.map((ponto) => (
+                  <address key={ponto.id} className={styles.ponto_coleta}>
+                    <h4 className={styles.title_ponto_coleta}>{ponto.title}</h4>
+                    <p className={styles.address}>
+                      {ponto.address}. {ponto.complement && ponto.complement}
+                      CEP: {ponto.cep}. {ponto.state}.
+                    </p>
+                  </address>
+                ))}
+              </div>
+            </article>
+          )}
         </div>
       </div>
     </main>
   );
 }
 
-function QueryCollectForm() {
+function QueryCollectForm({ setPontosColeta }) {
   const {
     register,
     handleSubmit,
@@ -67,6 +167,9 @@ function QueryCollectForm() {
   });
 
   function queryPontosColeta(data) {
+    // Chamada na API
+    // Coloco os dados recebidos num estado
+    setPontosColeta(pontosColeta);
     console.log(data);
   }
 
@@ -89,12 +192,7 @@ function QueryCollectForm() {
           )}
         </div>
 
-        <div className={`${styles.select_input} ${styles.input}`}>
-          <span className={styles.title_select_input}>
-            Selecione uma categoria
-          </span>
-          <Icon icon="iconamoon:arrow-down-2-bold" />
-        </div>
+        <SelectInput />
 
         <div className={styles.location_input}>
           <Icon icon="icon-park-solid:local-two" />
@@ -107,6 +205,15 @@ function QueryCollectForm() {
           Ver Todos os Pontos de Coleta
         </button>
       </form>
+    </div>
+  );
+}
+
+function SelectInput() {
+  return (
+    <div className={`${styles.select_input} ${styles.input}`}>
+      <span className={styles.title_select_input}>Selecione uma categoria</span>
+      <Icon icon="iconamoon:arrow-down-2-bold" />
     </div>
   );
 }
