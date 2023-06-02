@@ -29,7 +29,7 @@ const server_1 = __importDefault(require("../../server"));
     }));
     (0, globals_1.it)("it should returns a response with max length 2", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
-            .get("/articles?page=1&limit=2");
+            .get("/articles?limit=2&page=1");
         (0, globals_1.expect)(res.body.length).toBe(2);
     }));
 });
