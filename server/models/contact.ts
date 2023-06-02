@@ -39,12 +39,16 @@ class Contact{
                 const offset:number = (Number(page)-1)*Number(limit);
                 const contacts:string[] = await Connection("contacts").select("*").limit(Number(limit)).offset(offset);
 
+                console.log(limit, page)
 
                 if(contacts[0] === undefined)
                 {
+                    await Connection.destroy();
                     res.status(404).send("doesn't exists contacts");
+
                 }
                 else{
+                    await Connection.destroy();
                     res.status(200).send(contacts)
                 }
             }

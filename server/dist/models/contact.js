@@ -30,10 +30,13 @@ class Contact {
                 if (pagination) {
                     const offset = (Number(page) - 1) * Number(limit);
                     const contacts = yield (0, connection_1.default)("contacts").select("*").limit(Number(limit)).offset(offset);
+                    console.log(limit, page);
                     if (contacts[0] === undefined) {
+                        yield connection_1.default.destroy();
                         res.status(404).send("doesn't exists contacts");
                     }
                     else {
+                        yield connection_1.default.destroy();
                         res.status(200).send(contacts);
                     }
                 }
