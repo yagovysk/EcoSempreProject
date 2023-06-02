@@ -23,6 +23,11 @@ Routes.post("/user", middleware.handle, async (req: Request, res: Response) => {
 })
 
 // contact
+Routes.get("/contacts", async (req: Request, res: Response) => {
+    const contact: Contact = new Contact();
+
+    contact.findAll(req, res);
+})
 
 Routes.post("/contact", async (req: Request, res: Response) => {
     const contact: Contact = new Contact();

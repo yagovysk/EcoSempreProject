@@ -28,6 +28,10 @@ Routes.post("/user", middleware.handle, (req, res) => __awaiter(void 0, void 0, 
     user.createUser(req, res);
 }));
 // contact
+Routes.get("/contacts", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const contact = new contact_1.default();
+    contact.findAll(req, res);
+}));
 Routes.post("/contact", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const contact = new contact_1.default();
     contact.registerContact(req, res);

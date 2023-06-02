@@ -20,7 +20,20 @@ export interface IContact{
 class Contact{
     constructor(){}
     private currentDate:string = new Static().getCurrentDate();
-    registerContact = async (req:Request, res:Response) =>{
+
+    public findAll = async (req:Request, res:Response) =>{
+        try{    
+            const contacts:string[] = await Connection("contacts").select("*");
+            await Connection.destroy();
+
+            res.status(200).send(contacts);       
+        }
+        catch(error:any){
+            res.sendStatus(400);
+        }
+    }
+    
+    public registerContact = async (req:Request, res:Response) =>{
         try{
             const newContact:IContact = req.body;
             const fullContact:IContact = {
@@ -30,11 +43,10 @@ class Contact{
             const contactId = await Connection("contacts").insert(fullContact);
 
             await Connection.destroy();
-            
+
             res.status(201).send(contactId);
         }
         catch(error:any){
-            console.log("[CONTACT] - ERROR:", error.statusCode)
             res.sendStatus(400);
         }
     }
