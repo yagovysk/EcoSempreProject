@@ -18,11 +18,12 @@ const article_1 = __importDefault(require("../models/article"));
 const contact_1 = __importDefault(require("../models/contact"));
 const middleware_1 = __importDefault(require("../auth/middleware"));
 const Routes = express_1.default.Router();
+const middleware = new middleware_1.default();
 Routes.post("/authentication", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = new user_1.default();
     user.login(req, res);
 }));
-Routes.post("/user", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+Routes.post("/user", middleware.handle, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = new user_1.default();
     user.createUser(req, res);
 }));
@@ -32,23 +33,23 @@ Routes.post("/contact", (req, res) => __awaiter(void 0, void 0, void 0, function
     contact.registerContact(req, res);
 }));
 // articles
-Routes.get("/articles", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+Routes.get("/articles", middleware.handle, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const article = new article_1.default();
     article.getArticles(req, res);
 }));
-Routes.post("/article", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+Routes.post("/article", middleware.handle, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const article = new article_1.default();
     article.creatArticle(req, res);
 }));
-Routes.get("/article/:key", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+Routes.get("/article/:key", middleware.handle, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const article = new article_1.default();
     article.getArticleByKey(req, res);
 }));
-Routes.delete("/article/:id", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+Routes.delete("/article/:id", middleware.handle, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const article = new article_1.default();
     article.deleteArticle(req, res);
 }));
-Routes.put("/article/:id", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+Routes.put("/article/:id", middleware.handle, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const article = new article_1.default();
     article.updateArticle(req, res);
 }));
