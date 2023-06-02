@@ -2,6 +2,8 @@ import Connection from "../database/connection";
 import { Request, Response } from "express";
 
 
+import Static from "../static";
+
 
 
 export interface IContact{
@@ -9,19 +11,26 @@ export interface IContact{
     email: string,
     subject: string,
     phone: string,
-    message: string
+    message: string,
+    createdAt?:string
 }
 
 
 
 class Contact{
     constructor(){}
+    private currentDate:string = new Static().getCurrentDate();
     registerContact = async (req:Request, res:Response) =>{
         try{
             const newContact:IContact = req.body;
+            const fullContact:IContact = {
+                ...newContact,
+                createdAt: this.currentDate
+            }
+            const contactId = await Connection("contacts").insert(fullContact);
 
-            const contactId = await Connection("contacts").insert(newContact);
-
+            await Connection.destroy();
+            
             res.status(201).send(contactId);
         }
         catch(error:any){
