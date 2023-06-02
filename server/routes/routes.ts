@@ -23,7 +23,7 @@ Routes.post("/user", middleware.handle, async (req: Request, res: Response) => {
 })
 
 // contact
-Routes.get("/contacts", async (req: Request, res: Response) => {
+Routes.get("/contacts", middleware.handle, async (req: Request, res: Response) => {
     const contact: Contact = new Contact();
 
     contact.findAll(req, res);
