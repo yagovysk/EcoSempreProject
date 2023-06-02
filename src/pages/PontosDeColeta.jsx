@@ -169,7 +169,7 @@ function QueryCollectForm({ setPontosColeta }) {
     // Chamada na API
     // Coloco os dados recebidos num estado
     setPontosColeta(pontosColeta);
-    window.scrollBy(0, window.innerHeight);
+    window.scrollBy(0, document.body.offsetHeight);
   }
 
   return (
