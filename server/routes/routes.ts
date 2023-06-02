@@ -8,6 +8,8 @@ const Routes: Router = express.Router();
 
 
 
+const middleware:Middleware = new Middleware();
+
 Routes.post("/authentication", async (req: Request, res: Response) => {
 
     const user: User = new User();
@@ -15,7 +17,7 @@ Routes.post("/authentication", async (req: Request, res: Response) => {
     user.login(req, res);
 
 })
-Routes.post("/user", Middleware, async (req: Request, res: Response) => {
+Routes.post("/user", middleware.handle, async (req: Request, res: Response) => {
     const user: User = new User();
     user.createUser(req, res);
 })
@@ -29,25 +31,25 @@ Routes.post("/contact", async (req: Request, res: Response) => {
 })
 
 // articles
-Routes.get("/articles", Middleware, async (req: Request, res: Response) => {
+Routes.get("/articles", middleware.handle, async (req: Request, res: Response) => {
     const article: Article = new Article();
     article.getArticles(req, res);
 })
-Routes.post("/article", Middleware, async (req: Request, res: Response) => {
+Routes.post("/article", middleware.handle, async (req: Request, res: Response) => {
     const article: Article = new Article();
     article.creatArticle(req, res);
 
 })
 
-Routes.get("/article/:key", Middleware, async (req: Request, res: Response) => {
+Routes.get("/article/:key", middleware.handle, async (req: Request, res: Response) => {
     const article: Article = new Article();
     article.getArticleByKey(req, res);
 })
-Routes.delete("/article/:id", Middleware, async (req: Request, res: Response) => {
+Routes.delete("/article/:id", middleware.handle, async (req: Request, res: Response) => {
     const article: Article = new Article();
     article.deleteArticle(req, res);
 })
-Routes.put("/article/:id", Middleware, async (req: Request, res: Response) => {
+Routes.put("/article/:id", middleware.handle, async (req: Request, res: Response) => {
     const article: Article = new Article();
     article.updateArticle(req, res);
 })
