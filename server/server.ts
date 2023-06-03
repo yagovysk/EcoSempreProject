@@ -1,8 +1,10 @@
 import express, {Application} from 'express';
+import cors from 'cors';
+
 import userRoutes from './routes/user';
 import articleRoutes from './routes/article';
 import contactRoutes from './routes/contact';
-import cors from 'cors';
+import notFoundRoute from './routes/notFound';
 import Session from './auth/session';
 import createAdminUser from './createAdminUserScript';
 
@@ -18,7 +20,7 @@ app.use(express.json());
 app.use("/", userRoutes);
 app.use("/", articleRoutes);
 app.use("/", contactRoutes);
-
+app.use("/", notFoundRoute);
 
 
 export default app;
