@@ -19,7 +19,7 @@ const contactRoutes = express_1.default.Router();
 const middleware = new middleware_1.default();
 contactRoutes.get("/contacts", middleware.handle, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const contact = new contact_1.default();
-    contact.findAll(req, res);
+    contact.getAll(req, res);
 }));
 contactRoutes.post("/contact", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const contact = new contact_1.default();
