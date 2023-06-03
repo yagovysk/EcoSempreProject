@@ -30,7 +30,7 @@ Routes.post("/user", middleware.handle, (req, res) => __awaiter(void 0, void 0, 
 // contact
 Routes.get("/contacts", middleware.handle, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const contact = new contact_1.default();
-    contact.findAll(req, res);
+    contact.getAll(req, res);
 }));
 Routes.post("/contact", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const contact = new contact_1.default();
