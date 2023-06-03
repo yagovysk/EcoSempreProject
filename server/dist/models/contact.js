@@ -42,7 +42,6 @@ class Contact {
                 }
                 else {
                     const contacts = yield (0, connection_1.default)("contacts").select("*");
-                    yield connection_1.default.destroy();
                     res.status(200).send(contacts);
                 }
             }
@@ -55,10 +54,10 @@ class Contact {
                 const newContact = req.body;
                 const fullContact = Object.assign(Object.assign({}, newContact), { createdAt: this.currentDate });
                 const contactId = yield (0, connection_1.default)("contacts").insert(fullContact);
-                yield connection_1.default.destroy();
                 res.status(201).send(contactId);
             }
             catch (error) {
+                console.log(error);
                 res.sendStatus(400);
             }
         });
