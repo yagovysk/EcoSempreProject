@@ -1,5 +1,7 @@
 import express, {Application} from 'express';
-import Routes from './routes/routes';
+import userRoutes from './routes/user';
+import articleRoutes from './routes/article';
+import contactRoutes from './routes/contact';
 import cors from 'cors';
 import Session from './auth/session';
 import createAdminUser from './createAdminUserScript';
@@ -13,7 +15,9 @@ app.use(Session)
 app.use(cors());
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-app.use("/", Routes);
+app.use("/", userRoutes);
+app.use("/", articleRoutes);
+app.use("/", contactRoutes);
 
 
 
