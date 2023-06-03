@@ -23,7 +23,7 @@ class Contact {
             }
             return true;
         };
-        this.findAll = (req, res) => __awaiter(this, void 0, void 0, function* () {
+        this.getAll = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const { limit, page } = req.query;
                 const pagination = this.verifyPagination(limit, page);
