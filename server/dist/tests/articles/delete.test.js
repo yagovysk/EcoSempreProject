@@ -27,7 +27,7 @@ const server_1 = __importDefault(require("../../server"));
     }));
     globals_1.it.only("it should returns 404", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
-            .delete(`/article/${id}`);
+            .delete(`/article/99999`);
         (0, globals_1.expect)(res.status).toBe(404);
     }));
     (0, globals_1.afterAll)(() => {
