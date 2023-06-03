@@ -27,7 +27,7 @@ class Contact{
         }
         return true;
     }
-    public findAll = async (req:Request, res:Response) =>{
+    public getAll = async (req:Request, res:Response) =>{
         try{   
             const {limit, page}:{limit?:string, page?:string} = req.query;
 

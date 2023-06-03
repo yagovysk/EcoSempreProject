@@ -26,7 +26,7 @@ Routes.post("/user", middleware.handle, async (req: Request, res: Response) => {
 Routes.get("/contacts", middleware.handle, async (req: Request, res: Response) => {
     const contact: Contact = new Contact();
 
-    contact.findAll(req, res);
+    contact.getAll(req, res);
 })
 
 Routes.post("/contact", async (req: Request, res: Response) => {
