@@ -4,6 +4,10 @@ import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 
 export function Footer() {
+  function scrollToTop() {
+    window.scrollBy(0, document.body.offsetHeight * -1);
+  }
+
   return (
     <footer className={styles.wrapper}>
       <div className={styles.wrapper_main_content}>
@@ -17,7 +21,11 @@ export function Footer() {
                 ações que beneficiam o meio ambiente e a sociedade.
               </p>
 
-              <a href="#" className={styles.talk_with_us}>
+              <Link
+                onClick={scrollToTop}
+                to="/contact"
+                className={styles.talk_with_us}
+              >
                 <Icon
                   icon="material-symbols:arrow-circle-right-rounded"
                   className={styles.arrow_circle_icon}
@@ -26,7 +34,7 @@ export function Footer() {
                 <span className={styles.text_talk_with_us}>
                   <strong>Fale Conosco</strong>
                 </span>
-              </a>
+              </Link>
             </section>
 
             <section className={styles.contact}>
@@ -56,19 +64,29 @@ export function Footer() {
               <h4 className={styles.subtitle}>Empresa</h4>
               <ul className={styles.list_links_company}>
                 <li>
-                  <Link to="/home">Quem Somos</Link>
+                  <Link onClick={scrollToTop} to="/about_us">
+                    Quem Somos
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/coletas">Pontos de Coleta</Link>
+                  <Link onClick={scrollToTop} to="/coletas">
+                    Pontos de Coleta
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/blog">Nosso Blog</Link>
+                  <Link onClick={scrollToTop} to="/blog">
+                    Nosso Blog
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/contact">Fale Conosco</Link>
+                  <Link onClick={scrollToTop} to="/contact">
+                    Fale Conosco
+                  </Link>
                 </li>
                 <li>
-                  <a href="/#parceiros">Parceiros</a>
+                  <Link onClick={scrollToTop} to="/#parceiros">
+                    Parceiros
+                  </Link>
                 </li>
               </ul>
             </section>
