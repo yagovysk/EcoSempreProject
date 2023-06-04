@@ -55,7 +55,7 @@ class Contact{
             else{
                 
                 const contacts:string[] = await Connection("contacts").select("*");
-                await Connection.destroy();
+               
     
                 res.status(200).send(contacts);       
             }
@@ -74,13 +74,13 @@ class Contact{
             }
             const contactId = await Connection("contacts").insert(fullContact);
 
-            await Connection.destroy();
-
             res.status(201).send(contactId);
         }
         catch(error:any){
+            console.log(error)
             res.sendStatus(400);
         }
+     
     }
 }
 
