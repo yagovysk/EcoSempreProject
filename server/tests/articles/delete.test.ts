@@ -16,7 +16,7 @@ describe("DELETE /article/id", () =>{
     it.only("it should returns 404", async () =>{
    
         const res: Response = await supertest(app)
-        .delete(`/article/${id}`);
+        .delete(`/article/99999`);
         expect(res.status).toBe(404);
     })
   
