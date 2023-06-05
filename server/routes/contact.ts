@@ -1,4 +1,4 @@
-import express, { Router, Request, Response, NextFunction } from 'express';
+import express, { Router, Request, Response } from 'express';
 import Contact from '../models/contact';
 import Middleware from '../auth/middleware';
 const contactRoutes: Router = express.Router();
@@ -13,7 +13,11 @@ contactRoutes.get("/contacts", middleware.handle, async (req: Request, res: Resp
 
     contact.getAll(req, res);
 })
+contactRoutes.get("/contact/:id", middleware.handle, async(req:Request, res:Response)=>{
+    const contact:Contact = new Contact();
 
+    contact.getContactById(req, res);
+})
 contactRoutes.post("/contact", async (req: Request, res: Response) => {
     const contact: Contact = new Contact();
 
