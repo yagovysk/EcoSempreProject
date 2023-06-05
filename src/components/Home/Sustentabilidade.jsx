@@ -1,4 +1,5 @@
 import styles from "./Sustentabilidade.module.css";
+import { Link, NavLink } from "react-router-dom";
 import sustentabilidadeImg from "../../assets/sustentabilidadeImg.png";
 
 export function Sustentabilidade() {
@@ -19,9 +20,9 @@ export function Sustentabilidade() {
             para um mundo mais limpo e saudável.
           </p>
           <button className={`btn ${styles.saibamais}`} type="button">
-            <a className="btn-link" href="#">
+            <Link className="btn-link" to="#">
               Saiba Mais
-            </a>
+            </Link>
             <span>🡢</span>
           </button>
         </section>

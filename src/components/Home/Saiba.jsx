@@ -1,5 +1,7 @@
 import styles from "./Saiba.module.css";
 import { Icon } from "@iconify/react";
+import { Link, NavLink } from "react-router-dom";
+
 
 export function Saiba() {
   return (
@@ -19,9 +21,9 @@ export function Saiba() {
             desde smartphones antigos, até pilhas, baterias e eletrodomésticos.
           </p>
           <button className={`btn ${styles.saibabutton}`}>
-            <a className={`btn-link`} href="#">
-              Ver Lista Completa
-            </a>
+            <Link className={`btn-link`} to="material_list">
+              Explore todos os itens
+            </Link>
             <span>🡢</span>
           </button>
         </section>
