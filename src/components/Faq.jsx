@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
-import { firstListQuestions, secondListQuestions } from "../../data";
+import { firstListQuestions, secondListQuestions } from "../data";
 import { Link } from "react-router-dom";
-import { scrollToTop } from "../../helpers";
+import { scrollToTop } from "../helpers";
 import style from "./Faq.module.css";
 
 export function Faq({ numberPerList, isFAQPage, questionsOverLines }) {
