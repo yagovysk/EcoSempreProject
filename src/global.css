@@ -68,7 +68,7 @@ a {
 }
 
 .error_message {
-  color: red;
+  color: #ef4444;
   font: 400 0.75rem "Roboto", sans-serif;
   line-height: 2rem;
   margin-left: 0.2rem;
