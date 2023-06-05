@@ -2,6 +2,7 @@ import imgInformation1 from "../assets/construction2.jpg";
 import imgInformation2 from "../assets/houses.jpg";
 import styles from "./AboutUs.module.css";
 
+
 import { useIncreaseNumber } from "../helpers";
 import { ContactCard } from "../components/ContactCard";
 import { ParceirosCard } from "../components/ParceirosCard";

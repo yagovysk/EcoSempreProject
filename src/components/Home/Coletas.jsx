@@ -1,6 +1,7 @@
 import coletaimg from "../../assets/Coletasimg.png";
 import styles from "./Coletas.module.css";
 import recycleIcon from "../../assets/recycleIcon.svg";
+import { Link, NavLink } from "react-router-dom";
 
 export function Coletas() {
   return (
@@ -21,7 +22,9 @@ export function Coletas() {
           </p>
 
           <button type="button" className={`btn ${styles.btnColeta}`}>
-            <a href="#">Ver Pontos de Coleta</a>
+            <Link to="coletas">
+              Ver Pontos de Coleta
+            </Link>
             <span>🡢</span>
           </button>
         </section>

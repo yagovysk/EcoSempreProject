@@ -8,7 +8,6 @@ const cors_1 = __importDefault(require("cors"));
 const user_1 = __importDefault(require("./routes/user"));
 const article_1 = __importDefault(require("./routes/article"));
 const contact_1 = __importDefault(require("./routes/contact"));
-const notFound_1 = __importDefault(require("./routes/notFound"));
 const session_1 = __importDefault(require("./auth/session"));
 const createAdminUserScript_1 = __importDefault(require("./createAdminUserScript"));
 // setup admin
@@ -21,5 +20,4 @@ app.use(express_1.default.json());
 app.use("/", user_1.default);
 app.use("/", article_1.default);
 app.use("/", contact_1.default);
-app.use("/", notFound_1.default);
 exports.default = app;
