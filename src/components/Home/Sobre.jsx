@@ -2,6 +2,7 @@ import styles from "./Sobre.module.css";
 import sobreimg from "../../assets/sobreimg.png";
 import plantaicon from "../../assets/plantaicon.svg";
 import { useIncreaseNumber } from "../../helpers";
+import { Link, NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 export function Sobre() {
@@ -79,10 +80,10 @@ export function Sobre() {
           </ul>
 
           <button className={`${styles.btnSobre} btn`}>
-            <a href="#">
+            <Link to="About_us">
               Conheça Nossa História
               <span>🡢</span>
-            </a>
+            </Link>
           </button>
         </section>
       </div>
