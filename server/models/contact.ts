@@ -35,6 +35,27 @@ class Contact {
         return true;
     }
 
+
+    public deleteContactByid = async (req:Request, res:Response) =>{
+        try{
+            const id: number = Number(req.params.id);
+
+        const exists: boolean = await this.verifyContact(id);
+
+        if (!exists) {
+            res.sendStatus(404);
+        }
+
+       const contactId: string[] = await Connection("contacts").delete("*").where({id})
+
+        res.status(200).send(contactId);
+        }
+        catch(error:any)
+        {
+            res.sendStatus(400);
+        }
+
+    }
     public getContactById = async (req: Request, res: Response) => {
         try{
             const id: number = Number(req.params.id);
