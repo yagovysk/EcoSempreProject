@@ -4,11 +4,21 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const talkWithUsFormSchema = z.object({
-  name: z.string().nonempty("Mensagem de erro").toLowerCase().trim(),
-  email: z.string().nonempty("Mensagem de erro").email("E-mail inválido"),
-  phone: z.string(),
-  subject: z.string().nonempty("Mensagem de erro"),
-  message: z.string().nonempty("Mensagem de erro"),
+  name: z.string().nonempty("* O campo não é válido").toLowerCase().trim(),
+  email: z
+    .string()
+    .nonempty("* O campo está vazio")
+    .email("* Esse e-mail não é válido")
+    .trim(),
+  phone: z.string().nonempty("* Digite um número de telefone válido").trim(),
+  subject: z
+    .string()
+    .nonempty("* O campo está vazio! Digite um assunto")
+    .trim(),
+  message: z
+    .string()
+    .nonempty("* O campo está vazio! Digite uma mensagem válida.")
+    .trim(),
 });
 
 export function FormTalkWithUs() {
@@ -45,7 +55,9 @@ export function FormTalkWithUs() {
               aria-label="Seu nome"
             />
             {errors.name && (
-              <span className={`error_message`}>{errors.name.message}</span>
+              <span className={`error_message ${styles.error_message}`}>
+                {errors.name.message}
+              </span>
             )}
           </div>
 
@@ -58,7 +70,9 @@ export function FormTalkWithUs() {
               aria-label="Seu email"
             />
             {errors.email && (
-              <span className={`error_message`}>{errors.email.message}</span>
+              <span className={`error_message ${styles.error_message}`}>
+                {errors.email.message}
+              </span>
             )}
           </div>
 
@@ -71,7 +85,9 @@ export function FormTalkWithUs() {
               aria-label="Seu telefone"
             />
             {errors.phone && (
-              <span className={`error_message`}>{errors.phone.message}</span>
+              <span className={`error_message ${styles.error_message}`}>
+                {errors.phone.message}
+              </span>
             )}
           </div>
 
@@ -84,7 +100,9 @@ export function FormTalkWithUs() {
               aria-label="Assunto do email"
             />
             {errors.subject && (
-              <span className={`error_message`}>{errors.subject.message}</span>
+              <span className={`error_message ${styles.error_message}`}>
+                {errors.subject.message}
+              </span>
             )}
           </div>
 
@@ -100,7 +118,9 @@ export function FormTalkWithUs() {
               placeholder="Mensagem"
             ></textarea>
             {errors.message && (
-              <span className={`error_message`}>{errors.message.message}</span>
+              <span className={`error_message ${styles.error_message}`}>
+                {errors.message.message}
+              </span>
             )}
           </div>
         </div>
