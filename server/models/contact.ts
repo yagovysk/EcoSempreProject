@@ -36,7 +36,8 @@ class Contact {
     }
 
     public getContactById = async (req: Request, res: Response) => {
-        const id: number = Number(req.params.id);
+        try{
+            const id: number = Number(req.params.id);
 
         const exists: boolean = await this.verifyContact(id);
 
@@ -47,6 +48,11 @@ class Contact {
         const contact: string[] = await Connection("contacts").select().where({ id }).first();
 
         res.status(200).send(contact);
+        }
+        catch(error:any)
+        {
+            res.sendStatus(400);
+        }
 
     }
     public getAll = async (req: Request, res: Response) => {
