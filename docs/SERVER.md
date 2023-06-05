@@ -148,80 +148,66 @@ Updates an article by ID.
 - `404 Not Found`: Article not found.
   - Response Body: Message indicating that the article was not found.
 
-## Contact
+## Contacts
 
+### Creates a new contact
+POST ```/contact```
 
-### Get All Contacts
+Parameters
+|Parameter | Type | optional|
+|-|-|-|
+| name  | string| No
+| email | string|No
+|subject|string| No
+| phone | string | Yes
+| message | string | No
 
-Endpoint: `GET /contacts`
-
-This endpoint retrieves all contacts.
-
-#### Responses
-| code | body |
-|------|------|
-| 200 | list of contacts|
-| 404 | doesn't exists contacts|
-| 400 | bad Request|
-
-#### Request Example
-
+#### Request example
 ```
-GET /contacts
-```
-
-#### Response Example
-```
-[
-  {
-    "name": "John Doe",
-    "email": "johndoe@example.com",
-    "subject": "Inquiry",
-    "phone": "123456789",
-    "message": "Lorem ipsum dolor sit amet",
-    "createdAt": "2023-06-02T10:30:00Z"
-  },
-  {
-    "name": "Jane Smith",
-    "email": "janesmith@example.com",
-    "subject": "Support",
-    "phone": "987654321",
-    "message": "Lorem ipsum dolor sit amet",
-    "createdAt": "2023-06-02T11:45:00Z"
-  }
-]
-
-
-```
-
-
-
-### Register a New Contact
-Endpoint: `POST /contact`
-
-This endpoint allows registering a new contact.
-
-#### Request Example
-```
-POST /contact
-Content-Type: application/json
-
 {
   "name": "John Doe",
   "email": "johndoe@example.com",
-  "subject": "Inquiry",
-  "phone": "123456789",
-  "message": "Lorem ipsum dolor sit amet"
+  "subject": "Example Subject",
+  "phone": "+1234567890",
+  "message": "Example message"
 }
 
 ```
+#### Responses
+| status |  body |
+|-|-|
+| 201 | contact id |
+| 400 | Bad Request |
+### Retrieves all contacts
+GET ```/contacts```
 
-#### Response
-```
-{
-  "contactId": 1
-}
-```
+#### Pagination(optional)
+GET  ```/contacts?page=[current_page]&limit=[limit_per_page]```
+#### Responses
+| status |  body |
+|-|-|
+| 200 | all the registered contacts|
+|400| Bad Request |
+| 404 | doesn't exists contacts
+
+### Get contact by id
+ GET ```/contact/[contact_id]```
+
+#### Responses
+| status |  body |
+|-|-|
+| 200 | contact|
+|400| Bad Request |
+| 404 | Not Found
+### Delete a contact
+DELETE ``` /contact/[contact_id]```
+
+#### Responses
+| status |  body |
+|-|-|
+| 200 | contact|
+|400| Bad Request |
+| 404 | Not Found
 
 
 ---
@@ -356,79 +342,63 @@ Atualiza um artigo pelo ID.
   - Corpo da resposta: Mensagem indicando que o artigo não foi encontrado.
 
 
+## Contactos
 
-## Contato
+### Registrar novo contact
+POST ```/contact```
 
-### Obter todos os contatos
+Parâmetros
+|patâmetro | Tipo | Opcional|
+|-|-|-|
+| name  | string| No
+| email | string|No
+|subject|string| No
+| phone | string | Yes
+| message | string | No
 
-Endpoint: `GET /contatos`
+#### Exemplo de requisição
+```
+{
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "subject": "Example Subject",
+  "phone": "+1234567890",
+  "message": "Example message"
+}
 
-Este endpoint recupera todos os contatos.
+```
+#### Respostas
+| status |  body |
+|-|-|
+| 201 | contact id |
+| 400 | Bad Request |
+### recuperar todos os contatos
+GET ```/contacts```
+
+#### Paginação(opcional)
+GET  ```/contacts?page=[NUMERO_DA_PAGINA_ATUAL]&limit=[REGISTROS_POR_PAGINA]```
+#### Responses
+| status |  CORPO |
+|-|-|
+| 200 | all the registered contacts|
+|400| Bad Request |
+| 404 | doesn't exists contacts
+
+### Recuperar um contato pelo Id
+ GET ```/contact/[contact_id]```
 
 #### Respostas
-| código | corpo |
-|--------|-------|
-| 200    | lista de contatos |
-| 404    | contatos não existem |
-| 400    | solicitação inválida |
+| status |  Corpoo |
+|-|-|
+| 200 | contact|
+|400| Bad Request |
+| 404 | Not Found
+### Deletar um contato
+DELETE ``` /contact/[contact_id]```
 
-#### Exemplo de requisição
-
-```
-GET /contatos
-```
-
-
-#### Exemplo de resposta
-
-```
-[
-{
-"nome": "Fulano de Tal",
-"email": "fulano@example.com",
-"assunto": "Consulta",
-"telefone": "123456789",
-"mensagem": "Lorem ipsum dolor sit amet",
-"criadoEm": "2023-06-02T10:30:00Z"
-},
-{
-"nome": "Beltrana Silva",
-"email": "beltrana@example.com",
-"assunto": "Suporte",
-"telefone": "987654321",
-"mensagem": "Lorem ipsum dolor sit amet",
-"criadoEm": "2023-06-02T11:45:00Z"
-}
-]
-```
-
-### Registrar um novo contato
-Endpoint: `POST /contato`
-
-Este endpoint permite registrar um novo contato.
-
-#### Exemplo de requisição
-```
-POST /contato
-
-
-
-Content-Type: application/json
-
-{
-"nome": "Fulano de Tal",
-"email": "fulano@example.com",
-"assunto": "Consulta",
-"telefone": "123456789",
-"mensagem": "Lorem ipsum dolor sit amet"
-}
-```
-
-
-#### Exemplo de response
-
-```
-{
-"idContato": 1
-}
-```
+#### Respostas
+| status |  body |
+|-|-|
+| 200 | contact|
+|400| Bad Request |
+| 404 | Not Found
