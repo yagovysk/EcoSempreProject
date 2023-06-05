@@ -31,13 +31,18 @@ class Contact {
             return true;
         };
         this.getContactById = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            const id = Number(req.params.id);
-            const exists = yield this.verifyContact(id);
-            if (!exists) {
-                res.sendStatus(404);
+            try {
+                const id = Number(req.params.id);
+                const exists = yield this.verifyContact(id);
+                if (!exists) {
+                    res.sendStatus(404);
+                }
+                const contact = yield (0, connection_1.default)("contacts").select().where({ id }).first();
+                res.status(200).send(contact);
             }
-            const contact = yield (0, connection_1.default)("contacts").select().where({ id }).first();
-            res.status(200).send(contact);
+            catch (error) {
+                res.sendStatus(400);
+            }
         });
         this.getAll = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
