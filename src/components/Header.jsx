@@ -1,8 +1,8 @@
+import "./Header.css";
+import logo from "../assets/logoEcoSempre.png";
 import { Icon } from "@iconify/react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../assets/logoEcoSempre.png";
-import "./Header.css";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 const linksEcoSempre = [
   {
@@ -28,6 +28,7 @@ const linksPrograms = [
     path: "/material_list",
   },
 ];
+
 export function Header() {
   const [dropdownIndex, setDropdownIndex] = useState("");
 
