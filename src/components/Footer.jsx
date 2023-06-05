@@ -2,12 +2,9 @@ import styles from "./Footer.module.css";
 import ecoLogo from "../assets/ecoIcon.svg";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
+import { scrollToTop } from "../helpers";
 
 export function Footer() {
-  function scrollToTop() {
-    window.scrollBy(0, document.body.offsetHeight * -1);
-  }
-
   return (
     <footer className={styles.wrapper}>
       <div className={styles.wrapper_main_content}>
