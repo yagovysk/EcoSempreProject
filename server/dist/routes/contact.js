@@ -21,6 +21,10 @@ contactRoutes.get("/contacts", middleware.handle, (req, res) => __awaiter(void 0
     const contact = new contact_1.default();
     contact.getAll(req, res);
 }));
+contactRoutes.get("/contact/:id", middleware.handle, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const contact = new contact_1.default();
+    contact.getContactById(req, res);
+}));
 contactRoutes.post("/contact", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const contact = new contact_1.default();
     contact.registerContact(req, res);

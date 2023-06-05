@@ -23,7 +23,7 @@ class Contact {
     private verifyContact = async (id: number) => {
         const result: string[] = await Connection("contacts").select().where({ id }).first();
 
-        if (result[0] === undefined) {
+        if (result === undefined) {
             return false;
         }
         return true;

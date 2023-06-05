@@ -19,7 +19,7 @@ class Contact {
         this.currentDate = new static_1.default().getCurrentDate();
         this.verifyContact = (id) => __awaiter(this, void 0, void 0, function* () {
             const result = yield (0, connection_1.default)("contacts").select().where({ id }).first();
-            if (result[0] === undefined) {
+            if (result === undefined) {
                 return false;
             }
             return true;
