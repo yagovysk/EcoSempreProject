@@ -44,7 +44,11 @@ export function Blog() {
         />
       </div>
 
-      <Link onClick={scrollToTop} to="/blog" className={styles.link_more}>
+      <Link
+        onClick={scrollToTop}
+        to="/blog"
+        className={`link_more ${styles.link_more}`}
+      >
         Veja Mais Notícias!
       </Link>
     </div>

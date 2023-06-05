@@ -1,76 +1,14 @@
 import { useState } from "react";
-import style from "./Faq.module.css";
 import { Icon } from "@iconify/react";
+import { firstListQuestions, secondListQuestions } from "../../data";
+import { Link } from "react-router-dom";
+import { scrollToTop } from "../../helpers";
+import style from "./Faq.module.css";
 
-const firstListQuestions = [
-  {
-    id: 1,
-    question: "Por que devo reciclar eletroeletrônicos de forma correta?",
-    answer: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-			Cum, porro assumenda perspiciatis culpa possimus consequatur! 
-			Vel quae ipsam nam impedit, repellendus beatae ducimus iste ipsa ad incidunt quo laboriosam tempore!`,
-  },
-
-  {
-    id: 2,
-    question: "Quais tipos de eletroeletrônicos a EcoSempre coleta?",
-    answer: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-			Cum, porro assumenda perspiciatis culpa possimus consequatur! 
-			Vel quae ipsam nam impedit, repellendus beatae ducimus iste ipsa ad incidunt quo laboriosam tempore!`,
-  },
-
-  {
-    id: 3,
-    question: "Como faço para descartar corretamente esses materiais?",
-    answer: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-			Cum, porro assumenda perspiciatis culpa possimus consequatur! 
-			Vel quae ipsam nam impedit, repellendus beatae ducimus iste ipsa ad incidunt quo laboriosam tempore!`,
-  },
-
-  {
-    id: 4,
-    question: `Como contatar a EcoSempre para destinar adequadamente  
-		eletroeletrônicos da minha empresa?`,
-    answer: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-			Cum, porro assumenda perspiciatis culpa possimus consequatur! 
-			Vel quae ipsam nam impedit, repellendus beatae ducimus iste ipsa ad incidunt quo laboriosam tempore!`,
-  },
-];
-
-const secondListQuestions = [
-  {
-    id: 5,
-    question: "O que é Logística Reversa?",
-    answer: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-			Cum, porro assumenda perspiciatis culpa possimus consequatur! 
-			Vel quae ipsam nam impedit, repellendus beatae ducimus iste ipsa ad incidunt quo laboriosam tempore!`,
-  },
-  {
-    id: 6,
-    question: "Quais são os benefícios da Logística Reversa?",
-    answer: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-			Cum, porro assumenda perspiciatis culpa possimus consequatur! 
-			Vel quae ipsam nam impedit, repellendus beatae ducimus iste ipsa ad incidunt quo laboriosam tempore!`,
-  },
-  {
-    id: 7,
-    question: "Como faço para trabalhar em parceria com a EcoSempre?",
-    answer: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-			Cum, porro assumenda perspiciatis culpa possimus consequatur! 
-			Vel quae ipsam nam impedit, repellendus beatae ducimus iste ipsa ad incidunt quo laboriosam tempore!`,
-  },
-  {
-    id: 8,
-    question: `Instituições interessadas em campanha de descarte adequado de 
-		eletrônicos. Podemos contar com o apoio da EcoSempre?`,
-    answer: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-			Cum, porro assumenda perspiciatis culpa possimus consequatur! 
-			Vel quae ipsam nam impedit, repellendus beatae ducimus iste ipsa ad incidunt quo laboriosam tempore!`,
-  },
-];
-
-export function Faq() {
+export function Faq({ numberPerList, isFAQPage, questionsOverLines }) {
   const [activeIndex, setActiveIndex] = useState(false);
+  const firstListQuestionsSliced = firstListQuestions.slice(0, numberPerList);
+  const secondListQuestionsSliced = secondListQuestions.slice(0, numberPerList);
 
   function showAnswer(index) {
     if (activeIndex === index) {
@@ -89,31 +27,49 @@ export function Faq() {
 
       <div className={style.container_faq}>
         <ListQuestions
-          questions={firstListQuestions}
+          questions={firstListQuestionsSliced}
           activeIndex={activeIndex}
           onShow={showAnswer}
-          isLastOne={firstListQuestions.length - 1}
+          questionsOverLines={
+            questionsOverLines && questionsOverLines.firstList
+          }
         />
 
         <ListQuestions
-          questions={secondListQuestions}
+          questions={secondListQuestionsSliced}
           activeIndex={activeIndex}
           onShow={showAnswer}
-          isLastOne={secondListQuestions.length - 1}
+          questionsOverLines={
+            questionsOverLines && questionsOverLines.secondList
+          }
         />
       </div>
+
+      {!isFAQPage && (
+        <Link
+          to="/faq"
+          onClick={scrollToTop}
+          className={`link_more ${style.link_more_faq}`}
+        >
+          Clique aqui para acessar todas as dúvidas {">>"}
+        </Link>
+      )}
     </article>
   );
 }
 
-function ListQuestions({ questions, activeIndex, onShow, isLastOne }) {
+function ListQuestions({ questions, activeIndex, onShow, questionsOverLines }) {
   return (
     <ul className={style.list_faq}>
-      {questions.map((question, index) => {
+      {questions.map((question) => {
         const isActive = question.id === activeIndex;
+        const isQuestionWith2Lines =
+          questionsOverLines &&
+          questionsOverLines.some((id) => id === question.id);
+
         const classesWrapperBox = `${style.wrapper_box} ${
           isActive && style.show_answer
-        } ${isLastOne === index && style.last_question}`;
+        } ${isQuestionWith2Lines && style.last_question}`;
 
         return (
           <li key={question.id}>

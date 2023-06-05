@@ -5,6 +5,7 @@
   display: grid;
   place-items: center;
   overflow: hidden;
+  margin-bottom: 10rem;
 }
 
 .content {

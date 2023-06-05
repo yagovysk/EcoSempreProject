@@ -6,6 +6,7 @@ import { MaterialList } from "./pages/MaterialList";
 import { Blog } from "./pages/Blog";
 import { Contact } from "./pages/Contact";
 import { PontosDeColeta } from "./pages/PontosDeColeta";
+import { FAQ } from "./pages/FAQ";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog />,
+      },
+      {
+        path: "/faq",
+        element: <FAQ />,
       },
     ],
   },
