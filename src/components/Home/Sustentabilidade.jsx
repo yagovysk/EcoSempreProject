@@ -19,12 +19,10 @@ export function Sustentabilidade() {
             solução sustentável. Junte-se a nós nessa jornada e faça a sua parte
             para um mundo mais limpo e saudável.
           </p>
-          <button className={`btn ${styles.saibamais}`} type="button">
-            <Link className="btn-link" to="#">
-              Saiba Mais
-            </Link>
+          <Link className={`btn ${styles.saibamais}`} to="/">
+            Saiba Mais
             <span>🡢</span>
-          </button>
+          </Link>
         </section>
       </article>
     </div>

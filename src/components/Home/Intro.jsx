@@ -9,12 +9,10 @@ export function Intro() {
           Trabalhamos em conjunto com comunidades e parceiros para desenvolver
           soluções inovadoras em Logística Reversa.
         </p>
-        <button className={`btn ${styles.btnHome}`} type="button">
-          <a href="#">
-            Saiba Mais
-            <span>🡢</span>
-          </a>
-        </button>
+        <a role="button" className={`btn ${styles.btnHome}`} href="#">
+          Saiba Mais
+          <span>🡢</span>
+        </a>
       </div>
     </div>
   );
