@@ -1,8 +1,9 @@
+import styles from "../pages/Blog.module.css";
 import { CardBlog } from "../components/CardBlog.jsx";
 import { HeaderSection } from "../components/HeaderSection.jsx";
-import florest from "../assets/florestImg.jpg";
-import styles from "../pages/Blog.module.css";
 import { Pagination } from "../components/Pagination.jsx";
+import { useEffect, useState } from "react";
+import api from "../api/posts.js";
 
 const linksMenu = [
   {
@@ -13,10 +14,29 @@ const linksMenu = [
     name: "Blog",
   },
 ];
-
-const temp_posts = [1, 2, 3, 4, 5, 6];
+const POSTS_PER_PAGE = 6;
 
 export function Blog() {
+  const [posts, setPosts] = useState("");
+  const [pageIndex, setPageIndex] = useState(0);
+
+  const startIndex = pageIndex * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const postsPerPage = posts.slice(startIndex, endIndex);
+
+  useEffect(() => {
+    async function getPosts() {
+      try {
+        const response = await api.get("/articles");
+        setPosts(response.data);
+      } catch (err) {
+        console.log(`Error: ${err.message}`);
+      }
+    }
+
+    getPosts();
+  }, []);
+
   return (
     <main>
       <HeaderSection
@@ -26,22 +46,26 @@ export function Blog() {
       />
 
       <article className={`${styles.posts_container} container`}>
-        {temp_posts.map((post) => (
-          <CardBlog
-            img={florest}
-            imgAlt="Imagem de floresta"
-            categories={["Sustentabilidade", "Ecologia"]}
-            title="Explorando a Sustentabilidade: Dicas e Insights para um Futuro Mais Verde"
-            timestamp="11 de maio, 2023"
-            description={`Descubra como você pode fazer a diferença no mundo 
-            e contribuir para um futuro mais verde. Aprenda a reduzir seu 
-            impacto ambiental, reutilizar recursos, reciclar...`}
-          />
-        ))}
+        {posts.length > 0 &&
+          postsPerPage.map((post) => (
+            <CardBlog
+              img={post.imgURL}
+              imgAlt="Imagem de floresta"
+              categories={post.categories}
+              title={post.title}
+              timestamp={post.timestamp}
+              description={post.content}
+            />
+          ))}
       </article>
 
       <div className={styles.pagination_container}>
-        <Pagination size={2} currentPage={1} />
+        <Pagination
+          postsPerPage={POSTS_PER_PAGE}
+          pageIndex={pageIndex}
+          onNextPage={setPageIndex}
+          postsLength={posts.length}
+        />
       </div>
     </main>
   );

@@ -30,6 +30,7 @@
   color: white;
   padding: 0.5rem 1.4rem;
   font: 400 1rem "Roboto", sans-serif;
+  text-transform: capitalize;
   margin-left: 2.5rem;
   transform: translateY(-1.4rem);
 }
@@ -39,7 +40,7 @@
 }
 
 .content_text {
-  padding: 0 2.5rem 2.5rem 2.5rem;
+  padding: 0 0 2.5rem 2.5rem;
 }
 
 .title {
