@@ -33,6 +33,10 @@
   gap: 2rem;
 }
 
+.form_inputs div {
+  position: relative;
+}
+
 .form_inputs input,
 .form_inputs textarea {
   font: 400 1rem "Roboto", sans-serif;
@@ -45,7 +49,13 @@
 
 .form_inputs div.error_wrapper_input input,
 .form_inputs div.error_wrapper_input textarea {
-  border: 1.5px solid red;
+  border: 1.5px solid #ef4444;
+}
+
+.error_message {
+  position: absolute;
+  bottom: -2rem;
+  left: 0;
 }
 
 .form_inputs input:focus,
