@@ -1,6 +1,7 @@
 import style from "./Depoiments.module.css";
 import { FeedbackCard } from "./FeedbackCard";
 import person from "../../assets/personImg.jpg";
+import { Link, NavLink } from "react-router-dom";
 
 export function Depoiments() {
   return (
@@ -19,10 +20,10 @@ export function Depoiments() {
               tornou parte desse movimento por um futuro mais sustentável.
             </p>
             <button type="button" className={`btn ${style.btnFeedback}`}>
-              <a className="btn-link" href="#">
+              <Link className="btn-link" to="About_us">
                 Sobre Nós
                 <span>🡢</span>
-              </a>
+              </Link>
             </button>
           </div>
         </div>
