@@ -11,7 +11,7 @@ export interface IContact {
     email: string,
     subject: string,
     phone: string,
-    message: string,
+    message?: string,
     createdAt?: string
 }
 
@@ -35,6 +35,27 @@ class Contact {
         return true;
     }
 
+
+    public deleteContactByid = async (req:Request, res:Response) =>{
+        try{
+            const id: number = Number(req.params.id);
+
+        const exists: boolean = await this.verifyContact(id);
+
+        if (!exists) {
+            res.sendStatus(404);
+        }
+
+       const contactId: string[] = await Connection("contacts").delete("*").where({id})
+
+        res.sendStatus(200);
+        }
+        catch(error:any)
+        {
+            res.status(400);
+        }
+
+    }
     public getContactById = async (req: Request, res: Response) => {
         try{
             const id: number = Number(req.params.id);
@@ -50,8 +71,10 @@ class Contact {
         res.status(200).send(contact);
         }
         catch(error:any)
+
         {
-            res.sendStatus(400);
+            console.log(error)
+            res.status(400).send(error)
         }
 
     }
@@ -101,7 +124,6 @@ class Contact {
             res.status(201).send(contactId);
         }
         catch (error: any) {
-            console.log(error)
             res.sendStatus(400);
         }
 
