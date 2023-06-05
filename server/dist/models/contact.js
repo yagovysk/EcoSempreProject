@@ -17,20 +17,40 @@ const static_1 = __importDefault(require("../static"));
 class Contact {
     constructor() {
         this.currentDate = new static_1.default().getCurrentDate();
+        this.verifyContact = (id) => __awaiter(this, void 0, void 0, function* () {
+            const result = yield (0, connection_1.default)("contacts").select().where({ id }).first();
+            if (result === undefined) {
+                return false;
+            }
+            return true;
+        });
         this.verifyPagination = (page, limit) => {
             if (limit === undefined || page === undefined) {
                 return false;
             }
             return true;
         };
-        this.findAll = (req, res) => __awaiter(this, void 0, void 0, function* () {
+        this.getContactById = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const id = Number(req.params.id);
+                const exists = yield this.verifyContact(id);
+                if (!exists) {
+                    res.sendStatus(404);
+                }
+                const contact = yield (0, connection_1.default)("contacts").select().where({ id }).first();
+                res.status(200).send(contact);
+            }
+            catch (error) {
+                res.sendStatus(400);
+            }
+        });
+        this.getAll = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const { limit, page } = req.query;
                 const pagination = this.verifyPagination(limit, page);
                 if (pagination) {
                     const offset = (Number(page) - 1) * Number(limit);
                     const contacts = yield (0, connection_1.default)("contacts").select("*").limit(Number(limit)).offset(offset);
-                    console.log(limit, page);
                     if (contacts[0] === undefined) {
                         yield connection_1.default.destroy();
                         res.status(404).send("doesn't exists contacts");
@@ -42,7 +62,6 @@ class Contact {
                 }
                 else {
                     const contacts = yield (0, connection_1.default)("contacts").select("*");
-                    yield connection_1.default.destroy();
                     res.status(200).send(contacts);
                 }
             }
@@ -55,10 +74,10 @@ class Contact {
                 const newContact = req.body;
                 const fullContact = Object.assign(Object.assign({}, newContact), { createdAt: this.currentDate });
                 const contactId = yield (0, connection_1.default)("contacts").insert(fullContact);
-                yield connection_1.default.destroy();
                 res.status(201).send(contactId);
             }
             catch (error) {
+                console.log(error);
                 res.sendStatus(400);
             }
         });
