@@ -30,6 +30,20 @@ class Contact {
             }
             return true;
         };
+        this.deleteContactByid = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const id = Number(req.params.id);
+                const exists = yield this.verifyContact(id);
+                if (!exists) {
+                    res.sendStatus(404);
+                }
+                const contactId = yield (0, connection_1.default)("contacts").delete("*").where({ id });
+                res.sendStatus(200);
+            }
+            catch (error) {
+                res.sendStatus(400);
+            }
+        });
         this.getContactById = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const id = Number(req.params.id);
@@ -41,7 +55,8 @@ class Contact {
                 res.status(200).send(contact);
             }
             catch (error) {
-                res.sendStatus(400);
+                console.log(error);
+                res.status(400).send(error);
             }
         });
         this.getAll = (req, res) => __awaiter(this, void 0, void 0, function* () {
@@ -77,7 +92,6 @@ class Contact {
                 res.status(201).send(contactId);
             }
             catch (error) {
-                console.log(error);
                 res.sendStatus(400);
             }
         });

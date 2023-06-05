@@ -11,7 +11,7 @@ export interface IContact {
     email: string,
     subject: string,
     phone: string,
-    message: string,
+    message?: string,
     createdAt?: string
 }
 
@@ -48,7 +48,7 @@ class Contact {
 
        const contactId: string[] = await Connection("contacts").delete("*").where({id})
 
-        res.status(200).send(contactId);
+        res.sendStatus(200);
         }
         catch(error:any)
         {
@@ -71,8 +71,10 @@ class Contact {
         res.status(200).send(contact);
         }
         catch(error:any)
+
         {
-            res.sendStatus(400);
+            console.log(error)
+            res.status(400).send(error)
         }
 
     }
@@ -122,7 +124,6 @@ class Contact {
             res.status(201).send(contactId);
         }
         catch (error: any) {
-            console.log(error)
             res.sendStatus(400);
         }
 
