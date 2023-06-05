@@ -41,7 +41,7 @@ class Contact {
                 res.sendStatus(200);
             }
             catch (error) {
-                res.sendStatus(400);
+                res.status(400);
             }
         });
         this.getContactById = (req, res) => __awaiter(this, void 0, void 0, function* () {

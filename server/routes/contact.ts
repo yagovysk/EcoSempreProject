@@ -16,7 +16,7 @@ contactRoutes.get("/contacts", middleware.handle, async (req: Request, res: Resp
 contactRoutes.delete("/contact/:id", middleware.handle, async(req:Request, res:Response)=>{
     const contact:Contact = new Contact();
 
-    contact.deleteContactByid(req, res)
+    contact.deleteContactByid(req, res);
 })
 contactRoutes.get("/contact/:id", middleware.handle, async(req:Request, res:Response)=>{
     const contact:Contact = new Contact();
