@@ -1,7 +1,8 @@
 import style from "./Depoiments.module.css";
 import { FeedbackCard } from "./FeedbackCard";
 import person from "../../assets/personImg.jpg";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { scrollToTop } from "../../helpers";
 
 export function Depoiments() {
   return (
@@ -19,12 +20,15 @@ export function Depoiments() {
               com o meio ambiente. Acompanhe depoimentos inspiradores de quem se
               tornou parte desse movimento por um futuro mais sustentável.
             </p>
-            <button type="button" className={`btn ${style.btnFeedback}`}>
-              <Link className="btn-link" to="About_us">
-                Sobre Nós
-                <span>🡢</span>
-              </Link>
-            </button>
+            <Link
+              role="button"
+              className={`btn btn-link ${style.btnFeedback}`}
+              to="About_us"
+              onClick={scrollToTop}
+            >
+              Sobre Nós
+              <span>🡢</span>
+            </Link>
           </div>
         </div>
 
