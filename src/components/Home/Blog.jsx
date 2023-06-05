@@ -2,6 +2,7 @@ import { CardBlog } from "../CardBlog";
 import styles from "../Home/Blog.module.css";
 import florest from "../../assets/florestImg.jpg";
 import { Link } from "react-router-dom";
+import { scrollToTop } from "../../helpers";
 
 export function Blog() {
   return (
@@ -43,7 +44,7 @@ export function Blog() {
         />
       </div>
 
-      <Link to="/blog" className={styles.link_more}>
+      <Link onClick={scrollToTop} to="/blog" className={styles.link_more}>
         Veja Mais Notícias!
       </Link>
     </div>

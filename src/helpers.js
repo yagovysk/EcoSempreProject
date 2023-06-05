@@ -15,3 +15,7 @@ export function useIncreaseNumber(n, duration, increase) {
 
   return number;
 }
+
+export function scrollToTop() {
+  window.scrollBy(0, document.body.offsetHeight * -1);
+}
