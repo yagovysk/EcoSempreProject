@@ -21,7 +21,7 @@ export function Home() {
       <Coletas />
       <Parceiros />
       <Depoiments />
-      <Faq />
+      <Faq numberPerList={3} isFAQPage={false} />
       <Callwithus />
       <Blog />
     </main>
