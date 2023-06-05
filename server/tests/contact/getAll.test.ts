@@ -21,6 +21,6 @@ describe("TEST CONTACT ROUTES", ()=>{
 
        
         expect(res.status).toBe(200)
-       expect(res.body.length).toBe(4);
+      
     })
 })

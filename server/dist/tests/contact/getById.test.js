@@ -15,21 +15,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const globals_1 = require("@jest/globals");
 const supertest_1 = __importDefault(require("supertest"));
 const server_1 = __importDefault(require("../../server"));
-(0, globals_1.describe)("TEST CONTACT ROUTES", () => {
+(0, globals_1.describe)("get contact by Id", () => {
     (0, globals_1.beforeAll)(() => {
-        process.env.NODE_ENV = "test";
+        process.env.NODE_ENV = 'test';
     });
+    (0, globals_1.it)("should return status 200", () => __awaiter(void 0, void 0, void 0, function* () {
+        const res = yield (0, supertest_1.default)(server_1.default)
+            .get("/article/1");
+        (0, globals_1.expect)(res.status).toBe(200);
+    }));
+    globals_1.it.only("should return status 404", () => __awaiter(void 0, void 0, void 0, function* () {
+        const res = yield (0, supertest_1.default)(server_1.default)
+            .get("/article/99999");
+        (0, globals_1.expect)(res.status).toBe(404);
+    }));
     (0, globals_1.afterAll)(() => {
-        process.env.NODE_ENV = "development";
+        process.env.NODE_ENV = 'development';
     });
-    (0, globals_1.it)("should returns status 200", () => __awaiter(void 0, void 0, void 0, function* () {
-        const res = yield (0, supertest_1.default)(server_1.default)
-            .get("/contacts");
-        (0, globals_1.expect)(res.status).toBe(200);
-    }));
-    globals_1.it.only("should returns max 4 items", () => __awaiter(void 0, void 0, void 0, function* () {
-        const res = yield (0, supertest_1.default)(server_1.default)
-            .get("/contacts?limit=4&page=1");
-        (0, globals_1.expect)(res.status).toBe(200);
-    }));
 });
