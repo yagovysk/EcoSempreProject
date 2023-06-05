@@ -6,7 +6,7 @@ import { Coletas } from "../components/Home/Coletas.jsx";
 import { Parceiros } from "../components/Home/Parceiros.jsx";
 import { Depoiments } from "../components/Home/Depoiments.jsx";
 import { Logistica } from "../components/Home/Logistica.jsx";
-import { Faq } from "../components/Home/Faq.jsx";
+import { Faq } from "../components/Faq.jsx";
 import { Callwithus } from "../components/Home/Callwithus.jsx";
 import { Blog } from "../components/Home/Blog.jsx";
 

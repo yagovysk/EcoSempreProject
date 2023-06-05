@@ -1,5 +1,5 @@
 import { HeaderSection } from "../components/HeaderSection";
-import { Faq } from "../components/Home/Faq";
+import { Faq } from "../components/Faq";
 import { firstListQuestions } from "../data";
 import styles from "./FAQ.module.css";
 
