@@ -128,9 +128,6 @@
   grid-area: btn;
   width: max-content;
   transition: 0.3s;
-}
-
-.btnSobre a {
   display: flex;
   gap: 1.625rem; /* 26px */
   font-family: "Roboto", sans-serif;

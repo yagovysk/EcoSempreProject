@@ -1,8 +1,8 @@
 import styles from "./Sobre.module.css";
 import sobreimg from "../../assets/sobreimg.png";
 import plantaicon from "../../assets/plantaicon.svg";
-import { useIncreaseNumber } from "../../helpers";
-import { Link, NavLink } from "react-router-dom";
+import { scrollToTop, useIncreaseNumber } from "../../helpers";
+import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 export function Sobre() {
@@ -79,12 +79,15 @@ export function Sobre() {
             </li>
           </ul>
 
-          <button className={`${styles.btnSobre} btn`}>
-            <Link to="About_us">
-              Conheça Nossa História
-              <span>🡢</span>
-            </Link>
-          </button>
+          <Link
+            role="button"
+            className={`${styles.btnSobre} btn`}
+            to="About_us"
+            onClick={scrollToTop}
+          >
+            Conheça Nossa História
+            <span>🡢</span>
+          </Link>
         </section>
       </div>
     </div>

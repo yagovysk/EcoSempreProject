@@ -1,4 +1,4 @@
-import logisticard from "../../assets/logisticcard.svg";
+import logisticard from "../../assets/logistica_reversa.png";
 import styles from "./Logistica.module.css";
 
 export function Logistica() {
@@ -9,7 +9,11 @@ export function Logistica() {
           <span className={`small-text`}>Logística Reversa</span>
           <h2 className={`title`}>Entenda o Ciclo da Logística Reversa</h2>
         </div>
-        <img src={logisticard} alt="card sobre logistica reversa" />
+        <img
+          className={styles.logistic_card}
+          src={logisticard}
+          alt="card sobre logistica reversa"
+        />
       </section>
     </article>
   );
