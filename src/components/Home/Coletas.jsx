@@ -1,7 +1,8 @@
 import coletaimg from "../../assets/Coletasimg.png";
 import styles from "./Coletas.module.css";
 import recycleIcon from "../../assets/recycleIcon.svg";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { scrollToTop } from "../../helpers";
 
 export function Coletas() {
   return (
@@ -21,12 +22,15 @@ export function Coletas() {
             sustentável para todos. Juntos, podemos fazer a diferença!
           </p>
 
-          <button type="button" className={`btn ${styles.btnColeta}`}>
-            <Link to="coletas">
-              Ver Pontos de Coleta
-            </Link>
+          <Link
+            role="button"
+            className={`btn ${styles.btnColeta}`}
+            to="coletas"
+            onClick={scrollToTop}
+          >
+            Ver Pontos de Coleta
             <span>🡢</span>
-          </button>
+          </Link>
         </section>
       </article>
 

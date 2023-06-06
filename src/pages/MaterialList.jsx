@@ -163,7 +163,7 @@ export function MaterialList() {
           ))}
         </div>
 
-        <a className={styles.link_complete_list} href="#">
+        <a className={`link_more ${styles.link_complete_list}`} href="#">
           Clique aqui para acessar a lista completa {">>"}
         </a>
       </div>

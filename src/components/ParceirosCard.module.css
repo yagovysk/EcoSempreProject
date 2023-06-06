@@ -1,5 +1,11 @@
 .parceirosCard {
   display: flex;
   align-items: center;
-  gap: 4.5rem;
+  gap: 2rem;
+}
+.parceirosCard a {
+  display: flex;
+  transition: 0.3s ease;
+  border-radius: 0.3rem;
+  padding: 1rem;
 }

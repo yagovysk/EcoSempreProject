@@ -1,7 +1,7 @@
 import styles from "./Saiba.module.css";
 import { Icon } from "@iconify/react";
-import { Link, NavLink } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import { scrollToTop } from "../../helpers";
 
 export function Saiba() {
   return (
@@ -20,12 +20,15 @@ export function Saiba() {
             aceitamos diversos tipos de lixo eletrônico e eletroeletrônico,
             desde smartphones antigos, até pilhas, baterias e eletrodomésticos.
           </p>
-          <button className={`btn ${styles.saibabutton}`}>
-            <Link className={`btn-link`} to="material_list">
-              Explore todos os itens
-            </Link>
+          <Link
+            role="button"
+            className={`btn ${styles.saibabutton}`}
+            to="material_list"
+            onClick={scrollToTop}
+          >
+            Explore todos os itens
             <span>🡢</span>
-          </button>
+          </Link>
         </section>
       </article>
 
