@@ -19,9 +19,11 @@ const server_1 = __importDefault(require("../../server"));
     (0, globals_1.beforeAll)(() => {
         process.env.NODE_ENV = "development";
     });
-    (0, globals_1.it)("it should returns 401", () => __awaiter(void 0, void 0, void 0, function* () {
+    (0, globals_1.it)("it should returns 200", () => __awaiter(void 0, void 0, void 0, function* () {
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoxLCJleHAiOjE2ODYxNjA1MDgsImlhdCI6MTY4NjA3NDEwOH0.sjWD84VdDCYrdajB7esjXDBzD_XJPgu466DxbWQrlao";
         const res = yield (0, supertest_1.default)(server_1.default)
-            .get("/articles");
-        (0, globals_1.expect)(res.status).toBe(401);
+            .get("/articles")
+            .set("Authorization", `Bearer ${token}`);
+        (0, globals_1.expect)(res.status).toBe(200);
     }));
 });
