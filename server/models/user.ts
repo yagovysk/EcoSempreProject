@@ -1,13 +1,12 @@
 import { Request, Response } from "express";
-import { Session } from "express-session";
 import bcrypt from 'bcrypt';
+import jwt, { JwtPayload } from 'jsonwebtoken';
+import dotenv from 'dotenv';
 
 import Connection from "../database/connection";
 
+dotenv.config();
 
-interface sessionUser extends Session {
-    user?: object
-}
 type Login = {
     email: string,
     password: string
@@ -108,19 +107,29 @@ class User {
     public login = async (req: Request, res: Response) => {
         try {
             const credentials: Login = req.body;
-            const session: sessionUser = req.session;
-
             const exist: boolean = await this.verifyUserByEmail(credentials.email);
 
             if (exist) {
                 const confirmed: boolean = await this.confirmPassword(credentials);
 
+
                 if (confirmed) {
                     const userRole = await this.getRole(credentials.email);
-                    session.user = {
-                        role: userRole
-                    }
-                    return res.status(200).send("ok");
+                    const expiresIn = 60 * 60 * 24; // 24 horas em segundos
+                    const currentTimestamp = Math.floor(Date.now() / 1000);
+                    const expirationDate = currentTimestamp + expiresIn;
+
+                    const payload: JwtPayload = {
+                        role: userRole,
+                        exp: expirationDate,
+                        iat: currentTimestamp,
+                    };
+
+                    const token = jwt.sign(payload, process.env.JWT_SECRET!);
+                    return res.status(200).json({
+                        token,
+                    });
+
                 }
                 else {
                     res.status(400).send("Incorrect Password");

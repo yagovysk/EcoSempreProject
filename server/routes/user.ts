@@ -12,7 +12,7 @@ userRoutes.post("/authentication", async (req: Request, res: Response) => {
     user.login(req, res);
 
 })
-userRoutes.post("/user", middleware.handle, async (req: Request, res: Response) => {
+userRoutes.post("/user",middleware.handle, async (req: Request, res: Response) => {
     const user: User = new User();
     user.createUser(req, res);
 })
