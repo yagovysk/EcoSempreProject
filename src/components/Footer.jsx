@@ -81,7 +81,7 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link onClick={scrollToTop} to="/#parceiros">
+                  <Link onClick={scrollToTop} to="/parceiros">
                     Parceiros
                   </Link>
                 </li>
