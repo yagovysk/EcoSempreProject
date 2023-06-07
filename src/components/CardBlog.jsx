@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import styles from "./CardBlog.module.css";
+import { Link } from "react-router-dom";
 
 export function CardBlog({
   img,
@@ -8,6 +9,7 @@ export function CardBlog({
   title,
   timestamp,
   description,
+  path,
 }) {
   const copyCategories = [...categories].join(", ");
 
@@ -32,13 +34,13 @@ export function CardBlog({
         <p className={styles.description}>{description}</p>
 
         <button type="button" className={styles.btn}>
-          <a className={styles.btn_link} href="">
+          <Link className={styles.btn_link} to={`/articles/${path}`}>
             Saiba Mais
             <Icon
               className={styles.arrow_icon}
               icon="material-symbols:arrow-circle-right-rounded"
             />
-          </a>
+          </Link>
         </button>
       </section>
 
