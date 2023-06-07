@@ -15,16 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const globals_1 = require("@jest/globals");
 const supertest_1 = __importDefault(require("supertest"));
 const server_1 = __importDefault(require("../../server"));
-// Mock do express-session para simular autenticação
-globals_1.jest.mock("express-session", () => ({
-    __esModule: true,
-    default: () => (req, res, next) => {
-        req.session = {
-            userId: 1, // Define o ID do usuário logado
-        };
-        next();
-    },
-}));
 (0, globals_1.describe)("GET /article/[id]", () => {
     globals_1.it.only("it should returns 404 status", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
