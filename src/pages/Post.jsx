@@ -68,9 +68,9 @@ function Content() {
 
             <section className={styles.wrapper_footer_post}>
               <div className={styles.tags_wrapper}>
-                {post.tags.map((tag) => (
-                  <span className={styles.tag} key={tag}>
-                    {tag}
+                {post.categories.map((category) => (
+                  <span className={styles.tag} key={category}>
+                    {category}
                   </span>
                 ))}
               </div>
