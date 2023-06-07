@@ -269,6 +269,7 @@
 
 .tags_wrapper_aside {
   display: flex;
+  flex-flow: wrap;
   gap: 1rem;
 }
 
