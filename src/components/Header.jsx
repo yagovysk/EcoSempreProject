@@ -42,51 +42,53 @@ export function Header() {
 
   return (
     <header id="header" className="header">
-      <img className="logo" src={logo} alt="logo" />
-      <ul className="menu">
-        <li onClick={() => toggleDropdown(dropdownIndex)}>
-          <NavLink className="menu_item" to="/">
-            Início
-          </NavLink>
-        </li>
-        <li onClick={() => toggleDropdown(0)}>
-          <div className={`menu_item ${dropdownIndex === 0 && "active"}`}>
-            EcoSempre
-            <Icon icon="mdi:caret" rotate={2} />
-            {dropdownIndex === 0 && <Dropdown links={linksEcoSempre} />}
-          </div>
-        </li>
-        <li onClick={() => toggleDropdown(1)}>
-          <div className={`menu_item ${dropdownIndex === 1 && "active"}`}>
-            Programas
-            <Icon icon="mdi:caret" rotate={2} />
-          </div>
+      <div className="container header_content">
+        <img className="logo" src={logo} alt="logo" />
+        <ul className="menu">
+          <li onClick={() => toggleDropdown(dropdownIndex)}>
+            <NavLink className="menu_item" to="/">
+              Início
+            </NavLink>
+          </li>
+          <li onClick={() => toggleDropdown(0)}>
+            <div className={`menu_item ${dropdownIndex === 0 && "active"}`}>
+              EcoSempre
+              <Icon icon="mdi:caret" rotate={2} />
+              {dropdownIndex === 0 && <Dropdown links={linksEcoSempre} />}
+            </div>
+          </li>
+          <li onClick={() => toggleDropdown(1)}>
+            <div className={`menu_item ${dropdownIndex === 1 && "active"}`}>
+              Programas
+              <Icon icon="mdi:caret" rotate={2} />
+            </div>
 
-          {dropdownIndex === 1 && <Dropdown links={linksPrograms} />}
-        </li>
-        <li onClick={() => toggleDropdown(dropdownIndex)}>
-          <NavLink className="menu_item" to="/coletas">
-            Pontos de coleta
-          </NavLink>
-        </li>
-        <li onClick={() => toggleDropdown(dropdownIndex)}>
-          <NavLink className="menu_item" to="/blog">
-            Blog
-          </NavLink>
-        </li>
-      </ul>
+            {dropdownIndex === 1 && <Dropdown links={linksPrograms} />}
+          </li>
+          <li onClick={() => toggleDropdown(dropdownIndex)}>
+            <NavLink className="menu_item" to="/coletas">
+              Pontos de coleta
+            </NavLink>
+          </li>
+          <li onClick={() => toggleDropdown(dropdownIndex)}>
+            <NavLink className="menu_item" to="/blog">
+              Blog
+            </NavLink>
+          </li>
+        </ul>
 
-      <div
-        onClick={() => toggleDropdown(dropdownIndex)}
-        className="contact-container"
-      >
-        <Icon icon="ph:magnifying-glass" className="lupaicon" />
-        <button className="btnContato">
-          <Link className="contato" to="/contact">
-            Entre em contato
-            <Icon icon="octicon:arrow-right-16" />
-          </Link>
-        </button>
+        <div
+          onClick={() => toggleDropdown(dropdownIndex)}
+          className="contact-container"
+        >
+          <Icon icon="ph:magnifying-glass" className="lupaicon" />
+          <button className="btnContato">
+            <Link className="contato" to="/contact">
+              Entre em contato
+              <Icon icon="octicon:arrow-right-16" />
+            </Link>
+          </button>
+        </div>
       </div>
     </header>
   );

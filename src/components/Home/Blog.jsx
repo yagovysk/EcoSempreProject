@@ -2,23 +2,10 @@ import styles from "../Home/Blog.module.css";
 import { CardBlog } from "../CardBlog";
 import { Link } from "react-router-dom";
 import { scrollToTop } from "../../helpers";
-import { useEffect, useState } from "react";
-import api from "../../api/posts";
+import { useBlog } from "../../context/BlogContext";
 
 export function Blog() {
-  const [posts, setPosts] = useState("");
-  useEffect(() => {
-    async function getPosts() {
-      try {
-        const response = await api.get("/articles?_page=1&_limit=3");
-        setPosts(response.data);
-      } catch (err) {
-        console.log(`Error: ${err.message}`);
-      }
-    }
-
-    getPosts();
-  }, []);
+  const { posts } = useBlog();
 
   return (
     <div className={`${styles.idBlog} container`}>
@@ -36,6 +23,7 @@ export function Blog() {
               title={post.title}
               timestamp={post.timestamp}
               description={post.content}
+              path={post.id}
             />
           ))}
       </div>

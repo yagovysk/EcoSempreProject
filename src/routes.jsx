@@ -8,6 +8,7 @@ import { Contact } from "./pages/Contact";
 import { PontosDeColeta } from "./pages/PontosDeColeta";
 import { FAQ } from "./pages/FAQ";
 import { Partners } from "./pages/Partners";
+import { Post } from "./pages/Post";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog />,
+      },
+      {
+        path: "/articles/:key",
+        element: <Post />,
       },
       {
         path: "/faq",

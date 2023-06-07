@@ -64,6 +64,10 @@
 }
 
 .description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 5.5rem;
+
   color: #9b9b9b;
   font: 400 1rem "Roboto", sans-serif;
   line-height: 1.375rem;

@@ -5,9 +5,7 @@ import { Footer } from "../components/Footer";
 export function Default() {
   return (
     <>
-      <div className="container">
-        <Header />
-      </div>
+      <Header />
       <Outlet />
       <Footer />
     </>
