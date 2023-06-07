@@ -36,43 +36,40 @@ class Contact {
     }
 
 
-    public deleteContactByid = async (req:Request, res:Response) =>{
-        try{
+    public deleteContactByid = async (req: Request, res: Response) => {
+        try {
             const id: number = Number(req.params.id);
 
-        const exists: boolean = await this.verifyContact(id);
+            const exists: boolean = await this.verifyContact(id);
 
-        if (!exists) {
-            res.sendStatus(404);
+            if (!exists) {
+                res.sendStatus(404);
+            }
+
+            const contactId: string[] = await Connection("contacts").delete("*").where({ id })
+
+            res.sendStatus(200);
         }
-
-       const contactId: string[] = await Connection("contacts").delete("*").where({id})
-
-        res.sendStatus(200);
-        }
-        catch(error:any)
-        {
+        catch (error: any) {
             res.status(400);
         }
 
     }
     public getContactById = async (req: Request, res: Response) => {
-        try{
+        try {
             const id: number = Number(req.params.id);
 
-        const exists: boolean = await this.verifyContact(id);
+            const exists: boolean = await this.verifyContact(id);
 
-        if (!exists) {
-            res.sendStatus(404);
+            if (!exists) {
+                res.sendStatus(404);
+            }
+
+            const contact: string[] = await Connection("contacts").select().where({ id }).first();
+
+            res.status(200).send(contact);
         }
-
-        const contact: string[] = await Connection("contacts").select().where({ id }).first();
-
-        res.status(200).send(contact);
-        }
-        catch(error:any)
-
-        {
+        catch (error: any) {
             console.log(error)
             res.status(400).send(error)
         }

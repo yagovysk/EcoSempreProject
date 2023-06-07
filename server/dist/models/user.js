@@ -13,7 +13,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt_1 = __importDefault(require("bcrypt"));
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const dotenv_1 = __importDefault(require("dotenv"));
 const connection_1 = __importDefault(require("../database/connection"));
+dotenv_1.default.config();
 class User {
     constructor() {
         this.getRole = (email) => __awaiter(this, void 0, void 0, function* () {
@@ -56,16 +59,23 @@ class User {
         this.login = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const credentials = req.body;
-                const session = req.session;
                 const exist = yield this.verifyUserByEmail(credentials.email);
                 if (exist) {
                     const confirmed = yield this.confirmPassword(credentials);
                     if (confirmed) {
                         const userRole = yield this.getRole(credentials.email);
-                        session.user = {
-                            role: userRole
+                        const expiresIn = 60 * 60 * 24; // 24 horas em segundos
+                        const currentTimestamp = Math.floor(Date.now() / 1000);
+                        const expirationDate = currentTimestamp + expiresIn;
+                        const payload = {
+                            role: userRole,
+                            exp: expirationDate,
+                            iat: currentTimestamp,
                         };
-                        return res.status(200).send("ok");
+                        const token = jsonwebtoken_1.default.sign(payload, process.env.JWT_SECRET);
+                        return res.status(200).json({
+                            token,
+                        });
                     }
                     else {
                         res.status(400).send("Incorrect Password");

@@ -4,26 +4,32 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Middleware = void 0;
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 class Middleware {
     handle(req, res, next) {
-        const session = req.session;
+        const authorization = req.headers['authorization'] || '';
+        const token = authorization.split(" ")[1];
         if (process.env.NODE_ENV === "test") {
             next();
             return;
         }
-        if (session.user === undefined) {
-            res.status(401).send("unauthorized");
+        try {
+            const decoded = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET);
+            if (typeof decoded === 'object') {
+                const exp = decoded.exp;
+                const currentTime = Math.floor(Date.now() / 1000);
+                if (currentTime > exp) {
+                    res.sendStatus(498);
+                }
+                else {
+                    next();
+                }
+            }
         }
-        else {
-            const role = session.user.role;
-            if (!role) {
-                res.status(401).send("unauthorized");
-            }
-            else {
-                next();
-            }
+        catch (error) {
+            res.sendStatus(400);
         }
     }
 }
