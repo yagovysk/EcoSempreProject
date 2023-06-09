@@ -17,6 +17,7 @@ export function Blog() {
         {posts.length > 0 &&
           posts.map((post) => (
             <CardBlog
+              key={post.id}
               img={post.imgURL}
               imgAlt="Imagem de floresta"
               categories={post.categories}

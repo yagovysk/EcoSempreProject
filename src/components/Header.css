@@ -132,6 +132,7 @@
   border-radius: 0 0 0.5rem 0.5rem;
   padding: 1.4rem 2rem 0.95rem 2.2rem;
   width: 15rem;
+  z-index: 9999;
 }
 
 .dropdown_list {
