@@ -9,38 +9,18 @@ export function AsideBlog() {
   const [categories, setCategories] = useState("");
 
   useEffect(() => {
-    async function getRecentPosts() {
+    async function getData(endpoint, setState) {
       try {
-        const response = await api.get(
-          "/articles?_sort=timestamp&_order=desc&_limit=3"
-        );
-        setRecentPosts(response.data);
+        const response = await api.get(endpoint);
+        setState(response.data);
       } catch (err) {
         console.log(`Error: ${err.message}`);
       }
     }
 
-    async function getTags() {
-      try {
-        const response = await api.get("/tags");
-        setTags(response.data);
-      } catch (err) {
-        console.log(`Error: ${err.message}`);
-      }
-    }
-
-    async function getCategories() {
-      try {
-        const response = await api.get("/categories");
-        setCategories(response.data);
-      } catch (err) {
-        console.log(`Error: ${err.message}`);
-      }
-    }
-
-    getRecentPosts();
-    getTags();
-    getCategories();
+    getData("/articles?_sort=timestamp&_order=desc&_limit=3", setRecentPosts);
+    getData("/tags", setTags);
+    getData("/categories", setCategories);
   }, []);
 
   return (
