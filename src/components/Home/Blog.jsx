@@ -3,6 +3,7 @@ import { CardBlog } from "../CardBlog";
 import { Link } from "react-router-dom";
 import { scrollToTop, useGetData } from "../../helpers";
 import { useState } from "react";
+import Loader from "../../components/Loader";
 
 export function Blog() {
   const [posts, setPosts] = useState("");
@@ -15,7 +16,7 @@ export function Blog() {
         <h2 className="title">Acompanhe Nossos Artigos Mais Recentes</h2>
       </section>
       <div className={styles.grid_cards}>
-        {posts.length > 0 &&
+        {posts.length > 0 ? (
           posts.map((post) => (
             <CardBlog
               key={post.id}
@@ -27,7 +28,10 @@ export function Blog() {
               description={post.content}
               path={post.id}
             />
-          ))}
+          ))
+        ) : (
+          <Loader />
+        )}
       </div>
 
       <Link
