@@ -1,7 +1,13 @@
-.home {
+.slide_1 {
   background: url("../../assets/fundohome.png") no-repeat center top / cover;
-  height: 40.5rem;
-  width: 100%;
+}
+
+.slide_2 {
+  background: url("../../assets/parceiros_bg.jpg") no-repeat center top / cover;
+}
+
+.slide_3 {
+  background: url("../../assets/coletas.jpg") no-repeat center top / cover;
 }
 
 .homeContent {
@@ -9,7 +15,6 @@
   grid-auto-rows: max-content;
   justify-content: start;
   gap: 2.25rem;
-  height: 100%;
 }
 
 .hometitle {
@@ -39,7 +44,7 @@
   transition: 0.3s;
 }
 
-.home a {
+.homeContent a {
   display: flex;
   gap: 1rem;
   font-family: "Roboto", sans-serif;
@@ -47,7 +52,7 @@
   font-size: 0.9375rem;
   line-height: 2.56rem /* 41px */;
 }
-.home .btnHome:hover {
+.homeContent .btnHome:hover {
   color: #0e2b5c;
   background: #ffffff;
   transform: translateY(-4px);
