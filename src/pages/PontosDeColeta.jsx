@@ -89,7 +89,7 @@ const pontosColeta = [
 
 const linksMenu = [
   {
-    name: "Home",
+    name: "Início",
     path: "/",
   },
   {

@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const linksMenu = [
   {
-    name: "Home",
+    name: "Início",
     path: "/",
   },
   {
