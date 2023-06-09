@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Loader from "../components/Loader";
 import api from "../api/posts";
 import styles from "./AsideBlog.module.css";
 
@@ -23,7 +24,7 @@ export function AsideBlog() {
     getData("/categories", setCategories);
   }, []);
 
-  return (
+  return recentPosts.length > 0 && tags.length > 0 && categories.length > 0 ? (
     <aside className={styles.aside}>
       <section className={styles.box_aside_posts}>
         <h3 className={styles.title_box_aside}>Posts Recentes</h3>
@@ -69,5 +70,7 @@ export function AsideBlog() {
         </div>
       </section>
     </aside>
+  ) : (
+    <Loader />
   );
 }

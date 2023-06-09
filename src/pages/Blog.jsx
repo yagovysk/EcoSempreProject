@@ -4,6 +4,7 @@ import { HeaderSection } from "../components/HeaderSection.jsx";
 import { Pagination } from "../components/Pagination.jsx";
 import { useState } from "react";
 import { useGetData } from "../helpers";
+import Loader from "../components/Loader";
 
 const linksMenu = [
   {
@@ -39,22 +40,21 @@ function Posts() {
   const endIndex = startIndex + POSTS_PER_PAGE;
   const postsPerPage = posts.slice(startIndex, endIndex);
 
-  return (
+  return posts.length > 0 ? (
     <>
       <article className={`${styles.posts_container} container`}>
-        {posts.length > 0 &&
-          postsPerPage.map((post) => (
-            <CardBlog
-              key={post.id}
-              img={post.imgURL}
-              imgAlt="Imagem de floresta"
-              categories={post.categories}
-              title={post.title}
-              timestamp={post.timestamp}
-              description={post.content}
-              path={post.id}
-            />
-          ))}
+        {postsPerPage.map((post) => (
+          <CardBlog
+            key={post.id}
+            img={post.imgURL}
+            imgAlt="Imagem de floresta"
+            categories={post.categories}
+            title={post.title}
+            timestamp={post.timestamp}
+            description={post.content}
+            path={post.id}
+          />
+        ))}
       </article>
 
       <div className={styles.pagination_container}>
@@ -66,5 +66,7 @@ function Posts() {
         />
       </div>
     </>
+  ) : (
+    <Loader />
   );
 }

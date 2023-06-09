@@ -3,8 +3,9 @@ import { HeaderSection } from "../components/HeaderSection";
 import { AsideBlog } from "../components/AsideBlog";
 import { useState } from "react";
 import { useGetData } from "../helpers";
-import styles from "./SearchResult.module.css";
 import { Pagination } from "../components/Pagination";
+import { FormSearch } from "../components/FormSearch";
+import "./SearchResult.css";
 
 const linksMenu = [
   {
@@ -29,17 +30,17 @@ export function SearchResult() {
   const postsPerPage = posts.slice(startIndex, endIndex);
 
   return (
-    <main>
+    <main className="main_search_result">
       <HeaderSection
         title="Resultados da busca"
         linksMenu={linksMenu}
-        className={styles.header}
+        className={"header"}
       />
 
-      <div className={`${styles.container_content} container`}>
-        <div className={styles.posts_container}>
-          {posts &&
-            postsPerPage.map((post) => (
+      <div className={`container_content container`}>
+        {posts.length > 0 ? (
+          <div className={"posts_container"}>
+            {postsPerPage.map((post) => (
               <Card
                 key={post.id}
                 id={post.id}
@@ -49,13 +50,25 @@ export function SearchResult() {
               />
             ))}
 
-          <Pagination
-            postsPerPage={POSTS_PER_PAGE}
-            pageIndex={pageIndex}
-            onNextPage={setPageIndex}
-            postsLength={posts.length}
-          />
-        </div>
+            <Pagination
+              postsPerPage={POSTS_PER_PAGE}
+              pageIndex={pageIndex}
+              onNextPage={setPageIndex}
+              postsLength={posts.length}
+            />
+          </div>
+        ) : (
+          <section className={"error_wrapper"}>
+            <h2 className={"title"}>Nenhum Resultado Encontrado!</h2>
+            <p className={"content"}>
+              Desculpe, não encontramos resultados para a sua busca. Mas não
+              desista! Continue explorando nosso site para encontrar outras
+              informações valiosas sobre reciclagem e sustentabilidade
+            </p>
+
+            <FormSearch placeholder="Pesquisar..." />
+          </section>
+        )}
 
         <AsideBlog />
       </div>
@@ -65,18 +78,15 @@ export function SearchResult() {
 
 function Card({ id, title, content, imgURL }) {
   return (
-    <article className={styles.card_wrapper}>
-      <div className={styles.card_img_wrapper}>
+    <article className={"card_wrapper"}>
+      <div className={"card_img_wrapper"}>
         <img src={imgURL} alt={title} />
       </div>
 
-      <section className={styles.card_texts_wrapper}>
-        <h2 className={styles.card_title}>{title}</h2>
-        <p className={styles.card_content}>{content}</p>
-        <Link
-          to={`/articles/${id}`}
-          className={`link_more ${styles.card_link}`}
-        >
+      <section className={"card_texts_wrapper"}>
+        <h2 className={"title"}>{title}</h2>
+        <p className={"content"}>{content}</p>
+        <Link to={`/articles/${id}`} className={`link_more ${"card_link"}`}>
           Saiba Mais
         </Link>
       </section>

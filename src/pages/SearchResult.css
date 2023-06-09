@@ -1,15 +1,15 @@
-.header {
+.main_search_result .header {
   background: url("../assets/search_result_bg.jpg") no-repeat center / cover;
 }
 
-.container_content {
+.main_search_result .container_content {
   display: grid;
   grid-template-columns: 778px 331px;
   gap: 5.9rem;
   padding-bottom: 6.875rem;
 }
 
-.posts_container {
+.main_search_result .posts_container {
   display: grid;
   justify-items: center;
   gap: 3.75rem;
@@ -33,13 +33,13 @@
   padding: 2.18rem 2.25rem 3.125rem 2.25rem;
 }
 
-.card_title {
+.main_search_result .title {
   font: 700 2.5rem "IBM Plex Sans", sans-serif;
   line-height: 3.375rem;
   color: #0e2b5c;
 }
 
-.card_content {
+.main_search_result .content {
   /* Hides text with ellipses */
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -55,4 +55,43 @@
 
 .card_link {
   width: max-content;
+}
+
+/* Error - Not found */
+.main_search_result .error_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.main_search_result .search_form {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  border: 1px solid #eaeaea;
+  border-radius: 0.25rem;
+  padding: 0 1.125rem;
+}
+
+.main_search_result .search_form.active {
+  border: 1px solid #00c756;
+}
+
+.main_search_result .search_icon {
+  color: #0e2b5c;
+  font-size: 1.125rem;
+}
+
+.main_search_result .search_input {
+  width: 100%;
+  border: 0;
+  padding: 1.4rem 0;
+
+  font: 400 1rem "Roboto", sans-serif;
+  color: #9b9b9b;
+  outline: 1px solid transparent;
+}
+
+.main_search_result .search_input::placeholder {
+  color: #9b9b9b;
 }
