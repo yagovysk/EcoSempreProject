@@ -2,8 +2,8 @@ import styles from "../pages/Blog.module.css";
 import { CardBlog } from "../components/CardBlog.jsx";
 import { HeaderSection } from "../components/HeaderSection.jsx";
 import { Pagination } from "../components/Pagination.jsx";
-import { BlogProvider, useBlog } from "../context/BlogContext";
 import { useState } from "react";
+import { useGetData } from "../helpers";
 
 const linksMenu = [
   {
@@ -18,23 +18,22 @@ const POSTS_PER_PAGE = 6;
 
 export function Blog() {
   return (
-    <BlogProvider endpoint="/articles">
-      <main>
-        <HeaderSection
-          className={styles.header}
-          title="Nosso Blog"
-          linksMenu={linksMenu}
-        />
+    <main>
+      <HeaderSection
+        className={styles.header}
+        title="Nosso Blog"
+        linksMenu={linksMenu}
+      />
 
-        <Posts />
-      </main>
-    </BlogProvider>
+      <Posts />
+    </main>
   );
 }
 
 function Posts() {
-  const { posts } = useBlog();
+  const [posts, setPosts] = useState("");
   const [pageIndex, setPageIndex] = useState(0);
+  useGetData("/articles", setPosts);
 
   const startIndex = pageIndex * POSTS_PER_PAGE;
   const endIndex = startIndex + POSTS_PER_PAGE;

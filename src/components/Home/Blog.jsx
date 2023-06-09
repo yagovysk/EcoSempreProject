@@ -1,11 +1,12 @@
 import styles from "../Home/Blog.module.css";
 import { CardBlog } from "../CardBlog";
 import { Link } from "react-router-dom";
-import { scrollToTop } from "../../helpers";
-import { useBlog } from "../../context/BlogContext";
+import { scrollToTop, useGetData } from "../../helpers";
+import { useState } from "react";
 
 export function Blog() {
-  const { posts } = useBlog();
+  const [posts, setPosts] = useState("");
+  useGetData("/articles?_page=1&_limit=3", setPosts);
 
   return (
     <div className={`${styles.idBlog} container`}>

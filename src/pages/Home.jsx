@@ -9,7 +9,6 @@ import { Logistica } from "../components/Home/Logistica.jsx";
 import { Faq } from "../components/Faq.jsx";
 import { Callwithus } from "../components/Home/Callwithus.jsx";
 import { Blog } from "../components/Home/Blog.jsx";
-import { BlogProvider } from "../context/BlogContext.jsx";
 
 export function Home() {
   return (
@@ -24,9 +23,7 @@ export function Home() {
       <Depoiments />
       <Faq numberPerList={3} isFAQPage={false} />
       <Callwithus />
-      <BlogProvider endpoint="/articles?_page=1&_limit=3">
-        <Blog />
-      </BlogProvider>
+      <Blog />
     </main>
   );
 }
