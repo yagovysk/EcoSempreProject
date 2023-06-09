@@ -1,21 +1,22 @@
 import { useParams } from "react-router-dom";
-import { Fragment } from "react";
-import { BlogProvider, useBlog } from "../context/BlogContext";
+import { Fragment, useState } from "react";
 import { Icon } from "@iconify/react";
 import { AsideBlog } from "../components/AsideBlog";
+import { useGetData } from "../helpers";
 import styles from "./Post.module.css";
 
 export function Post() {
   return (
-    <BlogProvider endpoint={`/articles`}>
-      <Content />
-    </BlogProvider>
+    // <BlogProvider endpoint={`/articles`}>
+    <Content />
+    // </BlogProvider>
   );
 }
 
 function Content() {
   const { key } = useParams();
-  const { posts } = useBlog();
+  const [posts, setPosts] = useState("");
+  useGetData("/articles", setPosts);
 
   let post = posts && posts.filter((post) => post.id === Number(key));
   post = post[0];
