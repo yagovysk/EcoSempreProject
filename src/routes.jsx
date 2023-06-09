@@ -9,6 +9,7 @@ import { PontosDeColeta } from "./pages/PontosDeColeta";
 import { FAQ } from "./pages/FAQ";
 import { Partners } from "./pages/Partners";
 import { Post } from "./pages/Post";
+import { SearchResult } from "./pages/SearchResult";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
       {
         path: "/parceiros",
         element: <Partners />,
+      },
+      {
+        path: "/search",
+        element: <SearchResult />,
       },
     ],
   },

@@ -1,0 +1,57 @@
+.search_container {
+  display: grid;
+  place-content: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: white;
+}
+
+.close_search {
+  position: absolute;
+  right: 0;
+  border: 0;
+  background: #00c756;
+  color: white;
+  padding: 0.8rem;
+  font-size: 1.5rem;
+  line-height: 0;
+  transition: 0.3s;
+}
+
+.close_search:hover {
+  background-color: #0e2b5c;
+}
+
+.search_form {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #eaeaea;
+  width: 48rem;
+}
+
+.search_form.active {
+  border-bottom-color: #00c756;
+}
+
+.search_icon {
+  font-size: 1.7rem;
+  color: #0e2b5c;
+}
+
+.search_input {
+  border: 0;
+  outline: 1px solid transparent;
+  padding: 0.8rem 1.5rem;
+  width: 100%;
+
+  font: 500 2.125rem "IBM Plex Sans", sans-serif;
+  color: #848e9f;
+}
+
+.search_input::placeholder {
+  color: #848e9f;
+}

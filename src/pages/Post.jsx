@@ -1,9 +1,9 @@
-import { useParams, Link } from "react-router-dom";
-import { useEffect, useState, Fragment } from "react";
+import { useParams } from "react-router-dom";
+import { Fragment } from "react";
 import { BlogProvider, useBlog } from "../context/BlogContext";
 import { Icon } from "@iconify/react";
+import { AsideBlog } from "../components/AsideBlog";
 import styles from "./Post.module.css";
-import api from "../api/posts";
 
 export function Post() {
   return (
@@ -19,9 +19,6 @@ function Content() {
 
   let post = posts && posts.filter((post) => post.id === Number(key));
   post = post[0];
-
-  const reverseOrderPosts = [...posts].reverse();
-  const recentPosts = posts && reverseOrderPosts.slice(0, 3);
 
   const stringCategories = post && post.categories.join(", ");
   const breadcrumb = post && ["Início", "Blog", stringCategories, post.title];
@@ -94,56 +91,8 @@ function Content() {
           </div>
         </article>
 
-        <Aside recentPosts={recentPosts} post={post} />
+        <AsideBlog />
       </main>
     );
   }
-}
-
-export function Aside({ recentPosts, post }) {
-  return (
-    <aside className={styles.aside}>
-      <section className={styles.box_aside_posts}>
-        <h3 className={styles.title_box_aside}>Posts Recentes</h3>
-        <div className={styles.recent_post_container}>
-          {recentPosts &&
-            recentPosts.map((post) => (
-              <Link
-                key={post.id}
-                to={`/articles/${post.id}`}
-                className={styles.recent_post_wrapper}
-              >
-                <img src={post.imgURL} className={styles.recent_post_img} />
-                <time className={styles.recent_post_timestamp}>
-                  {post.timestamp}
-                </time>
-                <p className={styles.recent_post_title}>{post.title}</p>
-              </Link>
-            ))}
-        </div>
-      </section>
-
-      <section className={styles.box_aside}>
-        <h3 className={styles.title_box_aside}>Categorias</h3>
-        <div className={styles.categories_wrapper}>
-          {post.categories.map((category) => (
-            <Link key={category} to={`/`} className={styles.category_aside}>
-              {category}
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className={styles.box_aside}>
-        <h3 className={styles.title_box_aside}>Tags</h3>
-        <div className={styles.tags_wrapper_aside}>
-          {post.tags.map((tag) => (
-            <Link key={tag} to={`/`} className={styles.tag}>
-              {tag}
-            </Link>
-          ))}
-        </div>
-      </section>
-    </aside>
-  );
 }
