@@ -128,7 +128,7 @@ const listMaterials = [
 export function MaterialList() {
   const linksMenu = [
     {
-      name: "Home",
+      name: "Início",
       path: "/",
     },
     {
