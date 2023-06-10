@@ -6,6 +6,7 @@ import articleRoutes from './routes/article';
 import contactRoutes from './routes/contact';
 import createAdminUser from './createAdminUserScript';
 
+
 // setup admin
 createAdminUser();
 const app:Application = express();
