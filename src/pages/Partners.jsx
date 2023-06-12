@@ -21,7 +21,7 @@ const linksMenu = [
 
 export function Partners() {
   return (
-    <main className={styles.main_content}>
+    <main>
       <HeaderSection
         title="Nossos Parceiros"
         className={styles.header}
