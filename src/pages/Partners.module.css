@@ -3,7 +3,8 @@
 }
 
 .header {
-  background: url("../assets/parceiros_bg.jpg") no-repeat bottom center / cover;
+  background: #1d3864 url("../assets/parceiros_bg.jpg") no-repeat bottom center /
+    cover;
 }
 
 .content_texts {
