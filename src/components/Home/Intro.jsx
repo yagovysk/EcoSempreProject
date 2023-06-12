@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Autoplay, Navigation, Pagination } from "swiper";
+import logisticaImg from "../../assets/fundohome.png";
+import sustentabilidadeImg from "../../assets/parceiros_bg.jpg";
+import coletasImg from "../../assets/coletas.jpg";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -10,14 +13,15 @@ import styles from "./Intro.module.css";
 
 export function Intro() {
   const settingsSlide = {
-    cssMode: true,
+    speed: 800,
     navigation: true,
     pagination: {
       clickable: true,
     },
     loop: true,
     autoplay: {
-      delay: 6000,
+      delay: 4000,
+      disableOnInteraction: false,
     },
     modules: [Autoplay, Navigation, Pagination, A11y],
   };
@@ -25,7 +29,10 @@ export function Intro() {
   return (
     <article className="intro_container">
       <Swiper {...settingsSlide}>
-        <SwiperSlide className={`${styles.slide_1}`}>
+        <SwiperSlide>
+          <div className={`${styles.img_slider}`}>
+            <img src={logisticaImg} alt="Imagem da Logística Reversa" />
+          </div>
           <section className={`${styles.homeContent} container`}>
             <h1 className={styles.hometitle}>
               Logística Reversa de Eletrônicos
@@ -41,7 +48,10 @@ export function Intro() {
           </section>
         </SwiperSlide>
 
-        <SwiperSlide className={`${styles.slide_2}`}>
+        <SwiperSlide>
+          <div className={`${styles.img_slider}`}>
+            <img src={sustentabilidadeImg} alt="Imagem de Sustentabilidade" />
+          </div>
           <section className={`${styles.homeContent} container`}>
             <h1 className={styles.hometitle}>Criando um Futuro Sustentável</h1>
             <p className={styles.homeparagraph}>
@@ -55,7 +65,10 @@ export function Intro() {
           </section>
         </SwiperSlide>
 
-        <SwiperSlide className={`${styles.slide_3}`}>
+        <SwiperSlide>
+          <div className={`${styles.img_slider}`}>
+            <img src={coletasImg} alt="Imagem de Pontos de Coletas" />
+          </div>
           <section className={`${styles.homeContent} container`}>
             <h1 className={styles.hometitle}>
               Conheça Nossos Pontos de Coleta
