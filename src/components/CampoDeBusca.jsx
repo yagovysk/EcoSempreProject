@@ -13,7 +13,10 @@ export function CampoDeBusca({ onSearchActive }) {
         <Icon icon="ic:round-close" />
       </button>
 
-      <FormSearch placeholder="Digite aqui para buscar" />
+      <FormSearch
+        onSearchActive={onSearchActive}
+        placeholder="Digite aqui para buscar"
+      />
     </div>
   );
 }
