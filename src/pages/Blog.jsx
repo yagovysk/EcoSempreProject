@@ -1,10 +1,10 @@
-import styles from "../pages/Blog.module.css";
 import { CardBlog } from "../components/CardBlog.jsx";
 import { HeaderSection } from "../components/HeaderSection.jsx";
 import { Pagination } from "../components/Pagination.jsx";
 import { useState } from "react";
 import { useGetData } from "../helpers";
 import Loader from "../components/Loader";
+import styles from "../pages/Blog.module.css";
 
 const linksMenu = [
   {
@@ -32,9 +32,8 @@ export function Blog() {
 }
 
 function Posts() {
-  const [posts, setPosts] = useState("");
   const [pageIndex, setPageIndex] = useState(0);
-  useGetData("/articles", setPosts);
+  const posts = useGetData("/articles");
 
   const startIndex = pageIndex * POSTS_PER_PAGE;
   const endIndex = startIndex + POSTS_PER_PAGE;

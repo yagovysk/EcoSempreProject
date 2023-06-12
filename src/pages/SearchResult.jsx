@@ -1,11 +1,4 @@
-import {
-  Link,
-  redirect,
-  useActionData,
-  useFormAction,
-  useParams,
-  useSearchParams,
-} from "react-router-dom";
+import { Link, useFormAction } from "react-router-dom";
 import { HeaderSection } from "../components/HeaderSection";
 import { AsideBlog } from "../components/AsideBlog";
 import { useState } from "react";
@@ -26,11 +19,9 @@ const linksMenu = [
 const POSTS_PER_PAGE = 3;
 
 export function SearchResult() {
-  const [posts, setPosts] = useState("");
   const [pageIndex, setPageIndex] = useState(0);
   const query = useFormAction().replace("/search?q=", "");
-
-  useGetData(`/articles?title_like=${query}`, setPosts, [...query]);
+  const posts = useGetData(`/articles?title_like=${query}`, [...query]);
 
   const startIndex = pageIndex * POSTS_PER_PAGE;
   const endIndex = startIndex + POSTS_PER_PAGE;
