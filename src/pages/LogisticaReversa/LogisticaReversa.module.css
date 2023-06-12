@@ -1,0 +1,70 @@
+.header {
+  background: #870f10 url("../../assets/fundohome.png") no-repeat bottom center /
+    cover;
+}
+
+.container_content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  justify-items: center;
+  gap: 11.25rem 3.25rem;
+}
+
+.paragraph {
+  font: 400 1rem "Roboto", sans-serif;
+  color: #9b9b9b;
+  line-height: 1.7rem;
+}
+
+.wrapper_img {
+  position: relative;
+  width: max-content;
+}
+
+.wrapper_img1 {
+  padding: 4.7rem 0;
+}
+
+.wrapper_img img {
+  position: relative;
+  border-radius: 0.25rem;
+  z-index: 10;
+}
+
+.small_box {
+  position: absolute;
+  top: 3.4rem;
+  left: -1.7rem;
+  background: #00c756;
+  border-radius: 0.25rem;
+  width: 6.875rem;
+  height: 7.75rem;
+}
+
+.medium_box {
+  position: absolute;
+  bottom: -1.5rem;
+  left: -2.4rem;
+  background-color: #00c756;
+  border-radius: 0.25rem;
+  width: 14.875rem;
+  height: 11.875rem;
+}
+
+.big_box {
+  position: absolute;
+  bottom: 1.8rem;
+  right: -3rem;
+  background-color: #00c756;
+  border-radius: 0.25rem;
+  width: 13.625rem;
+  height: 25rem;
+}
+
+.partners_wrapper {
+  display: grid;
+  place-content: center;
+  background-color: #f6f7f8;
+  padding: 5rem;
+  margin-top: 7rem;
+}
