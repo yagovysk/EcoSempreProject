@@ -10,7 +10,8 @@
 }
 
 .header {
-  background: url("../assets/bg-material-list.jpg") no-repeat center / cover;
+  background: #30312f url("../assets/bg-material-list.jpg") no-repeat center /
+    cover;
 }
 
 .titles {

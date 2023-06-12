@@ -1,6 +1,7 @@
 /* Header */
 .header {
-  background: url("../assets/construction1.jpg") no-repeat bottom center / cover;
+  background: #845429 url("../assets/construction1.jpg") no-repeat bottom center /
+    cover;
 }
 
 /* Information section */

@@ -1,9 +1,9 @@
 .sustentabilidadeBox {
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   width: 100%;
-  background: url("../../assets/fundob.png") no-repeat top center / cover;
+  background: #0e2b5c url("../../assets/fundob.png") no-repeat top center /
+    cover;
   gap: 7.9rem;
 }
 .img {
