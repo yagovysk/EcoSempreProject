@@ -20,7 +20,7 @@ export function Intro() {
     },
     loop: true,
     autoplay: {
-      delay: 4000,
+      delay: 3500,
       disableOnInteraction: false,
     },
     modules: [Autoplay, Navigation, Pagination, A11y],
