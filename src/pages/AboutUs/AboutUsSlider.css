@@ -1,0 +1,19 @@
+.about_us_container .swiper {
+  border-radius: 0.25rem;
+}
+
+.about_us_container .swiper-wrapper {
+  max-width: 35.5rem;
+}
+
+.about_us_container .swiper-button-prev,
+.about_us_container .swiper-button-next {
+  --swiper-navigation-top-offset: 85%;
+  --swiper-navigation-size: 55px;
+  padding: 0 1.8rem;
+  color: #d7d7d757;
+}
+
+.about_us_container .swiper-button-next {
+  right: 11rem;
+}
