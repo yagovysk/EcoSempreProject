@@ -1,0 +1,25 @@
+.depoiments_container .swiper {
+  overflow: initial;
+}
+
+.depoiments_container .swiper-wrapper {
+  max-width: 46.25rem;
+  height: 23.75rem;
+}
+
+.depoiments_container .swiper-pagination {
+  --swiper-pagination-bottom: 0;
+  text-align: left;
+}
+
+.depoiments_container .swiper-pagination-bullet {
+  height: 5px;
+  width: 1rem;
+  background: #081e46;
+  border-radius: 0;
+  opacity: 1;
+}
+
+.depoiments_container .swiper-pagination-bullet-active {
+  background: #00c756;
+}
