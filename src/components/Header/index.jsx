@@ -57,7 +57,9 @@ export function Header() {
   return (
     <header id="header" className="header">
       <div className="container header_content">
-        <img className="logo" src={logo} alt="logo" />
+        <Link to="/">
+          <img className="logo" src={logo} alt="logo" />
+        </Link>
         <ul className="menu">
           <li onClick={() => toggleDropdown(dropdownIndex)}>
             <NavLink className="menu_item" to="/">
