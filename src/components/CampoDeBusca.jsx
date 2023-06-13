@@ -1,8 +1,8 @@
 import { Icon } from "@iconify/react";
 import { FormSearch } from "./FormSearch";
-import "./CampoDeBusca.css";
+import "./CampodeBusca.css";
 
-export function CampoDeBusca({ onSearchActive }) {
+export function CampodeBusca({ onSearchActive }) {
   return (
     <div className="search_container">
       <button
