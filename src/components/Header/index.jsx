@@ -135,8 +135,14 @@ function Dropdown({ links }) {
 }
 
 function CampoDeBusca({ onSearchActive }) {
+  function handleKeyDown(e) {
+    if (e.key === "Escape") {
+      onSearchActive(false);
+    }
+  }
+
   return (
-    <div className="search_container">
+    <div className="search_container" onKeyDown={handleKeyDown}>
       <button
         onClick={() => onSearchActive(false)}
         type="button"
