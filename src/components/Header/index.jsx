@@ -104,12 +104,10 @@ export function Header() {
             <CampoDeBusca onSearchActive={setIsSearchActive} />
           )}
 
-          <button className="btnContato">
-            <Link className="contato" to="/contact">
-              Entre em contato
-              <Icon icon="octicon:arrow-right-16" />
-            </Link>
-          </button>
+          <Link className="btnContato contato" to="/contact">
+            Entre em contato
+            <Icon icon="octicon:arrow-right-16" />
+          </Link>
         </div>
       </div>
     </header>
