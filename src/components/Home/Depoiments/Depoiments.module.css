@@ -1,6 +1,6 @@
 .idDepoiments {
-  background: url("../../assets/fundoDepoiments.png") no-repeat center / cover;
-  width: 100%;
+  background: url("../../../assets/fundoDepoiments.png") no-repeat center /
+    cover;
   height: 40.5rem;
   display: grid;
   place-items: center;
@@ -9,11 +9,14 @@
 }
 
 .content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5rem;
   color: #fff;
+  max-width: 1220px;
+  position: relative;
+}
+
+.textsContainer {
+  position: absolute;
+  left: 0;
 }
 
 .titleFeedback {
@@ -48,12 +51,14 @@
   transform: translateY(-4px);
 }
 
-.carrousel {
-  display: flex;
-  gap: 3.125rem;
-  width: 900px;
+.carousel_wrapper {
+  position: relative;
+  right: -694px;
+  width: 100vw;
+  height: 23.75rem;
+  overflow: hidden;
 }
 
-.carrousel div {
-  flex: 0 0 auto;
+.carousel {
+  position: absolute;
 }
