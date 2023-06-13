@@ -41,10 +41,14 @@ export function Intro() {
               Trabalhamos em conjunto com comunidades e parceiros para
               desenvolver soluções inovadoras em Logística Reversa.
             </p>
-            <a role="button" className={`btn ${styles.btnHome}`} href="#">
+            <Link
+              role="button"
+              className={`btn ${styles.btnHome}`}
+              to="/logistica"
+            >
               Saiba Mais
               <span>🡢</span>
-            </a>
+            </Link>
           </section>
         </SwiperSlide>
 
