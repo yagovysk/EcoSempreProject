@@ -3,7 +3,8 @@ import logo from "../assets/logoEcoSempre.png";
 import { Icon } from "@iconify/react";
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
-import { CampoDeBusca } from "./CampoDeBusca.jsx";
+import { CampodeBusca } from "../components/CampodeBusca";
+
 
 const linksEcoSempre = [
   {
@@ -33,7 +34,7 @@ const linksPrograms = [
 export function Header() {
   const [dropdownIndex, setDropdownIndex] = useState("");
   const [isSearchActive, setIsSearchActive] = useState(false);
-
+  console.log(isSearchActive);
   function toggleDropdown(id) {
     if (id !== dropdownIndex) {
       setDropdownIndex(id);
@@ -83,19 +84,16 @@ export function Header() {
           onClick={() => toggleDropdown(dropdownIndex)}
           className="contact-container"
         >
-          <Icon
-            onClick={() => setIsSearchActive(true)}
-            icon="ph:magnifying-glass"
-            className="lupaicon"
-          />
-          {isSearchActive && (
-            <CampoDeBusca onSearchActive={setIsSearchActive} />
-          )}
-
+          <Icon icon="ph:magnifying-glass" className="lupaicon" />
           <button className="btnContato">
             <Link className="contato" to="/contact">
               Entre em contato
-              <Icon icon="octicon:arrow-right-16" />
+              <div onClick={() => setIsSearchActive(!isSearchActive)}>
+                <Icon icon="octicon:arrow-right-16" />
+              </div>  
+              {isSearchActive && (
+              <CampodeBusca onSearchActive={setIsSearchActive} />
+              )}
             </Link>
           </button>
         </div>
