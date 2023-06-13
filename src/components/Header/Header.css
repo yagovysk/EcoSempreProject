@@ -9,6 +9,7 @@
   height: 6.25rem;
 }
 .logo {
+  display: block;
   width: 15.125rem;
 }
 .menu {
