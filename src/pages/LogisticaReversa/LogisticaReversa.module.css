@@ -7,7 +7,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   justify-items: center;
-  gap: 11.25rem 3.25rem;
+  gap: 9.25rem 3.25rem;
 }
 
 .paragraph {

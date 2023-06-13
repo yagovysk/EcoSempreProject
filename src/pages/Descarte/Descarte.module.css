@@ -1,0 +1,123 @@
+.header {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38)),
+    url("../../assets/sustentabilidadeImg.png") no-repeat center bottom / cover;
+}
+.container_content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  justify-items: center;
+  gap: 9.25rem 3.25rem;
+}
+
+.title {
+  width: 41rem;
+}
+
+.paragraph {
+  font: 400 1rem "Roboto", sans-serif;
+  color: #9b9b9b;
+  line-height: 1.7rem;
+}
+
+.wrapper_img {
+  position: relative;
+  width: max-content;
+}
+
+.wrapper_img1 {
+  margin: 6rem 0;
+}
+
+.wrapper_img img {
+  border-radius: 0.25rem;
+}
+
+.wrapper_img1 img {
+  max-width: 28.4rem;
+  height: 23rem;
+  object-fit: cover;
+}
+
+.wrapper_recycle_box {
+  position: absolute;
+  right: -0.9rem;
+  bottom: 0rem;
+  padding: 1.4rem;
+  border-radius: 0.25rem;
+  background-color: white;
+}
+
+.recycle_box {
+  background-color: #00c756;
+  padding: 1.125rem 2.25rem;
+  border-radius: 0.25rem;
+}
+
+.recycle_box img {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7479%)
+    hue-rotate(8deg) brightness(98%) contrast(106%);
+}
+
+.wrapper_img2 {
+  justify-self: start;
+}
+
+.medium_box {
+  position: absolute;
+  z-index: -1;
+  bottom: -1.3rem;
+  right: -1.8rem;
+  background-color: #00c756;
+  border-radius: 0.25rem;
+  width: 14.875rem;
+  height: 11.875rem;
+}
+
+.wrapper_coletas {
+  margin-top: 10.3rem;
+  background: #f6f7f8;
+}
+
+.container_coletas {
+  position: relative;
+  max-width: 31.25rem;
+  margin-left: 3rem;
+}
+
+.wrapper_img_coletas img {
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+.container_box_coletas {
+  position: absolute;
+  bottom: -57px;
+  left: -56px;
+  max-width: 23.125rem;
+  padding: 2rem 2.25rem;
+  background-color: white;
+  border-radius: 0.25rem;
+}
+
+.wrapper_box_coletas {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  background-color: #00c756;
+  border-radius: 0.25rem;
+  padding: 20px 27px;
+  color: white;
+}
+
+.wrapper_box_coletas svg {
+  width: 5rem;
+  height: 5rem;
+}
+
+.text_box_coletas {
+  font: 700 1.06rem "Roboto", sans-serif;
+  line-height: 1.7rem;
+}
