@@ -1,12 +1,18 @@
 import imgInformation1 from "../../assets/construction2.jpg";
 import imgInformation2 from "../../assets/houses.jpg";
 import styles from "./AboutUs.module.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "./AboutUsSlider.css";
 
 import { useIncreaseNumber } from "../../helpers";
 import { ContactCard } from "../../components/ContactCard";
 import { ParceirosCard } from "../../components/ParceirosCard";
 import { HeaderSection } from "../../components/HeaderSection";
 import { Map } from "../../components/Map";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { A11y, Autoplay, Navigation } from "swiper";
 
 export function AboutUs() {
   const linksMenu = [
@@ -41,9 +47,21 @@ export function AboutUs() {
 
 function Information() {
   const experienceNumber = useIncreaseNumber(10, 100, 1);
+  const settingsSlide = {
+    speed: 800,
+    navigation: true,
+    loop: true,
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+    },
+    modules: [Autoplay, Navigation, A11y],
+  };
 
   return (
-    <div className={`${styles.content_information} container`}>
+    <div
+      className={`${styles.content_information} about_us_container container`}
+    >
       <article className={styles.first_information}>
         <div className="textsContainer">
           <span className="small-text">Quem Somos</span>
@@ -71,8 +89,24 @@ function Information() {
           </section>
         </div>
 
-        <div className={styles.wrapper_img}>
-          <img src={imgInformation1} alt="Construtor com um notebook" />
+        <div className={styles.carousel_wrapper}>
+          <Swiper {...settingsSlide}>
+            <SwiperSlide>
+              <div className={styles.wrapper_img}>
+                <img src={imgInformation1} alt="Construtor com um notebook" />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className={styles.wrapper_img}>
+                <img src={imgInformation1} alt="Construtor com um notebook" />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className={styles.wrapper_img}>
+                <img src={imgInformation1} alt="Construtor com um notebook" />
+              </div>
+            </SwiperSlide>
+          </Swiper>
           <div className={styles.experiences_wrapper}>
             <h3 className={styles.experience_number}>+{experienceNumber}</h3>
             <span className={styles.legend_experience_number}>

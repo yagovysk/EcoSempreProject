@@ -16,12 +16,13 @@
   justify-content: space-between;
 }
 
-.wrapper_img {
+.carousel_wrapper {
   position: relative;
 }
 
-.wrapper_img img {
-  border-radius: 0.25rem;
+.wrapper_img {
+  max-width: 35.4rem;
+  height: 26.375rem;
 }
 
 .experiences_wrapper {
@@ -35,6 +36,7 @@
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: 600;
   text-align: center;
+  z-index: 20;
 }
 
 .experience_number {
