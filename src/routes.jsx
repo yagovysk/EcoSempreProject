@@ -10,6 +10,8 @@ import { FAQ } from "./pages/FAQ";
 import { Partners } from "./pages/Partners";
 import { Post } from "./pages/Post";
 import { SearchResult } from "./pages/SearchResult";
+import { LogisticaReversa } from "./pages/LogisticaReversa";
+import { Descarte } from "./pages/Descarte";
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +57,14 @@ export const router = createBrowserRouter([
       {
         path: "/search",
         element: <SearchResult />,
+      },
+      {
+        path: "/logistica",
+        element: <LogisticaReversa />,
+      },
+      {
+        path: "/descarte",
+        element: <Descarte />,
       },
     ],
   },

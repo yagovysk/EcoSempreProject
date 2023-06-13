@@ -21,16 +21,19 @@ export function scrollToTop() {
   window.scrollBy(0, document.body.offsetHeight * -1);
 }
 
-export function useGetData(endpoint, setState, dependencies = []) {
+export function useGetData(endpoint, dependencies = []) {
+  const [data, setData] = useState("");
   useEffect(() => {
     async function getData() {
       try {
         const response = await api.get(endpoint);
-        setState(response.data);
+        setData(response.data);
       } catch (err) {
         console.log(`Error: ${err.message}`);
       }
     }
     getData();
   }, dependencies);
+
+  return data;
 }
