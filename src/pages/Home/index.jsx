@@ -11,6 +11,8 @@ import { Depoiments } from "../../components/Home/Depoiments";
 import { Faq } from "../../components/Faq";
 import { Blog } from "../../components/Home/Blog";
 
+import coletaimg from "../../assets/Coletasimg.png";
+import recycleIcon from "../../assets/recycleIcon.svg";
 import sobreimg from "../../assets/sobreimg.png";
 import plantaicon from "../../assets/plantaicon.svg";
 import sustentabilidadeImg from "../../assets/sustentabilidadeImg.png";
@@ -25,7 +27,12 @@ export function Home() {
       <Sustentabilidade />
       <Saiba />
       <Logistica />
-      <Coletas />
+      <Coletas
+        subtitle="Pontos de Coleta de Lixo Eletrônico"
+        title="Encontre o Ponto de Coleta EcoSempre mais Próximo de Você!"
+        linkText="Ver Pontos de Coleta"
+        imgCallbackComponent={() => <ImgColetas />}
+      />
       <Parceiros />
       <Depoiments />
       <Faq numberPerList={3} isFAQPage={false} />
@@ -166,6 +173,31 @@ function Logistica() {
         />
       </section>
     </article>
+  );
+}
+
+function ImgColetas() {
+  return (
+    <div className={`${styles.containerImgColetas}`}>
+      <div className={styles.wrapperImgColetas}>
+        <img
+          className={styles.recycleIcon}
+          src={recycleIcon}
+          alt="Ícone de reciclagem"
+        />
+        <p className={styles.imgTextColetas}>
+          <span>Faça já sua Parte e</span>
+          <span>Colabore Conosco</span>
+        </p>
+      </div>
+
+      <img
+        className={styles.coletaimg}
+        src={coletaimg}
+        alt="Imagem dos equipamentos coletados"
+      />
+      <div className={styles.behind}></div>
+    </div>
   );
 }
 
