@@ -309,6 +309,7 @@
 
 .description {
   font: 500 1rem "Roboto", sans-serif;
-  line-height: 1.6rem;
+  line-height: 1.7rem;
   color: white;
+  opacity: 0.8;
 }
