@@ -16,6 +16,7 @@
   letter-spacing: 0.11rem;
   max-width: 44.6rem;
   text-align: center;
+  margin: 0;
 }
 .menu {
   display: flex;

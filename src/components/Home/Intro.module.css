@@ -32,6 +32,7 @@
 
 .hometitle {
   max-width: 61rem;
+  margin: 0;
   margin-top: 7rem;
   color: #ffffff;
   font-size: 4.375rem; /* 70px */
