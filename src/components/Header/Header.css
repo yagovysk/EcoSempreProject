@@ -1,19 +1,27 @@
 .header {
   background-color: white;
   box-shadow: 0px 2px 25px 0px #32323214;
+  padding: 0 1.25rem;
 }
 .header_content {
   display: flex;
-  align-items: center;
-  gap: 5.125rem;
-  height: 6.25rem;
+  justify-content: space-between;
 }
 .logo {
-  display: block;
-  width: 15.125rem;
+  display: grid;
+  place-content: center;
+  max-width: 15.75rem;
+  height: 6.25rem;
 }
+
+.logo img {
+  display: block;
+  width: 100%;
+}
+
 .menu {
   display: flex;
+  align-items: center;
   gap: 2.125rem;
   list-style-type: none;
 }
@@ -245,4 +253,45 @@
 
 .search_container .search_input::placeholder {
   color: #848e9f;
+}
+
+.menu_burger {
+  display: none;
+}
+
+@media (max-width: 1108px) {
+  .header_content {
+    align-items: center;
+  }
+
+  .menu,
+  .contact-container {
+    display: none;
+  }
+
+  .menu_burger {
+    display: grid;
+    gap: 0.5rem;
+    width: 1.8rem;
+    cursor: pointer;
+  }
+
+  .trace {
+    height: 2px;
+    width: 100%;
+    background: #0e2b5c;
+    transition: 0.3s;
+  }
+
+  .menu_burger.active .trace1 {
+    transform: rotate(45deg) translate(5px, 9px);
+  }
+
+  .menu_burger.active .trace2 {
+    opacity: 0;
+  }
+
+  .menu_burger.active .trace3 {
+    transform: rotate(-45deg) translate(5px, -9px);
+  }
 }

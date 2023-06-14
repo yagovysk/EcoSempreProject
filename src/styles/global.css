@@ -88,3 +88,9 @@ a {
   color: #00c756;
   border-bottom-color: transparent;
 }
+
+@media (max-width: 542px) {
+  .title {
+    font-size: 2rem;
+  }
+}
