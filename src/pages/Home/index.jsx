@@ -65,8 +65,7 @@ function Sobre() {
             </span>
           </div>
         </div>
-
-        <section className={styles.texts_sobre}>
+        <article className={styles.wrapper_texts}>
           <span className={`${styles.subtitle}`}>
             Nossa História e Compromisso Sustentável
           </span>
@@ -74,47 +73,49 @@ function Sobre() {
             Somos referência em Sustentabilidade e Logística Reversa de
             Eletrônicos!
           </h2>
-          <p className={`${styles.paragraphSobre} ${styles.p1}`}>
-            Trabalhamos incansavelmente para desenvolver soluções inovadoras em
-            Logística Reversa e ajudar a transformar a maneira como as empresas
-            lidam com seus resíduos.
-          </p>
+          <section className={styles.texts_sobre}>
+            <p className={`${styles.paragraphSobre} ${styles.p1}`}>
+              Trabalhamos incansavelmente para desenvolver soluções inovadoras
+              em Logística Reversa e ajudar a transformar a maneira como as
+              empresas lidam com seus resíduos.
+            </p>
 
-          <p className={`${styles.paragraphSobre} ${styles.p2}`}>
-            Nossa visão é criar um futuro mais sustentável e tecnologicamente
-            responsável, e isso significa ir além da reciclagem convencional.
-            Estamos comprometidos em encontrar as melhores práticas e contribuir
-            para um mundo mais sustentável e equilibrado.
-          </p>
+            <p className={`${styles.paragraphSobre} ${styles.p2}`}>
+              Nossa visão é criar um futuro mais sustentável e tecnologicamente
+              responsável, e isso significa ir além da reciclagem convencional.
+              Estamos comprometidos em encontrar as melhores práticas e
+              contribuir para um mundo mais sustentável e equilibrado.
+            </p>
 
-          <p className={`${styles.paragraphSobre} ${styles.p3}`}>
-            Como podemos proteger nosso meio ambiente e também implementarmos
-            uma Logística Reversa eficiente?
-          </p>
+            <p className={`${styles.paragraphSobre} ${styles.p3}`}>
+              Como podemos proteger nosso meio ambiente e também implementarmos
+              uma Logística Reversa eficiente?
+            </p>
 
-          <ul className={styles.culturaList}>
-            <li>
-              <Icon
-                icon="material-symbols:check-circle"
-                className={styles.culturaListImg}
-              />
-              Cultura Regenerativa Positiva
-            </li>
-            <li>
-              <Icon
-                icon="material-symbols:check-circle"
-                className={styles.culturaListImg}
-              />
-              Descarte Correto de Resíduos
-            </li>
-            <li>
-              <Icon
-                icon="material-symbols:check-circle"
-                className={styles.culturaListImg}
-              />
-              Consciência Ambiental
-            </li>
-          </ul>
+            <ul className={styles.culturaList}>
+              <li>
+                <Icon
+                  icon="material-symbols:check-circle"
+                  className={styles.culturaListImg}
+                />
+                Cultura Regenerativa Positiva
+              </li>
+              <li>
+                <Icon
+                  icon="material-symbols:check-circle"
+                  className={styles.culturaListImg}
+                />
+                Descarte Correto de Resíduos
+              </li>
+              <li>
+                <Icon
+                  icon="material-symbols:check-circle"
+                  className={styles.culturaListImg}
+                />
+                Consciência Ambiental
+              </li>
+            </ul>
+          </section>
 
           <Link
             role="button"
@@ -125,7 +126,7 @@ function Sobre() {
             Conheça Nossa História
             <span>🡢</span>
           </Link>
-        </section>
+        </article>
       </div>
     </div>
   );
@@ -134,8 +135,12 @@ function Sobre() {
 function Sustentabilidade() {
   return (
     <div className={styles.sustentabilidadeBox}>
-      <img src={sustentabilidadeImg} className={styles.img} />
-      <article className={`textsContainer`}>
+      <div className={styles.sustentabilidade_img_wrapper}>
+        <img src={sustentabilidadeImg} className={styles.img} />
+      </div>
+      <article
+        className={`textsContainer ${styles.wrapper_texts_sustentabilidade}`}
+      >
         <span className={`small-text`}>Sustentabilidade</span>
         <section className={`texts`}>
           <h2 className={styles.porque}>

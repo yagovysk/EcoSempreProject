@@ -1,9 +1,8 @@
 .sobre {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 3.75rem;
-  height: 51.5rem;
+  margin: 8.5rem 1.375rem 8.5rem 3.8rem;
 }
 
 .containerImg {
@@ -43,39 +42,35 @@
   max-width: 10.1rem;
 }
 
-.texts_sobre {
-  display: grid;
-  grid-template-areas:
-    "subtitle ."
-    "title title"
-    "p1 p3"
-    "p2 list"
-    "btn .";
-  gap: 1.6rem 1rem;
+.wrapper_texts {
   font-family: "Roboto", sans-serif;
 }
 
-.texts_sobre .subtitle {
+.wrapper_texts .subtitle {
   color: #00a346;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.6rem;
-}
-
-.texts_sobre .subtitle:first-child {
-  grid-area: subtitle;
   background: #e0f6e9;
-  max-width: max-content;
+  width: max-content;
   padding: 0.4375rem 1.25rem; /* 7px 20px */
   border-radius: 0.25rem; /* 4px */
 }
 
-.texts_sobre .titleSobre {
-  grid-area: title;
+.wrapper_texts .titleSobre {
   color: #0e2b5c;
   font-size: 2.5rem;
   line-height: 3.375rem;
   font-weight: 700;
+  margin: 0.93rem 0 2rem 0;
+}
+
+.texts_sobre {
+  display: grid;
+  grid-template-areas:
+    "p1 p3"
+    "p2 list";
+  gap: 1.6rem 1rem;
 }
 
 .paragraphSobre {
@@ -86,7 +81,6 @@
 
 .p1 {
   grid-area: p1;
-  max-width: 22.75rem;
   color: #0e2b5c;
   font-weight: 500;
 }
@@ -135,6 +129,7 @@
   font-weight: 700;
   line-height: 2.56rem;
   color: #ffffff;
+  margin-top: 1.8rem;
 }
 
 .btnSobre:hover {
@@ -148,11 +143,23 @@
   width: 100%;
   background: #0e2b5c url("../../assets/fundob.png") no-repeat top center /
     cover;
-  gap: 7.9rem;
+  gap: 6.6rem;
 }
-.img {
+.sustentabilidade_img_wrapper {
   justify-self: flex-end;
   max-width: 59.5rem;
+  height: 100vh;
+}
+.img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.wrapper_texts_sustentabilidade {
+  padding: 0 1.375rem;
 }
 
 .porque {
@@ -312,4 +319,68 @@
   line-height: 1.7rem;
   color: white;
   opacity: 0.8;
+}
+
+@media (max-width: 1155px) {
+  .sobre {
+    flex-direction: column;
+    align-items: center;
+    margin: 4rem 1.375rem;
+  }
+
+  .containerImg {
+    width: 100%;
+    height: 324px;
+  }
+
+  .sobreImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .number-garbage-wrapper {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    place-content: center;
+    place-items: center;
+    width: 80%;
+    height: 70%;
+    padding: 2.25rem 0;
+  }
+
+  .sustentabilidadeBox {
+    gap: 2.3rem;
+  }
+
+  .sustentabilidade_img_wrapper .img {
+    object-position: 68%;
+  }
+}
+
+@media (max-width: 942px) {
+  .texts_sobre {
+    grid-template-areas:
+      "p1"
+      "p2"
+      "p3"
+      "list";
+  }
+  .sustentabilidadeBox {
+    flex-direction: column;
+    padding-bottom: 3.125rem;
+  }
+
+  .sustentabilidade_img_wrapper {
+    max-width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 445px) {
+  .wrapper_texts .subtitle {
+    width: 100%;
+    font-size: 0.875rem;
+  }
 }

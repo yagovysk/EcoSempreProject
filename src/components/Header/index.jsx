@@ -57,9 +57,10 @@ export function Header() {
   return (
     <header id="header" className="header">
       <div className="container header_content">
-        <Link to="/">
-          <img className="logo" src={logo} alt="logo" />
+        <Link className="logo" to="/">
+          <img src={logo} alt="logo" />
         </Link>
+
         <ul className="menu">
           <li onClick={() => toggleDropdown(dropdownIndex)}>
             <NavLink className="menu_item" to="/">
@@ -111,8 +112,24 @@ export function Header() {
             <Icon icon="octicon:arrow-right-16" />
           </Link>
         </div>
+
+        <BurgerMenu />
       </div>
     </header>
+  );
+}
+
+function BurgerMenu() {
+  const [isActive, setIsActive] = useState(false);
+  return (
+    <div
+      onClick={() => setIsActive(!isActive)}
+      className={`menu_burger ${isActive && "active"}`}
+    >
+      <div className="trace trace1"></div>
+      <div className="trace trace2"></div>
+      <div className="trace trace3"></div>
+    </div>
   );
 }
 
