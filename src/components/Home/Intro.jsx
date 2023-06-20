@@ -19,6 +19,7 @@ export function Intro() {
       clickable: true,
     },
     loop: true,
+    lazy: true,
     autoplay: {
       delay: 3500,
       disableOnInteraction: false,
@@ -31,7 +32,11 @@ export function Intro() {
       <Swiper {...settingsSlide}>
         <SwiperSlide>
           <div className={`${styles.img_slider}`}>
-            <img src={logisticaImg} alt="Imagem da Logística Reversa" />
+            <img
+              loading="lazy"
+              src={logisticaImg}
+              alt="Imagem da Logística Reversa"
+            />
           </div>
           <section className={`${styles.homeContent} container`}>
             <h1 className={styles.hometitle}>
@@ -54,7 +59,11 @@ export function Intro() {
 
         <SwiperSlide>
           <div className={`${styles.img_slider}`}>
-            <img src={sustentabilidadeImg} alt="Imagem de Sustentabilidade" />
+            <img
+              loading="lazy"
+              src={sustentabilidadeImg}
+              alt="Imagem de Sustentabilidade"
+            />
           </div>
           <section className={`${styles.homeContent} container`}>
             <h1 className={styles.hometitle}>Criando um Futuro Sustentável</h1>
@@ -71,7 +80,11 @@ export function Intro() {
 
         <SwiperSlide>
           <div className={`${styles.img_slider}`}>
-            <img src={coletasImg} alt="Imagem de Pontos de Coletas" />
+            <img
+              loading="lazy"
+              src={coletasImg}
+              alt="Imagem de Pontos de Coletas"
+            />
           </div>
           <section className={`${styles.homeContent} container`}>
             <h1 className={styles.hometitle}>

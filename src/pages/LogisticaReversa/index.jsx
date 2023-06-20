@@ -11,7 +11,7 @@ const linksMenu = [
   },
   {
     name: "Programas",
-    path: "/",
+    path: "/logistica",
   },
   {
     name: "Logística Reversa",
@@ -28,7 +28,7 @@ export function LogisticaReversa() {
       />
 
       <article className={`container ${styles.container_content}`}>
-        <section className={`textsContainer`}>
+        <section className={`textsContainer ${styles.textsContainer}`}>
           <span className="small-text">Logística Reversa</span>
           <div className="texts">
             <h2 className="title">Nosso Compromisso com a Sustentabilidade</h2>
@@ -66,7 +66,7 @@ export function LogisticaReversa() {
           <div className={styles.big_box}></div>
         </div>
 
-        <div className={`${styles.wrapper_img}`}>
+        <div className={`${styles.wrapper_img} ${styles.wrapper_img2}`}>
           <img src={person} alt="Homem segurando placa com logo ecológica" />
           <div className={styles.medium_box}></div>
         </div>

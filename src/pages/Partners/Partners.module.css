@@ -5,17 +5,27 @@
 
 .content_texts {
   display: grid;
+  padding: 0 1.5rem;
   gap: 12rem;
 }
 
 .about_us {
   display: flex;
-  gap: 1.375rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.375rem;
+}
+
+.textsContainer {
+  flex: 1 0 25rem;
 }
 
 .partners {
   display: flex;
-  gap: 8.125rem;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem 5.125rem;
 }
 
 .paragraphs {
@@ -30,11 +40,30 @@
 }
 
 .wrapper_imgs {
+  flex: 1;
   display: flex;
+  justify-content: center;
   gap: 1.875rem;
   position: relative;
   margin-top: 1rem;
-  transform: translateX(3rem);
+}
+
+.wrapper_imgs .wrapper_img:first-child {
+  transform: translateY(2rem);
+}
+
+.wrapper_img {
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 73px 0px #28282826;
+  min-width: 19.5rem;
+  max-height: 29.2rem;
+  position: relative;
+}
+
+.img_person {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .sustentabilidade_wrapper {
@@ -52,23 +81,6 @@
   left: 0;
 }
 
-.img {
-  border-radius: 0.25rem;
-  box-shadow: 0px 1px 73px 0px #28282826;
-  min-width: 19.5rem;
-  max-height: 29.2rem;
-}
-
-.img1 {
-  background: url("../../assets/partners_half_img1.png") no-repeat center / 150%
-    135%;
-  transform: translateY(2rem);
-}
-
-.img2 {
-  background: url("../../assets/partners_half_img2.png") no-repeat center;
-}
-
 .sustentabilidade_wrapper img {
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7479%)
     hue-rotate(8deg) brightness(98%) contrast(106%);
@@ -81,18 +93,24 @@
 
 .wrapper_img_partners {
   position: relative;
+  margin-left: 2.5rem;
+  max-width: 27.7rem;
+  height: 23rem;
+  box-shadow: 0px 1px 73px 0px #28282826;
 }
 
 .img_partners {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   box-shadow: 0px 1px 73px 0px #28282826;
   border-radius: 0.25rem;
-  max-width: 27.7rem;
 }
 
 .wrapper_text_img_partners {
   position: absolute;
-  bottom: 0;
-  transform: translateX(-6rem);
+  bottom: -3.8rem;
+  left: -4.8rem;
   background-color: white;
   border-radius: 0.25rem;
   padding: 1.875rem;
@@ -126,5 +144,74 @@
   width: 100%;
   min-height: 16rem;
   background-color: #f6f7f8;
-  margin-top: 4rem;
+  margin-top: 7rem;
+}
+
+@media (max-width: 730px) {
+  .content_texts {
+    gap: 6rem;
+  }
+  .about_us {
+    gap: 1rem;
+  }
+  .textsContainer {
+    max-width: initial !important;
+  }
+  .wrapper_img {
+    min-width: 6.875rem;
+    min-height: 24.875rem;
+  }
+  .sustentabilidade_wrapper {
+    padding: 2rem 1.5rem;
+    min-width: 10rem;
+    width: auto;
+    gap: 1rem;
+  }
+  .sustentabilidade_wrapper img {
+    width: 2rem;
+    height: 2rem;
+  }
+  .wrapper_img_partners {
+    max-width: initial;
+    min-width: 15rem;
+    margin: 0;
+  }
+  .wrapper_text_img_partners {
+    box-shadow: 0px 5px 16px 0px #3c3a4426;
+    max-width: 18rem;
+    left: 0;
+  }
+  .wrapper_paragraph_text_partners {
+    padding: 2rem;
+  }
+  .paragraph_text_partners,
+  .sustentabilidade_paragraph {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 493px) {
+  .textsContainer {
+    flex: 1 0;
+  }
+  .wrapper_imgs .wrapper_img:first-child {
+    transform: translateY(1.5rem);
+  }
+  .sustentabilidade_wrapper {
+    min-width: auto;
+    padding: 1.2rem;
+  }
+  .sustentabilidade_paragraph {
+    font-size: 0.775rem;
+  }
+  .wrapper_text_img_partners {
+    bottom: -2.5rem;
+  }
+  .wrapper_text_img_partners,
+  .wrapper_paragraph_text_partners {
+    padding: 1.5rem;
+  }
+  .quotes_partners {
+    transform: translateY(-0.325rem);
+  }
 }

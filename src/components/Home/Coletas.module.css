@@ -1,8 +1,15 @@
 .wrapper {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 2.375rem;
   align-items: center;
-  height: var(--height, 43rem);
+  padding: var(--padding, 8rem) 1.5rem;
+}
+
+.textsContainer {
+  flex: 1;
+  min-width: 30rem;
 }
 
 .paragraph {
@@ -23,4 +30,14 @@
 .btnColeta:hover {
   background: #0e2b5c;
   transform: translateY(-4px);
+}
+
+@media (max-width: 542px) {
+  .wrapper {
+    justify-content: start;
+    padding: 3rem 1.5rem;
+  }
+  .textsContainer {
+    min-width: 18rem;
+  }
 }

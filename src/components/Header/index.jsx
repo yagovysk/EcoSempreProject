@@ -1,7 +1,7 @@
 import logo from "../../assets/logoEcoSempre.png";
 import { Icon } from "@iconify/react";
 import { Link, NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FormSearch } from "../FormSearch";
 import "./Header.css";
 
@@ -43,8 +43,47 @@ const linksPrograms = [
 ];
 
 export function Header() {
+  const [isActive, setIsActive] = useState(false);
+  useEffect(() => {
+    document.body.style.overflow = isActive ? "hidden" : "initial";
+  }, [isActive]);
+
+  function handleOpenMenu() {
+    setIsActive(!isActive);
+  }
+
+  return (
+    <header className={`header ${isActive && "on"}`}>
+      <div className="container header_content">
+        <Link aria-label="Voltar para o início" className="logo" to="/">
+          <img src={logo} alt="logo da EcoSempre" />
+        </Link>
+
+        {!isActive && <Menu />}
+
+        <BurgerMenu onActive={handleOpenMenu} isActive={isActive} />
+      </div>
+      {isActive && <MenuMobile setIsActive={setIsActive} />}
+    </header>
+  );
+}
+
+function Menu({ setIsActive = false }) {
   const [dropdownIndex, setDropdownIndex] = useState("");
   const [isSearchActive, setIsSearchActive] = useState(false);
+
+  function handleClick(id) {
+    if (setIsActive) {
+      setIsActive(false);
+    }
+    toggleDropdown(id);
+  }
+
+  function handleCloseBurger() {
+    if (setIsActive) {
+      setIsActive(false);
+    }
+  }
 
   function toggleDropdown(id) {
     if (id !== dropdownIndex) {
@@ -55,98 +94,85 @@ export function Header() {
   }
 
   return (
-    <header id="header" className="header">
-      <div className="container header_content">
-        <Link className="logo" to="/">
-          <img src={logo} alt="logo" />
-        </Link>
-
-        <ul className="menu">
-          <li onClick={() => toggleDropdown(dropdownIndex)}>
-            <NavLink className="menu_item" to="/">
-              Início
-            </NavLink>
-          </li>
-          <li onClick={() => toggleDropdown(0)}>
-            <div className={`menu_item ${dropdownIndex === 0 && "active"}`}>
-              EcoSempre
-              <Icon icon="mdi:caret" rotate={2} />
-              {dropdownIndex === 0 && <Dropdown links={linksEcoSempre} />}
-            </div>
-          </li>
-          <li onClick={() => toggleDropdown(1)}>
-            <div className={`menu_item ${dropdownIndex === 1 && "active"}`}>
-              Programas
-              <Icon icon="mdi:caret" rotate={2} />
-            </div>
-
-            {dropdownIndex === 1 && <Dropdown links={linksPrograms} />}
-          </li>
-          <li onClick={() => toggleDropdown(dropdownIndex)}>
-            <NavLink className="menu_item" to="/coletas">
-              Pontos de coleta
-            </NavLink>
-          </li>
-          <li onClick={() => toggleDropdown(dropdownIndex)}>
-            <NavLink className="menu_item" to="/blog">
-              Blog
-            </NavLink>
-          </li>
-        </ul>
-
-        <div
-          onClick={() => toggleDropdown(dropdownIndex)}
-          className="contact-container"
-        >
-          <Icon
-            onClick={() => setIsSearchActive(true)}
-            icon="ph:magnifying-glass"
-            className="lupaicon"
-          />
-          {isSearchActive && (
-            <CampoDeBusca onSearchActive={setIsSearchActive} />
+    <>
+      <ul className="menu">
+        <li className="menu_li" onClick={() => handleClick(dropdownIndex)}>
+          <NavLink className="menu_item" to="/">
+            Início
+          </NavLink>
+        </li>
+        <li className="menu_li" onClick={() => toggleDropdown(0)}>
+          <div className={`menu_item ${dropdownIndex === 0 && "active"}`}>
+            EcoSempre
+            <Icon className="arrow_menu_item" icon="mdi:caret" rotate={2} />
+          </div>
+          {dropdownIndex === 0 && (
+            <Dropdown
+              onActiveBurger={handleCloseBurger}
+              links={linksEcoSempre}
+            />
           )}
+        </li>
+        <li className="menu_li" onClick={() => toggleDropdown(1)}>
+          <div className={`menu_item ${dropdownIndex === 1 && "active"}`}>
+            Programas
+            <Icon className="arrow_menu_item" icon="mdi:caret" rotate={2} />
+          </div>
 
-          <Link className="btnContato contato" to="/contact">
-            Entre em contato
-            <Icon icon="octicon:arrow-right-16" />
-          </Link>
-        </div>
+          {dropdownIndex === 1 && (
+            <Dropdown
+              onActiveBurger={handleCloseBurger}
+              links={linksPrograms}
+            />
+          )}
+        </li>
+        <li className="menu_li" onClick={() => handleClick(dropdownIndex)}>
+          <NavLink className="menu_item" to="/coletas">
+            Pontos de coleta
+          </NavLink>
+        </li>
+        <li className="menu_li" onClick={() => handleClick(dropdownIndex)}>
+          <NavLink className="menu_item" to="/blog">
+            Blog
+          </NavLink>
+        </li>
+      </ul>
 
-        <BurgerMenu />
+      <div
+        onClick={() => toggleDropdown(dropdownIndex)}
+        className="contact-container"
+      >
+        <Icon
+          onClick={() => setIsSearchActive(true)}
+          icon="ph:magnifying-glass"
+          className="lupaicon"
+        />
+        {isSearchActive && <CampoDeBusca onSearchActive={setIsSearchActive} />}
+
+        <Link className="btnContato contato" to="/contact">
+          Entre em contato
+          <Icon icon="octicon:arrow-right-16" />
+        </Link>
       </div>
-    </header>
+    </>
   );
 }
 
-function BurgerMenu() {
-  const [isActive, setIsActive] = useState(false);
-  return (
-    <div
-      onClick={() => setIsActive(!isActive)}
-      className={`menu_burger ${isActive && "active"}`}
-    >
-      <div className="trace trace1"></div>
-      <div className="trace trace2"></div>
-      <div className="trace trace3"></div>
-    </div>
-  );
-}
-
-function Dropdown({ links }) {
+function Dropdown({ links, onActiveBurger }) {
   return (
     <div className="wrapper_dropdown">
       <ul className="dropdown_list">
         {links.map((link, index) => (
-          <NavLink
-            className={`dropdown_item ${
-              links.length - 1 === index && "last_item"
-            }`}
-            to={link.path}
-            key={link.name}
-          >
-            {link.name}
-          </NavLink>
+          <li key={link.name} onClick={onActiveBurger}>
+            <NavLink
+              className={`dropdown_item ${
+                links.length - 1 === index && "last_item"
+              }`}
+              to={link.path}
+            >
+              {link.name}
+            </NavLink>
+          </li>
         ))}
       </ul>
     </div>
@@ -154,14 +180,18 @@ function Dropdown({ links }) {
 }
 
 function CampoDeBusca({ onSearchActive }) {
-  function handleKeyDown(e) {
-    if (e.key === "Escape") {
-      onSearchActive(false);
+  useEffect(() => {
+    function handleKeyDown(e) {
+      if (e.key === "Escape") {
+        onSearchActive(false);
+      }
     }
-  }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
-    <div className="search_container" onKeyDown={handleKeyDown}>
+    <div className="search_container">
       <button
         onClick={() => onSearchActive(false)}
         type="button"
@@ -174,6 +204,27 @@ function CampoDeBusca({ onSearchActive }) {
         onSearchActive={onSearchActive}
         placeholder="Digite aqui para buscar"
       />
+    </div>
+  );
+}
+
+function BurgerMenu({ onActive, isActive }) {
+  return (
+    <div
+      onClick={() => onActive()}
+      className={`menu_burger ${isActive && "active"}`}
+    >
+      <div className="trace trace1"></div>
+      <div className="trace trace2"></div>
+      <div className="trace trace3"></div>
+    </div>
+  );
+}
+
+function MenuMobile({ setIsActive }) {
+  return (
+    <div className="menu_mobile_container">
+      <Menu setIsActive={setIsActive} />
     </div>
   );
 }

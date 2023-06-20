@@ -9,6 +9,7 @@ import style from "./Depoiments.module.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./DepoimentsSlider.css";
+import { useRef } from "react";
 
 export function Depoiments() {
   const settingsSlide = {
@@ -25,7 +26,7 @@ export function Depoiments() {
         <div className={`textsContainer ${style.textsContainer}`}>
           <span className={`small-text`}>Experiências Inspiradoras</span>
           <div className={`texts`}>
-            <h2 className={`${style.titleFeedback}`}>
+            <h2 className={`title ${style.titleFeedback}`}>
               Depoimentos Daqueles que já Passaram na EcoSempre
             </h2>
             <p className={style.paragraph}>
@@ -70,7 +71,7 @@ export function Depoiments() {
           empresas deveriam adotar práticas ecológicas como a 
           SempreTech. Muito importante cuidar do nosso meio ambiente 
           pois assim evitaremos mais desastres ambientais.`}
-                  stars={5}
+                  stars={4}
                 />
               </SwiperSlide>
               <SwiperSlide>

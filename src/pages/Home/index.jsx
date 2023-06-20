@@ -52,13 +52,14 @@ function Sobre() {
       <div className={styles.sobre}>
         <div className={styles.containerImg}>
           <img
+            loading="lazy"
             className={styles.sobreImg}
             src={sobreimg}
             alt="imagem ilustrativa"
           />
 
           <div className={styles["number-garbage-wrapper"]}>
-            <img src={plantaicon} alt="Ilustração de planta" />
+            <img loading="lazy" src={plantaicon} alt="Ilustração de planta" />
             <p className={styles.numbers}>+ {numberGarbage} KG</p>
             <span className={styles.residuos}>
               Resíduos Eletrônicos Descartados
@@ -69,7 +70,7 @@ function Sobre() {
           <span className={`${styles.subtitle}`}>
             Nossa História e Compromisso Sustentável
           </span>
-          <h2 className={styles.titleSobre}>
+          <h2 className={`title ${styles.titleSobre}`}>
             Somos referência em Sustentabilidade e Logística Reversa de
             Eletrônicos!
           </h2>
@@ -136,14 +137,14 @@ function Sustentabilidade() {
   return (
     <div className={styles.sustentabilidadeBox}>
       <div className={styles.sustentabilidade_img_wrapper}>
-        <img src={sustentabilidadeImg} className={styles.img} />
+        <img loading="lazy" src={sustentabilidadeImg} className={styles.img} />
       </div>
       <article
         className={`textsContainer ${styles.wrapper_texts_sustentabilidade}`}
       >
         <span className={`small-text`}>Sustentabilidade</span>
         <section className={`texts`}>
-          <h2 className={styles.porque}>
+          <h2 className={`title ${styles.porque}`}>
             Por que é tão Importante Realizar o Descarte Correto do Lixo
             Eletrônico?
           </h2>
@@ -169,13 +170,17 @@ function Logistica() {
       <section className={`container`}>
         <div className={styles.texts_logistica}>
           <span className={`small-text`}>Logística Reversa</span>
-          <h2 className={`title`}>Entenda o Ciclo da Logística Reversa</h2>
+          <h2 className={`title ${styles.title_logistica}`}>
+            Entenda o Ciclo da Logística Reversa
+          </h2>
         </div>
-        <img
-          className={styles.logistic_card}
-          src={logisticard}
-          alt="card sobre logistica reversa"
-        />
+        <div className={styles.logistic_card_wrapper}>
+          <img
+            loading="lazy"
+            src={logisticard}
+            alt="card sobre logistica reversa"
+          />
+        </div>
       </section>
     </article>
   );
@@ -186,21 +191,24 @@ function ImgColetas() {
     <div className={`${styles.containerImgColetas}`}>
       <div className={styles.wrapperImgColetas}>
         <img
+          loading="lazy"
           className={styles.recycleIcon}
           src={recycleIcon}
           alt="Ícone de reciclagem"
         />
         <p className={styles.imgTextColetas}>
-          <span>Faça já sua Parte e</span>
-          <span>Colabore Conosco</span>
+          Faça já sua Parte e Colabore Conosco
         </p>
       </div>
 
-      <img
-        className={styles.coletaimg}
-        src={coletaimg}
-        alt="Imagem dos equipamentos coletados"
-      />
+      <div className={styles.wrapper_main_img_coletas}>
+        <img
+          loading="lazy"
+          className={styles.coletaimg}
+          src={coletaimg}
+          alt="Imagem dos equipamentos coletados"
+        />
+      </div>
       <div className={styles.behind}></div>
     </div>
   );
@@ -215,7 +223,9 @@ function Parceiros() {
           <h2 className={`title`}>Conheça Quem Confia na EcoSempre</h2>
         </div>
 
-        <ParceirosCard />
+        <div className={styles.wrapper_parceiros_card}>
+          <ParceirosCard />
+        </div>
       </section>
     </article>
   );
@@ -229,10 +239,10 @@ function Callwithus() {
           <FormTalkWithUs />
         </div>
 
-        <div className="textsContainer">
+        <div className={`textsContainer ${styles.texts_callWithUs}`}>
           <span className="small-text">Atendimento Personalizado</span>
           <div className="texts">
-            <h2 className={styles.title}>
+            <h2 className={`${styles.title} title`}>
               Nós da EcoSempre Estaremos Felizes em Atender Você!
             </h2>
             <p className={styles.description}>

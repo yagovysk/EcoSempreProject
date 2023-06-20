@@ -8,12 +8,14 @@
 
 .wrapper_content {
   display: flex;
-  gap: 5.25rem;
+  flex-wrap: wrap;
   align-items: center;
+  gap: 5.25rem;
+  padding: 0 1.5rem;
 }
 
 .wrapper_form {
-  max-width: 47.7rem;
+  flex: 1 0 35.7rem;
   background-color: white;
   border-radius: 0.25rem;
   padding: 2.8rem 3.5rem;
@@ -26,4 +28,17 @@
 .wrapper_form textarea {
   padding: 1.4rem;
   width: 100%;
+}
+
+@media (max-width: 640px) {
+  .map_wrapper {
+    height: 16rem;
+  }
+  .wrapper_content {
+    gap: 2rem;
+  }
+  .wrapper_form {
+    padding: 1.8rem;
+    flex-basis: 17rem;
+  }
 }

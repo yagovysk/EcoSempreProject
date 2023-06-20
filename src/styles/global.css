@@ -78,7 +78,7 @@ a {
 .link_more {
   color: #0e2b5c;
   font: 700 1rem "Roboto", sans-serif;
-  line-height: 0.9rem;
+  line-height: 1.2rem;
   border-bottom: 2px solid #00c756;
   padding-bottom: 0.25rem;
   transition: 0.3s ease;
@@ -89,8 +89,21 @@ a {
   border-bottom-color: transparent;
 }
 
-@media (max-width: 542px) {
+@media (max-width: 630px) {
   .title {
     font-size: 2rem;
+    line-height: 2.625rem;
+  }
+
+  .small-text {
+    font-size: 0.875rem;
+  }
+
+  .btn-link {
+    line-height: 1.6rem;
+  }
+
+  .link_more {
+    font-size: 0.875rem;
   }
 }

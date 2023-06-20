@@ -1,9 +1,7 @@
 .form_wrapper {
   display: grid;
   gap: 2rem;
-
   border-radius: 0.25rem;
-  max-width: 47.7rem;
 }
 
 .form_title {
@@ -99,4 +97,31 @@
 .btn_text {
   font: 700 0.9rem "Roboto", sans-serif;
   line-height: 2.5rem;
+}
+
+@media (max-width: 715px) {
+  .form_inputs {
+    grid-template-areas:
+      "name"
+      "email"
+      "tel"
+      "subject"
+      "msg";
+    gap: 1.5rem;
+  }
+
+  .error_message {
+    position: absolute;
+    bottom: -1.8rem;
+    left: 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .form_title {
+    font-size: 1.5rem;
+  }
+  .form_description {
+    font-size: 0.875rem;
+  }
 }

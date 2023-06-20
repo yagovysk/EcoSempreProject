@@ -3,34 +3,22 @@ import quotes from "../../assets/quotes.svg";
 import { Icon } from "@iconify/react";
 
 export function FeedbackCard({ img, imgAlt, stars, name, job, feedback }) {
+  const arrStars = Array.from(Array(stars).keys());
   return (
     <div className={styles.containerCard}>
       <div className={styles.card}>
         <div className={styles.profileImg}>
-          <img src={img} alt={imgAlt} />
+          <img loading="lazy" src={img} alt={imgAlt} />
         </div>
         <div className={styles.information}>
           <div className={styles.starsWrapper}>
-            <Icon
-              icon="material-symbols:star-rounded"
-              className={styles.starIcon}
-            />
-            <Icon
-              icon="material-symbols:star-rounded"
-              className={styles.starIcon}
-            />
-            <Icon
-              icon="material-symbols:star-rounded"
-              className={styles.starIcon}
-            />
-            <Icon
-              icon="material-symbols:star-rounded"
-              className={styles.starIcon}
-            />
-            <Icon
-              icon="material-symbols:star-rounded"
-              className={styles.starIcon}
-            />
+            {arrStars.map((star) => (
+              <Icon
+                key={star}
+                icon="material-symbols:star-rounded"
+                className={styles.starIcon}
+              />
+            ))}
           </div>
           <p className={styles.feedback}>{feedback}</p>
           <div className={styles.person}>
@@ -40,6 +28,7 @@ export function FeedbackCard({ img, imgAlt, stars, name, job, feedback }) {
         </div>
 
         <img
+          loading="lazy"
           className={styles.quotes}
           src={quotes}
           alt="Ícone de aspas duplas"
