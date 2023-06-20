@@ -1,7 +1,6 @@
 .content {
   display: grid;
   gap: 2.5rem;
-  width: max-content;
 }
 
 .wrapper {
@@ -17,7 +16,7 @@
 
 .address {
   display: grid;
-  grid-template-columns: max-content max-content;
+  grid-template-columns: minmax(1rem, max-content) minmax(1rem, max-content);
   gap: 0.625rem 0.575rem;
 }
 

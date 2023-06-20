@@ -21,7 +21,7 @@ const POSTS_PER_PAGE = 3;
 export function SearchResult() {
   const [pageIndex, setPageIndex] = useState(0);
   const query = useFormAction().replace("/search?q=", "");
-  const posts = useGetData(`/articles?title_like=${query}`, [...query]);
+  const posts = useGetData(`/articles?title_like=${query}`, [query]);
 
   const startIndex = pageIndex * POSTS_PER_PAGE;
   const endIndex = startIndex + POSTS_PER_PAGE;
@@ -64,7 +64,7 @@ export function SearchResult() {
               informações valiosas sobre reciclagem e sustentabilidade
             </p>
 
-            <FormSearch placeholder="Pesquisar..." />
+            <FormSearch key={query} placeholder="Pesquisar..." />
           </section>
         )}
 

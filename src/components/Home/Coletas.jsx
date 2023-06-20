@@ -7,14 +7,14 @@ export function Coletas({
   title,
   linkText,
   imgCallbackComponent,
-  height = "43rem",
+  padding = "8rem",
 }) {
   return (
     <div
       className={`container ${styles.wrapper}`}
-      style={{ "--height": height }}
+      style={{ "--padding": padding }}
     >
-      <article className={`textsContainer`}>
+      <article className={`textsContainer ${styles.textsContainer}`}>
         <span className={`small-text`}>{subtitle}</span>
         <section className={`texts`}>
           <h2 className={`title`}>{title}</h2>

@@ -21,7 +21,9 @@ export function FormSearch({ placeholder, onSearchActive = false }) {
         action: "/search?index",
       }
     );
-    onSearchActive(false);
+    if (onSearchActive) {
+      onSearchActive(false);
+    }
   }
 
   return (

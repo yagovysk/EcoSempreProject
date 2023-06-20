@@ -2,6 +2,8 @@ import styles from "./Partners.module.css";
 import ecoLogo from "../../assets/ecoIcon.svg";
 import partnersPeople from "../../assets/partners_people.png";
 import quotes from "../../assets/quotes.svg";
+import half_man1 from "../../assets/partners_half_img1.png";
+import half_man2 from "../../assets/partners_half_img2.png";
 import { HeaderSection } from "../../components/HeaderSection";
 import { ParceirosCard } from "../../components/ParceirosCard";
 
@@ -50,7 +52,12 @@ export function Partners() {
           />
 
           <div className={styles.wrapper_imgs}>
-            <div className={`${styles.img} ${styles.img1}`}>
+            <div className={`${styles.wrapper_img}`}>
+              <img
+                className={styles.img_person}
+                src={half_man1}
+                alt="Homem trabalhando"
+              />
               <div className={styles.sustentabilidade_wrapper}>
                 <img src={ecoLogo} alt="EcoLogo" />
                 <p className={styles.sustentabilidade_paragraph}>
@@ -58,7 +65,14 @@ export function Partners() {
                 </p>
               </div>
             </div>
-            <div className={`${styles.img} ${styles.img2}`}></div>
+
+            <div className={`${styles.wrapper_img} ${styles.img2}`}>
+              <img
+                className={styles.img_person}
+                src={half_man2}
+                alt="Homem trabalhando"
+              />
+            </div>
           </div>
         </article>
 
@@ -106,7 +120,7 @@ export function Partners() {
 
 function Texts({ subtitle, title, paragraphs }) {
   return (
-    <section className={`textsContainer`}>
+    <section className={`textsContainer ${styles.textsContainer}`}>
       <span className="small-text">{subtitle}</span>
       <section className={`texts `}>
         <h2 className="title">{title}</h2>

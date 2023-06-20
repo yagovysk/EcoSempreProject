@@ -2,12 +2,10 @@
   background: white;
   box-shadow: 0px 0.25rem 3.3125rem 0px #2d2b2b21;
   border-radius: 0.6rem;
-  max-width: 23.125rem;
   position: relative;
 }
 
 .img_wrapper {
-  width: 20.625rem;
   height: 15.25rem;
   overflow: hidden;
   margin-right: 2rem;
@@ -43,7 +41,7 @@
 }
 
 .content_text {
-  padding: 0 0 2.5rem 2.5rem;
+  padding: 0 1.5rem 2.5rem 2.5rem;
 }
 
 .title {
@@ -118,4 +116,16 @@
 
 .card_wrapper:hover .trace {
   background-color: #00c756;
+}
+
+@media (max-width: 967px) {
+  .categories_wrapper {
+    margin-left: 1.3rem;
+  }
+  .content_text {
+    padding: 0 1.3rem;
+  }
+  .btn {
+    margin-bottom: 2.5rem;
+  }
 }

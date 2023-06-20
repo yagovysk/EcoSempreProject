@@ -1,17 +1,17 @@
 .header {
   background-color: white;
   box-shadow: 0px 2px 25px 0px #32323214;
-  padding: 0 1.25rem;
 }
 .header_content {
   display: flex;
   justify-content: space-between;
+  padding: 0 1.25rem;
 }
 .logo {
   display: grid;
   place-content: center;
-  max-width: 15.75rem;
-  height: 6.25rem;
+  max-width: 13.125rem;
+  max-height: 6.25rem;
 }
 
 .logo img {
@@ -26,11 +26,11 @@
   list-style-type: none;
 }
 
-.menu li {
+.menu .menu_li {
   position: relative;
 }
 
-.menu li::after {
+.menu .menu_li::after {
   content: "";
   position: absolute;
   bottom: -0.125rem;
@@ -42,7 +42,7 @@
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
-.menu li:hover::after {
+.menu .menu_li:hover::after {
   transform: scaleX(1);
 }
 .menu .menu_item {
@@ -76,9 +76,8 @@
   background-color: #00c756;
 }
 
-.menu .menu_item svg {
-  width: 1.2rem;
-  height: 1.2rem;
+.menu .arrow_menu_item {
+  font-size: 1.2rem;
 }
 
 .contact-container {
@@ -140,6 +139,7 @@
   border-radius: 0 0 0.5rem 0.5rem;
   padding: 1.4rem 2rem 0.95rem 2.2rem;
   width: 15rem;
+  overflow: hidden;
   z-index: 9999;
 }
 
@@ -201,10 +201,7 @@
   display: grid;
   place-content: center;
   position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 1000;
   background: white;
 }
@@ -229,7 +226,6 @@
   display: flex;
   align-items: center;
   border-bottom: 2px solid #eaeaea;
-  width: 48rem;
 }
 
 .search_container .search_form.active {
@@ -245,7 +241,8 @@
   border: 0;
   outline: 1px solid transparent;
   padding: 0.8rem 1.5rem;
-  width: 100%;
+  /* min-width: 48rem; */
+  /* width: 100%; */
 
   font: 500 2.125rem "IBM Plex Sans", sans-serif;
   color: #848e9f;
@@ -259,7 +256,7 @@
   display: none;
 }
 
-@media (max-width: 1108px) {
+@media (max-width: 1050px) {
   .header_content {
     align-items: center;
   }
@@ -272,8 +269,8 @@
   .menu_burger {
     display: grid;
     gap: 0.5rem;
-    width: 1.8rem;
     cursor: pointer;
+    width: 1.8rem;
   }
 
   .trace {
@@ -293,5 +290,71 @@
 
   .menu_burger.active .trace3 {
     transform: rotate(-45deg) translate(5px, -9px);
+  }
+
+  /* Menu Burger fullScreen */
+  .header.on {
+    height: 100vh;
+    width: 100%;
+    background-color: #f2f3ff;
+  }
+  .header.on .header_content {
+    background-color: white;
+    border-bottom: 1px solid #e2e2e3;
+  }
+
+  .header.on .menu_mobile_container {
+    display: grid;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
+    background-color: white;
+  }
+
+  .header.on .menu {
+    display: block;
+  }
+  .header.on .menu_item::before,
+  .header.on .menu .menu_li::after {
+    display: none;
+  }
+  .header.on .menu_item {
+    font-size: 1rem;
+    padding: 0.675rem 0;
+    line-height: 1.6rem;
+    justify-content: space-between;
+  }
+  .header.on .wrapper_dropdown {
+    position: static;
+    padding: 0 1.5rem;
+    width: 100%;
+  }
+  .header.on .dropdown_list {
+    font: 500 1rem "Roboto", sans-serif;
+    color: #0e2b5c;
+  }
+  .header.on .dropdown_item {
+    display: flex;
+    align-items: center;
+    border: 0;
+  }
+  .header.on .arrow_menu_item {
+    background-color: #00c756;
+    color: white;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 2rem;
+    transition: 0.3s;
+  }
+  .header.on .menu_item.active .arrow_menu_item {
+    rotate: 180deg;
+  }
+
+  .header.on .contact-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+  }
+  .header.on .btnContato {
+    width: max-content;
   }
 }

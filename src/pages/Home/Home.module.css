@@ -2,14 +2,20 @@
   display: flex;
   justify-content: center;
   gap: 3.75rem;
-  margin: 8.5rem 1.375rem 8.5rem 3.8rem;
+  margin: 8.5rem 0;
 }
 
 .containerImg {
   position: relative;
+  margin-left: 3.5rem;
+  width: 120%;
 }
 
 .sobreImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 0.625rem;
 }
 
@@ -44,24 +50,20 @@
 
 .wrapper_texts {
   font-family: "Roboto", sans-serif;
+  margin-right: 1.5rem;
 }
 
 .wrapper_texts .subtitle {
   color: #00a346;
-  font-size: 1rem;
-  font-weight: 600;
+  font: 600 1rem "Roboto", sans-serif;
   line-height: 1.6rem;
   background: #e0f6e9;
   width: max-content;
-  padding: 0.4375rem 1.25rem; /* 7px 20px */
+  padding: 0.56rem 1.25rem; /* 9px 20px */
   border-radius: 0.25rem; /* 4px */
 }
 
 .wrapper_texts .titleSobre {
-  color: #0e2b5c;
-  font-size: 2.5rem;
-  line-height: 3.375rem;
-  font-weight: 700;
   margin: 0.93rem 0 2rem 0;
 }
 
@@ -140,41 +142,37 @@
 .sustentabilidadeBox {
   display: flex;
   align-items: center;
-  width: 100%;
   background: #0e2b5c url("../../assets/fundob.png") no-repeat top center /
     cover;
-  gap: 6.6rem;
+  gap: 3.6rem;
+  width: 100%;
 }
 .sustentabilidade_img_wrapper {
-  justify-self: flex-end;
   max-width: 59.5rem;
-  height: 100vh;
+  height: 597px;
+  width: 100%;
 }
 .img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
 }
 
 .wrapper_texts_sustentabilidade {
-  padding: 0 1.375rem;
+  padding: 5rem 1.5rem;
 }
 
 .porque {
-  font-size: 2.5rem;
-  font-family: "IBM Plex Sans";
-  font-weight: 700;
-  line-height: 3.375rem;
-  color: white;
+  color: white !important;
 }
 .sustentabilidadeP {
   font-family: "Roboto", sans-serif;
   font-size: 1.0625rem;
   font-weight: 500;
-  line-height: 1.6875rem;
+  line-height: 1.7rem;
   color: white;
+  opacity: 0.8;
 }
 .saibamais {
   display: flex;
@@ -199,24 +197,36 @@
   align-items: center;
   text-align: center;
   background: #f6f7f8;
-  height: 51rem;
+  padding: 3.5rem 0 6.25rem 0;
 }
 
 .texts_logistica {
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 0.5rem;
-  max-width: 42.75rem;
   margin-bottom: 3.75rem;
 }
 
-.logistic_card {
+.title_logistica {
+  max-width: 40rem;
+  text-align: center;
+}
+
+.logistic_card_wrapper {
   max-width: 34.375rem;
-  max-height: 28.75rem;
+  margin: 0 auto;
+}
+
+.logistic_card_wrapper img {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .containerImgColetas {
   position: relative;
+  margin-right: 1.5rem;
 }
 
 .wrapperImgColetas {
@@ -229,28 +239,30 @@
   font: 700 0.9375rem "Roboto", sans-serif;
   color: white;
   position: absolute;
-  bottom: 0.3rem;
+  bottom: 0rem;
   left: -2.2rem;
 }
 
 .imgTextColetas {
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem; /* 10px */
+  max-width: 10rem;
+  line-height: 1.6rem;
 }
 
-.imgTextColetas span {
-  line-height: 0.9375rem;
+.wrapper_main_img_coletas {
+  max-width: 36.875rem;
 }
 
 .coletaimg {
+  display: block;
+  width: 100%;
+  height: 100%;
   border-radius: 0.75rem;
 }
 
 .behind {
   position: absolute;
   right: -2.2rem;
-  bottom: 0.3rem;
+  bottom: 0;
   background: #00c756;
   width: 3rem;
   height: 8rem;
@@ -259,33 +271,46 @@
 }
 
 .idParceiros {
-  display: grid;
   background: #f6f7f8;
-  height: 28.3rem;
+  padding: 3.125rem 1.5rem 8.75rem 1.5rem;
 }
 
 .content_parceiros {
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 5rem;
   text-align: center;
+  overflow: hidden;
 }
 
 .texts_parceiros {
   max-width: 42.75rem;
-  margin: 3.125rem auto 0 auto;
+}
+
+.wrapper_parceiros_card {
+  /* overflow: auto; */
+  /* .parceirosCard::-webkit-scrollbar {
+    height: 5px;
+    background-color: #f1f3f5;
+    border-radius: 0.9rem;
+  }
+
+  .parceirosCard::-webkit-scrollbar-thumb {
+    background-color: #b0b5ba;
+    border-radius: 0.9rem;
+  } */
 }
 
 .idfaleconosco {
-  width: 100%;
   background: #0e2b5cfb url("../../assets/Callwithusimg.png");
-  height: 49rem;
 }
 
 .wrapper_content {
   display: flex;
   align-items: center;
-  gap: 7rem;
+  gap: 4.2rem;
+  padding: 0 1.5rem 3.5rem 1.5rem;
 }
 
 .wrapper_form {
@@ -307,11 +332,7 @@
 }
 
 .title {
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 3.375rem;
-  color: white;
+  color: white !important;
 }
 
 .description {
@@ -321,22 +342,21 @@
   opacity: 0.8;
 }
 
-@media (max-width: 1155px) {
+@media (max-width: 1100px) {
   .sobre {
     flex-direction: column;
     align-items: center;
-    margin: 4rem 1.375rem;
+    margin: 4rem 1.5rem;
+  }
+
+  .wrapper_texts {
+    margin: 0;
   }
 
   .containerImg {
     width: 100%;
-    height: 324px;
-  }
-
-  .sobreImg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    margin: 0;
+    height: 20.25rem;
   }
 
   .number-garbage-wrapper {
@@ -357,6 +377,21 @@
   .sustentabilidade_img_wrapper .img {
     object-position: 68%;
   }
+  .wrapper_content {
+    flex-direction: column-reverse;
+    padding: 4rem 1.5rem;
+  }
+  .texts_callWithUs {
+    max-width: 100%;
+    text-align: center;
+  }
+  .wrapper_form {
+    transform: translateY(0);
+  }
+  .wrapper_form input,
+  .wrapper_form textarea {
+    width: 100%;
+  }
 }
 
 @media (max-width: 942px) {
@@ -369,18 +404,76 @@
   }
   .sustentabilidadeBox {
     flex-direction: column;
-    padding-bottom: 3.125rem;
   }
 
   .sustentabilidade_img_wrapper {
     max-width: 100%;
     height: 100%;
   }
+  .wrapper_texts_sustentabilidade {
+    padding: 1rem 1.5rem 4.125rem 1.5rem;
+  }
+}
+
+@media (max-width: 715px) {
+  .containerImgColetas {
+    margin: 0;
+  }
+  .wrapperImgColetas {
+    left: 0;
+  }
+  .behind {
+    right: -1.2rem;
+  }
+  .idParceiros {
+    display: grid;
+    background-color: white;
+    padding: 4rem;
+    border-top: 2px solid #eaeaea;
+    overflow: auto;
+    touch-action: pan-x;
+  }
+
+  .idParceiros::-webkit-scrollbar {
+    height: 5px;
+    background-color: #f1f3f5;
+    border-radius: 0.9rem;
+  }
+
+  .idParceiros::-webkit-scrollbar-thumb {
+    background-color: #b0b5ba;
+    border-radius: 0.9rem;
+  }
+
+  .texts_parceiros {
+    display: none;
+  }
+  .wrapper_form {
+    padding: 1.9rem;
+  }
 }
 
 @media (max-width: 445px) {
   .wrapper_texts .subtitle {
     width: 100%;
+    font-size: 0.775rem;
+    line-height: 1.25rem;
+  }
+
+  .wrapperImgColetas {
+    padding: 1.5rem 0 1.5rem 1.5rem;
+  }
+  .recycleIcon {
+    max-width: 2.5rem;
+  }
+  .imgTextColetas {
     font-size: 0.875rem;
+    line-height: 1.5rem;
+  }
+}
+
+@media (max-width: 347px) {
+  .wrapper_texts .subtitle {
+    font-size: 0.665rem;
   }
 }

@@ -15,7 +15,7 @@ const linksMenu = [
   },
   {
     name: "Programas",
-    path: "/",
+    path: "/descarte",
   },
   {
     name: "Descarte Correto do Lixo Eletrônico",
@@ -32,7 +32,7 @@ export function Descarte() {
       />
 
       <article className={`container ${styles.container_content}`}>
-        <section className={`textsContainer`}>
+        <section className={`textsContainer ${styles.textsContainer}`}>
           <span className="small-text">Descarte Responsável</span>
           <div className="texts">
             <h2 className={`title ${styles.title}`}>
@@ -104,7 +104,7 @@ export function Descarte() {
           title="Saiba Onde Descartar Corretamente Seu Lixo Eletrônico"
           linkText="Explorar Pontos de Coleta"
           imgCallbackComponent={() => <ImgColetas />}
-          height="37.3rem"
+          padding="4rem"
         />
       </article>
     </main>

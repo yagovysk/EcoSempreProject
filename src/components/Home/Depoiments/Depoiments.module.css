@@ -1,29 +1,33 @@
 .idDepoiments {
-  background: url("../../../assets/fundoDepoiments.png") no-repeat center /
-    cover;
-  height: 40.5rem;
-  display: grid;
-  place-items: center;
+  background: #0e2a5a url("../../../assets/fundoDepoiments.png") no-repeat
+    center / cover;
+  padding: 8rem 0;
+  /* display: grid; */
+  /* place-items: center; */
   overflow: hidden;
-  margin-bottom: 10rem;
+  position: relative;
 }
 
 .content {
   color: #fff;
-  max-width: 1220px;
-  position: relative;
+  /* max-width: 1220px; */
+  /* position: relative; */
+  margin: 0 auto 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4.6rem;
 }
 
 .textsContainer {
-  position: absolute;
-  left: 0;
+  /* position: absolute;
+  left: 0; */
+  flex: 1;
+  margin-left: 110px;
 }
 
 .titleFeedback {
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 3.375rem;
+  color: white !important;
 }
 
 .paragraph {
@@ -52,8 +56,9 @@
 }
 
 .carousel_wrapper {
+  flex: 1;
   position: relative;
-  right: -660px;
+  /* right: -660px; */
   width: 100vw;
   height: 23.75rem;
   overflow: hidden;
@@ -61,4 +66,40 @@
 
 .carousel {
   position: absolute;
+  max-width: 46.25rem;
+}
+
+@media (max-width: 1100px) {
+  .idDepoiments {
+    padding: 4.5rem 0;
+  }
+  .content {
+    flex-direction: column;
+    margin: 0;
+    padding: 0 1.5rem;
+  }
+  .textsContainer {
+    margin: 0;
+    text-align: center;
+  }
+  .btnFeedback {
+    margin: 0 auto;
+  }
+  .carousel_wrapper {
+    position: static;
+    overflow: initial;
+    padding: 0 1.5rem;
+  }
+  .carousel {
+    position: static;
+  }
+}
+
+@media (max-width: 562px) {
+  .idDepoiments {
+    padding-bottom: 10rem;
+  }
+  .content {
+    gap: 3rem;
+  }
 }

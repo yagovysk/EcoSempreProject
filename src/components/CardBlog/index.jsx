@@ -17,7 +17,7 @@ export function CardBlog({
   return (
     <article className={styles.card_wrapper}>
       <div className={styles.img_wrapper}>
-        <img src={img} alt={imgAlt} />
+        <img loading="lazy" src={img} alt={imgAlt} />
       </div>
 
       <div className={styles.categories_wrapper}>
@@ -25,7 +25,7 @@ export function CardBlog({
       </div>
 
       <section className={styles.content_text}>
-        <h4 className={styles.title}>{title}</h4>
+        <h3 className={styles.title}>{title}</h3>
 
         <div className={styles.timestamp_wrapper}>
           <span>{timestamp}</span>
@@ -35,7 +35,11 @@ export function CardBlog({
         <p className={styles.description}>{description}</p>
 
         <button type="button" onClick={scrollToTop} className={styles.btn}>
-          <Link className={styles.btn_link} to={`/articles/${path}`}>
+          <Link
+            aria-label="Saiba mais sobre o post"
+            className={styles.btn_link}
+            to={`/articles/${path}`}
+          >
             Saiba Mais
             <Icon
               className={styles.arrow_icon}

@@ -58,7 +58,7 @@ export function Footer() {
             </section>
 
             <section className={styles.company}>
-              <h4 className={styles.subtitle}>Empresa</h4>
+              <h5 className={styles.subtitle}>Empresa</h5>
               <ul className={styles.list_links_company}>
                 <li>
                   <Link onClick={scrollToTop} to="/about_us">
@@ -96,19 +96,30 @@ export function Footer() {
       <div className={styles.wrapper_second_content}>
         <ScheduleCard />
         <div className={styles.second_content}>
-          <h5 className={styles.copyright}>
-            @2023 EcoSempre. Todos Direitos Reservados.
-          </h5>
+          <h6 className={styles.copyright}>
+            @2023 EcoSempre. Todos Direitos Reservados. Love by{" "}
+            <a
+              target="_blank"
+              className={styles.copyright_author}
+              href="www.google.com"
+            >
+              Togyro Group Victory
+            </a>
+          </h6>
         </div>
 
-        <a title="Voltar ao topo" href="#header">
-          <button className={styles.back_to_top}>
-            <Icon
-              icon="material-symbols:arrow-upward-rounded"
-              alt="Seta apontando para frente"
-            />
-          </button>
-        </a>
+        <button
+          title="Voltar ao topo"
+          aria-label="Voltar ao topo"
+          type="button"
+          onClick={scrollToTop}
+          className={styles.back_to_top}
+        >
+          <Icon
+            icon="material-symbols:arrow-upward-rounded"
+            alt="Seta apontando para frente"
+          />
+        </button>
       </div>
     </footer>
   );
@@ -117,11 +128,11 @@ export function Footer() {
 function Logo() {
   return (
     <div className={styles.logo}>
-      <img src={ecoLogo} alt="Eco logo" />
-      <h2 className={styles.logo_title}>
+      <img loading="lazy" src={ecoLogo} alt="Eco logo" />
+      <h3 className={styles.logo_title}>
         EcoSempre
         <span className={styles.logo_subtitle}>Logística Reversa</span>
-      </h2>
+      </h3>
     </div>
   );
 }
@@ -136,33 +147,61 @@ function Newsletter() {
           momento.
         </p>
 
-        <div className={styles.wrapper_input}>
+        <form className={styles.wrapper_form}>
           <input
             className={styles.input}
             type="email"
             placeholder="Digite seu email"
+            aria-label="Digite seu email"
           />
-          <Icon
-            icon="material-symbols:arrow-circle-right-rounded"
-            className={styles.arrow_circle_icon}
-            alt="Seta preenchida com um círculo"
-          />
-        </div>
+          <button
+            title="Inscrever-se"
+            aria-label="Inscrever-se na newsletter"
+            className={styles.btn_newsletter}
+            type="submit"
+          >
+            <Icon
+              icon="material-symbols:arrow-circle-right-rounded"
+              className={styles.arrow_circle_icon}
+              alt="Seta preenchida com um círculo"
+            />
+          </button>
+        </form>
       </section>
 
-      <div className={styles.social_medias}>
-        <a className={styles.link_social_medias} href="">
-          <Icon
-            icon="entypo-social:instagram-with-circle"
-            alt="Ícone do Instagram"
-          />
-        </a>
-        <a className={styles.link_social_medias} href="">
-          <Icon icon="ic:baseline-facebook" alt="Ícone do Facebook" />
-        </a>
-        <a className={styles.link_social_medias} href="">
-          <Icon icon="ri:whatsapp-fill" alt="Ícone do Whatsapp" />
-        </a>
+      <div className={styles.wrapper_social_medias}>
+        <p className={styles.paragraph_social_medias}>
+          Siga-nos nas redes sociais
+        </p>
+        <div className={styles.social_medias}>
+          <a
+            target="_blank"
+            aria-label="Instagram"
+            className={styles.link_social_medias}
+            href="www.instagram.com"
+          >
+            <Icon
+              icon="entypo-social:instagram-with-circle"
+              alt="Ícone do Instagram"
+            />
+          </a>
+          <a
+            target="_blank"
+            aria-label="Facebook"
+            className={styles.link_social_medias}
+            href="www.facebook.com"
+          >
+            <Icon icon="ic:baseline-facebook" alt="Ícone do Facebook" />
+          </a>
+          <a
+            target="_blank"
+            aria-label="WhatsApp"
+            className={styles.link_social_medias}
+            href="www.whatsapp.com"
+          >
+            <Icon icon="ri:whatsapp-fill" alt="Ícone do WhatsApp" />
+          </a>
+        </div>
       </div>
     </div>
   );

@@ -1,21 +1,26 @@
 .wrapper {
+  display: grid;
+  gap: 8rem;
   position: relative;
+  background-color: #0b2653;
+  padding-top: 6.625rem;
 }
 
 .wrapper_main_content {
-  padding-top: 6.625rem;
-  background-color: #0b2653;
-  height: 496px;
+  padding: 0 1.5rem;
   color: white;
 }
 
 .container_main_content {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 2.5rem;
 }
 
 .main_content {
   display: flex;
+  flex-wrap: wrap;
   gap: 2.625rem;
 }
 
@@ -144,8 +149,7 @@
 
 .newsletter_wrapper {
   display: grid;
-  gap: 1rem;
-  max-width: 23rem;
+  gap: 1.25rem;
 }
 
 .newsletter_content {
@@ -153,21 +157,20 @@
   gap: 1.7rem;
   background-color: #061b49;
   padding: 2.3125rem 2.5rem;
+  min-width: 15.75rem;
 }
 
 .paragraph_newsletter {
   font: 400 0.75rem "Roboto", sans-serif;
   line-height: 1rem;
   max-width: 15.75rem;
+  margin-right: 2.1rem;
 }
 
-.wrapper_input {
+.wrapper_form {
   display: flex;
-  justify-content: space-between;
   border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 0.25rem;
-  padding: 0.75rem;
-  width: 18rem;
 }
 
 .input {
@@ -176,18 +179,35 @@
   outline: 1px solid transparent;
   font: 500 0.75rem "Roboto", sans-serif;
   line-height: 1rem;
-  padding-left: 0.25rem;
+  padding: 0.75rem 1.25rem;
   color: white;
+  width: 100%;
 }
 
 .input::placeholder {
   color: rgba(255, 255, 255, 0.34);
 }
 
-.wrapper_input svg {
-  color: #00c756;
+.btn_newsletter {
+  background-color: transparent;
+  border: 0;
+  line-height: 0;
+  padding: 0.75rem 1.25rem 0.75rem 0;
 }
 
+.newsletter_content .arrow_circle_icon {
+  pointer-events: none;
+  color: #00c756;
+}
+.wrapper_social_medias {
+  display: flex;
+  justify-content: space-between;
+}
+.paragraph_social_medias {
+  font: 400 0.75rem "Roboto", sans-serif;
+  color: #5b6987;
+  line-height: 1rem;
+}
 .social_medias {
   display: flex;
   justify-content: end;
@@ -206,32 +226,32 @@
 }
 
 .wrapper_second_content {
+  display: grid;
+  place-content: center;
   position: relative;
   background-color: #081e46;
-  height: 8.3rem;
   color: white;
-  padding: 1.8rem;
-}
-
-.second_content {
-  display: flex;
-  justify-content: center;
-  height: 100%;
+  padding: 0 1.5rem;
 }
 
 .copyright {
-  align-self: end;
   font: 500 0.75rem "Roboto", sans-serif;
   line-height: 1rem;
   text-align: center;
+  transform: translateY(-1.5rem);
+}
+
+.copyright_author {
+  color: #00c756;
+}
+.copyright_author:hover {
+  text-decoration: underline;
 }
 
 .schedule_card {
   display: flex;
-  position: absolute;
-  top: -4rem;
-  left: 50%;
-  transform: translateX(-50%);
+  flex-wrap: wrap;
+  transform: translateY(-3.9rem);
 
   background-color: white;
   border-radius: 0.25rem;
@@ -239,15 +259,17 @@
 }
 
 .box_schedule {
+  flex: 1;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  width: 292.75px;
+  min-width: 292.75px;
   padding: 1.9rem 2.25rem;
 }
 
 .box_schedule + .box_schedule {
   border-left: 1px solid #e7ebef;
+  border-top: 1px solid #e7ebef;
 }
 
 .box_schedule svg,
@@ -276,7 +298,7 @@
 .back_to_top {
   position: absolute;
   right: 2rem;
-  bottom: 6rem;
+  bottom: 1rem;
   background-color: #00c756;
   color: white;
   border: 0;
@@ -293,4 +315,37 @@
 .back_to_top svg {
   width: 1.6rem;
   height: 1.6rem;
+}
+
+@media (max-width: 1176px) {
+  .container_main_content {
+    justify-content: center;
+  }
+  .newsletter_wrapper {
+    max-width: 100%;
+    width: 100%;
+    place-content: center;
+  }
+  .back_to_top {
+    position: static;
+    margin: 0 auto;
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 756px) {
+  .wrapper {
+    padding-top: 3rem;
+  }
+  .newsletter_content {
+    padding: 1.5rem;
+  }
+  .paragraph_newsletter {
+    margin: 0;
+    max-width: initial;
+  }
+  .box_schedule {
+    min-width: 15rem;
+    padding: 1.3rem;
+  }
 }

@@ -11,6 +11,7 @@
 
 .main_search_result .posts_container {
   display: grid;
+  grid-auto-rows: max-content;
   justify-items: center;
   gap: 3.75rem;
 }

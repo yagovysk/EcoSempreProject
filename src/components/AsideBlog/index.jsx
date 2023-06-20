@@ -24,7 +24,11 @@ export function AsideBlog() {
     getData("/categories", setCategories);
   }, []);
 
-  return recentPosts.length > 0 && tags.length > 0 && categories.length > 0 ? (
+  if (!recentPosts && !tags && !categories) {
+    return <Loader />;
+  }
+
+  return (
     <aside className={styles.aside}>
       <section className={styles.box_aside_posts}>
         <h3 className={styles.title_box_aside}>Posts Recentes</h3>
@@ -70,7 +74,5 @@ export function AsideBlog() {
         </div>
       </section>
     </aside>
-  ) : (
-    <Loader />
   );
 }

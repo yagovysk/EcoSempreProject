@@ -1,15 +1,14 @@
 .idFaq {
-  min-height: 50.4rem;
+  padding: 8rem 1.5rem;
 }
 .texts {
-  margin: 0 auto;
   text-align: center;
-  margin-bottom: 5rem;
+  margin: 0 auto 5rem auto;
 }
 
 .container_faq {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25.125rem, 1fr));
   gap: 2.125rem 4.6rem;
 }
 
@@ -21,51 +20,57 @@
 }
 
 .wrapper_box {
-  display: grid;
-  gap: 1rem;
-  height: 4.5rem;
   padding: 1.4rem 1.6rem;
   font-family: "Roboto", sans-serif;
   background-color: white;
   border: 2px solid #eaeaea;
   border-radius: 0.25rem;
   cursor: pointer;
-  overflow: hidden;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .wrapper_box:hover {
   border: 2px solid #00c756;
 }
 
-.wrapper_box:hover .question_wrapper {
-  color: #00c756;
-}
-
 .wrapper_box.show_answer {
   border: 2px solid #00c756;
-  height: 15rem;
-}
-.wrapper_box.show_answer .question_title {
-  color: #00c756;
 }
 
 .wrapper_box.last_question {
-  padding: 0.8rem 1.6rem;
+  padding: 0.7rem 1.6rem;
 }
 
 .question_wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.8rem;
   color: #232323;
 }
 
+.wrapper_box:hover .question_wrapper {
+  color: #00c756;
+}
 .question_title {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.5rem;
   transition: 0.3s ease;
+}
+.wrapper_box.show_answer .question_title {
+  color: #00c756;
+}
+
+.panel {
+  height: 0;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.wrapper_box.show_answer .panel {
+  height: var(--height, auto);
+  margin-top: 1rem;
 }
 
 .answer {
@@ -79,12 +84,7 @@
   transition: 0.3s ease;
   width: 1.5rem;
   height: 1.5rem;
-}
-
-.wrapper_box.last_question .icon_plus,
-.wrapper_box.last_question .icon_minus {
-  width: 2.5rem;
-  width: 2.5rem;
+  flex: 0 0 1.5rem;
 }
 
 .icon_minus {
@@ -96,4 +96,30 @@
   margin: 0 auto;
   margin-top: 4rem;
   width: max-content;
+}
+
+@media (max-width: 562px) {
+  .idFaq {
+    padding: 2.5rem 1.5rem;
+  }
+  .container_faq {
+    grid-template-columns: repeat(auto-fit, minmax(15.125rem, 1fr));
+    gap: 1.25rem;
+  }
+  .list_faq {
+    gap: 1.25rem;
+  }
+  .wrapper_box {
+    padding: 0.9rem;
+  }
+  .texts {
+    margin-bottom: 1.875rem;
+  }
+  .question_title,
+  .answer {
+    font-size: 0.875rem;
+  }
+  .link_more_faq {
+    margin-top: 2.5rem;
+  }
 }

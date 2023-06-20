@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import { firstListQuestions, secondListQuestions } from "../../data";
 import { Link } from "react-router-dom";
@@ -59,37 +59,78 @@ export function Faq({ numberPerList, isFAQPage, questionsOverLines }) {
 }
 
 function ListQuestions({ questions, activeIndex, onShow, questionsOverLines }) {
+  const answersRef = useRef(null);
+
+  function getHeightRef(id) {
+    const map = getMap();
+    const node = map.get(id);
+    if (node) {
+      return node.scrollHeight;
+    }
+  }
+  function getMap() {
+    if (!answersRef.current) {
+      answersRef.current = new Map();
+    }
+    return answersRef.current;
+  }
+
+  function handleShowAnswer(id) {
+    onShow(id);
+  }
+
   return (
     <ul className={style.list_faq}>
       {questions.map((question) => {
         const isActive = question.id === activeIndex;
-        const isQuestionWith2Lines =
-          questionsOverLines &&
-          questionsOverLines.some((id) => id === question.id);
-
         const classesWrapperBox = `${style.wrapper_box} ${
           isActive && style.show_answer
-        } ${isQuestionWith2Lines && style.last_question}`;
+        }`;
+        const heightAnswer = answersRef.current
+          ? getHeightRef(question.id)
+          : "0";
 
         return (
-          <li key={question.id}>
+          <li
+            key={question.id}
+            className={classesWrapperBox}
+            onClick={() => handleShowAnswer(question.id)}
+          >
+            {/* <div> */}
+            <section className={style.question_wrapper}>
+              <h3 className={style.question_title}>{question.question}</h3>
+              {isActive ? (
+                <Icon
+                  className={style.icon_minus}
+                  icon="zondicons:minus-solid"
+                />
+              ) : (
+                <Icon className={style.icon_plus} icon="ic:round-plus" />
+              )}
+            </section>
             <div
-              className={classesWrapperBox}
-              onClick={() => onShow(question.id)}
+              className={style.panel}
+              style={
+                heightAnswer && {
+                  "--height": `${heightAnswer}px`,
+                }
+              }
             >
-              <section className={style.question_wrapper}>
-                <h3 className={style.question_title}>{question.question}</h3>
-                {isActive ? (
-                  <Icon
-                    className={style.icon_minus}
-                    icon="zondicons:minus-solid"
-                  />
-                ) : (
-                  <Icon className={style.icon_plus} icon="ic:round-plus" />
-                )}
-              </section>
-              <p className={`${style.answer}`}>{question.answer}</p>
+              <p
+                ref={(node) => {
+                  const map = getMap();
+                  if (node) {
+                    map.set(question.id, node);
+                  } else {
+                    map.delete(question.id);
+                  }
+                }}
+                className={`${style.answer}`}
+              >
+                {question.answer}
+              </p>
             </div>
+            {/* </div> */}
           </li>
         );
       })}

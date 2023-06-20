@@ -17,7 +17,7 @@ import { A11y, Autoplay, Navigation } from "swiper";
 export function AboutUs() {
   const linksMenu = [
     {
-      name: "Home",
+      name: "Início",
       path: "/",
     },
     {
@@ -48,7 +48,7 @@ export function AboutUs() {
 function Information() {
   const experienceNumber = useIncreaseNumber(10, 100, 1);
   const settingsSlide = {
-    speed: 800,
+    speed: 700,
     navigation: true,
     loop: true,
     autoplay: {
@@ -63,7 +63,7 @@ function Information() {
       className={`${styles.content_information} about_us_container container`}
     >
       <article className={styles.first_information}>
-        <div className="textsContainer">
+        <div className={`textsContainer ${styles.textsContainer}`}>
           <span className="small-text">Quem Somos</span>
           <section className="texts">
             <h2 className="title">Sua Parceira em Soluções Tecnológicas</h2>
@@ -126,7 +126,7 @@ function Information() {
           <div className={styles.box}></div>
         </div>
 
-        <section className="texts">
+        <section className={`texts ${styles.text1}`}>
           <h2 className={styles.subtitle}>Missão</h2>
           <p className={styles.paragraph}>
             A nossa missão é oferecer serviços e produtos de tecnologia de alta
@@ -137,7 +137,7 @@ function Information() {
           </p>
         </section>
 
-        <section className="texts">
+        <section className={`texts ${styles.text2}`}>
           <h2 className={styles.subtitle}>Visão</h2>
           <p className={styles.paragraph}>
             Ser reconhecida por nossos clientes e parceiros como uma empresa

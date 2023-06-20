@@ -3,7 +3,7 @@
 }
 
 .about_us_container .swiper-wrapper {
-  max-width: 35.5rem;
+  /* max-width: 25.5rem; */
 }
 
 .about_us_container .swiper-button-prev,
@@ -16,4 +16,12 @@
 
 .about_us_container .swiper-button-next {
   right: 11rem;
+}
+@media (max-width: 630px) {
+  .about_us_container .swiper-button-next {
+    right: 1rem;
+  }
+  .about_us_container .swiper-button-prev {
+    left: 17rem;
+  }
 }

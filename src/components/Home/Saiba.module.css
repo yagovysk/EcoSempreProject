@@ -3,7 +3,6 @@
   align-items: center;
   gap: 2.1rem;
   padding: 7.875rem 1.375rem;
-  /* height: 47.625rem; */
 }
 
 .smallText {
@@ -42,6 +41,9 @@
     "printer cam";
   gap: 2.375rem 3.68rem;
 }
+.device {
+  border-radius: 0.5rem;
+}
 
 .device svg {
   width: 4rem;
@@ -69,7 +71,6 @@
   .box {
     flex-direction: column-reverse;
     padding: 3rem 1.375rem;
-    text-align: center;
   }
   .dispositivos {
     grid-template-areas:
@@ -83,11 +84,9 @@
   }
   .device {
     padding: 1.5rem;
+    box-shadow: 0px 5px 42px 0px #2324260d;
   }
   .device .description {
     max-width: 40rem;
-  }
-  .saibabutton {
-    margin: 0 auto;
   }
 }
