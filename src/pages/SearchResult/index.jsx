@@ -20,7 +20,7 @@ const POSTS_PER_PAGE = 3;
 
 export function SearchResult() {
   const [pageIndex, setPageIndex] = useState(0);
-  const query = useFormAction().replace("/search?q=", "");
+  const query = useFormAction().replace("/buscar?q=", "");
   const posts = useGetData(`/articles?title_like=${query}`, [query]);
 
   const startIndex = pageIndex * POSTS_PER_PAGE;
@@ -84,7 +84,7 @@ function Card({ id, title, content, imgURL }) {
       <section className={"card_texts_wrapper"}>
         <h2 className={"title"}>{title}</h2>
         <p className={"content"}>{content}</p>
-        <Link to={`/articles/${id}`} className={`link_more ${"card_link"}`}>
+        <Link to={`/posts/${id}`} className={`link_more ${"card_link"}`}>
           Saiba Mais
         </Link>
       </section>
