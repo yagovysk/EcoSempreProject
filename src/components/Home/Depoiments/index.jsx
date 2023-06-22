@@ -38,7 +38,7 @@ export function Depoiments() {
             <Link
               role="button"
               className={`btn btn-link ${style.btnFeedback}`}
-              to="About_us"
+              to="/sobre"
               onClick={scrollToTop}
             >
               Sobre Nós

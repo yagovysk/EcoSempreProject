@@ -22,7 +22,7 @@ export function AboutUs() {
     },
     {
       name: "EcoSempre",
-      path: "/about_us",
+      path: "/sobre",
     },
     {
       name: "Sobre Nós",

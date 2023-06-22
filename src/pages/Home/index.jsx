@@ -121,7 +121,7 @@ function Sobre() {
           <Link
             role="button"
             className={`${styles.btnSobre} btn`}
-            to="About_us"
+            to="/sobre"
             onClick={scrollToTop}
           >
             Conheça Nossa História

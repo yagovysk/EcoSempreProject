@@ -20,7 +20,7 @@ export function Footer() {
 
               <Link
                 onClick={scrollToTop}
-                to="/contact"
+                to="/contato"
                 className={styles.talk_with_us}
               >
                 <Icon
@@ -61,7 +61,7 @@ export function Footer() {
               <h5 className={styles.subtitle}>Empresa</h5>
               <ul className={styles.list_links_company}>
                 <li>
-                  <Link onClick={scrollToTop} to="/about_us">
+                  <Link onClick={scrollToTop} to="/sobre">
                     Quem Somos
                   </Link>
                 </li>
@@ -76,7 +76,7 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link onClick={scrollToTop} to="/contact">
+                  <Link onClick={scrollToTop} to="/contato">
                     Fale Conosco
                   </Link>
                 </li>

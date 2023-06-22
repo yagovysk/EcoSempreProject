@@ -8,11 +8,11 @@ import "./Header.css";
 const linksEcoSempre = [
   {
     name: "Sobre Nós",
-    path: "/about_us",
+    path: "/sobre",
   },
   {
     name: "Contato",
-    path: "/contact",
+    path: "/contato",
   },
   {
     name: "Parceiros",
@@ -38,7 +38,7 @@ const linksPrograms = [
   },
   {
     name: "Lista de Materiais",
-    path: "/material_list",
+    path: "/materiais",
   },
   {
     name: "Agendar coleta",
@@ -156,7 +156,7 @@ function Menu({ setIsActive = false }) {
         <Link
           onClick={handleCloseBurger}
           className="btnContato contato"
-          to="/contact"
+          to="/contato"
         >
           Entre em contato
           <Icon icon="octicon:arrow-right-16" />
