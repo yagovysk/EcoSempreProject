@@ -3,13 +3,14 @@ import { HeaderSection } from "../../components/HeaderSection";
 import { Map } from "../../components/Map";
 import styles from "./PontosDeColeta.module.css";
 import { z } from "zod";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { SelectField } from "../../components/SelectField";
 
 const queryCollectFormSchema = z.object({
   address: z.string().nonempty("Digite um endereço"),
-  // category: z.array(z.string()),
+  category: z.string().optional(),
 });
 
 const pontosColeta = [
@@ -97,6 +98,8 @@ const linksMenu = [
   },
 ];
 
+const categories = ["Óleo", "Tecnologia", "Resíduos "];
+
 export function PontosDeColeta() {
   const [pontosColeta, setPontosColeta] = useState("");
 
@@ -157,17 +160,22 @@ export function PontosDeColeta() {
 }
 
 function QueryCollectForm({ setPontosColeta }) {
+  const initialValues = {
+    address: "",
+    category: "",
+  };
   const {
     register,
     handleSubmit,
     formState: { errors },
+    control,
+    setValue,
   } = useForm({
     resolver: zodResolver(queryCollectFormSchema),
+    defaultValues: initialValues,
   });
 
   function queryPontosColeta(data) {
-    // Chamada na API
-    // Coloco os dados recebidos num estado
     setPontosColeta(pontosColeta);
     window.scrollBy(0, document.body.offsetHeight);
   }
@@ -191,7 +199,20 @@ function QueryCollectForm({ setPontosColeta }) {
           )}
         </div>
 
-        <SelectInput />
+        <Controller
+          name="category"
+          control={control}
+          render={({ field }) => (
+            <SelectField
+              name="category"
+              options={categories}
+              label="Selecione uma categoria"
+              field={field}
+              setValue={setValue}
+              error={errors.category}
+            />
+          )}
+        />
 
         <div className={styles.location_input}>
           <Icon icon="icon-park-solid:local-two" />
@@ -204,15 +225,6 @@ function QueryCollectForm({ setPontosColeta }) {
           Ver Todos os Pontos de Coleta
         </button>
       </form>
-    </div>
-  );
-}
-
-function SelectInput() {
-  return (
-    <div className={`${styles.select_input} ${styles.input}`}>
-      <span className={styles.title_select_input}>Selecione uma categoria</span>
-      <Icon icon="iconamoon:arrow-down-2-bold" />
     </div>
   );
 }

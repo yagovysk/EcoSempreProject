@@ -17,6 +17,7 @@ export const SelectField = ({
     option.toLowerCase().includes(field ? field.value.toLocaleLowerCase() : "")
   );
   useClickAway(selectRef, () => setIsActive(false), ["click", "touchstart"]);
+
   function handleKeyDown(e, option = false) {
     if (e.key === "Enter") {
       setIsActive(!isActive);
