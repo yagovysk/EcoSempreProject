@@ -24,15 +24,15 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/about_us",
+        path: "/sobre",
         element: <AboutUs />,
       },
       {
-        path: "/contact",
+        path: "/contato",
         element: <Contact />,
       },
       {
-        path: "/material_list",
+        path: "/materiais",
         element: <MaterialList />,
       },
       {
@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
         element: <Blog />,
       },
       {
-        path: "/articles/:key",
+        path: "/posts/:key",
         element: <Post />,
       },
       {
@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
         element: <Partners />,
       },
       {
-        path: "/search",
+        path: "/buscar",
         element: <SearchResult />,
       },
       {

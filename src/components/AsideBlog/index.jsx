@@ -37,7 +37,7 @@ export function AsideBlog() {
             recentPosts.map((post) => (
               <Link
                 key={post.id}
-                to={`/articles/${post.id}`}
+                to={`/posts/${post.id}`}
                 className={styles.recent_post_wrapper}
               >
                 <img src={post.imgURL} className={styles.recent_post_img} />

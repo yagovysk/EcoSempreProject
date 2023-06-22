@@ -23,7 +23,7 @@ export function Saiba() {
           <Link
             role="button"
             className={`btn ${styles.saibabutton}`}
-            to="material_list"
+            to="/materiais"
             onClick={scrollToTop}
           >
             Explore todos os itens

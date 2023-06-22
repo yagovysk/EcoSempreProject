@@ -38,7 +38,7 @@ export function CardBlog({
           <Link
             aria-label="Saiba mais sobre o post"
             className={styles.btn_link}
-            to={`/articles/${path}`}
+            to={`/posts/${path}`}
           >
             Saiba Mais
             <Icon

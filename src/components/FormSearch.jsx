@@ -18,7 +18,7 @@ export function FormSearch({ placeholder, onSearchActive = false }) {
       },
       {
         method: "get",
-        action: "/search?index",
+        action: "/buscar?index",
       }
     );
     if (onSearchActive) {

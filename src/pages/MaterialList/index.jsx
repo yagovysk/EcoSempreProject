@@ -133,7 +133,7 @@ export function MaterialList() {
     },
     {
       name: "Programas",
-      path: "/material_list",
+      path: "/materiais",
     },
     {
       name: "Lista de Materiais",
