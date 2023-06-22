@@ -39,6 +39,12 @@
   }
   .wrapper_form {
     padding: 1.8rem;
-    flex-basis: 17rem;
+    flex-basis: 18rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .wrapper_form {
+    flex-basis: 16rem;
   }
 }

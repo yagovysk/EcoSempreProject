@@ -49,6 +49,7 @@
 .form_inputs div.error_wrapper_input input,
 .form_inputs div.error_wrapper_input textarea {
   border: 1.5px solid #ef4444;
+  box-shadow: 0px 0px 0px 2px rgba(239, 68, 68, 0.35);
 }
 
 .error_message {
@@ -60,6 +61,7 @@
 .form_inputs input:focus,
 .form_inputs textarea:focus {
   border: 1.5px solid #00c756;
+  box-shadow: 0px 0px 0px 2px rgba(0, 199, 86, 0.25);
 }
 
 .form_inputs input::placeholder,
@@ -88,6 +90,17 @@
   width: max-content;
   color: white;
   transition: 0.3s;
+  line-height: 0;
+}
+
+.btnForm.submitting {
+  min-width: 175px;
+  height: 58px;
+  opacity: 0.6;
+}
+
+.btnForm.submitting:hover {
+  background: #00c756;
 }
 
 .btnForm:hover {
@@ -97,6 +110,62 @@
 .btn_text {
   font: 700 0.9rem "Roboto", sans-serif;
   line-height: 2.5rem;
+}
+
+/* Spinner */
+.spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Form submitted */
+.form_submitted_wrapper {
+  text-align: center;
+  padding: 6.63rem 0;
+}
+.icon_submitted_wrapper {
+  width: max-content;
+  margin: 0 auto;
+  background: rgba(0, 199, 86, 0.2);
+  padding: 1.2rem;
+  border-radius: 50%;
+  line-height: 0;
+}
+
+.icon_submitted {
+  font-size: 8.67rem;
+  color: #00c756;
+}
+
+.title_submitted {
+  padding: 1.5rem 0;
+}
+
+.paragraph_submitted {
+  font: 400 1.5rem "Roboto", sans-serif;
+  line-height: 1.4rem;
+  color: #727272;
+}
+
+.btn_submitted {
+  width: 100%;
+  color: white;
+  margin-top: 2rem;
 }
 
 @media (max-width: 715px) {
@@ -123,5 +192,11 @@
   }
   .form_description {
     font-size: 0.875rem;
+  }
+  .form_submitted_wrapper {
+    padding: 3rem 0;
+  }
+  .paragraph_submitted {
+    font-size: 1.2rem;
   }
 }
