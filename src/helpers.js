@@ -37,3 +37,27 @@ export function useGetData(endpoint, dependencies = []) {
 
   return data;
 }
+
+export function useClickAway(ref, callback, events = ["click"]) {
+  useEffect(() => {
+    if (!ref.current) return;
+
+    function handleClickAway(e) {
+      const currentEl = ref.current;
+      const node = e.target;
+
+      if (currentEl.contains(node)) return;
+      callback();
+    }
+
+    events.forEach((event) => {
+      document.addEventListener(event, handleClickAway);
+    });
+
+    return () => {
+      events.forEach((event) => {
+        document.removeEventListener(event, handleClickAway);
+      });
+    };
+  }, [ref]);
+}

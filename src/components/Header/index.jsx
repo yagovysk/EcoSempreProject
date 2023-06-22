@@ -40,6 +40,10 @@ const linksPrograms = [
     name: "Lista de Materiais",
     path: "/material_list",
   },
+  {
+    name: "Agendar coleta",
+    path: "/agendar",
+  },
 ];
 
 export function Header() {
@@ -149,7 +153,11 @@ function Menu({ setIsActive = false }) {
         />
         {isSearchActive && <CampoDeBusca onSearchActive={setIsSearchActive} />}
 
-        <Link className="btnContato contato" to="/contact">
+        <Link
+          onClick={handleCloseBurger}
+          className="btnContato contato"
+          to="/contact"
+        >
           Entre em contato
           <Icon icon="octicon:arrow-right-16" />
         </Link>
@@ -213,6 +221,10 @@ function BurgerMenu({ onActive, isActive }) {
     <div
       onClick={() => onActive()}
       className={`menu_burger ${isActive && "active"}`}
+      aria-controls="menu"
+      aria-haspopup={true}
+      aria-label={!isActive ? "Abrir menu" : "Fechar menu"}
+      aria-expanded={isActive ? true : false}
     >
       <div className="trace trace1"></div>
       <div className="trace trace2"></div>

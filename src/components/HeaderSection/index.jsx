@@ -11,7 +11,7 @@ export function HeaderSection({ title, linksMenu, className }) {
       <h1 className={styles.titleHeader}>{title}</h1>
       <div className={styles.menu}>
         {contentWithoutLastLink.map((link) => (
-          <Fragment key={link.path}>
+          <Fragment key={link.name}>
             <Link
               to={link.path}
               className={`${styles.menu_item} ${styles.menu_item_active}`}

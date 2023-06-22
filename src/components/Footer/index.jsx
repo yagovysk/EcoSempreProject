@@ -233,11 +233,14 @@ function ScheduleCard() {
         </address>
       </div>
       <div className={styles.box_schedule}>
-        <button type="button" className={`${styles.btn_schedule} btn`}>
-          <a className="btn-link" href="#">
-            Agente uma Coleta
-          </a>
-        </button>
+        <Link
+          role="button"
+          className={`${styles.btn_schedule} btn btn-link`}
+          to="/agendar"
+          onClick={scrollToTop}
+        >
+          Agende uma Coleta
+        </Link>
       </div>
     </div>
   );
