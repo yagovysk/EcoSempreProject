@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Home } from "./pages/Home";
 import { Default } from "./layouts/Default";
+import { Home } from "./pages/Home";
 import { AboutUs } from "./pages/AboutUs";
 import { MaterialList } from "./pages/MaterialList";
 import { Blog } from "./pages/Blog";
@@ -12,6 +12,7 @@ import { Post } from "./pages/Post";
 import { SearchResult } from "./pages/SearchResult";
 import { LogisticaReversa } from "./pages/LogisticaReversa";
 import { Descarte } from "./pages/Descarte";
+import { Schedule } from "./pages/Schedule";
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
       {
         path: "/descarte",
         element: <Descarte />,
+      },
+      {
+        path: "/agendar",
+        element: <Schedule />,
       },
     ],
   },

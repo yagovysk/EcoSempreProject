@@ -72,7 +72,6 @@ a {
   color: #ef4444;
   font: 400 0.75rem "Roboto", sans-serif;
   line-height: 2rem;
-  margin-left: 0.2rem;
 }
 
 .link_more {
@@ -93,6 +92,10 @@ a {
   .title {
     font-size: 2rem;
     line-height: 2.625rem;
+  }
+
+  .texts {
+    gap: 1.5rem;
   }
 
   .small-text {

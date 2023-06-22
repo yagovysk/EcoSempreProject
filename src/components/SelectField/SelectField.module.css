@@ -1,0 +1,82 @@
+.select_container {
+  position: relative;
+}
+
+.select_container .select_label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  outline: 1px solid transparent;
+  border: 1.5px solid #e7ebef;
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.select_label.active {
+  border: 1.5px solid #00c756;
+  box-shadow: 0px 0px 0px 2px rgba(0, 199, 86, 0.25);
+}
+
+.select_label.error {
+  border: 1.5px solid #ef4444;
+  box-shadow: 0px 0px 0px 2px rgba(239, 68, 68, 0.35);
+}
+
+.select_label .select_input {
+  flex: 1 1;
+  display: block;
+  padding: 1.37rem 1.44rem;
+  outline: 1px solid transparent;
+  border: 0;
+  font: 400 1rem "Roboto", sans-serif;
+  color: #929090;
+}
+
+.select_input::placeholder {
+  color: #929090;
+}
+
+.select_label svg {
+  transition: 0.2s;
+  color: #929090;
+  font-size: 1.5rem;
+  margin-right: 1.4rem;
+}
+
+.select_label.active svg {
+  rotate: 180deg;
+}
+
+.select {
+  position: absolute;
+  top: 5rem;
+  width: 100%;
+  z-index: 1000;
+
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 0px 20.35px -2px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+}
+
+.select_option {
+  display: block;
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+  font: 500 0.9rem "Roboto", sans-serif;
+  line-height: 1.5;
+  outline: 1px solid transparent;
+}
+
+.select_option:focus {
+  background-color: #00c756;
+  color: white;
+}
+
+.select_option:hover,
+.select.option.active {
+  background-color: #00c756;
+  color: white;
+}
