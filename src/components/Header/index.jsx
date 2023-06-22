@@ -1,8 +1,9 @@
 import logo from "../../assets/logoEcoSempre.png";
 import { Icon } from "@iconify/react";
 import { Link, NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FormSearch } from "../FormSearch";
+import { useClickAway } from "../../helpers";
 import "./Header.css";
 
 const linksEcoSempre = [
@@ -73,14 +74,12 @@ export function Header() {
 }
 
 function Menu({ setIsActive = false }) {
-  const [dropdownIndex, setDropdownIndex] = useState("");
   const [isSearchActive, setIsSearchActive] = useState(false);
 
-  function handleClick(id) {
+  function handleClick() {
     if (setIsActive) {
       setIsActive(false);
     }
-    toggleDropdown(id);
   }
 
   function handleCloseBurger() {
@@ -89,63 +88,41 @@ function Menu({ setIsActive = false }) {
     }
   }
 
-  function toggleDropdown(id) {
-    if (id !== dropdownIndex) {
-      setDropdownIndex(id);
-    } else {
-      setDropdownIndex(false);
-    }
-  }
-
   return (
     <>
       <ul className="menu">
-        <li className="menu_li" onClick={() => handleClick(dropdownIndex)}>
+        <li className="menu_li" onClick={handleClick}>
           <NavLink className="menu_item" to="/">
             Início
           </NavLink>
         </li>
-        <li className="menu_li" onClick={() => toggleDropdown(0)}>
-          <div className={`menu_item ${dropdownIndex === 0 && "active"}`}>
-            EcoSempre
-            <Icon className="arrow_menu_item" icon="mdi:caret" rotate={2} />
-          </div>
-          {dropdownIndex === 0 && (
-            <Dropdown
-              onActiveBurger={handleCloseBurger}
-              links={linksEcoSempre}
-            />
-          )}
+        <li className="menu_li">
+          <Dropdown
+            label="EcoSempre"
+            onActiveBurger={handleCloseBurger}
+            links={linksEcoSempre}
+          />
         </li>
-        <li className="menu_li" onClick={() => toggleDropdown(1)}>
-          <div className={`menu_item ${dropdownIndex === 1 && "active"}`}>
-            Programas
-            <Icon className="arrow_menu_item" icon="mdi:caret" rotate={2} />
-          </div>
-
-          {dropdownIndex === 1 && (
-            <Dropdown
-              onActiveBurger={handleCloseBurger}
-              links={linksPrograms}
-            />
-          )}
+        <li className="menu_li">
+          <Dropdown
+            label="Programas"
+            onActiveBurger={handleCloseBurger}
+            links={linksPrograms}
+          />
         </li>
-        <li className="menu_li" onClick={() => handleClick(dropdownIndex)}>
+        <li className="menu_li" onClick={() => handleClick()}>
           <NavLink className="menu_item" to="/coletas">
             Pontos de coleta
           </NavLink>
         </li>
-        <li className="menu_li" onClick={() => handleClick(dropdownIndex)}>
+        <li className="menu_li" onClick={() => handleClick()}>
           <NavLink className="menu_item" to="/blog">
             Blog
           </NavLink>
         </li>
       </ul>
 
-      <div
-        onClick={() => toggleDropdown(dropdownIndex)}
-        className="contact-container"
-      >
+      <div className="contact-container">
         <Icon
           onClick={() => setIsSearchActive(true)}
           icon="ph:magnifying-glass"
@@ -166,24 +143,41 @@ function Menu({ setIsActive = false }) {
   );
 }
 
-function Dropdown({ links, onActiveBurger }) {
+function Dropdown({ label, links, onActiveBurger }) {
+  const [isActive, setIsActive] = useState(false);
+  const elRef = useRef(null);
+  useClickAway(elRef, () => setIsActive(false), ["click", "touchstart"]);
+
   return (
-    <div className="wrapper_dropdown">
-      <ul className="dropdown_list">
-        {links.map((link, index) => (
-          <li key={link.name} onClick={onActiveBurger}>
-            <NavLink
-              className={`dropdown_item ${
-                links.length - 1 === index && "last_item"
-              }`}
-              to={link.path}
-            >
-              {link.name}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <div
+        ref={elRef}
+        onClick={() => setIsActive(!isActive)}
+        className={`menu_item ${isActive && "active"}`}
+      >
+        {label}
+        <Icon className="arrow_menu_item" icon="mdi:caret" rotate={2} />
+      </div>
+
+      {isActive && (
+        <div className="wrapper_dropdown">
+          <ul className="dropdown_list">
+            {links.map((link, index) => (
+              <li key={link.name} onClick={onActiveBurger}>
+                <NavLink
+                  className={`dropdown_item ${
+                    links.length - 1 === index && "last_item"
+                  }`}
+                  to={link.path}
+                >
+                  {link.name}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </>
   );
 }
 
