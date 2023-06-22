@@ -1,16 +1,27 @@
 import { z } from "zod";
-import styles from "./FormTalkWithUs.module.css";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Icon } from "@iconify/react";
+import api from "../../api/posts";
+import styles from "./FormTalkWithUs.module.css";
 
 const talkWithUsFormSchema = z.object({
-  name: z.string().nonempty("* O campo não é válido").toLowerCase().trim(),
+  name: z
+    .string()
+    .nonempty("* O campo está vazio")
+    .min(3, "* O campo não é válido")
+    .toLowerCase()
+    .trim(),
   email: z
     .string()
     .nonempty("* O campo está vazio")
     .email("* Esse e-mail não é válido")
     .trim(),
-  phone: z.string().nonempty("* Digite um número de telefone válido").trim(),
+  phone: z
+    .string()
+    .nonempty("* O campo está vazio")
+    .min(10, "* Digite um número de telefone válido")
+    .trim(),
   subject: z
     .string()
     .nonempty("* O campo está vazio! Digite um assunto")
@@ -25,10 +36,28 @@ export function FormTalkWithUs() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting, isSubmitSuccessful },
+    reset,
   } = useForm({
     resolver: zodResolver(talkWithUsFormSchema),
   });
+  const sleep = (ms) =>
+    new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+
+  async function onSubmit(data) {
+    try {
+      await sleep(2000);
+      await api.post("/contact", data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  if (isSubmitSuccessful) {
+    return <FormSubmitted reset={reset} />;
+  }
 
   return (
     <div className={styles.form_wrapper}>
@@ -41,10 +70,7 @@ export function FormTalkWithUs() {
         </p>
       </div>
 
-      <form
-        onSubmit={handleSubmit((data) => console.log(data))}
-        className={styles.form_content}
-      >
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form_content}>
         <div className={styles.form_inputs}>
           <div className={`${errors.name && styles.error_wrapper_input}`}>
             <input
@@ -125,10 +151,50 @@ export function FormTalkWithUs() {
           </div>
         </div>
 
-        <button className={`btn ${styles.btnForm}`} type="submit">
-          <span className={styles.btn_text}>Enviar Mensagem</span>
+        <button
+          className={`btn ${styles.btnForm} ${
+            isSubmitting && styles.submitting
+          }`}
+          type="submit"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <Spinner />
+          ) : (
+            <span className={styles.btn_text}>Enviar Mensagem</span>
+          )}
         </button>
       </form>
+    </div>
+  );
+}
+
+function Spinner() {
+  return <span class={`${styles.spinner} ${styles.btn_text}`}></span>;
+}
+
+function FormSubmitted({ reset }) {
+  return (
+    <div className={styles.form_submitted_wrapper}>
+      <div className={styles.icon_submitted_wrapper}>
+        <Icon
+          className={styles.icon_submitted}
+          icon="icon-park-solid:check-one"
+        />
+      </div>
+      <h2 className={`title ${styles.title_submitted}`}>
+        Mensagem enviada com sucesso!
+      </h2>
+      <p className={styles.paragraph_submitted}>
+        Agradecemos o seu contato e retornaremos em breve.
+      </p>
+      <button
+        type="button"
+        onClick={reset}
+        className={`btn btn-link ${styles.btn_submitted}`}
+      >
+        Concluído
+      </button>
     </div>
   );
 }
