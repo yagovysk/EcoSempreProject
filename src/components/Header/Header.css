@@ -297,6 +297,8 @@
     height: 100vh;
     width: 100%;
     background-color: #f2f3ff;
+    position: absolute;
+    z-index: 9999;
   }
   .header.on .header_content {
     background-color: white;

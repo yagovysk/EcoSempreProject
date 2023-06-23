@@ -73,14 +73,8 @@ export function Header() {
   );
 }
 
-function Menu({ setIsActive = false }) {
+function Menu({ setIsActive = false, notClickAway = false }) {
   const [isSearchActive, setIsSearchActive] = useState(false);
-
-  function handleClick() {
-    if (setIsActive) {
-      setIsActive(false);
-    }
-  }
 
   function handleCloseBurger() {
     if (setIsActive) {
@@ -91,13 +85,14 @@ function Menu({ setIsActive = false }) {
   return (
     <>
       <ul className="menu">
-        <li className="menu_li" onClick={handleClick}>
+        <li className="menu_li" onClick={handleCloseBurger}>
           <NavLink className="menu_item" to="/">
             Início
           </NavLink>
         </li>
         <li className="menu_li">
           <Dropdown
+            notClickAway={notClickAway}
             label="EcoSempre"
             onActiveBurger={handleCloseBurger}
             links={linksEcoSempre}
@@ -105,17 +100,18 @@ function Menu({ setIsActive = false }) {
         </li>
         <li className="menu_li">
           <Dropdown
+            notClickAway={notClickAway}
             label="Programas"
             onActiveBurger={handleCloseBurger}
             links={linksPrograms}
           />
         </li>
-        <li className="menu_li" onClick={() => handleClick()}>
+        <li className="menu_li" onClick={handleCloseBurger}>
           <NavLink className="menu_item" to="/coletas">
             Pontos de coleta
           </NavLink>
         </li>
-        <li className="menu_li" onClick={() => handleClick()}>
+        <li className="menu_li" onClick={handleCloseBurger}>
           <NavLink className="menu_item" to="/blog">
             Blog
           </NavLink>
@@ -143,16 +139,33 @@ function Menu({ setIsActive = false }) {
   );
 }
 
-function Dropdown({ label, links, onActiveBurger }) {
+function MenuMobile({ setIsActive }) {
+  return (
+    <div className="menu_mobile_container">
+      <Menu setIsActive={setIsActive} notClickAway={true} />
+    </div>
+  );
+}
+
+function Dropdown({ label, links, onActiveBurger, notClickAway }) {
   const [isActive, setIsActive] = useState(false);
   const elRef = useRef(null);
-  useClickAway(elRef, () => setIsActive(false), ["click", "touchstart"]);
+  useClickAway(
+    elRef,
+    () => setIsActive(false),
+    ["click", "touchstart"],
+    notClickAway
+  );
+
+  function handleClick() {
+    setIsActive(!isActive);
+  }
 
   return (
     <>
       <div
         ref={elRef}
-        onClick={() => setIsActive(!isActive)}
+        onClick={handleClick}
         className={`menu_item ${isActive && "active"}`}
       >
         {label}
@@ -223,14 +236,6 @@ function BurgerMenu({ onActive, isActive }) {
       <div className="trace trace1"></div>
       <div className="trace trace2"></div>
       <div className="trace trace3"></div>
-    </div>
-  );
-}
-
-function MenuMobile({ setIsActive }) {
-  return (
-    <div className="menu_mobile_container">
-      <Menu setIsActive={setIsActive} />
     </div>
   );
 }

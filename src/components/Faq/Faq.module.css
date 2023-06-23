@@ -123,3 +123,9 @@
     margin-top: 2.5rem;
   }
 }
+
+@media (max-width: 354px) {
+  .link_more_faq {
+    width: auto;
+  }
+}
