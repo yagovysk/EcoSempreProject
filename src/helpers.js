@@ -38,8 +38,14 @@ export function useGetData(endpoint, dependencies = []) {
   return data;
 }
 
-export function useClickAway(ref, callback, events = ["click"]) {
+export function useClickAway(
+  ref,
+  callback,
+  events = ["click"],
+  notClickAway = false
+) {
   useEffect(() => {
+    if (notClickAway) return;
     if (!ref.current) return;
 
     function handleClickAway(e) {

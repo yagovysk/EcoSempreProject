@@ -147,8 +147,6 @@
   display: grid;
   place-content: center;
   height: 12.5rem; /* 200px */
-  overflow: auto;
-  touch-action: auto;
 }
 
 @media (max-width: 1050px) {

@@ -272,16 +272,25 @@
 
 .idParceiros {
   background: #f6f7f8;
-  padding: 3.125rem 1.5rem 8.75rem 1.5rem;
+  padding: 3.125rem 1.5rem 3.75rem 1.5rem;
+  overflow: auto;
+  touch-action: pan-x;
+}
+.idParceiros::-webkit-scrollbar {
+  height: 5px;
+  background: #f6f7f8;
+  border-radius: 0.9rem;
 }
 
+.idParceiros::-webkit-scrollbar-thumb {
+  background-color: #b0b5ba;
+  border-radius: 0.9rem;
+}
 .content_parceiros {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 5rem;
   text-align: center;
-  overflow: hidden;
 }
 
 .texts_parceiros {
@@ -289,17 +298,8 @@
 }
 
 .wrapper_parceiros_card {
-  /* overflow: auto; */
-  /* .parceirosCard::-webkit-scrollbar {
-    height: 5px;
-    background-color: #f1f3f5;
-    border-radius: 0.9rem;
-  }
-
-  .parceirosCard::-webkit-scrollbar-thumb {
-    background-color: #b0b5ba;
-    border-radius: 0.9rem;
-  } */
+  padding: 5rem 0;
+  overflow: auto;
 }
 
 .idfaleconosco {
@@ -381,6 +381,9 @@
     flex-direction: column-reverse;
     padding: 4rem 1.5rem;
   }
+  .wrapper_parceiros_card {
+    width: 100%;
+  }
   .texts_callWithUs {
     max-width: 100%;
     text-align: center;
@@ -430,21 +433,12 @@
     background-color: white;
     padding: 4rem;
     border-top: 2px solid #eaeaea;
-    overflow: auto;
-    touch-action: pan-x;
   }
-
-  .idParceiros::-webkit-scrollbar {
-    height: 5px;
-    background-color: #f1f3f5;
-    border-radius: 0.9rem;
+  .wrapper_parceiros_card {
+    overflow: initial;
+    padding: 0;
+    width: auto;
   }
-
-  .idParceiros::-webkit-scrollbar-thumb {
-    background-color: #b0b5ba;
-    border-radius: 0.9rem;
-  }
-
   .texts_parceiros {
     display: none;
   }

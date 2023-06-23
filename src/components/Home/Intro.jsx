@@ -19,7 +19,6 @@ export function Intro() {
       clickable: true,
     },
     loop: true,
-    lazy: true,
     autoplay: {
       delay: 3500,
       disableOnInteraction: false,
