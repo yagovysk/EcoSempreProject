@@ -4,8 +4,9 @@
 
 .main_search_result .container_content {
   display: grid;
-  grid-template-columns: 778px 331px;
-  gap: 5.9rem;
+  grid-template-columns: minmax(550px, 778px) minmax(280px, 331px);
+  gap: 3.38rem 5.9rem;
+  padding: 0 1.5rem;
   padding-bottom: 6.875rem;
 }
 
@@ -32,12 +33,6 @@
   display: grid;
   gap: 1.25rem;
   padding: 2.18rem 2.25rem 3.125rem 2.25rem;
-}
-
-.main_search_result .title {
-  font: 700 2.5rem "IBM Plex Sans", sans-serif;
-  line-height: 3.375rem;
-  color: #0e2b5c;
 }
 
 .main_search_result .content {
@@ -95,4 +90,29 @@
 
 .main_search_result .search_input::placeholder {
   color: #9b9b9b;
+}
+
+.main_search_result .content_error {
+  font: 400 1rem "Roboto", sans-serif;
+  line-height: 1.375rem;
+  color: #9b9b9b;
+}
+
+@media (max-width: 980px) {
+  .main_search_result .container_content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 630px) {
+  .main_search_result .container_content {
+    padding-bottom: 2.5rem;
+  }
+  .main_search_result .posts_container {
+    gap: 2rem;
+  }
+
+  .card_texts_wrapper {
+    padding: 1.5rem;
+  }
 }

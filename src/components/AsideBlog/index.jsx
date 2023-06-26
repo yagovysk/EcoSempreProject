@@ -40,7 +40,9 @@ export function AsideBlog() {
                 to={`/posts/${post.id}`}
                 className={styles.recent_post_wrapper}
               >
-                <img src={post.imgURL} className={styles.recent_post_img} />
+                <picture className={styles.recent_post_wrapper_img}>
+                  <img src={post.imgURL} className={styles.recent_post_img} />
+                </picture>
                 <time className={styles.recent_post_timestamp}>
                   {post.timestamp}
                 </time>
