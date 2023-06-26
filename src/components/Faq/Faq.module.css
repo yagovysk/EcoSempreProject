@@ -1,0 +1,131 @@
+.idFaq {
+  padding: 8rem 1.5rem;
+}
+.texts {
+  text-align: center;
+  margin: 0 auto 5rem auto;
+}
+
+.container_faq {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25.125rem, 1fr));
+  gap: 2.125rem 4.6rem;
+}
+
+.list_faq {
+  display: grid;
+  gap: 2.125rem;
+  list-style-type: none;
+  height: max-content;
+}
+
+.wrapper_box {
+  padding: 1.4rem 1.6rem;
+  font-family: "Roboto", sans-serif;
+  background-color: white;
+  border: 2px solid #eaeaea;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.wrapper_box:hover {
+  border: 2px solid #00c756;
+}
+
+.wrapper_box.show_answer {
+  border: 2px solid #00c756;
+}
+
+.wrapper_box.last_question {
+  padding: 0.7rem 1.6rem;
+}
+
+.question_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  color: #232323;
+}
+
+.wrapper_box:hover .question_wrapper {
+  color: #00c756;
+}
+.question_title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  transition: 0.3s ease;
+}
+.wrapper_box.show_answer .question_title {
+  color: #00c756;
+}
+
+.panel {
+  height: 0;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.wrapper_box.show_answer .panel {
+  height: var(--height, auto);
+  margin-top: 1rem;
+}
+
+.answer {
+  line-height: 1.6rem;
+  font-weight: 500;
+  color: #9b9b9b;
+}
+
+.icon_plus,
+.icon_minus {
+  transition: 0.3s ease;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: 0 0 1.5rem;
+}
+
+.icon_minus {
+  color: #00c756;
+}
+
+.link_more_faq {
+  display: block;
+  margin: 0 auto;
+  margin-top: 4rem;
+  width: max-content;
+}
+
+@media (max-width: 562px) {
+  .idFaq {
+    padding: 2.5rem 1.5rem;
+  }
+  .container_faq {
+    grid-template-columns: repeat(auto-fit, minmax(15.125rem, 1fr));
+    gap: 1.25rem;
+  }
+  .list_faq {
+    gap: 1.25rem;
+  }
+  .wrapper_box {
+    padding: 0.9rem;
+  }
+  .texts {
+    margin-bottom: 1.875rem;
+  }
+  .question_title,
+  .answer {
+    font-size: 0.875rem;
+  }
+  .link_more_faq {
+    margin-top: 2.5rem;
+  }
+}
+
+@media (max-width: 354px) {
+  .link_more_faq {
+    width: auto;
+  }
+}

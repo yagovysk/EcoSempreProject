@@ -1,4 +1,6 @@
 node_modules
 
-/data
+data
 /src/api
+
+dist

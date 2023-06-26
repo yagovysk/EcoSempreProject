@@ -1,8 +1,14 @@
 .wrapper {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 2.375rem;
   align-items: center;
-  height: 43rem;
+  padding: var(--padding, 8rem) 1.5rem;
+}
+
+.textsContainer {
+  flex: 1 0 25rem;
 }
 
 .paragraph {
@@ -14,8 +20,6 @@
 
 .btnColeta {
   width: max-content;
-  font: 700 0.9375rem "Roboto", sans-serif;
-  line-height: 2.5rem;
   color: white;
   display: flex;
   align-items: center;
@@ -27,45 +31,13 @@
   transform: translateY(-4px);
 }
 
-.containerImg {
-  position: relative;
-}
-
-.wrapperImg {
-  display: flex;
-  align-items: center;
-  gap: 1.375rem;
-  padding: 2.5rem 3.3125rem;
-  border-radius: 0.75rem;
-  background-color: #00c756;
-  font: 700 0.9375rem "Roboto", sans-serif;
-  color: white;
-  position: absolute;
-  bottom: 0.3rem;
-  left: -2.2rem;
-}
-
-.imgText {
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem; /* 10px */
-}
-
-.imgText span {
-  line-height: 0.9375rem;
-}
-
-.coletaimg {
-  border-radius: 0.75rem;
-}
-
-.behind {
-  position: absolute;
-  right: -2.2rem;
-  bottom: 0.3rem;
-  background: #00c756;
-  width: 3rem;
-  height: 8rem;
-  border-radius: 0 0.75rem 0.75rem 0;
-  z-index: -1;
+@media (max-width: 630px) {
+  .wrapper {
+    justify-content: start;
+    padding: 3rem 1.5rem;
+  }
+  .textsContainer {
+    flex: 1 0 0;
+    max-width: initial !important;
+  }
 }
