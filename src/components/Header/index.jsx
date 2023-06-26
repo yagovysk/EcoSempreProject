@@ -78,6 +78,11 @@ function Menu({ setIsActive = false, notClickAway = false }) {
     }
   }
 
+  function handleCloseSearch() {
+    setIsSearchActive(false);
+    setIsActive(false);
+  }
+
   return (
     <>
       <ul className="menu">
@@ -120,7 +125,12 @@ function Menu({ setIsActive = false, notClickAway = false }) {
           icon="ph:magnifying-glass"
           className="lupaicon"
         />
-        {isSearchActive && <CampoDeBusca onSearchActive={setIsSearchActive} />}
+        {isSearchActive && (
+          <CampoDeBusca
+            onCloseSearch={handleCloseSearch}
+            onSearchActive={setIsSearchActive}
+          />
+        )}
 
         <Link
           onClick={handleCloseBurger}
@@ -190,7 +200,7 @@ function Dropdown({ label, links, onActiveBurger, notClickAway }) {
   );
 }
 
-function CampoDeBusca({ onSearchActive }) {
+function CampoDeBusca({ onSearchActive, onCloseSearch }) {
   useEffect(() => {
     function handleKeyDown(e) {
       if (e.key === "Escape") {
@@ -212,7 +222,7 @@ function CampoDeBusca({ onSearchActive }) {
       </button>
 
       <FormSearch
-        onSearchActive={onSearchActive}
+        onCloseSearch={onCloseSearch}
         placeholder="Digite aqui para buscar"
       />
     </div>

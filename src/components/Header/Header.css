@@ -226,6 +226,7 @@
   display: flex;
   align-items: center;
   border-bottom: 2px solid #eaeaea;
+  width: 100%;
 }
 
 .search_container .search_form.active {
@@ -241,8 +242,7 @@
   border: 0;
   outline: 1px solid transparent;
   padding: 0.8rem 1.5rem;
-  /* min-width: 48rem; */
-  /* width: 100%; */
+  width: 100%;
 
   font: 500 2.125rem "IBM Plex Sans", sans-serif;
   color: #848e9f;
@@ -358,5 +358,19 @@
   }
   .header.on .btnContato {
     width: max-content;
+  }
+}
+
+@media (max-width: 570px) {
+  .search_container .search_form {
+    margin: 0 1.5rem;
+    width: auto;
+  }
+  .search_container .search_icon {
+    font-size: 1.2rem;
+  }
+  .search_container .search_input {
+    font-size: 1.4rem;
+    padding: 0.8rem 1.2rem;
   }
 }

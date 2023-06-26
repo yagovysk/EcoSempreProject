@@ -35,6 +35,7 @@
 
 .recent_post_wrapper {
   display: grid;
+  grid-template-columns: max-content 1fr;
   grid-template-rows: 1.5rem auto;
   grid-template-areas:
     "img time"
@@ -49,11 +50,17 @@
   background-color: white;
 }
 
-.recent_post_img {
+.recent_post_wrapper_img {
   grid-area: img;
   width: 5rem;
   height: 5rem;
+}
+
+.recent_post_img {
   border-radius: 0.25rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .recent_post_timestamp {
@@ -133,4 +140,20 @@
 
 .tags_wrapper_aside .tag:hover {
   background-color: #0e2b5c;
+}
+
+@media (max-width: 350px) {
+  .recent_post_wrapper_img {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  .box_aside {
+    padding: 1.5rem;
+  }
+  .box_aside_posts {
+    padding: 0.5rem;
+  }
+  .box_aside_posts .title_box_aside {
+    padding: 1rem 0 0 1rem;
+  }
 }

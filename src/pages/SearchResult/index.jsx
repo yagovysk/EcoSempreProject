@@ -58,10 +58,10 @@ export function SearchResult() {
         ) : (
           <section className={"error_wrapper"}>
             <h2 className={"title"}>Nenhum Resultado Encontrado!</h2>
-            <p className={"content"}>
+            <p className={"content_error"}>
               Desculpe, não encontramos resultados para a sua busca. Mas não
               desista! Continue explorando nosso site para encontrar outras
-              informações valiosas sobre reciclagem e sustentabilidade
+              informações valiosas sobre reciclagem e sustentabilidade.
             </p>
 
             <FormSearch key={query} placeholder="Pesquisar..." />

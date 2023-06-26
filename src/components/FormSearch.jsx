@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSubmit } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
-export function FormSearch({ placeholder, onSearchActive = false }) {
+export function FormSearch({ placeholder, onCloseSearch = false }) {
   const [search, setSearch] = useState("");
   const [isTouched, setIsTouched] = useState(false);
   const submit = useSubmit();
@@ -21,8 +21,8 @@ export function FormSearch({ placeholder, onSearchActive = false }) {
         action: "/buscar?index",
       }
     );
-    if (onSearchActive) {
-      onSearchActive(false);
+    if (onCloseSearch) {
+      onCloseSearch();
     }
   }
 
