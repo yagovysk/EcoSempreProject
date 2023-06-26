@@ -170,7 +170,7 @@ export function FormTalkWithUs() {
 }
 
 function Spinner() {
-  return <span class={`${styles.spinner} ${styles.btn_text}`}></span>;
+  return <span className={`${styles.spinner} ${styles.btn_text}`}></span>;
 }
 
 function FormSubmitted({ reset }) {
