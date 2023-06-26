@@ -34,10 +34,6 @@ const linksPrograms = [
     path: "/descarte",
   },
   {
-    name: "Coleta em Condomínios",
-    path: "/",
-  },
-  {
     name: "Lista de Materiais",
     path: "/materiais",
   },

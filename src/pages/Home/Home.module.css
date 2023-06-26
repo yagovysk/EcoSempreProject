@@ -1,3 +1,7 @@
+.main_content {
+  overflow: hidden;
+}
+
 .sobre {
   display: flex;
   justify-content: center;
@@ -8,7 +12,12 @@
 .containerImg {
   position: relative;
   margin-left: 3.5rem;
-  width: 120%;
+}
+
+.wrapper_sobre_img {
+  display: block;
+  min-width: 27.875rem;
+  height: 100%;
 }
 
 .sobreImg {
@@ -216,6 +225,7 @@
 .logistic_card_wrapper {
   max-width: 34.375rem;
   margin: 0 auto;
+  /* min-height: 28.6875rem; */
 }
 
 .logistic_card_wrapper img {
@@ -239,7 +249,7 @@
   font: 700 0.9375rem "Roboto", sans-serif;
   color: white;
   position: absolute;
-  bottom: 0rem;
+  bottom: 0;
   left: -2.2rem;
 }
 
@@ -371,6 +381,7 @@
   }
 
   .sustentabilidadeBox {
+    overflow: hidden;
     gap: 2.3rem;
   }
 
@@ -415,10 +426,14 @@
   }
   .wrapper_texts_sustentabilidade {
     padding: 1rem 1.5rem 4.125rem 1.5rem;
+    max-width: initial !important;
   }
 }
 
 @media (max-width: 715px) {
+  .wrapper_sobre_img {
+    min-width: initial;
+  }
   .containerImgColetas {
     margin: 0;
   }

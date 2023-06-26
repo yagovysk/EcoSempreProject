@@ -13,6 +13,8 @@ import { HeaderSection } from "../../components/HeaderSection";
 import { Map } from "../../components/Map";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Autoplay, Navigation } from "swiper";
+import { ScrollReveal } from "../../components/ScrollReveal";
+import { useRef } from "react";
 
 export function AboutUs() {
   const linksMenu = [
@@ -38,9 +40,11 @@ export function AboutUs() {
       />
       <Information />
       <Contact />
-      <div className={styles.partners_content}>
-        <ParceirosCard />
-      </div>
+      <ScrollReveal origin="top">
+        <div className={styles.partners_content}>
+          <ParceirosCard />
+        </div>
+      </ScrollReveal>
     </main>
   );
 }
@@ -64,55 +68,62 @@ function Information() {
     >
       <article className={styles.first_information}>
         <div className={`textsContainer ${styles.textsContainer}`}>
-          <span className="small-text">Quem Somos</span>
-          <section className="texts">
-            <h2 className="title">Sua Parceira em Soluções Tecnológicas</h2>
-            <p className={styles.paragraph}>
-              A Sempretec é uma empresa de soluções na área de tecnologia e
-              oferece a seus clientes venda, assistência técnica e locação de
-              equipamentos. Fundada a mais de uma década com o objetivo de
-              suprir as necessidades de produtos e serviços tecnológicos do
-              mercado de Brasília, hoje oferece a todo Brasil, produtos e
-              serviços de alta qualidade.
-            </p>
-            <p className={styles.paragraph}>
-              Oferecendo ao seus clientes o melhor serviço de outsourcing ,
-              aliado aos demais recursos tecnológicos existentes, são hoje uma
-              solução moderna na que tem contribuído, significativamente, para
-              uma boa gestão, melhoria dos processos, gerenciamento dos recursos
-              e na redução de custos, uma vez que não implicará em
-              investimentos, tais como aquisição de equipamentos e insumos e as
-              necessárias substituições periódicas, por motivo de depreciação,
-              causado pelo avanço tecnológico e o desgaste natural pelo uso
-              continuo.
-            </p>
-          </section>
+          <ScrollReveal origin="left" immediately={true}>
+            <span className="small-text">Quem Somos</span>
+            <section className="texts">
+              <h2 className="title">Sua Parceira em Soluções Tecnológicas</h2>
+              <p className={styles.paragraph}>
+                A Sempretec é uma empresa de soluções na área de tecnologia e
+                oferece a seus clientes venda, assistência técnica e locação de
+                equipamentos. Fundada a mais de uma década com o objetivo de
+                suprir as necessidades de produtos e serviços tecnológicos do
+                mercado de Brasília, hoje oferece a todo Brasil, produtos e
+                serviços de alta qualidade.
+              </p>
+              <p className={styles.paragraph}>
+                Oferecendo ao seus clientes o melhor serviço de outsourcing ,
+                aliado aos demais recursos tecnológicos existentes, são hoje uma
+                solução moderna na que tem contribuído, significativamente, para
+                uma boa gestão, melhoria dos processos, gerenciamento dos
+                recursos e na redução de custos, uma vez que não implicará em
+                investimentos, tais como aquisição de equipamentos e insumos e
+                as necessárias substituições periódicas, por motivo de
+                depreciação, causado pelo avanço tecnológico e o desgaste
+                natural pelo uso continuo.
+              </p>
+            </section>
+          </ScrollReveal>
         </div>
 
         <div className={styles.carousel_wrapper}>
-          <Swiper {...settingsSlide}>
-            <SwiperSlide>
-              <div className={styles.wrapper_img}>
-                <img src={imgInformation1} alt="Construtor com um notebook" />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className={styles.wrapper_img}>
-                <img src={imgInformation1} alt="Construtor com um notebook" />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className={styles.wrapper_img}>
-                <img src={imgInformation1} alt="Construtor com um notebook" />
-              </div>
-            </SwiperSlide>
-          </Swiper>
-          <div className={styles.experiences_wrapper}>
-            <h3 className={styles.experience_number}>+{experienceNumber}</h3>
-            <span className={styles.legend_experience_number}>
-              Anos de Experiência
-            </span>
-          </div>
+          <ScrollReveal origin="right" immediately={true}>
+            <Swiper {...settingsSlide}>
+              <SwiperSlide>
+                <div className={styles.wrapper_img}>
+                  <img src={imgInformation1} alt="Construtor com um notebook" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className={styles.wrapper_img}>
+                  <img src={imgInformation1} alt="Construtor com um notebook" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className={styles.wrapper_img}>
+                  <img src={imgInformation1} alt="Construtor com um notebook" />
+                </div>
+              </SwiperSlide>
+            </Swiper>
+          </ScrollReveal>
+
+          <ScrollReveal origin="right">
+            <div className={styles.experiences_wrapper}>
+              <h3 className={styles.experience_number}>+{experienceNumber}</h3>
+              <span className={styles.legend_experience_number}>
+                Anos de Experiência
+              </span>
+            </div>
+          </ScrollReveal>
         </div>
       </article>
 
@@ -160,9 +171,11 @@ function Contact() {
         <Map />
       </div>
       <div className={`${styles.card_wrapper} container`}>
-        <div className={styles.card_style}>
-          <ContactCard />
-        </div>
+        <ScrollReveal origin="left" delay={1500}>
+          <div className={styles.card_style}>
+            <ContactCard />
+          </div>
+        </ScrollReveal>
       </div>
     </div>
   );

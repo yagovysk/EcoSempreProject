@@ -1,3 +1,7 @@
+.main_content {
+  overflow: hidden;
+}
+
 .box {
   display: flex;
   align-items: center;
@@ -72,6 +76,9 @@
     flex-direction: column-reverse;
     padding: 3rem 1.375rem;
   }
+  .textsContainer {
+    max-width: initial !important;
+  }
   .dispositivos {
     grid-template-areas:
       "phone"
@@ -87,6 +94,6 @@
     box-shadow: 0px 5px 42px 0px #2324260d;
   }
   .device .description {
-    max-width: 40rem;
+    max-width: initial;
   }
 }

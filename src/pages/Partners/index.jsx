@@ -52,7 +52,7 @@ export function Partners() {
           />
 
           <div className={styles.wrapper_imgs}>
-            <div className={`${styles.wrapper_img}`}>
+            <div className={`${styles.wrapper_img} ${styles.wrapper_img1}`}>
               <img
                 className={styles.img_person}
                 src={half_man1}

@@ -7,6 +7,7 @@ import pessoasReciclando from "../../assets/pessoas_reciclando.png";
 import recycleIcon from "../../assets/recycleIcon.svg";
 import coletaimg from "../../assets/Coletasimg.png";
 import styles from "./Descarte.module.css";
+import { ScrollReveal } from "../../components/ScrollReveal";
 
 const linksMenu = [
   {
@@ -114,18 +115,20 @@ export function Descarte() {
 function ImgColetas() {
   return (
     <div className={styles.container_coletas}>
-      <div className={styles.wrapper_img_coletas}>
-        <img src={coletaimg} alt="Imagem dos equipamentos coletados" />
-      </div>
-
-      <div className={styles.container_box_coletas}>
-        <div className={styles.wrapper_box_coletas}>
-          <Icon icon="bx:map" />
-          <p className={styles.text_box_coletas}>
-            Encontre o Ponto de Coleta Mais Próximo!
-          </p>
+      <ScrollReveal origin="right">
+        <div className={styles.wrapper_img_coletas}>
+          <img src={coletaimg} alt="Imagem dos equipamentos coletados" />
         </div>
-      </div>
+
+        <div className={styles.container_box_coletas}>
+          <div className={styles.wrapper_box_coletas}>
+            <Icon icon="bx:map" />
+            <p className={styles.text_box_coletas}>
+              Encontre o Ponto de Coleta Mais Próximo!
+            </p>
+          </div>
+        </div>
+      </ScrollReveal>
     </div>
   );
 }

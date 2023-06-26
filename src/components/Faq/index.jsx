@@ -4,8 +4,13 @@ import { firstListQuestions, secondListQuestions } from "../../data";
 import { Link } from "react-router-dom";
 import { scrollToTop } from "../../helpers";
 import style from "./Faq.module.css";
+import { ScrollReveal } from "../ScrollReveal";
 
-export function Faq({ numberPerList, isFAQPage, questionsOverLines }) {
+export function Faq({
+  numberPerList,
+  isFAQPage,
+  immediatelyStartReveal = false,
+}) {
   const [activeIndex, setActiveIndex] = useState(false);
   const firstListQuestionsSliced = firstListQuestions.slice(0, numberPerList);
   const secondListQuestionsSliced = secondListQuestions.slice(0, numberPerList);
@@ -21,44 +26,46 @@ export function Faq({ numberPerList, isFAQPage, questionsOverLines }) {
   return (
     <article className={`${style.idFaq} container`}>
       <section className={`textsContainer ${style.texts}`}>
-        <span className="small-text">Nosso FAQ</span>
-        <h2 className="title">Confira as Dúvidas Mais Frequentes</h2>
+        <ScrollReveal origin="bottom" immediately={immediatelyStartReveal}>
+          <span className="small-text">Nosso FAQ</span>
+          <h2 className="title">Confira as Dúvidas Mais Frequentes</h2>
+        </ScrollReveal>
       </section>
 
       <div className={style.container_faq}>
-        <ListQuestions
-          questions={firstListQuestionsSliced}
-          activeIndex={activeIndex}
-          onShow={showAnswer}
-          questionsOverLines={
-            questionsOverLines && questionsOverLines.firstList
-          }
-        />
+        <ScrollReveal origin="left" immediately={immediatelyStartReveal}>
+          <ListQuestions
+            questions={firstListQuestionsSliced}
+            activeIndex={activeIndex}
+            onShow={showAnswer}
+          />
+        </ScrollReveal>
 
-        <ListQuestions
-          questions={secondListQuestionsSliced}
-          activeIndex={activeIndex}
-          onShow={showAnswer}
-          questionsOverLines={
-            questionsOverLines && questionsOverLines.secondList
-          }
-        />
+        <ScrollReveal origin="right" immediately={immediatelyStartReveal}>
+          <ListQuestions
+            questions={secondListQuestionsSliced}
+            activeIndex={activeIndex}
+            onShow={showAnswer}
+          />
+        </ScrollReveal>
       </div>
 
       {!isFAQPage && (
-        <Link
-          to="/faq"
-          onClick={scrollToTop}
-          className={`link_more ${style.link_more_faq}`}
-        >
-          Clique aqui para acessar todas as dúvidas {">>"}
-        </Link>
+        <ScrollReveal origin="top">
+          <Link
+            to="/faq"
+            onClick={scrollToTop}
+            className={`link_more ${style.link_more_faq}`}
+          >
+            Clique aqui para acessar todas as dúvidas {">>"}
+          </Link>
+        </ScrollReveal>
       )}
     </article>
   );
 }
 
-function ListQuestions({ questions, activeIndex, onShow, questionsOverLines }) {
+function ListQuestions({ questions, activeIndex, onShow }) {
   const answersRef = useRef(null);
 
   function getHeightRef(id) {
@@ -96,7 +103,6 @@ function ListQuestions({ questions, activeIndex, onShow, questionsOverLines }) {
             className={classesWrapperBox}
             onClick={() => handleShowAnswer(question.id)}
           >
-            {/* <div> */}
             <section className={style.question_wrapper}>
               <h3 className={style.question_title}>{question.question}</h3>
               {isActive ? (
@@ -130,7 +136,6 @@ function ListQuestions({ questions, activeIndex, onShow, questionsOverLines }) {
                 {question.answer}
               </p>
             </div>
-            {/* </div> */}
           </li>
         );
       })}

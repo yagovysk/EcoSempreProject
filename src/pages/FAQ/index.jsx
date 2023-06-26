@@ -10,7 +10,7 @@ const linksMenu = [
   },
   {
     name: "EcoSempre",
-    path: "",
+    path: "/faq",
   },
   {
     name: "FAQ",
@@ -30,10 +30,7 @@ export function FAQ() {
         <Faq
           isFAQPage={true}
           numberPerList={firstListQuestions.length}
-          questionsOverLines={{
-            firstList: [4, 5],
-            secondList: [10],
-          }}
+          immediatelyStartReveal={true}
         />
       </div>
     </main>

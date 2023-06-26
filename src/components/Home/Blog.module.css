@@ -19,8 +19,9 @@
   width: 100%;
 }
 
-.link_more {
+.wrapper_link_more {
   margin-top: 3rem;
+  text-align: center;
 }
 
 @media (max-width: 715px) {

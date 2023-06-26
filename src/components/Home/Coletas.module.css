@@ -8,8 +8,7 @@
 }
 
 .textsContainer {
-  flex: 1;
-  min-width: 30rem;
+  flex: 1 0 25rem;
 }
 
 .paragraph {
@@ -32,12 +31,13 @@
   transform: translateY(-4px);
 }
 
-@media (max-width: 542px) {
+@media (max-width: 630px) {
   .wrapper {
     justify-content: start;
     padding: 3rem 1.5rem;
   }
   .textsContainer {
-    min-width: 15rem;
+    flex: 1 0 0;
+    max-width: initial !important;
   }
 }
