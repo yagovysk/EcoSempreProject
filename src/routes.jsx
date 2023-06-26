@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Home } from "./pages/Home";
 import { Default } from "./layouts/Default";
+import { Home } from "./pages/Home";
 import { AboutUs } from "./pages/AboutUs";
 import { MaterialList } from "./pages/MaterialList";
 import { Blog } from "./pages/Blog";
@@ -10,6 +10,9 @@ import { FAQ } from "./pages/FAQ";
 import { Partners } from "./pages/Partners";
 import { Post } from "./pages/Post";
 import { SearchResult } from "./pages/SearchResult";
+import { LogisticaReversa } from "./pages/LogisticaReversa";
+import { Descarte } from "./pages/Descarte";
+import { Schedule } from "./pages/Schedule";
 
 export const router = createBrowserRouter([
   {
@@ -21,15 +24,15 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/about_us",
+        path: "/sobre",
         element: <AboutUs />,
       },
       {
-        path: "/contact",
+        path: "/contato",
         element: <Contact />,
       },
       {
-        path: "/material_list",
+        path: "/materiais",
         element: <MaterialList />,
       },
       {
@@ -41,7 +44,7 @@ export const router = createBrowserRouter([
         element: <Blog />,
       },
       {
-        path: "/articles/:key",
+        path: "/posts/:key",
         element: <Post />,
       },
       {
@@ -53,8 +56,20 @@ export const router = createBrowserRouter([
         element: <Partners />,
       },
       {
-        path: "/search",
+        path: "/buscar",
         element: <SearchResult />,
+      },
+      {
+        path: "/logistica",
+        element: <LogisticaReversa />,
+      },
+      {
+        path: "/descarte",
+        element: <Descarte />,
+      },
+      {
+        path: "/agendar",
+        element: <Schedule />,
       },
     ],
   },

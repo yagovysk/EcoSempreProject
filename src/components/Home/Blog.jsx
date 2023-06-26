@@ -2,45 +2,52 @@ import styles from "../Home/Blog.module.css";
 import { CardBlog } from "../CardBlog";
 import { Link } from "react-router-dom";
 import { scrollToTop, useGetData } from "../../helpers";
-import { useState } from "react";
 import Loader from "../../components/Loader";
+import { ScrollReveal } from "../ScrollReveal";
 
 export function Blog() {
-  const [posts, setPosts] = useState("");
-  useGetData("/articles?_page=1&_limit=3", setPosts);
+  const posts = useGetData("/articles?_page=1&_limit=3");
 
   return (
     <div className={`${styles.idBlog} container`}>
       <section className={`textsContainer ${styles.texts}`}>
-        <span className="small-text">Nosso Blog</span>
-        <h2 className="title">Acompanhe Nossos Artigos Mais Recentes</h2>
+        <ScrollReveal origin="bottom">
+          <span className="small-text">Nosso Blog</span>
+          <h2 className="title">Acompanhe Nossos Artigos Mais Recentes</h2>
+        </ScrollReveal>
       </section>
-      <div className={styles.grid_cards}>
-        {posts.length > 0 ? (
-          posts.map((post) => (
-            <CardBlog
-              key={post.id}
-              img={post.imgURL}
-              imgAlt="Imagem de floresta"
-              categories={post.categories}
-              title={post.title}
-              timestamp={post.timestamp}
-              description={post.content}
-              path={post.id}
-            />
-          ))
-        ) : (
-          <Loader />
-        )}
-      </div>
+      <ScrollReveal origin="top">
+        <div className={styles.grid_cards}>
+          {posts.length > 0 ? (
+            posts.map((post) => (
+              <CardBlog
+                key={post.id}
+                img={post.imgURL}
+                imgAlt="Imagem de floresta"
+                categories={post.categories}
+                title={post.title}
+                timestamp={post.timestamp}
+                description={post.content}
+                path={post.id}
+              />
+            ))
+          ) : (
+            <Loader />
+          )}
+        </div>
+      </ScrollReveal>
 
-      <Link
-        onClick={scrollToTop}
-        to="/blog"
-        className={`link_more ${styles.link_more}`}
-      >
-        Veja Mais Notícias!
-      </Link>
+      <ScrollReveal origin="top">
+        <div className={styles.wrapper_link_more}>
+          <Link
+            onClick={scrollToTop}
+            to="/blog"
+            className={`link_more ${styles.link_more}`}
+          >
+            Veja Mais Notícias!
+          </Link>
+        </div>
+      </ScrollReveal>
     </div>
   );
 }

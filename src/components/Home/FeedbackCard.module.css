@@ -1,14 +1,14 @@
 .containerCard {
   background-color: white;
   border-radius: 0.25rem;
-  max-width: 44rem;
   position: relative;
+  z-index: 1;
 }
 
 .containerCard::after {
   content: "";
   display: block;
-  background: url("../assets/seta.svg") no-repeat center;
+  background: url("../../assets/seta.svg") no-repeat center;
   width: 2.4rem;
   height: 2.4rem;
   position: absolute;
@@ -18,6 +18,7 @@
 
 .card {
   display: flex;
+  flex-wrap: wrap;
   gap: 2.1875rem;
   padding: 4.18rem 2.8125rem 3.125rem 3.125rem;
   font-family: "Roboto", sans-serif;
@@ -39,6 +40,11 @@
   height: 3.3rem;
 }
 
+.information {
+  flex: 1;
+  min-width: 19rem;
+}
+
 .starsWrapper {
   display: flex;
   margin-bottom: 1.5rem;
@@ -56,7 +62,6 @@
   font-size: 1.125rem;
   line-height: 1.625rem;
   margin-bottom: 2.5rem;
-  max-width: 32.125rem;
 }
 
 .person {
@@ -82,4 +87,29 @@
   position: absolute;
   right: 3rem;
   bottom: 1.25rem;
+  z-index: -1;
+}
+
+@media (max-width: 740px) {
+  .card {
+    gap: 0.75rem 1.5rem;
+    padding: 2.8rem 1.5rem;
+  }
+  .information {
+    min-width: 14rem;
+  }
+  .feedback {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .person .name,
+  .person .job {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 407px) {
+  .card {
+    padding: 0 1.5rem 2.8rem 1.5rem;
+  }
 }

@@ -1,21 +1,33 @@
 import { useState } from "react";
-import { Form } from "react-router-dom";
+import { useSubmit } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
-export function FormSearch({ placeholder }) {
+export function FormSearch({ placeholder, onCloseSearch = false }) {
   const [search, setSearch] = useState("");
   const [isTouched, setIsTouched] = useState(false);
+  const submit = useSubmit();
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     if (!search.trim()) {
       return;
     }
-    onSearchActive(false);
+    submit(
+      {
+        q: search,
+      },
+      {
+        method: "get",
+        action: "/buscar?index",
+      }
+    );
+    if (onCloseSearch) {
+      onCloseSearch();
+    }
   }
 
   return (
-    <Form
-      action="/search"
+    <form
       onSubmit={handleSubmit}
       className={`search_form ${isTouched ? "active" : ""}`}
       onFocus={() => setIsTouched(true)}
@@ -32,6 +44,6 @@ export function FormSearch({ placeholder }) {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-    </Form>
+    </form>
   );
 }

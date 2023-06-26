@@ -1,0 +1,50 @@
+.main_content {
+  padding-bottom: 9.1rem;
+}
+
+.map_wrapper {
+  height: 31.25rem;
+}
+
+.wrapper_content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5.25rem;
+  padding: 0 1.5rem;
+}
+
+.wrapper_form {
+  flex: 1 0 35.7rem;
+  background-color: white;
+  border-radius: 0.25rem;
+  padding: 2.8rem 3.5rem;
+  box-shadow: 0px 0.75rem 3.5rem 0px #10295421;
+
+  transform: translateY(-4rem);
+}
+
+.wrapper_form input,
+.wrapper_form textarea {
+  padding: 1.4rem;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .map_wrapper {
+    height: 16rem;
+  }
+  .wrapper_content {
+    gap: 2rem;
+  }
+  .wrapper_form {
+    padding: 1.8rem;
+    flex-basis: 18rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .wrapper_form {
+    flex-basis: 16rem;
+  }
+}

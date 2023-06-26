@@ -1,0 +1,29 @@
+.parceirosCard {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  overflow: auto;
+  touch-action: pan-x;
+}
+
+.parceirosCard::-webkit-scrollbar {
+  height: 6px;
+  background-color: white;
+  border-radius: 0.9rem;
+}
+
+.parceirosCard::-webkit-scrollbar-thumb {
+  background-color: #b0b5ba;
+  border-radius: 0.9rem;
+}
+
+.parceirosCard a {
+  display: block;
+  transition: 0.3s ease;
+  border-radius: 0.3rem;
+  padding: 1rem;
+}
+.parceirosCard a:hover {
+  background: #777;
+  transform: translateY(-4px);
+}

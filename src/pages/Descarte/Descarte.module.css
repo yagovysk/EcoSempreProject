@@ -1,0 +1,193 @@
+.header {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38)),
+    url("../../assets/sustentabilidadeImg.png") no-repeat center bottom / cover;
+}
+.container_content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  justify-items: center;
+  gap: 9.25rem 3.25rem;
+  padding: 0 1.5rem;
+}
+
+.paragraph {
+  font: 400 1rem "Roboto", sans-serif;
+  color: #9b9b9b;
+  line-height: 1.7rem;
+}
+
+.wrapper_img {
+  position: relative;
+  height: max-content;
+}
+
+.wrapper_img1 {
+  margin: 6rem 0;
+}
+
+.wrapper_img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.25rem;
+  object-fit: cover;
+}
+
+.wrapper_recycle_box {
+  position: absolute;
+  right: -0.9rem;
+  bottom: -2.5rem;
+  padding: 1.4rem;
+  border-radius: 0.25rem;
+  background-color: white;
+}
+
+.recycle_box {
+  background-color: #00c756;
+  padding: 1.125rem 2.25rem;
+  border-radius: 0.25rem;
+}
+
+.recycle_box img {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7479%)
+    hue-rotate(8deg) brightness(98%) contrast(106%);
+}
+
+.wrapper_img2 {
+  justify-self: start;
+}
+
+.wrapper_img2 img {
+  object-fit: cover;
+}
+
+.medium_box {
+  position: absolute;
+  z-index: -1;
+  bottom: -1.3rem;
+  right: -1.8rem;
+  background-color: #00c756;
+  border-radius: 0.25rem;
+  width: 14.875rem;
+  height: 11.875rem;
+}
+
+.wrapper_coletas {
+  margin-top: 10.3rem;
+  background: #f6f7f8;
+}
+
+.container_coletas {
+  position: relative;
+  max-width: 31.25rem;
+  margin-left: 3rem;
+}
+
+.wrapper_img_coletas img {
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+.container_box_coletas {
+  position: absolute;
+  bottom: -57px;
+  left: -56px;
+  max-width: 23.125rem;
+  padding: 2rem 2.25rem;
+  background-color: white;
+  border-radius: 0.25rem;
+}
+
+.wrapper_box_coletas {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  background-color: #00c756;
+  border-radius: 0.25rem;
+  padding: 20px 27px;
+  color: white;
+}
+
+.wrapper_box_coletas svg {
+  width: 5rem;
+  height: 5rem;
+}
+
+.text_box_coletas {
+  font: 700 1.06rem "Roboto", sans-serif;
+  line-height: 1.7rem;
+}
+
+@media (max-width: 1074px) {
+  .container_content {
+    gap: 5rem;
+  }
+  .textsContainer {
+    max-width: initial !important;
+  }
+  .title {
+    width: auto;
+  }
+  .wrapper_img {
+    margin: 0;
+  }
+  .wrapper_recycle_box {
+    box-shadow: 0px 4.27px 13.68px 0px #3c3a4426;
+    bottom: -2rem;
+  }
+  .wrapper_img2 {
+    display: none;
+  }
+  .wrapper_coletas {
+    margin-top: 4rem;
+    padding-bottom: 2rem;
+  }
+  .container_coletas {
+    margin: 0;
+    max-width: initial;
+  }
+}
+
+@media (max-width: 630px) {
+  .container_content {
+    grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
+  }
+  .container_box_coletas {
+    left: -1rem;
+    padding: 1.8rem;
+    box-shadow: 0px 4.27px 13.68px 0px #3c3a4426;
+    min-width: 16rem;
+    min-height: 8.125rem;
+    margin-right: 2rem;
+  }
+  .wrapper_box_coletas {
+    gap: 1rem;
+  }
+  .wrapper_box_coletas svg {
+    width: 3rem;
+    height: 3rem;
+  }
+  .text_box_coletas {
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+  }
+}
+
+@media (max-width: 440px) {
+  .container_content {
+    gap: 3rem;
+  }
+  .wrapper_recycle_box {
+    padding: 1rem;
+  }
+  .recycle_box {
+    padding: 1rem 1.5rem;
+  }
+  .container_box_coletas {
+    padding: 1.2rem;
+    min-height: initial;
+  }
+}

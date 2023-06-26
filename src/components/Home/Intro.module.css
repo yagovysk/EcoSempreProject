@@ -1,13 +1,26 @@
-.slide_1 {
-  background: url("../../assets/fundohome.png") no-repeat center top / cover;
+@keyframes zoomImg {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.3);
+  }
 }
 
-.slide_2 {
-  background: url("../../assets/parceiros_bg.jpg") no-repeat center top / cover;
+.img_slider {
+  overflow: hidden;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
 }
 
-.slide_3 {
-  background: url("../../assets/coletas.jpg") no-repeat center top / cover;
+.img_slider img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  animation: zoomImg 16s alternate infinite;
 }
 
 .homeContent {
@@ -19,6 +32,7 @@
 
 .hometitle {
   max-width: 61rem;
+  margin: 0;
   margin-top: 7rem;
   color: #ffffff;
   font-size: 4.375rem; /* 70px */
@@ -38,22 +52,54 @@
 }
 
 .btnHome {
-  width: max-content;
-  color: #ffffff;
-  background: #00c756;
-  transition: 0.3s;
-}
-
-.homeContent a {
   display: flex;
   gap: 1rem;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 0.9375rem;
   line-height: 2.56rem /* 41px */;
+  width: max-content;
+  color: #ffffff;
+  background: #00c756;
+  transition: 0.3s;
 }
-.homeContent .btnHome:hover {
+.btnHome:hover {
   color: #0e2b5c;
   background: #ffffff;
   transform: translateY(-4px);
+}
+
+@media (max-width: 710px) {
+  .homeContent {
+    text-align: center;
+  }
+  .hometitle {
+    margin-top: 5rem;
+    font-size: 3.5rem;
+    line-height: 4.5rem;
+  }
+  .btnHome {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 529px) {
+  .homeContent {
+    gap: 1.5rem;
+  }
+  .hometitle {
+    margin-top: 3rem;
+    font-size: 2.1rem;
+    line-height: 2.6rem;
+    letter-spacing: 1.11px;
+  }
+  .homeparagraph {
+    font-size: 1rem;
+    line-height: 1.3rem;
+  }
+  .btnHome {
+    margin-bottom: 3rem;
+    font-size: 0.875rem;
+    line-height: 2rem;
+  }
 }

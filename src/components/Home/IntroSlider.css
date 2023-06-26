@@ -1,6 +1,9 @@
 .intro_container .swiper-wrapper {
   height: 40.5rem;
 }
+.intro_container .swiper-slide {
+  padding: 0 7.25rem;
+}
 .intro_container .swiper-button-prev,
 .intro_container .swiper-button-next {
   padding: 0 3.5rem;
@@ -19,4 +22,28 @@
 .intro_container .swiper-pagination-bullet-active {
   background: #00c756;
   height: 6px;
+}
+
+@media (max-width: 924px) {
+  .intro_container .swiper-slide {
+    padding: 0 3.25rem;
+  }
+
+  .intro_container .swiper-button-next,
+  .intro_container .swiper-button-prev {
+    display: none;
+  }
+}
+
+@media (max-width: 529px) {
+  .intro_container .swiper-slide {
+    padding: 0 1.5rem;
+  }
+
+  .intro_container .swiper-wrapper {
+    height: 25.375rem;
+  }
+  .intro_container .swiper-pagination {
+    --swiper-pagination-bottom: 1.125rem;
+  }
 }
