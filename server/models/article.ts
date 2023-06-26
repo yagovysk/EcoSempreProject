@@ -77,7 +77,7 @@ class Article {
 
                     await Connection("articles").insert(fullArticle);
                     res.status(201).send("Created Successfully!");
-                    9
+                    
                 }
             }
             else {
