@@ -42,6 +42,9 @@ class Tag{
 
         res.status(201).send(tagId);
     }
+    else{
+        res.sendStatus(409);
+    }
     }
     catch(error:any)
     {

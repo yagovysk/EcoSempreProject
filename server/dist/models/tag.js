@@ -42,6 +42,9 @@ class Tag {
                     const tagId = yield (0, connection_1.default)("tags").insert(fullTag);
                     res.status(201).send(tagId);
                 }
+                else {
+                    res.sendStatus(409);
+                }
             }
             catch (error) {
                 res.sendStatus(400);
