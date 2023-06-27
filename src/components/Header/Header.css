@@ -1,6 +1,9 @@
 .header {
   background-color: white;
-  box-shadow: 0px 2px 25px 0px #32323214;
+  box-shadow: 0px 2px 25px 0px rgba(50, 50, 50, 0.08);
+  /* position: relative; */
+  /* width: 100%; */
+  /* z-index: 9999; */
 }
 .header_content {
   display: flex;
@@ -133,7 +136,7 @@
 /* Dropdown */
 .wrapper_dropdown {
   position: absolute;
-  top: 6.1rem;
+  top: 6.09rem;
   left: -2rem;
   background-color: white;
   border-radius: 0 0 0.5rem 0.5rem;
@@ -256,7 +259,7 @@
   display: none;
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1066px) {
   .header_content {
     align-items: center;
   }
@@ -299,6 +302,7 @@
     background-color: #f2f3ff;
     position: absolute;
     z-index: 9999;
+    overflow: auto !important;
   }
   .header.on .header_content {
     background-color: white;

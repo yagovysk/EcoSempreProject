@@ -156,12 +156,7 @@ function MenuMobile({ setIsActive }) {
 function Dropdown({ label, links, onActiveBurger, notClickAway }) {
   const [isActive, setIsActive] = useState(false);
   const elRef = useRef(null);
-  useClickAway(
-    elRef,
-    () => setIsActive(false),
-    ["click", "touchstart"],
-    notClickAway
-  );
+  useClickAway(elRef, () => setIsActive(false), notClickAway);
 
   function handleClick() {
     setIsActive(!isActive);

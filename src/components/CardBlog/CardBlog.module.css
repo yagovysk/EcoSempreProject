@@ -10,6 +10,7 @@
   overflow: hidden;
   margin-right: 2rem;
   border-bottom-right-radius: 0.6rem;
+  background-color: var(--bg-img, #0e2b5c);
 }
 
 .img_wrapper img {
@@ -65,9 +66,12 @@
 }
 
 .description {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-height: 5.5rem;
+  min-height: 5.5rem;
 
   color: #9b9b9b;
   font: 400 1rem "Roboto", sans-serif;

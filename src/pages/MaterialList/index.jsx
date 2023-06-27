@@ -1,5 +1,6 @@
 import { HeaderSection } from "../../components/HeaderSection";
 import { Icon } from "@iconify/react";
+import { useBreakpoint } from "../../helpers";
 import styles from "./MaterialList.module.css";
 
 const listMaterials = [
@@ -124,21 +125,24 @@ const listMaterials = [
     name: "Máquinas de Lavar",
   },
 ];
+const linksMenu = [
+  {
+    name: "Início",
+    path: "/",
+  },
+  {
+    name: "Programas",
+    path: "/materiais",
+  },
+  {
+    name: "Lista de Materiais",
+  },
+];
 
 export function MaterialList() {
-  const linksMenu = [
-    {
-      name: "Início",
-      path: "/",
-    },
-    {
-      name: "Programas",
-      path: "/materiais",
-    },
-    {
-      name: "Lista de Materiais",
-    },
-  ];
+  const widthWindow = useBreakpoint();
+  const materials =
+    widthWindow > 630 ? listMaterials : listMaterials.slice(0, 8);
 
   return (
     <main className={styles.main_content}>
@@ -155,7 +159,7 @@ export function MaterialList() {
           </h2>
         </section>
         <div className={styles.grid_materials}>
-          {listMaterials.map((material) => (
+          {materials.map((material) => (
             <Box key={material.name}>
               <Icon className={styles.material_icon} icon={material.icon} />
               <span className={styles.material_name}>{material.name}</span>
