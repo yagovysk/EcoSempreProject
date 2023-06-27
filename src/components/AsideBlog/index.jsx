@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Loader from "../Loader";
 import api from "../../api/posts";
 import styles from "./AsideBlog.module.css";
+import { scrollToTop } from "../../helpers";
 
 export function AsideBlog() {
   const [recentPosts, setRecentPosts] = useState("");
@@ -39,6 +40,7 @@ export function AsideBlog() {
                 key={post.id}
                 to={`/posts/${post.id}`}
                 className={styles.recent_post_wrapper}
+                onClick={scrollToTop}
               >
                 <picture className={styles.recent_post_wrapper_img}>
                   <img src={post.imgURL} className={styles.recent_post_img} />

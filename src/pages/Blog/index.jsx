@@ -2,7 +2,7 @@ import { CardBlog } from "../../components/CardBlog";
 import { HeaderSection } from "../../components/HeaderSection";
 import { Pagination } from "../../components/Pagination";
 import { useState } from "react";
-import { useGetData } from "../../helpers.js";
+import { useBreakpoint, useGetData } from "../../helpers.js";
 import Loader from "../../components/Loader";
 import styles from "./Blog.module.css";
 
@@ -15,9 +15,12 @@ const linksMenu = [
     name: "Blog",
   },
 ];
-const POSTS_PER_PAGE = 6;
+let POSTS_PER_PAGE = 6;
 
 export function Blog() {
+  const widthWindow = useBreakpoint();
+  POSTS_PER_PAGE = widthWindow <= 630 ? 3 : 6;
+
   return (
     <main>
       <HeaderSection

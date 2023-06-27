@@ -12,7 +12,12 @@
 }
 
 .pagination_container {
-  width: max-content;
-  margin: 0 auto;
+  padding: 0 1.5rem;
   margin-bottom: 6.875rem;
+}
+
+@media (max-width: 630px) {
+  .pagination_container {
+    margin-bottom: 2.875rem;
+  }
 }

@@ -52,12 +52,16 @@
 
 .recent_post_wrapper_img {
   grid-area: img;
+  display: block;
   width: 5rem;
   height: 5rem;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  background-color: var(--bg-img, #0e2b5c);
 }
 
 .recent_post_img {
-  border-radius: 0.25rem;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -146,6 +150,7 @@
   .recent_post_wrapper_img {
     width: 3.5rem;
     height: 3.5rem;
+    margin-top: 0.5rem;
   }
   .box_aside {
     padding: 1.5rem;
