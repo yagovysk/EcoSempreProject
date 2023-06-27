@@ -2,6 +2,7 @@ import express, {Application} from 'express';
 import cors from 'cors';
 
 import userRoutes from './routes/user';
+import tagRoutes from './routes/tag';
 import articleRoutes from './routes/article';
 import contactRoutes from './routes/contact';
 import createAdminUser from './createAdminUserScript';
@@ -17,5 +18,6 @@ app.use(express.json());
 app.use("/", userRoutes);
 app.use("/", articleRoutes);
 app.use("/", contactRoutes);
+app.use("/", tagRoutes);
 
 export default app;

@@ -65,7 +65,6 @@ class Article {
                         const fullArticle = Object.assign(Object.assign({}, article), { createdAt: this.currentDate, updatedAt: this.currentDate, slug: (0, slugify_1.default)(article.title) });
                         yield (0, connection_1.default)("articles").insert(fullArticle);
                         res.status(201).send("Created Successfully!");
-                        9;
                     }
                 }
                 else {
