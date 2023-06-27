@@ -76,7 +76,7 @@ export function FormTalkWithUs() {
             <input
               type="text"
               placeholder="Nome"
-              className={styles.input_name}
+              className={`${styles.input_name} ${errors.name && "shake_input"}`}
               {...register("name")}
               aria-label="Seu nome"
             />
@@ -91,7 +91,9 @@ export function FormTalkWithUs() {
             <input
               type="email"
               placeholder="Email"
-              className={styles.input_email}
+              className={`${styles.input_email} ${
+                errors.email && "shake_input"
+              }`}
               {...register("email")}
               aria-label="Seu email"
             />
@@ -106,7 +108,7 @@ export function FormTalkWithUs() {
             <input
               type="text"
               placeholder="Telefone"
-              className={styles.input_tel}
+              className={`${styles.input_tel} ${errors.phone && "shake_input"}`}
               {...register("phone")}
               aria-label="Seu telefone"
             />
@@ -121,7 +123,9 @@ export function FormTalkWithUs() {
             <input
               type="text"
               placeholder="Assunto"
-              className={styles.input_subject}
+              className={`${styles.input_subject} ${
+                errors.subject && "shake_input"
+              }`}
               {...register("subject")}
               aria-label="Assunto do email"
             />
@@ -138,7 +142,9 @@ export function FormTalkWithUs() {
             }`}
           >
             <textarea
-              className={styles.input_message}
+              className={`${styles.input_message} ${
+                errors.message && "shake_input"
+              }`}
               {...register("message")}
               aria-label="Mensagem do email"
               placeholder="Mensagem"

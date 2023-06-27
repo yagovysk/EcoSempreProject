@@ -16,7 +16,7 @@ export const SelectField = ({
   const filteredOptions = options.filter((option) =>
     option.toLowerCase().includes(field ? field.value.toLocaleLowerCase() : "")
   );
-  useClickAway(selectRef, () => setIsActive(false), ["click", "touchstart"]);
+  useClickAway(selectRef, () => setIsActive(false));
 
   function handleKeyDown(e, option = false) {
     if (e.key === "Enter") {
@@ -56,13 +56,14 @@ export const SelectField = ({
         onClick={() => setIsActive(!isActive)}
         onKeyDown={handleKeyDown}
         className={`${styles.select_label} ${isActive && styles.active}
-        ${error && !field.value && styles.error}`}
+        ${error && !field.value && `${styles.error} shake_input`}`}
       >
         <input
           type="text"
           className={styles.select_input}
           placeholder={label}
           aria-label={label}
+          autoComplete="false"
           {...field}
           onChange={(e) => {
             field.onChange(e);
