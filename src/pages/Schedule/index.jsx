@@ -53,6 +53,10 @@ const cities = [
   "Batalha",
   "Belém",
   "Campina Grande",
+  "Arapiraca",
+  "Batalha",
+  "Belém",
+  "Campina Grande",
 ];
 
 export const Schedule = () => {
@@ -71,7 +75,6 @@ export const Schedule = () => {
     control,
     formState: { errors },
     setValue,
-    getValues,
   } = useForm({
     resolver: zodResolver(scheduleSchema),
     defaultValues: initialValues,
@@ -198,7 +201,9 @@ export const Schedule = () => {
               {...register("materials")}
               id="materials"
               placeholder="Seja específico, informe os materiais e sua quantidade exata"
-              className={`${styles.input} ${styles.textarea}`}
+              className={`${styles.input} ${styles.textarea} ${
+                errors.materials && "shake_input"
+              }`}
             ></textarea>
             {errors.materials && (
               <span className={`error_message ${styles.error_message}`}>
@@ -238,7 +243,7 @@ function Field({
       <input
         type={type}
         id={name}
-        className={`${styles.input}`}
+        className={`${styles.input} ${errors[name] && "shake_input"}`}
         {...register(name)}
         placeholder={placeholder}
         aria-label={!ariaLabel ? placeholder : ariaLabel}

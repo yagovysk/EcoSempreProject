@@ -190,7 +190,7 @@ function QueryCollectForm({ setPontosColeta }) {
         <div className={`${errors.address && styles.error_input}`}>
           <input
             type="text"
-            className={`${styles.input}`}
+            className={`${styles.input} ${errors.address && "shake_input"}`}
             placeholder="Digite um endereço"
             {...register("address")}
           />
