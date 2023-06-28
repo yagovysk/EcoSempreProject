@@ -35,7 +35,7 @@ export function Footer() {
             </section>
 
             <section className={styles.contact}>
-              <h4 className={styles.subtitle}>Nosso Contato</h4>
+              <h5 className={styles.subtitle}>Nosso Contato</h5>
               <address className={styles.address_content}>
                 <p className={styles.paragraph}>
                   Possui alguma dúvida ou precisa de ajuda, entre em contato com
