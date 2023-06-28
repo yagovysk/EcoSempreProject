@@ -23,6 +23,10 @@ const linksEcoSempre = [
     name: "FAQ",
     path: "/faq",
   },
+  {
+    name: "Doação",
+    path: "/doar",
+  },
 ];
 const linksPrograms = [
   {
