@@ -6,6 +6,10 @@
   padding: 8rem 1.5rem;
 }
 
+.idBlog.mobile {
+  background-color: #f6f7f8;
+}
+
 .texts {
   text-align: center;
   margin-top: 3rem;

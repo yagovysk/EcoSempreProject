@@ -5,11 +5,11 @@ import { scrollToTop, useGetData } from "../../helpers";
 import Loader from "../../components/Loader";
 import { ScrollReveal } from "../ScrollReveal";
 
-export function Blog() {
+export function Blog({ isMobile }) {
   const posts = useGetData("/articles?_page=1&_limit=3");
 
   return (
-    <div className={`${styles.idBlog} container`}>
+    <div className={`${styles.idBlog} container ${isMobile && styles.mobile}`}>
       <section className={`textsContainer ${styles.texts}`}>
         <ScrollReveal origin="bottom">
           <span className="small-text">Nosso Blog</span>
