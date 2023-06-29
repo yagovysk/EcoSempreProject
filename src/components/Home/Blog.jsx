@@ -1,9 +1,9 @@
-import styles from "../Home/Blog.module.css";
 import { CardBlog } from "../CardBlog";
 import { Link } from "react-router-dom";
 import { scrollToTop, useGetData } from "../../helpers";
-import Loader from "../../components/Loader";
 import { ScrollReveal } from "../ScrollReveal";
+import Loader from "../../components/Loader";
+import styles from "../Home/Blog.module.css";
 
 export function Blog({ isMobile }) {
   const posts = useGetData("/articles?_page=1&_limit=3");

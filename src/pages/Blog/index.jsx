@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useBreakpoint, useGetData } from "../../helpers.js";
 import Loader from "../../components/Loader";
 import styles from "./Blog.module.css";
+import { ScrollReveal } from "../../components/ScrollReveal";
 
 const linksMenu = [
   {
@@ -44,29 +45,33 @@ function Posts() {
 
   return posts.length > 0 ? (
     <>
-      <article className={`${styles.posts_container} container`}>
-        {postsPerPage.map((post) => (
-          <CardBlog
-            key={post.id}
-            img={post.imgURL}
-            imgAlt="Imagem de floresta"
-            categories={post.categories}
-            title={post.title}
-            timestamp={post.timestamp}
-            description={post.content}
-            path={post.id}
-          />
-        ))}
-      </article>
+      <ScrollReveal origin="bottom">
+        <article className={`${styles.posts_container} container`}>
+          {postsPerPage.map((post) => (
+            <CardBlog
+              key={post.id}
+              img={post.imgURL}
+              imgAlt="Imagem de floresta"
+              categories={post.categories}
+              title={post.title}
+              timestamp={post.timestamp}
+              description={post.content}
+              path={post.id}
+            />
+          ))}
+        </article>
+      </ScrollReveal>
 
-      <div className={styles.pagination_container}>
-        <Pagination
-          postsPerPage={POSTS_PER_PAGE}
-          pageIndex={pageIndex}
-          onNextPage={setPageIndex}
-          postsLength={posts.length}
-        />
-      </div>
+      <ScrollReveal origin="top">
+        <div className={styles.pagination_container}>
+          <Pagination
+            postsPerPage={POSTS_PER_PAGE}
+            pageIndex={pageIndex}
+            onNextPage={setPageIndex}
+            postsLength={posts.length}
+          />
+        </div>
+      </ScrollReveal>
     </>
   ) : (
     <Loader />

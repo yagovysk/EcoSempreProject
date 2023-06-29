@@ -2,10 +2,6 @@
   border-radius: 0.25rem;
 }
 
-.about_us_container .swiper-wrapper {
-  /* max-width: 25.5rem; */
-}
-
 .about_us_container .swiper-button-prev,
 .about_us_container .swiper-button-next {
   --swiper-navigation-top-offset: 85%;

@@ -6,6 +6,7 @@ import donationPeople2 from "../../assets/donation_people_2.png";
 import vakinhaLogo from "../../assets/vakinha-logo.png";
 import qrCode from "../../assets/qr_code.png";
 import styles from "./Donation.module.css";
+import { ScrollReveal } from "../../components/ScrollReveal";
 
 const linksMenu = [
   {
@@ -28,7 +29,6 @@ export const Donation = () => {
   const [isModalOn, setIsModalOn] = useState(false);
   const modalRef = useRef(null);
   let lastFocusedElement = document.activeElement;
-  console.log(lastFocusedElement);
 
   useEffect(() => {
     document.body.style.overflow = isModalOn ? "hidden" : "initial";
@@ -54,7 +54,7 @@ export const Donation = () => {
   }
 
   return (
-    <main>
+    <main className={styles.main_container}>
       <HeaderSection
         title="Doação"
         linksMenu={linksMenu}
@@ -63,64 +63,75 @@ export const Donation = () => {
 
       <article className={`${styles.wrapper_content} container`}>
         <section className={`textsContainer ${styles.textsContainer}`}>
-          <span className="small-text">Colabore Conosco</span>
-          <section className={`texts `}>
-            <h2 className="title">Faça uma Doação e Ajude Nosso Projeto</h2>
-            <div className={styles.paragraphs}>
-              <p className={styles.paragraph}>
-                Na EcoSempre, acreditamos que a doação é uma forma poderosa de
-                promover a mudança. Ao fazer uma doação, você está nos ajudando
-                a continuar oferecendo recursos educacionais, organizando
-                eventos e expandindo nossa infraestrutura de coleta e
-                reciclagem. Seu apoio direto é fundamental para que possamos
-                continuar a inspirar e engajar a comunidade em práticas
-                sustentáveis.
-              </p>
-              <p className={styles.paragraph}>
-                Cada doação que recebemos tem um impacto significativo. Com seus
-                recursos, podemos alcançar mais pessoas, educar sobre a
-                importância da reciclagem do lixo eletrônico e incentivar
-                práticas sustentáveis. Além disso, sua contribuição nos ajuda a
-                investir em tecnologias avançadas de reciclagem e desenvolver
-                parcerias estratégicas para fortalecer a logística reversa.
-                Juntos, podemos criar um futuro mais limpo, saudável e
-                sustentável para todos.
-              </p>
-            </div>
-          </section>
+          <ScrollReveal origin="left" immediately={true}>
+            <span className="small-text">Colabore Conosco</span>
+          </ScrollReveal>
+
+          <ScrollReveal origin="left" immediately={true}>
+            <section className={`texts`}>
+              <h2 className="title">Faça uma Doação e Ajude Nosso Projeto</h2>
+              <div className={styles.paragraphs}>
+                <p className={styles.paragraph}>
+                  Na EcoSempre, acreditamos que a doação é uma forma poderosa de
+                  promover a mudança. Ao fazer uma doação, você está nos
+                  ajudando a continuar oferecendo recursos educacionais,
+                  organizando eventos e expandindo nossa infraestrutura de
+                  coleta e reciclagem. Seu apoio direto é fundamental para que
+                  possamos continuar a inspirar e engajar a comunidade em
+                  práticas sustentáveis.
+                </p>
+                <p className={styles.paragraph}>
+                  Cada doação que recebemos tem um impacto significativo. Com
+                  seus recursos, podemos alcançar mais pessoas, educar sobre a
+                  importância da reciclagem do lixo eletrônico e incentivar
+                  práticas sustentáveis. Além disso, sua contribuição nos ajuda
+                  a investir em tecnologias avançadas de reciclagem e
+                  desenvolver parcerias estratégicas para fortalecer a logística
+                  reversa. Juntos, podemos criar um futuro mais limpo, saudável
+                  e sustentável para todos.
+                </p>
+              </div>
+            </section>
+          </ScrollReveal>
         </section>
 
         <div className={styles.wrapper_imgs}>
-          <div className={`${styles.wrapper_img}`}>
-            <img
-              className={styles.img_people}
-              src={donationPeople1}
-              alt="Pessoas com luvas juntas"
-            />
-          </div>
-
-          <div className={`${styles.wrapper_img} ${styles.wrapper_img2}`}>
-            <img
-              className={styles.img_people}
-              src={donationPeople2}
-              alt="Pessoas com luvas juntas"
-            />
-            <div className={styles.donation_wrapper}>
-              <Icon icon="bxs:donate-heart" />
-              <p className={styles.donation_paragraph}>
-                Ajude a construir uma sociedade mais sustentável
-              </p>
+          <ScrollReveal origin="right" immediately={true}>
+            <div className={`${styles.wrapper_img}`}>
+              <img
+                className={styles.img_people}
+                src={donationPeople1}
+                alt="Pessoas unidas cruzando as mãos"
+              />
             </div>
-          </div>
+          </ScrollReveal>
+
+          <ScrollReveal origin="right" immediately={true}>
+            <div className={`${styles.wrapper_img} ${styles.wrapper_img2}`}>
+              <img
+                className={styles.img_people}
+                src={donationPeople2}
+                alt="Pessoas unidas cruzando as mãos"
+              />
+              <div className={styles.donation_wrapper}>
+                <Icon icon="bxs:donate-heart" />
+                <p className={styles.donation_paragraph}>
+                  Ajude a construir uma sociedade mais sustentável
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </article>
 
       <article className={`${styles.wrapper_donation_content}`}>
         <section className={`container ${styles.donation_content}`}>
-          <div className={`${styles.wrapper_text_donation}`}>
-            <span className="small-text">Faça uma Doação</span>
-            <h3 className="title">Conheça Nossas Formas de Doação</h3>
-          </div>
+          <ScrollReveal origin="bottom">
+            <div className={`${styles.wrapper_text_donation}`}>
+              <span className="small-text">Faça uma Doação</span>
+              <h3 className="title">Conheça Nossas Formas de Doação</h3>
+            </div>
+          </ScrollReveal>
         </section>
 
         <section className={`${styles.wrapper_cards}`}>

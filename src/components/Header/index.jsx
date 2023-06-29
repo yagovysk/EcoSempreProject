@@ -223,6 +223,7 @@ function CampoDeBusca({ onSearchActive, onCloseSearch }) {
       <FormSearch
         onCloseSearch={onCloseSearch}
         placeholder="Digite aqui para buscar"
+        autoFocus={true}
       />
     </div>
   );
