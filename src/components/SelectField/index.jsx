@@ -14,7 +14,7 @@ export const SelectField = ({
   const [isActive, setIsActive] = useState(false);
   const selectRef = useRef(null);
   const filteredOptions = options.filter((option) =>
-    option.toLowerCase().includes(field ? field.value.toLocaleLowerCase() : "")
+    option.toLowerCase().includes(field.value ? field.value.toLowerCase() : "")
   );
   useClickAway(selectRef, () => setIsActive(false));
 

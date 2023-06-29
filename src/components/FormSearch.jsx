@@ -2,7 +2,11 @@ import { useState } from "react";
 import { useSubmit } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
-export function FormSearch({ placeholder, onCloseSearch = false }) {
+export function FormSearch({
+  placeholder,
+  onCloseSearch = false,
+  autoFocus = false,
+}) {
   const [search, setSearch] = useState("");
   const [isTouched, setIsTouched] = useState(false);
   const submit = useSubmit();
@@ -37,7 +41,7 @@ export function FormSearch({ placeholder, onCloseSearch = false }) {
       <input
         type="text"
         name="q"
-        autoFocus={true}
+        autoFocus={autoFocus}
         aria-label={placeholder}
         placeholder={placeholder}
         className="search_input"

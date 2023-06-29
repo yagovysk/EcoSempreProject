@@ -24,13 +24,13 @@
   background: #00c756;
 }
 
-@media (max-width: 470px) {
+@media (max-width: 490px) {
   .depoiments_container .swiper-pagination {
     --swiper-pagination-bottom: -4.5rem;
   }
 }
 
-@media (max-width: 385px) {
+@media (max-width: 401px) {
   .depoiments_container .swiper-pagination {
     --swiper-pagination-bottom: -9rem;
   }

@@ -1,3 +1,7 @@
+.main_container {
+  overflow-x: hidden;
+}
+
 .header {
   background: #3c5604 url("../../assets/donation-bg.png") no-repeat center /
     cover;

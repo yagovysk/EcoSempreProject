@@ -54,7 +54,7 @@ function Sobre() {
       <div className={styles.sobre}>
         <div className={styles.containerImg}>
           <picture className={styles.wrapper_sobre_img}>
-            <ScrollReveal origin="left" immediately={true}>
+            <ScrollReveal origin="left">
               <img
                 loading="lazy"
                 className={styles.sobreImg}
@@ -75,7 +75,7 @@ function Sobre() {
           </ScrollReveal>
         </div>
 
-        <ScrollReveal origin="right" immediately={true}>
+        <ScrollReveal origin="right">
           <article className={styles.wrapper_texts}>
             <span className={`${styles.subtitle}`}>
               Nossa História e Compromisso Sustentável

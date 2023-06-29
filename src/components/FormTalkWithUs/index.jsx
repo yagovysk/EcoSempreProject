@@ -1,7 +1,8 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Icon } from "@iconify/react";
+import { FormSubmitted } from "../FormSubmitted";
+import { Spinner } from "../Loader/Spinner";
 import api from "../../api/posts";
 import styles from "./FormTalkWithUs.module.css";
 
@@ -56,7 +57,13 @@ export function FormTalkWithUs() {
   }
 
   if (isSubmitSuccessful) {
-    return <FormSubmitted reset={reset} />;
+    return (
+      <FormSubmitted
+        title="Mensagem enviada com sucesso!"
+        description="Agradecemos o seu contato e retornaremos em breve."
+        reset={reset}
+      />
+    );
   }
 
   return (
@@ -171,36 +178,6 @@ export function FormTalkWithUs() {
           )}
         </button>
       </form>
-    </div>
-  );
-}
-
-function Spinner() {
-  return <span className={`${styles.spinner} ${styles.btn_text}`}></span>;
-}
-
-function FormSubmitted({ reset }) {
-  return (
-    <div className={styles.form_submitted_wrapper}>
-      <div className={styles.icon_submitted_wrapper}>
-        <Icon
-          className={styles.icon_submitted}
-          icon="icon-park-solid:check-one"
-        />
-      </div>
-      <h2 className={`title ${styles.title_submitted}`}>
-        Mensagem enviada com sucesso!
-      </h2>
-      <p className={styles.paragraph_submitted}>
-        Agradecemos o seu contato e retornaremos em breve.
-      </p>
-      <button
-        type="button"
-        onClick={reset}
-        className={`btn btn-link ${styles.btn_submitted}`}
-      >
-        Concluído
-      </button>
     </div>
   );
 }
