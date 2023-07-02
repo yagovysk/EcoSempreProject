@@ -13,6 +13,7 @@ import { SearchResult } from "./pages/SearchResult";
 import { LogisticaReversa } from "./pages/LogisticaReversa";
 import { Descarte } from "./pages/Descarte";
 import { Schedule } from "./pages/Schedule";
+import { Donation } from "./pages/Donation";
 
 export const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
       {
         path: "/agendar",
         element: <Schedule />,
+      },
+      {
+        path: "/doar",
+        element: <Donation />,
       },
     ],
   },

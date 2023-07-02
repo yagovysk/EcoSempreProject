@@ -23,6 +23,10 @@ const linksEcoSempre = [
     name: "FAQ",
     path: "/faq",
   },
+  {
+    name: "Doação",
+    path: "/doar",
+  },
 ];
 const linksPrograms = [
   {
@@ -156,12 +160,7 @@ function MenuMobile({ setIsActive }) {
 function Dropdown({ label, links, onActiveBurger, notClickAway }) {
   const [isActive, setIsActive] = useState(false);
   const elRef = useRef(null);
-  useClickAway(
-    elRef,
-    () => setIsActive(false),
-    ["click", "touchstart"],
-    notClickAway
-  );
+  useClickAway(elRef, () => setIsActive(false), notClickAway);
 
   function handleClick() {
     setIsActive(!isActive);
@@ -224,6 +223,7 @@ function CampoDeBusca({ onSearchActive, onCloseSearch }) {
       <FormSearch
         onCloseSearch={onCloseSearch}
         placeholder="Digite aqui para buscar"
+        autoFocus={true}
       />
     </div>
   );

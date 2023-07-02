@@ -1,3 +1,7 @@
+.main_container {
+  overflow: hidden;
+}
+
 .header {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38)),
     url("../../assets/sustentabilidadeImg.png") no-repeat center bottom / cover;

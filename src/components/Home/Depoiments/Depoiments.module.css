@@ -2,16 +2,12 @@
   background: #0e2a5a url("../../../assets/fundoDepoiments.png") no-repeat
     center / cover;
   padding: 8rem 0;
-  /* display: grid; */
-  /* place-items: center; */
   overflow: hidden;
   position: relative;
 }
 
 .content {
   color: #fff;
-  /* max-width: 1220px; */
-  /* position: relative; */
   margin: 0 auto 0 1.5rem;
   display: flex;
   align-items: center;
@@ -20,8 +16,6 @@
 }
 
 .textsContainer {
-  /* position: absolute;
-  left: 0; */
   flex: 1;
   margin-left: 110px;
 }
@@ -58,7 +52,6 @@
 .carousel_wrapper {
   flex: 1;
   position: relative;
-  /* right: -660px; */
   width: 100vw;
   height: 23.75rem;
   overflow: hidden;

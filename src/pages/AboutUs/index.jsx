@@ -32,7 +32,7 @@ export function AboutUs() {
   ];
 
   return (
-    <main>
+    <main className={styles.main_container}>
       <HeaderSection
         className={styles.header}
         title="Sobre Nós"
@@ -68,7 +68,7 @@ function Information() {
     >
       <article className={styles.first_information}>
         <div className={`textsContainer ${styles.textsContainer}`}>
-          <ScrollReveal origin="left" immediately={true}>
+          <ScrollReveal origin="left">
             <span className="small-text">Quem Somos</span>
             <section className="texts">
               <h2 className="title">Sua Parceira em Soluções Tecnológicas</h2>
@@ -96,7 +96,7 @@ function Information() {
         </div>
 
         <div className={styles.carousel_wrapper}>
-          <ScrollReveal origin="right" immediately={true}>
+          <ScrollReveal origin="right">
             <Swiper {...settingsSlide}>
               <SwiperSlide>
                 <div className={styles.wrapper_img}>
@@ -129,36 +129,43 @@ function Information() {
 
       <article className={styles.second_information}>
         <div className={styles.wrapper_img}>
-          <img
-            className={styles.img_second_information}
-            src={imgInformation2}
-            alt="Casas"
-          />
-          <div className={styles.box}></div>
+          <ScrollReveal origin="left">
+            <img
+              className={styles.img_second_information}
+              src={imgInformation2}
+              alt="Casas"
+            />
+            <div className={styles.box}></div>
+          </ScrollReveal>
         </div>
 
-        <section className={`texts ${styles.text1}`}>
-          <h2 className={styles.subtitle}>Missão</h2>
-          <p className={styles.paragraph}>
-            A nossa missão é oferecer serviços e produtos de tecnologia de alta
-            qualidade, visando à total satisfação de nossos clientes. Através de
-            uma equipe altamente qualificada e em constante atualização,
-            buscamos fornecer soluções tecnológicas inovadoras e personalizadas
-            para atender às necessidades específicas de cada cliente.
-          </p>
-        </section>
+        <ScrollReveal origin="bottom">
+          <section className={`texts ${styles.text1}`}>
+            <h2 className={styles.subtitle}>Missão</h2>
+            <p className={styles.paragraph}>
+              A nossa missão é oferecer serviços e produtos de tecnologia de
+              alta qualidade, visando à total satisfação de nossos clientes.
+              Através de uma equipe altamente qualificada e em constante
+              atualização, buscamos fornecer soluções tecnológicas inovadoras e
+              personalizadas para atender às necessidades específicas de cada
+              cliente.
+            </p>
+          </section>
+        </ScrollReveal>
 
-        <section className={`texts ${styles.text2}`}>
-          <h2 className={styles.subtitle}>Visão</h2>
-          <p className={styles.paragraph}>
-            Ser reconhecida por nossos clientes e parceiros como uma empresa
-            ética e sustentável, que preza pela qualidade e bom relacionamento.
-            Respeito e dedicação aos nossos clientes, excelência em nosso
-            atendimento, transparência nas relações com clientes e fornecedores,
-            trabalho realizado em equipe e segurança das informações de nossos
-            clientes.
-          </p>
-        </section>
+        <ScrollReveal origin="bottom">
+          <section className={`texts ${styles.text2}`}>
+            <h2 className={styles.subtitle}>Visão</h2>
+            <p className={styles.paragraph}>
+              Ser reconhecida por nossos clientes e parceiros como uma empresa
+              ética e sustentável, que preza pela qualidade e bom
+              relacionamento. Respeito e dedicação aos nossos clientes,
+              excelência em nosso atendimento, transparência nas relações com
+              clientes e fornecedores, trabalho realizado em equipe e segurança
+              das informações de nossos clientes.
+            </p>
+          </section>
+        </ScrollReveal>
       </article>
     </div>
   );

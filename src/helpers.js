@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import throttle from "lodash.throttle";
 import api from "./api/posts";
 
 export function useIncreaseNumber(n, duration, increase) {
@@ -15,10 +16,6 @@ export function useIncreaseNumber(n, duration, increase) {
   }, [number]);
 
   return number;
-}
-
-export function scrollToTop() {
-  window.scrollBy(0, document.body.offsetHeight * -1);
 }
 
 export function useGetData(endpoint, dependencies = []) {
@@ -38,12 +35,7 @@ export function useGetData(endpoint, dependencies = []) {
   return data;
 }
 
-export function useClickAway(
-  ref,
-  callback,
-  events = ["click"],
-  notClickAway = false
-) {
+export function useClickAway(ref, callback, notClickAway = false) {
   useEffect(() => {
     if (notClickAway) return;
     if (!ref.current) return;
@@ -56,14 +48,30 @@ export function useClickAway(
       callback();
     }
 
-    events.forEach((event) => {
-      document.addEventListener(event, handleClickAway);
-    });
+    document.addEventListener("click", handleClickAway);
 
     return () => {
-      events.forEach((event) => {
-        document.removeEventListener(event, handleClickAway);
-      });
+      document.removeEventListener("click", handleClickAway);
     };
   }, [ref]);
+}
+
+export function useBreakpoint() {
+  const [breakpoint, setBreakpoint] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const calcWindowWidth = throttle(() => {
+      setBreakpoint(window.innerWidth);
+    }, 200);
+
+    window.addEventListener("resize", calcWindowWidth);
+
+    return () => window.removeEventListener("resize", calcWindowWidth);
+  }, []);
+
+  return breakpoint;
+}
+
+export function scrollToTop() {
+  window.scrollBy(0, document.body.offsetHeight * -1);
 }

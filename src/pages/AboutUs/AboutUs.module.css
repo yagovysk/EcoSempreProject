@@ -1,3 +1,7 @@
+.main_container {
+  overflow-x: hidden;
+}
+
 /* Header */
 .header {
   background: #845429 url("../../assets/construction1.jpg") no-repeat bottom
@@ -24,13 +28,20 @@
 
 .carousel_wrapper {
   position: relative;
-  max-width: 35.4rem;
   padding-right: 1.5rem;
   border-radius: 0.25rem;
+  max-width: 35.4rem;
 }
 
-.wrapper_img {
+.carousel_wrapper .wrapper_img {
   height: 26.375rem;
+}
+
+.carousel_wrapper .wrapper_img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .experiences_wrapper {
@@ -41,9 +52,7 @@
   color: white;
   border-radius: 0.25rem;
   padding: 4rem 1.2rem;
-  /* margin-right: 2.2rem; */
-  font-family: "IBM Plex Sans", sans-serif;
-  font-weight: 600;
+  font: 600 1rem "IBM Plex Sans", sans-serif;
   text-align: center;
   z-index: 20;
 }
@@ -124,6 +133,7 @@
   width: 100%;
   height: 100%;
   filter: brightness(0.5);
+  -webkit-filter: brightness(0.5);
 }
 
 .card_wrapper {
@@ -193,13 +203,6 @@
   .subtitle {
     font-size: 2rem;
   }
-  .carousel_wrapper .wrapper_img img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
   .experiences_wrapper {
     bottom: 0;
     left: 0;

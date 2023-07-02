@@ -6,6 +6,7 @@ import half_man1 from "../../assets/partners_half_img1.png";
 import half_man2 from "../../assets/partners_half_img2.png";
 import { HeaderSection } from "../../components/HeaderSection";
 import { ParceirosCard } from "../../components/ParceirosCard";
+import { ScrollReveal } from "../../components/ScrollReveal";
 
 const linksMenu = [
   {
@@ -52,52 +53,60 @@ export function Partners() {
           />
 
           <div className={styles.wrapper_imgs}>
-            <div className={`${styles.wrapper_img} ${styles.wrapper_img1}`}>
-              <img
-                className={styles.img_person}
-                src={half_man1}
-                alt="Homem trabalhando"
-              />
-              <div className={styles.sustentabilidade_wrapper}>
-                <img src={ecoLogo} alt="EcoLogo" />
-                <p className={styles.sustentabilidade_paragraph}>
-                  Soluções inovadoras para um mundo sustentável
-                </p>
+            <ScrollReveal origin="top">
+              <div className={`${styles.wrapper_img} ${styles.wrapper_img1}`}>
+                <img
+                  className={styles.img_person}
+                  src={half_man1}
+                  alt="Homens trabalhando"
+                />
+                <div className={styles.sustentabilidade_wrapper}>
+                  <img src={ecoLogo} alt="EcoLogo" />
+                  <p className={styles.sustentabilidade_paragraph}>
+                    Soluções inovadoras para um mundo sustentável
+                  </p>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
 
-            <div className={`${styles.wrapper_img} ${styles.img2}`}>
-              <img
-                className={styles.img_person}
-                src={half_man2}
-                alt="Homem trabalhando"
-              />
-            </div>
+            <ScrollReveal origin="top">
+              <div className={`${styles.wrapper_img} ${styles.img2}`}>
+                <img
+                  className={styles.img_person}
+                  src={half_man2}
+                  alt="Homens trabalhando"
+                />
+              </div>
+            </ScrollReveal>
           </div>
         </article>
 
         <article className={styles.partners}>
-          <div className={styles.wrapper_img_partners}>
-            <img
-              className={styles.img_partners}
-              src={partnersPeople}
-              alt="Foto dos parceiros da EcoSempre"
-            />
-
-            <div className={styles.wrapper_text_img_partners}>
-              <div className={styles.wrapper_paragraph_text_partners}>
-                <p className={styles.paragraph_text_partners}>
-                  A EcoSempre é uma parceira incrível na jornada pela
-                  sustentabilidade.
-                </p>
-
+          <div className={styles.wrapper_partners}>
+            <ScrollReveal origin="top">
+              <div className={styles.wrapper_img_partners}>
                 <img
-                  className={styles.quotes_partners}
-                  src={quotes}
-                  alt="Ilustração de aspas duplas"
+                  className={styles.img_partners}
+                  src={partnersPeople}
+                  alt="Parceiros da EcoSempre"
                 />
               </div>
-            </div>
+
+              <div className={styles.wrapper_text_img_partners}>
+                <div className={styles.wrapper_paragraph_text_partners}>
+                  <p className={styles.paragraph_text_partners}>
+                    A EcoSempre é uma parceira incrível na jornada pela
+                    sustentabilidade.
+                  </p>
+
+                  <img
+                    className={styles.quotes_partners}
+                    src={quotes}
+                    alt="Ilustração de aspas duplas"
+                  />
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
 
           <Texts
@@ -121,17 +130,21 @@ export function Partners() {
 function Texts({ subtitle, title, paragraphs }) {
   return (
     <section className={`textsContainer ${styles.textsContainer}`}>
-      <span className="small-text">{subtitle}</span>
-      <section className={`texts `}>
-        <h2 className="title">{title}</h2>
-        <div className={styles.paragraphs}>
-          {paragraphs.map((paragraph, index) => (
-            <p key={index} className={styles.paragraph}>
-              {paragraph}
-            </p>
-          ))}
-        </div>
-      </section>
+      <ScrollReveal origin="bottom">
+        <span className="small-text">{subtitle}</span>
+      </ScrollReveal>
+      <ScrollReveal origin="bottom">
+        <section className={`texts `}>
+          <h2 className="title">{title}</h2>
+          <div className={styles.paragraphs}>
+            {paragraphs.map((paragraph, index) => (
+              <p key={index} className={styles.paragraph}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </section>
+      </ScrollReveal>
     </section>
   );
 }

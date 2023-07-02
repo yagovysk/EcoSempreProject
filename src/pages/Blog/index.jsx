@@ -2,9 +2,10 @@ import { CardBlog } from "../../components/CardBlog";
 import { HeaderSection } from "../../components/HeaderSection";
 import { Pagination } from "../../components/Pagination";
 import { useState } from "react";
-import { useGetData } from "../../helpers.js";
+import { useBreakpoint, useGetData } from "../../helpers.js";
 import Loader from "../../components/Loader";
 import styles from "./Blog.module.css";
+import { ScrollReveal } from "../../components/ScrollReveal";
 
 const linksMenu = [
   {
@@ -15,9 +16,12 @@ const linksMenu = [
     name: "Blog",
   },
 ];
-const POSTS_PER_PAGE = 6;
+let POSTS_PER_PAGE = 6;
 
 export function Blog() {
+  const widthWindow = useBreakpoint();
+  POSTS_PER_PAGE = widthWindow <= 630 ? 3 : 6;
+
   return (
     <main>
       <HeaderSection
@@ -41,29 +45,33 @@ function Posts() {
 
   return posts.length > 0 ? (
     <>
-      <article className={`${styles.posts_container} container`}>
-        {postsPerPage.map((post) => (
-          <CardBlog
-            key={post.id}
-            img={post.imgURL}
-            imgAlt="Imagem de floresta"
-            categories={post.categories}
-            title={post.title}
-            timestamp={post.timestamp}
-            description={post.content}
-            path={post.id}
-          />
-        ))}
-      </article>
+      <ScrollReveal origin="bottom">
+        <article className={`${styles.posts_container} container`}>
+          {postsPerPage.map((post) => (
+            <CardBlog
+              key={post.id}
+              img={post.imgURL}
+              imgAlt="Imagem de floresta"
+              categories={post.categories}
+              title={post.title}
+              timestamp={post.timestamp}
+              description={post.content}
+              path={post.id}
+            />
+          ))}
+        </article>
+      </ScrollReveal>
 
-      <div className={styles.pagination_container}>
-        <Pagination
-          postsPerPage={POSTS_PER_PAGE}
-          pageIndex={pageIndex}
-          onNextPage={setPageIndex}
-          postsLength={posts.length}
-        />
-      </div>
+      <ScrollReveal origin="top">
+        <div className={styles.pagination_container}>
+          <Pagination
+            postsPerPage={POSTS_PER_PAGE}
+            pageIndex={pageIndex}
+            onNextPage={setPageIndex}
+            postsLength={posts.length}
+          />
+        </div>
+      </ScrollReveal>
     </>
   ) : (
     <Loader />
