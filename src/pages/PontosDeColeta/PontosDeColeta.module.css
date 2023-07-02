@@ -1,5 +1,6 @@
 .main_content {
   margin-bottom: 6.9rem;
+  overflow-x: hidden;
 }
 
 .header {
@@ -8,9 +9,15 @@
 
 .content_container {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 4rem;
-  justify-content: space-between;
   margin-bottom: 4.5rem;
+  padding: 0 1.5rem;
+}
+
+.textsContainer {
+  flex: 1 0 20rem;
 }
 
 .title {
@@ -29,6 +36,7 @@
   border-radius: 0.25rem;
   box-shadow: 0px 12px 56px 0px #10295421;
   padding: 2.8rem;
+  margin: 0 auto;
   font: 400 1rem "Roboto", sans-serif;
   line-height: 0.9rem;
   width: 37.9rem;
@@ -52,9 +60,11 @@
 .error_input .input,
 .error_input .input:focus {
   border: 1.5px solid red;
+  box-shadow: 0px 0px 0px 2px rgba(239, 68, 68, 0.35);
 }
 
 .input:focus {
+  box-shadow: 0px 0px 0px 2px rgba(0, 199, 86, 0.25);
   border: 1.5px solid #00c756;
 }
 
@@ -109,15 +119,16 @@
 }
 
 .title_pontos_coleta {
-  font: 700 1.125rem;
+  font: 700 1.125rem "Roboto", sans-serif;
   line-height: 1.9rem;
   color: #0e2b5c;
   margin-bottom: 1.5rem;
+  padding: 0 1.125rem;
 }
 
 .data_pontos_coleta {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(29.2rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25.2rem, 1fr));
   grid-auto-rows: max-content;
   gap: 1.5rem 7.5rem;
   height: 19.125rem;
@@ -157,4 +168,20 @@
   line-height: 1.6rem;
   font-style: normal;
   color: #8c8a97;
+}
+
+@media (max-width: 630px) {
+  .content_container {
+    gap: 2.5rem;
+  }
+  .textsContainer {
+    max-width: initial !important;
+  }
+  .wrapper_form {
+    width: 100%;
+    padding: 1.8rem;
+  }
+  .title_pontos_coleta {
+    margin-bottom: 1rem;
+  }
 }

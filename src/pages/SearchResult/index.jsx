@@ -82,7 +82,7 @@ function Card({ id, title, content, imgURL }) {
       </div>
 
       <section className={"card_texts_wrapper"}>
-        <h2 className={"title"}>{title}</h2>
+        <h2 className={`title title_card`}>{title}</h2>
         <p className={"content"}>{content}</p>
         <Link to={`/posts/${id}`} className={`link_more ${"card_link"}`}>
           Saiba Mais

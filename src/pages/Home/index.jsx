@@ -1,4 +1,4 @@
-import { scrollToTop, useIncreaseNumber } from "../../helpers";
+import { scrollToTop, useBreakpoint, useIncreaseNumber } from "../../helpers";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
@@ -21,6 +21,7 @@ import styles from "./Home.module.css";
 import { ScrollReveal } from "../../components/ScrollReveal";
 
 export function Home() {
+  const windowWidth = useBreakpoint();
   return (
     <main className={styles.main_content}>
       <Intro />
@@ -37,8 +38,8 @@ export function Home() {
       <Parceiros />
       <Depoiments />
       <Faq numberPerList={3} isFAQPage={false} />
-      <Callwithus />
-      <Blog />
+      {windowWidth > 450 && <Callwithus />}
+      <Blog isMobile={windowWidth < 450 ? true : false} />
     </main>
   );
 }
@@ -53,7 +54,7 @@ function Sobre() {
       <div className={styles.sobre}>
         <div className={styles.containerImg}>
           <picture className={styles.wrapper_sobre_img}>
-            <ScrollReveal origin="left" immediately={true}>
+            <ScrollReveal origin="left">
               <img
                 loading="lazy"
                 className={styles.sobreImg}
@@ -74,7 +75,7 @@ function Sobre() {
           </ScrollReveal>
         </div>
 
-        <ScrollReveal origin="right" immediately={true}>
+        <ScrollReveal origin="right">
           <article className={styles.wrapper_texts}>
             <span className={`${styles.subtitle}`}>
               Nossa História e Compromisso Sustentável

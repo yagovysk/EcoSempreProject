@@ -1,5 +1,7 @@
-import { HeaderSection } from "../../components/HeaderSection";
 import { Icon } from "@iconify/react";
+import { HeaderSection } from "../../components/HeaderSection";
+import { ScrollReveal } from "../../components/ScrollReveal";
+import { useBreakpoint } from "../../helpers";
 import styles from "./MaterialList.module.css";
 
 const listMaterials = [
@@ -124,21 +126,24 @@ const listMaterials = [
     name: "Máquinas de Lavar",
   },
 ];
+const linksMenu = [
+  {
+    name: "Início",
+    path: "/",
+  },
+  {
+    name: "Programas",
+    path: "/materiais",
+  },
+  {
+    name: "Lista de Materiais",
+  },
+];
 
 export function MaterialList() {
-  const linksMenu = [
-    {
-      name: "Início",
-      path: "/",
-    },
-    {
-      name: "Programas",
-      path: "/materiais",
-    },
-    {
-      name: "Lista de Materiais",
-    },
-  ];
+  const widthWindow = useBreakpoint();
+  const materials =
+    widthWindow > 630 ? listMaterials : listMaterials.slice(0, 8);
 
   return (
     <main className={styles.main_content}>
@@ -148,20 +153,24 @@ export function MaterialList() {
         title="Lista de Materiais "
       />
       <div className={`container ${styles.content}`}>
-        <section className={`${styles.titles}`}>
-          <span className="small-text">O Que Pode Ser Descartado?</span>
-          <h2 className="title">
-            Descubra Quais Materiais Aceitamos para Descarte!
-          </h2>
-        </section>
-        <div className={styles.grid_materials}>
-          {listMaterials.map((material) => (
-            <Box key={material.name}>
-              <Icon className={styles.material_icon} icon={material.icon} />
-              <span className={styles.material_name}>{material.name}</span>
-            </Box>
-          ))}
-        </div>
+        <ScrollReveal origin="bottom">
+          <section className={`${styles.titles}`}>
+            <span className="small-text">O Que Pode Ser Descartado?</span>
+            <h2 className="title">
+              Descubra Quais Materiais Aceitamos para Descarte!
+            </h2>
+          </section>
+        </ScrollReveal>
+        <ScrollReveal origin="top">
+          <div className={styles.grid_materials}>
+            {materials.map((material) => (
+              <Box key={material.name}>
+                <Icon className={styles.material_icon} icon={material.icon} />
+                <span className={styles.material_name}>{material.name}</span>
+              </Box>
+            ))}
+          </div>
+        </ScrollReveal>
 
         <a className={`link_more ${styles.link_complete_list}`} href="#">
           Clique aqui para acessar a lista completa {">>"}

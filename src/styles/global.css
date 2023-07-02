@@ -74,6 +74,10 @@ a {
   line-height: 2rem;
 }
 
+.shake_input {
+  animation: shakeInput 500ms ease-in-out;
+}
+
 .link_more {
   color: #0e2b5c;
   font: 700 1rem "Roboto", sans-serif;
@@ -108,5 +112,31 @@ a {
 
   .link_more {
     font-size: 0.875rem;
+  }
+}
+
+@keyframes shakeInput {
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(7px);
+  }
+
+  40% {
+    transform: translateX(-7px);
+  }
+
+  60% {
+    transform: translateX(7px);
+  }
+
+  80% {
+    transform: translateX(-7px);
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }
