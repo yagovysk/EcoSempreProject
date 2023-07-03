@@ -6,6 +6,16 @@ import Static from "../static";
 class Newsletter {
     constructor() { }
     private currentDate: string = new Static().getCurrentDate();
+    private async verifyEmail(email:string)
+    {
+        const query:object | undefined = await Connection("newsletter").select("*").where({email});
+
+        if(query !== undefined)
+        {
+            return true;
+        }
+        return false;
+    }
     private validateEmail(email:string){
         const pattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -36,6 +46,7 @@ class Newsletter {
 
         }
     }
+ 
 }
 
 
