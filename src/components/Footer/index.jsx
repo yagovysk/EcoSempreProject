@@ -28,14 +28,12 @@ export function Footer() {
                   className={styles.arrow_circle_icon}
                   alt="Seta preenchida com um círculo"
                 />
-                <span className={styles.text_talk_with_us}>
-                  <strong>Fale Conosco</strong>
-                </span>
+                <span className={styles.text_talk_with_us}>Fale Conosco</span>
               </Link>
             </section>
 
             <section className={styles.contact}>
-              <h5 className={styles.subtitle}>Nosso Contato</h5>
+              <div className={styles.subtitle}>Nosso Contato</div>
               <address className={styles.address_content}>
                 <p className={styles.paragraph}>
                   Possui alguma dúvida ou precisa de ajuda, entre em contato com
@@ -45,20 +43,22 @@ export function Footer() {
                   <Icon
                     icon="ant-design:phone-filled"
                     className={styles.tel_img}
-                    alt="Ícone de telefone"
                   />
                   <a className={styles.tel} href="tel:+(61) 98378-1438">
                     (61) 98378-1438
                   </a>
                 </div>
-                <p className={styles.paragraph}>
+                <p
+                  aria-label="Endereço da EcoSempre"
+                  className={styles.paragraph}
+                >
                   71939-540, Alfa Mix Loja 11 e 12, Águas Claras, Brasília - DF.
                 </p>
               </address>
             </section>
 
             <section className={styles.company}>
-              <h5 className={styles.subtitle}>Empresa</h5>
+              <div className={styles.subtitle}>Empresa</div>
               <ul className={styles.list_links_company}>
                 <li>
                   <Link onClick={scrollToTop} to="/sobre">
@@ -96,7 +96,7 @@ export function Footer() {
       <div className={styles.wrapper_second_content}>
         <ScheduleCard />
         <div className={styles.second_content}>
-          <h6 className={styles.copyright}>
+          <div className={styles.copyright}>
             @2023 EcoSempre. Todos Direitos Reservados. Love by{" "}
             <a
               target="_blank"
@@ -105,11 +105,10 @@ export function Footer() {
             >
               Togyro Group Victory
             </a>
-          </h6>
+          </div>
         </div>
 
         <button
-          title="Voltar ao topo"
           aria-label="Voltar ao topo"
           type="button"
           onClick={scrollToTop}
@@ -117,7 +116,7 @@ export function Footer() {
         >
           <Icon
             icon="material-symbols:arrow-upward-rounded"
-            alt="Seta apontando para frente"
+            aria-hidden={true}
           />
         </button>
       </div>
@@ -128,11 +127,11 @@ export function Footer() {
 function Logo() {
   return (
     <div className={styles.logo}>
-      <img loading="lazy" src={ecoLogo} alt="Eco logo" />
-      <h3 className={styles.logo_title}>
+      <img loading="lazy" src={ecoLogo} alt="" aria-hidden={true} />
+      <div className={styles.logo_title}>
         EcoSempre
         <span className={styles.logo_subtitle}>Logística Reversa</span>
-      </h3>
+      </div>
     </div>
   );
 }
@@ -155,15 +154,14 @@ function Newsletter() {
             aria-label="Digite seu email"
           />
           <button
-            title="Inscrever-se"
-            aria-label="Inscrever-se na newsletter"
+            aria-label="Inscrever-se"
             className={styles.btn_newsletter}
             type="submit"
           >
             <Icon
               icon="material-symbols:arrow-circle-right-rounded"
               className={styles.arrow_circle_icon}
-              alt="Seta preenchida com um círculo"
+              aria-hidden={true}
             />
           </button>
         </form>
@@ -182,7 +180,7 @@ function Newsletter() {
           >
             <Icon
               icon="entypo-social:instagram-with-circle"
-              alt="Ícone do Instagram"
+              aria-hidden={true}
             />
           </a>
           <a
@@ -191,7 +189,7 @@ function Newsletter() {
             className={styles.link_social_medias}
             href="www.facebook.com"
           >
-            <Icon icon="ic:baseline-facebook" alt="Ícone do Facebook" />
+            <Icon icon="ic:baseline-facebook" aria-hidden={true} />
           </a>
           <a
             target="_blank"
@@ -199,7 +197,7 @@ function Newsletter() {
             className={styles.link_social_medias}
             href="www.whatsapp.com"
           >
-            <Icon icon="ri:whatsapp-fill" alt="Ícone do WhatsApp" />
+            <Icon icon="ri:whatsapp-fill" aria-hidden={true} />
           </a>
         </div>
       </div>
@@ -211,26 +209,22 @@ function ScheduleCard() {
   return (
     <div className={styles.schedule_card}>
       <div className={styles.box_schedule}>
-        <Icon
-          icon="ant-design:phone-filled"
-          className={styles.tel_img}
-          alt="Ícone de telefone"
-        />
-        <address>
+        <Icon icon="ant-design:phone-filled" className={styles.tel_img} />
+        <address className={styles.address}>
           Telefone: <strong>(61) 98378-1438</strong>
         </address>
       </div>
       <div className={styles.box_schedule}>
-        <Icon icon="material-symbols:mail-rounded" alt="Ícone de e-mail" />
-        <address>
+        <Icon icon="material-symbols:mail-rounded" />
+        <address className={styles.address}>
           Email: <strong>ecosempre@gmail.com</strong>
         </address>
       </div>
       <div className={styles.box_schedule}>
-        <Icon icon="mdi:clock-time-four" alt="Ícone de relógio" />
-        <address>
+        <Icon icon="mdi:clock-time-four" />
+        <div className={styles.address}>
           Horário de Atendimento: <strong>Seg-Sex: 8h às 18h</strong>
-        </address>
+        </div>
       </div>
       <div className={styles.box_schedule}>
         <Link

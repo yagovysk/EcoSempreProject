@@ -8,7 +8,7 @@ export function FeedbackCard({ img, imgAlt, stars, name, job, feedback }) {
     <div className={styles.containerCard}>
       <div className={styles.card}>
         <div className={styles.profileImg}>
-          <img loading="lazy" src={img} alt={imgAlt} />
+          <img loading="lazy" src={img} alt={"Foto da pessoa"} />
         </div>
         <div className={styles.information}>
           <div className={styles.starsWrapper}>
@@ -31,7 +31,8 @@ export function FeedbackCard({ img, imgAlt, stars, name, job, feedback }) {
           loading="lazy"
           className={styles.quotes}
           src={quotes}
-          alt="Ícone de aspas duplas"
+          alt=""
+          aria-hidden={true}
         />
       </div>
     </div>

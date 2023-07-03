@@ -45,7 +45,8 @@ export function Home() {
 }
 
 function Sobre() {
-  // 778 = discarded E-Waste number, 10 = duration of number update per ms
+  // 778 = discarded E-Waste number
+  // 10 = duration of number update per ms
   // 2 = amount that will increase per ms
   const numberGarbage = useIncreaseNumber(778, 10, 2);
 
@@ -66,8 +67,8 @@ function Sobre() {
 
           <ScrollReveal origin="left" style={{ position: "absolute", top: 0 }}>
             <div className={styles["number-garbage-wrapper"]}>
-              <img loading="lazy" src={plantaicon} alt="Ilustração de planta" />
-              <p className={styles.numbers}>+ {numberGarbage} KG</p>
+              <img loading="lazy" src={plantaicon} alt="" aria-hidden={true} />
+              <strong className={styles.numbers}>+ {numberGarbage} KG</strong>
               <span className={styles.residuos}>
                 Resíduos Eletrônicos Descartados
               </span>
@@ -154,6 +155,7 @@ function Sustentabilidade() {
             loading="lazy"
             src={sustentabilidadeImg}
             className={styles.img}
+            alt="Homem segurando criança reciclando plástico"
           />
         </ScrollReveal>
       </div>
@@ -234,7 +236,7 @@ function ImgColetas() {
             alt="Imagem dos equipamentos coletados"
           />
         </div>
-        <div className={styles.behind}></div>
+        <div aria-hidden={true} className={styles.behind}></div>
       </ScrollReveal>
     </div>
   );

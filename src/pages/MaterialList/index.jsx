@@ -165,7 +165,11 @@ export function MaterialList() {
           <div className={styles.grid_materials}>
             {materials.map((material) => (
               <Box key={material.name}>
-                <Icon className={styles.material_icon} icon={material.icon} />
+                <Icon
+                  className={styles.material_icon}
+                  icon={material.icon}
+                  aria-hidden={true}
+                />
                 <span className={styles.material_name}>{material.name}</span>
               </Box>
             ))}

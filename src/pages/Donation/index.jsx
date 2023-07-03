@@ -1,12 +1,13 @@
-import { forwardRef, useRef, useState, useEffect } from "react";
-import { HeaderSection } from "../../components/HeaderSection";
+import { useRef, useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
+import { HeaderSection } from "../../components/HeaderSection";
+import { ScrollReveal } from "../../components/ScrollReveal";
+import { handleKeyboardTrap } from "../../helpers";
 import donationPeople1 from "../../assets/donation_people_1.png";
 import donationPeople2 from "../../assets/donation_people_2.png";
 import vakinhaLogo from "../../assets/vakinha-logo.png";
 import qrCode from "../../assets/qr_code.png";
 import styles from "./Donation.module.css";
-import { ScrollReveal } from "../../components/ScrollReveal";
 
 const linksMenu = [
   {
@@ -27,26 +28,14 @@ const vakinhaLink =
 
 export const Donation = () => {
   const [isModalOn, setIsModalOn] = useState(false);
-  const modalRef = useRef(null);
   let lastFocusedElement = document.activeElement;
 
   useEffect(() => {
     document.body.style.overflow = isModalOn ? "hidden" : "initial";
-
-    function handleKeyDown(e) {
-      if (e.key === "Escape") {
-        handleCloseModal();
-      }
-    }
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isModalOn]);
 
   function handleOpenModal() {
     setIsModalOn(true);
-    if (modalRef.current) {
-      modalRef.current.focus();
-    }
   }
   function handleCloseModal() {
     setIsModalOn(false);
@@ -114,7 +103,7 @@ export const Donation = () => {
                 alt="Pessoas unidas cruzando as mãos"
               />
               <div className={styles.donation_wrapper}>
-                <Icon icon="bxs:donate-heart" />
+                <Icon icon="bxs:donate-heart" aria-hidden={true} />
                 <p className={styles.donation_paragraph}>
                   Ajude a construir uma sociedade mais sustentável
                 </p>
@@ -137,17 +126,21 @@ export const Donation = () => {
         <section className={`${styles.wrapper_cards}`}>
           <div className={`${styles.wrapper_card_donation}`}>
             <div className={`${styles.wrapper_icon_donation} ${styles.pix}`}>
-              <Icon className={`${styles.icon}`} icon="ic:baseline-pix" />
+              <Icon
+                className={`${styles.icon}`}
+                aria-hidden={true}
+                icon="ic:baseline-pix"
+              />
             </div>
 
-            <h4 className={`${styles.title_donation}`}>Chave Pix</h4>
+            <span className={`${styles.title_donation}`}>Chave Pix</span>
             <p className={`${styles.description_donation}`}>
               Faça sua doação através de uma chave pix
             </p>
             <button
               type="button"
               onClick={handleOpenModal}
-              aria-haspopup={true}
+              aria-haspopup="dialog"
               className={`btn ${styles.btn_donation}`}
             >
               Fazer Doação
@@ -155,11 +148,7 @@ export const Donation = () => {
           </div>
 
           {isModalOn && (
-            <ModalPix
-              ref={modalRef}
-              on={isModalOn}
-              onCloseModal={handleCloseModal}
-            />
+            <ModalPix on={isModalOn} onCloseModal={handleCloseModal} />
           )}
 
           <div className={`${styles.wrapper_card_donation}`}>
@@ -169,11 +158,13 @@ export const Donation = () => {
               <img
                 className={`${styles.icon}`}
                 src={vakinhaLogo}
-                alt="Logo do site Vakinha"
+                alt=""
+                loading="lazy"
+                aria-hidden={true}
               />
             </div>
 
-            <h4 className={`${styles.title_donation}`}>Vakinha</h4>
+            <span className={`${styles.title_donation}`}>Vakinha</span>
             <p className={`${styles.description_donation}`}>
               Doe de forma segura pela Vakinha e faça parte dessa causa!
             </p>
@@ -191,21 +182,59 @@ export const Donation = () => {
   );
 };
 
-const ModalPix = forwardRef((props, ref) => {
+const ModalPix = (props) => {
+  const focusableElements = useRef(null);
+
+  useEffect(() => {
+    const firstTabStop = focusableElements.current.get(0);
+    const lastTabStop = focusableElements.current.get(
+      focusableElements.current.size - 1
+    );
+
+    firstTabStop.focus();
+    document.addEventListener("keydown", (e) => {
+      handleKeyboardTrap(e, props.onCloseModal, firstTabStop, lastTabStop);
+    });
+
+    return () =>
+      document.removeEventListener("keydown", (e) => {
+        handleKeyboardTrap(e, props.onCloseModal, firstTabStop, lastTabStop);
+      });
+  }, [focusableElements]);
+
+  function getMap() {
+    if (!focusableElements.current) {
+      focusableElements.current = new Map();
+    }
+    return focusableElements.current;
+  }
+
+  const getRef = (node, id) => {
+    const map = getMap();
+    if (node) {
+      map.set(id, node);
+    } else {
+      map.delete(id);
+    }
+    return map;
+  };
+
   const handleCopyToClipboard = (e) => {
-    navigator.clipboard.writeText(e.target.innerText);
+    if ((e.type === "keydown" && e.key === "Enter") || e.type === "click") {
+      navigator.clipboard.writeText(e.target.innerText);
+    }
   };
 
   return (
     <div className={styles.container_modal}>
       <div
-        ref={ref}
         role="dialog"
         aria-labelledby="dialogheader"
-        tabIndex={0}
+        aria-describedby="description"
         className={`${styles.modal}`}
       >
         <button
+          ref={(node) => getRef(node, 0)}
           aria-label={props.on ? "Fechar modal" : "Abrir modal"}
           type="button"
           onClick={props.onCloseModal}
@@ -218,7 +247,10 @@ const ModalPix = forwardRef((props, ref) => {
           Chave Pix EcoSempre
         </h4>
 
-        <p className={`${styles.paragraph} ${styles.paragraph_modal}`}>
+        <p
+          id="description"
+          className={`${styles.paragraph} ${styles.paragraph_modal}`}
+        >
           Você pode fazer sua doação para a EcoSempre de forma rápida, prática e
           segura através de uma chave Pix. Para fazer sua doação via Pix, basta
           abrir seu aplicativo do banco, acessar a opção Pix e ler o QR Code
@@ -232,7 +264,10 @@ const ModalPix = forwardRef((props, ref) => {
             <span
               title="Clique aqui para copiar a chave pix"
               onClick={handleCopyToClipboard}
+              onKeyDown={handleCopyToClipboard}
               className={`${styles.pix}`}
+              tabIndex={0}
+              ref={(node) => getRef(node, 1)}
             >
               ecosempre@gmail.com
             </span>
@@ -242,7 +277,10 @@ const ModalPix = forwardRef((props, ref) => {
             <span
               title="Clique aqui para copiar a chave pix"
               onClick={handleCopyToClipboard}
+              onKeyDown={handleCopyToClipboard}
               className={`${styles.pix}`}
+              tabIndex={0}
+              ref={(node) => getRef(node, 2)}
             >
               99.999.999/0001-99
             </span>
@@ -257,7 +295,11 @@ const ModalPix = forwardRef((props, ref) => {
         </div>
         <p className={`${styles.paragraph} ${styles.paragraph_modal}`}>
           Após realizar seu Pix, envie seu comprovante para o nosso{" "}
-          <a href="#" className={styles.whatsapp_link}>
+          <a
+            href="#"
+            className={styles.whatsapp_link}
+            ref={(node) => getRef(node, 3)}
+          >
             whatsapp
           </a>
           , para identificarmos a sua doação. Fique tranquilo, todas as
@@ -268,10 +310,11 @@ const ModalPix = forwardRef((props, ref) => {
           type="button"
           onClick={props.onCloseModal}
           className={`btn btn-link ${styles.btn_modal}`}
+          ref={(node) => getRef(node, 4)}
         >
           FECHAR
         </button>
       </div>
     </div>
   );
-});
+};

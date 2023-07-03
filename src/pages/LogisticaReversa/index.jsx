@@ -67,19 +67,19 @@ export function LogisticaReversa() {
 
         <div className={`${styles.wrapper_img} ${styles.wrapper_img1}`}>
           <ScrollReveal origin="top">
-            <div className={styles.small_box}></div>
+            <div aria-hidden={true} className={styles.small_box}></div>
             <img
               src={sustentabilidade}
               alt="Mão segurando símbolos da sustentabilidade"
             />
-            <div className={styles.big_box}></div>
+            <div aria-hidden={true} className={styles.big_box}></div>
           </ScrollReveal>
         </div>
 
         <div className={`${styles.wrapper_img} ${styles.wrapper_img2}`}>
           <ScrollReveal origin="top">
             <img src={person} alt="Homem segurando placa com logo ecológica" />
-            <div className={styles.medium_box}></div>
+            <div aria-hidden={true} className={styles.medium_box}></div>
           </ScrollReveal>
         </div>
 

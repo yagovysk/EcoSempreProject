@@ -34,22 +34,23 @@ export function CardBlog({
 
         <p className={styles.description}>{description}</p>
 
-        <button type="button" onClick={scrollToTop} className={styles.btn}>
-          <Link
-            aria-label="Saiba mais sobre o post"
-            className={styles.btn_link}
-            to={`/posts/${path}`}
-          >
-            Saiba Mais
-            <Icon
-              className={styles.arrow_icon}
-              icon="material-symbols:arrow-circle-right-rounded"
-            />
-          </Link>
-        </button>
+        <Link
+          aria-label="Saiba mais sobre o post"
+          onClick={scrollToTop}
+          className={`${styles.btn}`}
+          to={`/posts/${path}`}
+          role="button"
+        >
+          Saiba Mais
+          <Icon
+            className={styles.arrow_icon}
+            icon="material-symbols:arrow-circle-right-rounded"
+            aria-hidden={true}
+          />
+        </Link>
       </section>
 
-      <div className={styles.trace}></div>
+      <div aria-hidden={true} className={styles.trace}></div>
     </article>
   );
 }

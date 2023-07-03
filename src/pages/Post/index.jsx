@@ -3,7 +3,6 @@ import { Fragment } from "react";
 import { Icon } from "@iconify/react";
 import { AsideBlog } from "../../components/AsideBlog";
 import { useGetData } from "../../helpers";
-import florestImg from "../../assets/florestImg.jpg";
 import Loader from "../../components/Loader";
 import styles from "./Post.module.css";
 
@@ -39,7 +38,7 @@ export function Post() {
 
       <article className={styles.post_container}>
         <div className={styles.wrapper_img_post}>
-          <img src={florestImg} className={styles.img_post} />
+          <img src={post.imgURL} className={styles.img_post} />
         </div>
 
         <div className={styles.content_post}>
@@ -68,16 +67,34 @@ export function Post() {
           <div className={styles.social_media_wrapper}>
             <span className={styles.share}>Compartilhe</span>
 
-            <a href="/" target="_blank" className={styles.social_media}>
-              <Icon icon="entypo-social:instagram-with-circle" />
+            <a
+              href="/"
+              target="_blank"
+              aria-label="Instagram"
+              className={styles.social_media}
+            >
+              <Icon
+                aria-hidden={true}
+                icon="entypo-social:instagram-with-circle"
+              />
             </a>
 
-            <a href="/" target="_blank" className={styles.social_media}>
-              <Icon icon="ic:baseline-facebook" />
+            <a
+              href="/"
+              target="_blank"
+              aria-label="Facebook"
+              className={styles.social_media}
+            >
+              <Icon aria-hidden={true} icon="ic:baseline-facebook" />
             </a>
 
-            <a href="/" target="_blank" className={styles.social_media}>
-              <Icon icon="ri:whatsapp-fill" />
+            <a
+              href="/"
+              target="_blank"
+              aria-label="WhatsApp"
+              className={styles.social_media}
+            >
+              <Icon aria-hidden={true} icon="ri:whatsapp-fill" />
             </a>
           </div>
         </section>

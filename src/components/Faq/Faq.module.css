@@ -27,6 +27,7 @@
   border-radius: 0.25rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  outline-color: #00c756;
 }
 
 .wrapper_box:hover {
@@ -49,7 +50,8 @@
   color: #232323;
 }
 
-.wrapper_box:hover .question_wrapper {
+.wrapper_box:hover .question_wrapper,
+.wrapper_box:focus .question_wrapper {
   color: #00c756;
 }
 .question_title {

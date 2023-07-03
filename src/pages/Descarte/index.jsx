@@ -72,9 +72,9 @@ export function Descarte() {
         <div className={`${styles.wrapper_img} ${styles.wrapper_img1}`}>
           <ScrollReveal origin="top">
             <img src={threeR} alt="Mãos segurando placas com os 3 R" />
-            <div className={styles.wrapper_recycle_box}>
+            <div className={styles.wrapper_recycle_box} aria-hidden={true}>
               <div className={styles.recycle_box}>
-                <img src={recycleIcon} alt="Ícone de reciclagem" />
+                <img src={recycleIcon} alt="" loading="lazy" />
               </div>
             </div>
           </ScrollReveal>
@@ -83,7 +83,7 @@ export function Descarte() {
         <div className={`${styles.wrapper_img} ${styles.wrapper_img2}`}>
           <ScrollReveal origin="top">
             <img src={pessoasReciclando} alt="Pessoas reciclando garrafa PET" />
-            <div className={styles.medium_box}></div>
+            <div aria-hidden={true} className={styles.medium_box}></div>
           </ScrollReveal>
         </div>
 
@@ -134,7 +134,7 @@ function ImgColetas() {
 
         <div className={styles.container_box_coletas}>
           <div className={styles.wrapper_box_coletas}>
-            <Icon icon="bx:map" />
+            <Icon icon="bx:map" aria-hidden={true} />
             <p className={styles.text_box_coletas}>
               Encontre o Ponto de Coleta Mais Próximo!
             </p>
