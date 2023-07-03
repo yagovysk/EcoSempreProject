@@ -61,7 +61,7 @@ export function Partners() {
                   alt="Homens trabalhando"
                 />
                 <div className={styles.sustentabilidade_wrapper}>
-                  <img src={ecoLogo} alt="EcoLogo" />
+                  <img src={ecoLogo} alt="" aria-hidden={true} />
                   <p className={styles.sustentabilidade_paragraph}>
                     Soluções inovadoras para um mundo sustentável
                   </p>
@@ -102,7 +102,8 @@ export function Partners() {
                   <img
                     className={styles.quotes_partners}
                     src={quotes}
-                    alt="Ilustração de aspas duplas"
+                    alt=""
+                    aria-hidden={true}
                   />
                 </div>
               </div>

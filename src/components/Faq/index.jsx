@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import { firstListQuestions, secondListQuestions } from "../../data";
 import { Link } from "react-router-dom";
@@ -82,12 +82,14 @@ function ListQuestions({ questions, activeIndex, onShow }) {
     return answersRef.current;
   }
 
-  function handleShowAnswer(id) {
-    onShow(id);
+  function handleShowAnswer(e, id) {
+    if ((e.type === "keydown" && e.key === "Enter") || e.type === "click") {
+      onShow(id);
+    }
   }
 
   return (
-    <ul className={style.list_faq}>
+    <div className={style.list_faq}>
       {questions.map((question) => {
         const isActive = question.id === activeIndex;
         const classesWrapperBox = `${style.wrapper_box} ${
@@ -96,15 +98,26 @@ function ListQuestions({ questions, activeIndex, onShow }) {
         const heightAnswer = answersRef.current
           ? getHeightRef(question.id)
           : "0";
+        const questionId = useId();
 
         return (
-          <li
+          <div
+            role="button"
             key={question.id}
+            tabIndex={0}
             className={classesWrapperBox}
-            onClick={() => handleShowAnswer(question.id)}
+            onClick={(e) => handleShowAnswer(e, question.id)}
+            onKeyDown={(e) => handleShowAnswer(e, question.id)}
+            aria-labelledby={`${questionId}-${question.id}`}
+            aria-expanded={isActive && true}
           >
             <section className={style.question_wrapper}>
-              <h3 className={style.question_title}>{question.question}</h3>
+              <h3
+                id={`${questionId}-${question.id}`}
+                className={style.question_title}
+              >
+                {question.question}
+              </h3>
               {isActive ? (
                 <Icon
                   className={style.icon_minus}
@@ -114,6 +127,7 @@ function ListQuestions({ questions, activeIndex, onShow }) {
                 <Icon className={style.icon_plus} icon="ic:round-plus" />
               )}
             </section>
+
             <div
               className={style.panel}
               style={
@@ -136,9 +150,9 @@ function ListQuestions({ questions, activeIndex, onShow }) {
                 {question.answer}
               </p>
             </div>
-          </li>
+          </div>
         );
       })}
-    </ul>
+    </div>
   );
 }

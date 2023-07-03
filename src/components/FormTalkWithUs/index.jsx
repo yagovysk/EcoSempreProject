@@ -69,7 +69,7 @@ export function FormTalkWithUs() {
   return (
     <div className={styles.form_wrapper}>
       <div>
-        <h1 className={styles.form_title}>Fale Conosco!</h1>
+        <div className={styles.form_title}>Fale Conosco!</div>
         <p className={styles.form_description}>
           Entre em contato conosco por meio do formulário abaixo. Estamos
           disponíveis para responder suas dúvidas, fornecer informações e
@@ -86,9 +86,13 @@ export function FormTalkWithUs() {
               className={`${styles.input_name} ${errors.name && "shake_input"}`}
               {...register("name")}
               aria-label="Seu nome"
+              aria-describedby={errors.name && "name-error"}
             />
             {errors.name && (
-              <span className={`error_message ${styles.error_message}`}>
+              <span
+                id={"name-error"}
+                className={`error_message ${styles.error_message}`}
+              >
                 {errors.name.message}
               </span>
             )}
@@ -103,9 +107,13 @@ export function FormTalkWithUs() {
               }`}
               {...register("email")}
               aria-label="Seu email"
+              aria-describedby={errors.email && "email-error"}
             />
             {errors.email && (
-              <span className={`error_message ${styles.error_message}`}>
+              <span
+                id={"email-error"}
+                className={`error_message ${styles.error_message}`}
+              >
                 {errors.email.message}
               </span>
             )}
@@ -118,9 +126,13 @@ export function FormTalkWithUs() {
               className={`${styles.input_tel} ${errors.phone && "shake_input"}`}
               {...register("phone")}
               aria-label="Seu telefone"
+              aria-describedby={errors.phone && "phone-error"}
             />
             {errors.phone && (
-              <span className={`error_message ${styles.error_message}`}>
+              <span
+                id={"phone-error"}
+                className={`error_message ${styles.error_message}`}
+              >
                 {errors.phone.message}
               </span>
             )}
@@ -135,9 +147,13 @@ export function FormTalkWithUs() {
               }`}
               {...register("subject")}
               aria-label="Assunto do email"
+              aria-describedby={errors.subject && "subject-error"}
             />
             {errors.subject && (
-              <span className={`error_message ${styles.error_message}`}>
+              <span
+                id={"subject-error"}
+                className={`error_message ${styles.error_message}`}
+              >
                 {errors.subject.message}
               </span>
             )}
@@ -155,9 +171,13 @@ export function FormTalkWithUs() {
               {...register("message")}
               aria-label="Mensagem do email"
               placeholder="Mensagem"
+              aria-describedby={errors.message && "message-error"}
             ></textarea>
             {errors.message && (
-              <span className={`error_message ${styles.error_message}`}>
+              <span
+                id={"message-error"}
+                className={`error_message ${styles.error_message}`}
+              >
                 {errors.message.message}
               </span>
             )}

@@ -1,5 +1,5 @@
 .main_content {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .sobre {
@@ -47,6 +47,8 @@
 }
 
 .numbers {
+  display: block;
+  font-weight: 600;
   font-size: 2.125rem; /* 34px */
   line-height: 2.3125rem /* 37px */;
 }

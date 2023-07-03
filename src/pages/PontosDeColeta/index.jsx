@@ -220,7 +220,7 @@ function QueryCollectForm({ setPontosColeta }) {
           />
 
           <div className={styles.location_input}>
-            <Icon icon="icon-park-solid:local-two" />
+            <Icon icon="icon-park-solid:local-two" aria-hidden={true} />
             <span className={styles.title_location_input}>
               Minha Localização Atual
             </span>

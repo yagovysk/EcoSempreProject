@@ -279,7 +279,7 @@
   color: #00c756;
 }
 
-.box_schedule address {
+.box_schedule .address {
   display: flex;
   flex-direction: column;
   font: 500 0.75rem "Roboto", sans-serif;

@@ -1,5 +1,5 @@
 .main_container {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* Header */
@@ -58,6 +58,7 @@
 }
 
 .experience_number {
+  display: block;
   font-size: 4.1875rem; /* 67px */
   line-height: 6.4375rem; /* 103.24px */
 }

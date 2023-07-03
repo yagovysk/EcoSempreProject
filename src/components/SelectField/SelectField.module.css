@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  outline: 1px solid transparent;
+  outline-color: #00c756;
   border: 1.5px solid #e7ebef;
   cursor: pointer;
   border-radius: 4px;

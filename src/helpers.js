@@ -35,9 +35,8 @@ export function useGetData(endpoint, dependencies = []) {
   return data;
 }
 
-export function useClickAway(ref, callback, notClickAway = false) {
+export function useClickAway(ref, callback) {
   useEffect(() => {
-    if (notClickAway) return;
     if (!ref.current) return;
 
     function handleClickAway(e) {
@@ -74,4 +73,25 @@ export function useBreakpoint() {
 
 export function scrollToTop() {
   window.scrollBy(0, document.body.offsetHeight * -1);
+}
+
+export function handleKeyboardTrap(e, callback, firstTabStop, lastTabStop) {
+  if (e.key === "Escape") {
+    callback();
+    return;
+  }
+
+  if (e.key === "Tab") {
+    if (e.shiftKey) {
+      if (document.activeElement === firstTabStop) {
+        e.preventDefault();
+        lastTabStop.focus();
+      }
+    } else {
+      if (document.activeElement === lastTabStop) {
+        e.preventDefault();
+        firstTabStop.focus();
+      }
+    }
+  }
 }

@@ -8,6 +8,7 @@ export function FormSubmitted({ reset, title, description }) {
         <Icon
           className={styles.icon_submitted}
           icon="icon-park-solid:check-one"
+          aria-hidden={true}
         />
       </div>
       <h2 className={`title ${styles.title_submitted}`}>{title}</h2>

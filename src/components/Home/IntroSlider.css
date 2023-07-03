@@ -24,6 +24,10 @@
   height: 6px;
 }
 
+.intro_container .swiper-notification {
+  opacity: 0;
+}
+
 @media (max-width: 924px) {
   .intro_container .swiper-slide {
     padding: 0 3.25rem;

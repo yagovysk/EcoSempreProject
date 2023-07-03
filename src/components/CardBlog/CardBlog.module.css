@@ -85,25 +85,23 @@
 }
 
 .btn {
-  background: white;
-  border: 2px solid #0e2b5c;
-  border-radius: 0.25rem;
-  color: #0e2b5c;
-  transition: 0.4s ease;
-}
-
-.card_wrapper:hover .btn {
-  background-color: #0e2b5c;
-  color: white;
-}
-
-.btn_link {
   display: flex;
   align-items: center;
   gap: 1.25rem;
   padding: 13px 21px;
   font: 700 0.75rem "Roboto", sans-serif;
   line-height: 14.5px;
+  background: white;
+  border: 2px solid #0e2b5c;
+  border-radius: 0.25rem;
+  color: #0e2b5c;
+  width: max-content;
+  transition: 0.4s ease;
+}
+
+.card_wrapper:hover .btn {
+  background-color: #0e2b5c;
+  color: white;
 }
 
 .arrow_icon {

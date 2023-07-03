@@ -79,7 +79,7 @@ function Device({ classes, icon, title, description }) {
   return (
     <div className={classes.device}>
       <Icon icon={icon} />
-      <h3 className={classes.title}>{title}</h3>
+      <div className={classes.title}>{title}</div>
       <p className={classes.description}>{description}</p>
     </div>
   );

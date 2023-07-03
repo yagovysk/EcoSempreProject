@@ -8,6 +8,7 @@ import { Spinner } from "../../components/Loader/Spinner";
 import { FormSubmitted } from "../../components/FormSubmitted";
 import styles from "./Schedule.module.css";
 import { scrollToTop } from "../../helpers";
+import { useId } from "react";
 
 const linksMenu = [
   {
@@ -84,6 +85,11 @@ export const Schedule = () => {
     resolver: zodResolver(scheduleSchema),
     defaultValues: initialValues,
   });
+  const stateId = useId();
+  const cityId = useId();
+  const stateErrorId = useId();
+  const cityErrorId = useId();
+  const materialErrorId = useId();
 
   const sleep = (ms) =>
     new Promise((resolve) => {
@@ -181,7 +187,9 @@ export const Schedule = () => {
                 errors.state && styles.error
               }`}
             >
-              <label className={styles.label_input}>Estado</label>
+              <label htmlFor={stateId} className={styles.label_input}>
+                Estado
+              </label>
               <Controller
                 name="state"
                 control={control}
@@ -193,11 +201,16 @@ export const Schedule = () => {
                     field={field}
                     setValue={setValue}
                     error={errors.state}
+                    aria-describedby={errors.state && stateErrorId}
+                    id={stateId}
                   />
                 )}
               />
               {errors.state && (
-                <span className={`error_message ${styles.error_message}`}>
+                <span
+                  id={stateErrorId}
+                  className={`error_message ${styles.error_message}`}
+                >
                   {errors.state.message}
                 </span>
               )}
@@ -208,23 +221,30 @@ export const Schedule = () => {
                 errors.city && styles.error
               }`}
             >
-              <label className={styles.label_input}>Cidade</label>
+              <label htmlFor={cityId} className={styles.label_input}>
+                Cidade
+              </label>
               <Controller
                 name="city"
                 control={control}
                 render={({ field }) => (
                   <SelectField
                     name="city"
+                    id={cityId}
                     options={cities}
                     label="Selecione a cidade"
                     field={field}
                     setValue={setValue}
                     error={errors.city}
+                    aria-describedby={errors.city && cityErrorId}
                   />
                 )}
               />
               {errors.city && (
-                <span className={`error_message ${styles.error_message}`}>
+                <span
+                  id={cityErrorId}
+                  className={`error_message ${styles.error_message}`}
+                >
                   {errors.city.message}
                 </span>
               )}
@@ -245,9 +265,13 @@ export const Schedule = () => {
                 className={`${styles.input} ${styles.textarea} ${
                   errors.materials && "shake_input"
                 }`}
+                aria-describedby={errors.materials && materialErrorId}
               ></textarea>
               {errors.materials && (
-                <span className={`error_message ${styles.error_message}`}>
+                <span
+                  id={materialErrorId}
+                  className={`error_message ${styles.error_message}`}
+                >
                   {errors.materials.message}
                 </span>
               )}
@@ -278,6 +302,7 @@ function Field({
   register,
   errors,
 }) {
+  const errorId = useId();
   return (
     <div
       className={`${styles.wrapper_field} ${styles[name]} ${
@@ -295,10 +320,11 @@ function Field({
         {...register(name)}
         placeholder={placeholder}
         aria-label={!ariaLabel ? placeholder : ariaLabel}
+        aria-labelledby={errors[name] && errorId}
       />
 
       {errors[name] && (
-        <span className={`error_message ${styles.error_message}`}>
+        <span id={errorId} className={`error_message ${styles.error_message}`}>
           {errors[name].message}
         </span>
       )}
