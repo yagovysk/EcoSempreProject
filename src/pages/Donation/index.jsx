@@ -219,12 +219,6 @@ const ModalPix = (props) => {
     return map;
   };
 
-  const handleCopyToClipboard = (e) => {
-    if ((e.type === "keydown" && e.key === "Enter") || e.type === "click") {
-      navigator.clipboard.writeText(e.target.innerText);
-    }
-  };
-
   return (
     <div className={styles.container_modal}>
       <div
@@ -259,32 +253,20 @@ const ModalPix = (props) => {
 
         <div className={`${styles.wrapper_pix}`}>
           <div className={`${styles.subtitle_pix}`}>Chave Pix EcoSempre</div>
-          <p>
-            <span className={`${styles.pix_label}`}>Email:</span>{" "}
-            <span
-              title="Clique aqui para copiar a chave pix"
-              onClick={handleCopyToClipboard}
-              onKeyDown={handleCopyToClipboard}
-              className={`${styles.pix}`}
-              tabIndex={0}
-              ref={(node) => getRef(node, 1)}
-            >
-              ecosempre@gmail.com
-            </span>
-          </p>
-          <p>
-            <span className={`${styles.pix_label}`}>CNPJ:</span>{" "}
-            <span
-              title="Clique aqui para copiar a chave pix"
-              onClick={handleCopyToClipboard}
-              onKeyDown={handleCopyToClipboard}
-              className={`${styles.pix}`}
-              tabIndex={0}
-              ref={(node) => getRef(node, 2)}
-            >
-              99.999.999/0001-99
-            </span>
-          </p>
+          <PixInformation
+            className={`${styles.pix}`}
+            pix="ecosempre@gmail.com"
+            label="Email:"
+            refClipboard={(node) => getRef(node, 1)}
+          />
+
+          <PixInformation
+            className={`${styles.pix}`}
+            pix="99.999.999/0001-99"
+            label="CNPJ:"
+            refClipboard={(node) => getRef(node, 2)}
+            // positionTooltip={{ "--top": "21.4rem" }}
+          />
         </div>
 
         <hr className={`${styles.line}`} />
@@ -315,6 +297,73 @@ const ModalPix = (props) => {
           FECHAR
         </button>
       </div>
+    </div>
+  );
+};
+
+const PixInformation = ({
+  label,
+  pix,
+  refClipboard,
+  positionTooltip,
+  ...props
+}) => {
+  const [isTooltipOn, setIsTooltipOn] = useState(false);
+  const [pixCopied, setPixCopied] = useState(false);
+  const pixRef = useRef(null);
+
+  const handleOpenTooltip = () => setIsTooltipOn(true);
+  const handleCloseTooltip = () => setIsTooltipOn(false);
+
+  const handleCopyToClipboard = (e) => {
+    if ((e.type === "keydown" && e.key === "Enter") || e.type === "click") {
+      navigator.clipboard.writeText(pixRef.current.innerHTML);
+      setPixCopied(true);
+    }
+  };
+
+  return (
+    <>
+      <button
+        type="button"
+        className={styles.wrapper_pix_information}
+        ref={(node) => refClipboard(node)}
+        aria-label={
+          !pixCopied
+            ? "Clique aqui para copiar a chave pix"
+            : "Chave pix copiada com sucesso"
+        }
+        onMouseEnter={handleOpenTooltip}
+        onMouseLeave={handleCloseTooltip}
+        onClick={handleCopyToClipboard}
+        onKeyDown={handleCopyToClipboard}
+      >
+        <p>
+          <span className={`${styles.pix_label}`}>{label}</span>{" "}
+          <span ref={pixRef} {...props}>
+            {pix}
+          </span>
+        </p>
+
+        <Icon icon="lucide:copy" className={styles.icon_clipboard} />
+
+        <div className={styles.wrapper_tooltips}>
+          {isTooltipOn && (
+            <ClipboardTooltip
+              title={!pixCopied ? "Copiar chave pix" : "Chave pix copiada!"}
+            />
+          )}
+        </div>
+      </button>
+    </>
+  );
+};
+
+const ClipboardTooltip = ({ title }) => {
+  return (
+    <div className={`${styles.clipboard_tooltip_wrapper}`}>
+      <span>{title}</span>
+      <Icon icon="bxs:up-arrow" />
     </div>
   );
 };

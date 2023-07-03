@@ -203,7 +203,8 @@
   color: #00c756;
 }
 
-.btn_close_modal svg {
+.btn_close_modal svg,
+.icon_clipboard {
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -233,18 +234,53 @@
   letter-spacing: 0.0125rem;
 }
 
+.wrapper_pix_information {
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  border: 0;
+  line-height: 0;
+  color: #718096;
+  position: relative;
+}
+
 .pix_label,
 .pix {
-  color: #718096;
   font: 500 1rem "Roboto", sans-serif;
   line-height: 1.5;
   letter-spacing: 0.0125rem;
 }
 
+.wrapper_tooltips {
+  position: absolute;
+  top: -3.7rem;
+  right: 2rem;
+}
+
+.clipboard_tooltip_wrapper {
+  position: fixed;
+  padding: 0.75rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0px 4px 6px -4px rgba(16, 24, 40, 0.1),
+    0px 10px 15px -3px rgba(16, 24, 40, 0.1);
+  color: #111827;
+  font: 500 0.75rem "Roboto", sans-serif;
+  line-height: 1.25rem;
+}
+
+.clipboard_tooltip_wrapper svg {
+  position: absolute;
+  bottom: -0.8rem;
+  left: 0.5rem;
+  rotate: 180deg;
+  color: white;
+  font-size: 1.5rem;
+}
+
 .pix,
 .whatsapp_link {
   color: #00c756;
-  cursor: pointer;
 }
 
 .whatsapp_link {
@@ -317,6 +353,18 @@
   .wrapper_donation_content {
     gap: 2.38rem;
   }
+
+  .wrapper_tooltips {
+    right: 4rem;
+    top: -3rem;
+  }
+  .clipboard_tooltip_wrapper {
+    padding: 0.5rem;
+  }
+
+  .clipboard_tooltip_wrapper svg {
+    left: 2.5rem;
+  }
 }
 
 @media (max-width: 430px) {
@@ -372,6 +420,27 @@
   }
   .btn_modal {
     padding: 0.38081rem 1.82531rem !important;
+  }
+
+  /* Tooltip */
+  .icon_clipboard {
+    width: 1rem;
+    height: 1rem;
+  }
+  .wrapper_tooltips {
+    right: 3.8rem;
+    top: -2rem;
+  }
+
+  .clipboard_tooltip_wrapper {
+    font-size: 0.6rem;
+    line-height: 0.5rem;
+  }
+
+  .clipboard_tooltip_wrapper svg {
+    left: 2.5rem;
+    font-size: 1rem;
+    top: 1rem;
   }
 }
 
