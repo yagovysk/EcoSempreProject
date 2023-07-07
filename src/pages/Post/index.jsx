@@ -37,7 +37,7 @@ export function Post() {
       </section>
 
       <article className={styles.post_container}>
-        <div className={styles.wrapper_img_post}>
+        <div className={`${styles.wrapper_img_post} img_loading`}>
           <img src={post.imgURL} className={styles.img_post} />
         </div>
 

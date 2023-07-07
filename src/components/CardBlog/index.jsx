@@ -16,7 +16,7 @@ export function CardBlog({
 
   return (
     <article className={styles.card_wrapper}>
-      <div className={styles.img_wrapper}>
+      <div className={`${styles.img_wrapper} img_loading`}>
         <img loading="lazy" src={img} alt={imgAlt} />
       </div>
 

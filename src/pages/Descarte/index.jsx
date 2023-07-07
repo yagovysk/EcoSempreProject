@@ -116,7 +116,7 @@ export function Descarte() {
           subtitle="Conheça Nossos Pontos de Coleta"
           title="Saiba Onde Descartar Corretamente Seu Lixo Eletrônico"
           linkText="Explorar Pontos de Coleta"
-          imgCallbackComponent={() => <ImgColetas />}
+          imgCallbackComponent={ImgColetas}
           padding="4rem"
         />
       </article>
@@ -128,7 +128,7 @@ function ImgColetas() {
   return (
     <div className={styles.container_coletas}>
       <ScrollReveal origin="right">
-        <div className={styles.wrapper_img_coletas}>
+        <div className={`${styles.wrapper_img_coletas}`}>
           <img src={coletaimg} alt="Imagem dos equipamentos coletados" />
         </div>
 

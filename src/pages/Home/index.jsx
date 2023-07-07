@@ -33,7 +33,7 @@ export function Home() {
         subtitle="Pontos de Coleta de Lixo Eletrônico"
         title="Encontre o Ponto de Coleta EcoSempre mais Próximo de Você!"
         linkText="Ver Pontos de Coleta"
-        imgCallbackComponent={() => <ImgColetas />}
+        imgCallbackComponent={ImgColetas}
       />
       <Parceiros />
       <Depoiments />
@@ -54,20 +54,19 @@ function Sobre() {
     <div className="container">
       <div className={styles.sobre}>
         <div className={styles.containerImg}>
-          <picture className={styles.wrapper_sobre_img}>
+          <picture className={`${styles.wrapper_sobre_img} img_loading`}>
             <ScrollReveal origin="left">
               <img
-                loading="lazy"
                 className={styles.sobreImg}
                 src={sobreimg}
-                alt="imagem ilustrativa"
+                alt="Trabalhadores comemorando"
               />
             </ScrollReveal>
           </picture>
 
           <ScrollReveal origin="left" style={{ position: "absolute", top: 0 }}>
             <div className={styles["number-garbage-wrapper"]}>
-              <img loading="lazy" src={plantaicon} alt="" aria-hidden={true} />
+              <img src={plantaicon} alt="Ícone de Planta" aria-hidden={true} />
               <strong className={styles.numbers}>+ {numberGarbage} KG</strong>
               <span className={styles.residuos}>
                 Resíduos Eletrônicos Descartados
@@ -149,12 +148,12 @@ function Sobre() {
 function Sustentabilidade() {
   return (
     <div className={styles.sustentabilidadeBox}>
-      <div className={styles.sustentabilidade_img_wrapper}>
+      <div className={`${styles.sustentabilidade_img_wrapper} img_loading`}>
         <ScrollReveal origin="left">
           <img
             loading="lazy"
             src={sustentabilidadeImg}
-            className={styles.img}
+            className={styles.sustentabilidadeImg}
             alt="Homem segurando criança reciclando plástico"
           />
         </ScrollReveal>
@@ -199,11 +198,11 @@ function Logistica() {
             </h2>
           </div>
 
-          <div className={styles.logistic_card_wrapper}>
+          <div className={`${styles.logistic_card_wrapper}`}>
             <img
               loading="lazy"
               src={logisticard}
-              alt="card sobre logistica reversa"
+              alt="Card sobre logistica reversa"
             />
           </div>
         </ScrollReveal>
@@ -222,13 +221,14 @@ function ImgColetas() {
             className={styles.recycleIcon}
             src={recycleIcon}
             alt="Ícone de reciclagem"
+            aria-hidden={true}
           />
           <p className={styles.imgTextColetas}>
             Faça já sua Parte e Colabore Conosco
           </p>
         </div>
 
-        <div className={styles.wrapper_main_img_coletas}>
+        <div className={`${styles.wrapper_main_img_coletas} img_loading`}>
           <img
             loading="lazy"
             className={styles.coletaimg}

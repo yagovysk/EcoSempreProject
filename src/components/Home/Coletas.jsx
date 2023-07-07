@@ -7,7 +7,7 @@ export function Coletas({
   subtitle,
   title,
   linkText,
-  imgCallbackComponent,
+  imgCallbackComponent: ImgComponent,
   padding = "8rem",
 }) {
   return (
@@ -41,7 +41,7 @@ export function Coletas({
         </ScrollReveal>
       </article>
 
-      {imgCallbackComponent()}
+      <ImgComponent />
     </div>
   );
 }

@@ -121,6 +121,11 @@
   .answer {
     font-size: 0.875rem;
   }
+  .icon_plus,
+  .icon_minus {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
   .link_more_faq {
     margin-top: 2.5rem;
   }
