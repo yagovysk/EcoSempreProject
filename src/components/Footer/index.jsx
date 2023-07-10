@@ -1,10 +1,16 @@
-import styles from "./Footer.module.css";
-import ecoLogo from "../../assets/ecoIcon.svg";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
-import { scrollToTop } from "../../helpers";
+import styles from "./Footer.module.css";
+import ecoLogo from "../../assets/ecoIcon.svg";
 
 export function Footer() {
+  const handleScrollToTop = () => {
+    document.body.scrollIntoView({
+      block: "start",
+      behavior: "smooth",
+    });
+  };
+
   return (
     <footer className={styles.wrapper}>
       <div className={styles.wrapper_main_content}>
@@ -18,11 +24,7 @@ export function Footer() {
                 ações que beneficiam o meio ambiente e a sociedade.
               </p>
 
-              <Link
-                onClick={scrollToTop}
-                to="/contato"
-                className={styles.talk_with_us}
-              >
+              <Link to="/contato" className={styles.talk_with_us}>
                 <Icon
                   icon="material-symbols:arrow-circle-right-rounded"
                   className={styles.arrow_circle_icon}
@@ -61,29 +63,19 @@ export function Footer() {
               <div className={styles.subtitle}>Empresa</div>
               <ul className={styles.list_links_company}>
                 <li>
-                  <Link onClick={scrollToTop} to="/sobre">
-                    Quem Somos
-                  </Link>
+                  <Link to="/sobre">Quem Somos</Link>
                 </li>
                 <li>
-                  <Link onClick={scrollToTop} to="/coletas">
-                    Pontos de Coleta
-                  </Link>
+                  <Link to="/coletas">Pontos de Coleta</Link>
                 </li>
                 <li>
-                  <Link onClick={scrollToTop} to="/blog">
-                    Nosso Blog
-                  </Link>
+                  <Link to="/blog">Nosso Blog</Link>
                 </li>
                 <li>
-                  <Link onClick={scrollToTop} to="/contato">
-                    Fale Conosco
-                  </Link>
+                  <Link to="/contato">Fale Conosco</Link>
                 </li>
                 <li>
-                  <Link onClick={scrollToTop} to="/parceiros">
-                    Parceiros
-                  </Link>
+                  <Link to="/parceiros">Parceiros</Link>
                 </li>
               </ul>
             </section>
@@ -111,8 +103,8 @@ export function Footer() {
         <button
           aria-label="Voltar ao topo"
           type="button"
-          onClick={scrollToTop}
           className={styles.back_to_top}
+          onClick={handleScrollToTop}
         >
           <Icon
             icon="material-symbols:arrow-upward-rounded"
@@ -231,7 +223,6 @@ function ScheduleCard() {
           role="button"
           className={`${styles.btn_schedule} btn btn-link`}
           to="/agendar"
-          onClick={scrollToTop}
         >
           Agende uma Coleta
         </Link>

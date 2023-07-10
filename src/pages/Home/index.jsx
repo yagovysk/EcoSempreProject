@@ -1,4 +1,4 @@
-import { scrollToTop, useBreakpoint, useIncreaseNumber } from "../../helpers";
+import { useBreakpoint, useIncreaseNumber } from "../../helpers";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
@@ -10,6 +10,7 @@ import { FormTalkWithUs } from "../../components/FormTalkWithUs";
 import { Depoiments } from "../../components/Home/Depoiments";
 import { Faq } from "../../components/Faq";
 import { Blog } from "../../components/Home/Blog";
+import { ScrollReveal } from "../../components/ScrollReveal";
 
 import coletaimg from "../../assets/Coletasimg.png";
 import recycleIcon from "../../assets/recycleIcon.svg";
@@ -18,7 +19,6 @@ import plantaicon from "../../assets/plantaicon.svg";
 import sustentabilidadeImg from "../../assets/sustentabilidadeImg.png";
 import logisticard from "../../assets/logistica_reversa.png";
 import styles from "./Home.module.css";
-import { ScrollReveal } from "../../components/ScrollReveal";
 
 export function Home() {
   const windowWidth = useBreakpoint();
@@ -133,7 +133,6 @@ function Sobre() {
               role="button"
               className={`${styles.btnSobre} btn`}
               to="/sobre"
-              onClick={scrollToTop}
             >
               Conheça Nossa História
               <span>🡢</span>

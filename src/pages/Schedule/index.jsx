@@ -6,9 +6,8 @@ import { SelectField } from "../../components/SelectField";
 import { ScrollReveal } from "../../components/ScrollReveal";
 import { Spinner } from "../../components/Loader/Spinner";
 import { FormSubmitted } from "../../components/FormSubmitted";
-import styles from "./Schedule.module.css";
-import { scrollToTop } from "../../helpers";
 import { useId } from "react";
+import styles from "./Schedule.module.css";
 
 const linksMenu = [
   {
@@ -106,8 +105,6 @@ export const Schedule = () => {
   }
 
   if (isSubmitSuccessful) {
-    scrollToTop();
-
     return (
       <article
         className={`container ${styles.container_schedule} ${styles.form_submitted}`}

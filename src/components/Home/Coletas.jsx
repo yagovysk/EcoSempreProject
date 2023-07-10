@@ -1,7 +1,6 @@
-import styles from "./Coletas.module.css";
 import { Link } from "react-router-dom";
-import { scrollToTop } from "../../helpers";
 import { ScrollReveal } from "../ScrollReveal";
+import styles from "./Coletas.module.css";
 
 export function Coletas({
   subtitle,
@@ -30,9 +29,8 @@ export function Coletas({
 
             <Link
               role="button"
-              className={`btn btn-link ${styles.btnColeta}`}
               to="/coletas"
-              onClick={scrollToTop}
+              className={`btn btn-link ${styles.btnColeta}`}
             >
               {linkText}
               <span>🡢</span>

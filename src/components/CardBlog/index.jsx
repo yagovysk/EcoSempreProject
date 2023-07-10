@@ -1,6 +1,5 @@
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
-import { scrollToTop } from "../../helpers";
 import styles from "./CardBlog.module.css";
 
 export function CardBlog({
@@ -36,7 +35,6 @@ export function CardBlog({
 
         <Link
           aria-label="Saiba mais sobre o post"
-          onClick={scrollToTop}
           className={`${styles.btn}`}
           to={`/posts/${path}`}
           role="button"

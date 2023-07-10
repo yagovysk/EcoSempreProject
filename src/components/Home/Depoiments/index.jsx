@@ -1,16 +1,14 @@
 import { FeedbackCard } from "../FeedbackCard";
 import { Link } from "react-router-dom";
-import { scrollToTop } from "../../../helpers";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Pagination } from "swiper";
+import { ScrollReveal } from "../../ScrollReveal";
+import style from "./Depoiments.module.css";
 import person from "../../../assets/personImg.jpg";
 
-import style from "./Depoiments.module.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./DepoimentsSlider.css";
-import { useRef } from "react";
-import { ScrollReveal } from "../../ScrollReveal";
 
 export function Depoiments() {
   const settingsSlide = {
@@ -42,7 +40,6 @@ export function Depoiments() {
                 role="button"
                 className={`btn btn-link ${style.btnFeedback}`}
                 to="/sobre"
-                onClick={scrollToTop}
               >
                 Sobre Nós
                 <span>🡢</span>
