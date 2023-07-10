@@ -71,10 +71,6 @@ export function useBreakpoint() {
   return breakpoint;
 }
 
-export function scrollToTop() {
-  window.scrollBy(0, document.body.offsetHeight * -1);
-}
-
 export function handleKeyboardTrap(e, callback, firstTabStop, lastTabStop) {
   if (e.key === "Escape") {
     callback();

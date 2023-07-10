@@ -2,9 +2,8 @@ import { useId, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import { firstListQuestions, secondListQuestions } from "../../data";
 import { Link } from "react-router-dom";
-import { scrollToTop } from "../../helpers";
-import style from "./Faq.module.css";
 import { ScrollReveal } from "../ScrollReveal";
+import style from "./Faq.module.css";
 
 export function Faq({
   numberPerList,
@@ -52,11 +51,7 @@ export function Faq({
 
       {!isFAQPage && (
         <ScrollReveal origin="top">
-          <Link
-            to="/faq"
-            onClick={scrollToTop}
-            className={`link_more ${style.link_more_faq}`}
-          >
+          <Link to="/faq" className={`link_more ${style.link_more_faq}`}>
             Clique aqui para acessar todas as dúvidas {">>"}
           </Link>
         </ScrollReveal>

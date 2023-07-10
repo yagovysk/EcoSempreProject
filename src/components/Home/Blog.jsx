@@ -1,6 +1,6 @@
 import { CardBlog } from "../CardBlog";
 import { Link } from "react-router-dom";
-import { scrollToTop, useGetData } from "../../helpers";
+import { useGetData } from "../../helpers";
 import { ScrollReveal } from "../ScrollReveal";
 import Loader from "../../components/Loader";
 import styles from "../Home/Blog.module.css";
@@ -39,11 +39,7 @@ export function Blog({ isMobile }) {
 
       <ScrollReveal origin="top">
         <div className={styles.wrapper_link_more}>
-          <Link
-            onClick={scrollToTop}
-            to="/blog"
-            className={`link_more ${styles.link_more}`}
-          >
+          <Link to="/blog" className={`link_more ${styles.link_more}`}>
             Veja Mais Notícias!
           </Link>
         </div>
