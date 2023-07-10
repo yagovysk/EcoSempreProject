@@ -29,10 +29,8 @@ class Newsletter {
             const email: string = req.body;
 
             const isValid: boolean = this.validateEmail(email);
-            const exist: boolean = await this.verifyEmail(email);
             if (isValid) {
-
-
+                const exist: boolean = await this.verifyEmail(email);
                 if (exist) {
                     res.status(409).send("The e-mail already is registered!!!")
                 }
@@ -50,6 +48,33 @@ class Newsletter {
         catch (error: any) {
             res.sendStatus(400);
 
+        }
+    }
+    public async deleteEmail(req:Request, res:Response)
+    {
+        try{
+            const email:string = req.body;
+
+        const isValid:boolean = this.validateEmail(email);
+        const exist:boolean = await this.verifyEmail(email);
+        if(isValid)
+        {
+            if(exist)
+            {
+                await Connection.delete("*").where({email}).first();
+                res.sendStatus(200);
+            }
+            else{
+                res.sendStatus(404);
+            }
+        }
+        else{
+            throw new Error("invalid E-mail");
+        }
+        }
+        catch(error:any)
+        {
+            res.sendStatus(400);
         }
     }
 
