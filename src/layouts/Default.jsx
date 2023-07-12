@@ -27,7 +27,7 @@ export function Default() {
         )}
       </div>
       <Footer />
-      {windowWidth < 450 && <FloatingButton />}
+      {windowWidth < 500 && <FloatingButton />}
       <ScrollRestoration />
     </>
   );

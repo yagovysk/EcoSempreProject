@@ -11,7 +11,6 @@ import { Depoiments } from "../../components/Home/Depoiments";
 import { Faq } from "../../components/Faq";
 import { Blog } from "../../components/Home/Blog";
 import { ScrollReveal } from "../../components/ScrollReveal";
-import api from "../../api/posts";
 
 import coletaimg from "../../assets/Coletasimg.png";
 import recycleIcon from "../../assets/recycleIcon.svg";
@@ -20,19 +19,6 @@ import plantaicon from "../../assets/plantaicon.svg";
 import sustentabilidadeImg from "../../assets/sustentabilidadeImg.png";
 import logisticard from "../../assets/logistica_reversa.png";
 import styles from "./Home.module.css";
-
-// export async function loader() {
-//   const posts = await api
-//     .get("/articles?_page=1&_limit=3")
-//     .then((response) => response.data)
-//     .catch((err) => {
-//       throw new Response("", {
-//         status: err.response.status,
-//         statusText: err.response.statusText,
-//       });
-//     });
-//   return { posts };
-// }
 
 export function Home() {
   const windowWidth = useBreakpoint();
@@ -52,8 +38,8 @@ export function Home() {
       <Parceiros />
       <Depoiments />
       <Faq numberPerList={3} isFAQPage={false} />
-      {windowWidth > 450 && <Callwithus />}
-      <Blog isMobile={windowWidth < 450 ? true : false} />
+      {windowWidth > 500 && <Callwithus />}
+      <Blog isMobile={windowWidth < 500 ? true : false} />
     </main>
   );
 }

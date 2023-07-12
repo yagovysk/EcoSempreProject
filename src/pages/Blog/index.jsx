@@ -34,7 +34,7 @@ export async function loader() {
 
 export function Blog() {
   const widthWindow = useBreakpoint();
-  POSTS_PER_PAGE = widthWindow <= 450 ? 3 : 6;
+  POSTS_PER_PAGE = widthWindow <= 500 ? 3 : 6;
 
   return (
     <main>
