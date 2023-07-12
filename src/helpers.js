@@ -26,7 +26,7 @@ export function useGetData(endpoint, dependencies = []) {
         const response = await api.get(endpoint);
         setData(response.data);
       } catch (err) {
-        console.log(`Error: ${err.message}`);
+        console.error(err);
       }
     }
     getData();

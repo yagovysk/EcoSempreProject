@@ -1,7 +1,6 @@
 import { forwardRef, useEffect, useRef, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Form, useNavigation } from "react-router-dom";
 import { Icon } from "@iconify/react";
-import { FormSearch } from "../FormSearch";
 import { handleKeyboardTrap, useClickAway } from "../../helpers";
 import logo from "../../assets/logoEcoSempre.png";
 import "./Header.css";
@@ -50,11 +49,18 @@ const linksPrograms = [
 export function Header() {
   const [isActive, setIsActive] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
+  const [isTouched, setIsTouched] = useState(false);
+  const navigation = useNavigation();
   const focusableElementsMobile = useRef(null);
   const focusableElementsSearch = useRef(null);
   const lastFocusedElement = document.activeElement;
 
   useEffect(() => {
+    if (navigation.state === "loading") {
+      handleToggleSearch(false);
+      handleOpenMenu(false);
+    }
+
     document.body.style.overflow =
       isActive || isSearchActive ? "hidden" : "initial";
 
@@ -95,10 +101,10 @@ export function Header() {
           );
         });
     }
-  }, [isActive, isSearchActive]);
+  }, [isActive, isSearchActive, navigation.state]);
 
-  function handleOpenMenu() {
-    setIsActive(!isActive);
+  function handleOpenMenu(bool) {
+    setIsActive(bool);
   }
 
   function handleToggleSearch(bool) {
@@ -172,15 +178,25 @@ export function Header() {
             <Icon icon="ic:round-close" aria-hidden={true} />
           </button>
 
-          <FormSearch
-            onCloseSearch={() => {
-              handleToggleSearch(false);
-              setIsActive(false);
-            }}
-            placeholder="Digite aqui para buscar"
-            autoFocus={true}
-            ref={(node) => getRef(node, 1, false)}
-          />
+          <Form
+            role="search"
+            action="buscar"
+            className={`search_form ${isTouched ? "active" : ""}`}
+            onFocus={() => setIsTouched(true)}
+            onBlur={() => setIsTouched(false)}
+          >
+            <Icon className="search_icon" icon="fa6-solid:magnifying-glass" />
+            <input
+              type="text"
+              name="q"
+              autoFocus
+              aria-label="Digite aqui para buscar"
+              placeholder="Digite aqui para buscar"
+              className="search_input"
+              ref={(node) => getRef(node, 1, false)}
+              disabled={navigation.state === "loading"}
+            />
+          </Form>
         </div>
       )}
     </header>
@@ -306,15 +322,15 @@ const Dropdown = ({ label, links, onActiveBurger }) => {
 const BurgerMenu = forwardRef(({ onActive, isActive }, ref) => {
   return (
     <button
-      onClick={() => onActive()}
+      onClick={() => onActive(!isActive)}
       className={`menu_burger ${isActive && "active"}`}
       aria-label={!isActive ? "Abrir menu" : "Fechar menu"}
       aria-haspopup="menu"
       ref={ref}
     >
-      <div aria-hidden={"true"} className="trace trace1"></div>
-      <div aria-hidden={"true"} className="trace trace2"></div>
-      <div aria-hidden={"true"} className="trace trace3"></div>
+      <div aria-hidden className="trace trace1"></div>
+      <div aria-hidden className="trace trace2"></div>
+      <div aria-hidden className="trace trace3"></div>
     </button>
   );
 });

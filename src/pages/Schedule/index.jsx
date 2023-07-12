@@ -2,7 +2,7 @@ import { z } from "zod";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { HeaderSection } from "../../components/HeaderSection";
-import { SelectField } from "../../components/SelectField";
+import { SelectField } from "../../layouts/SelectField";
 import { ScrollReveal } from "../../components/ScrollReveal";
 import { Spinner } from "../../components/Loader/Spinner";
 import { FormSubmitted } from "../../components/FormSubmitted";

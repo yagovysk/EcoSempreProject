@@ -1,10 +1,10 @@
-import { Link, useFormAction } from "react-router-dom";
+import { Link, useLoaderData, useNavigation, Form } from "react-router-dom";
+import { useState } from "react";
+import { Icon } from "@iconify/react";
 import { HeaderSection } from "../../components/HeaderSection";
 import { AsideBlog } from "../../components/AsideBlog";
-import { useState } from "react";
-import { useGetData } from "../../helpers";
 import { Pagination } from "../../components/Pagination";
-import { FormSearch } from "../../components/FormSearch";
+import api from "../../api/posts";
 import "./SearchResult.css";
 
 const linksMenu = [
@@ -18,17 +18,32 @@ const linksMenu = [
 ];
 const POSTS_PER_PAGE = 3;
 
+export async function loader({ request }) {
+  const url = new URL(request.url);
+  const q = url.searchParams.get("q");
+  const posts = await api
+    .get(`/articles?title_like=${q}`)
+    .then((response) => response.data)
+    .catch((err) => {
+      throw new Response("", {
+        status: err.response.status,
+        statusText: err.response.statusText,
+      });
+    });
+
+  return { posts, q };
+}
+
 export function SearchResult() {
+  const { posts, q } = useLoaderData();
   const [pageIndex, setPageIndex] = useState(0);
-  const query = useFormAction().replace("/buscar?q=", "");
-  const posts = useGetData(`/articles?title_like=${query}`, [query]);
 
   const startIndex = pageIndex * POSTS_PER_PAGE;
   const endIndex = startIndex + POSTS_PER_PAGE;
   const postsPerPage = posts.slice(startIndex, endIndex);
 
   return (
-    <main className="main_search_result">
+    <main className={`main_search_result`}>
       <HeaderSection
         title="Resultados da busca"
         linksMenu={linksMenu}
@@ -36,7 +51,7 @@ export function SearchResult() {
       />
 
       <div className={`container_content container`}>
-        {posts.length > 0 ? (
+        {posts.length ? (
           <div className={"posts_container"}>
             {postsPerPage.map((post) => (
               <Card
@@ -64,13 +79,40 @@ export function SearchResult() {
               informações valiosas sobre reciclagem e sustentabilidade.
             </p>
 
-            <FormSearch key={query} placeholder="Pesquisar..." />
+            <FormSearch key={q} placeholder="Pesquisar..." />
           </section>
         )}
 
         <AsideBlog />
       </div>
     </main>
+  );
+}
+
+function FormSearch({ placeholder }) {
+  const [search, setSearch] = useState("");
+  const [isTouched, setIsTouched] = useState(false);
+  const navigation = useNavigation();
+
+  return (
+    <Form
+      role="search"
+      className={`search_form ${isTouched ? "active" : ""}`}
+      onFocus={() => setIsTouched(true)}
+      onBlur={() => setIsTouched(false)}
+    >
+      <Icon className="search_icon" icon="fa6-solid:magnifying-glass" />
+      <input
+        type="text"
+        name="q"
+        aria-label={placeholder}
+        placeholder={placeholder}
+        className="search_input"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        disabled={navigation.state === "loading"}
+      />
+    </Form>
   );
 }
 
