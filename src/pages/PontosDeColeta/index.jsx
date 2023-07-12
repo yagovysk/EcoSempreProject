@@ -5,9 +5,9 @@ import { z } from "zod";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { SelectField } from "../../layouts/SelectField";
-import styles from "./PontosDeColeta.module.css";
+import { SelectField } from "../../components/SelectField";
 import { ScrollReveal } from "../../components/ScrollReveal";
+import styles from "./PontosDeColeta.module.css";
 
 const queryCollectFormSchema = z.object({
   address: z.string().nonempty("Digite um endereço"),
