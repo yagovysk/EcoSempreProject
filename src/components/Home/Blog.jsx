@@ -2,7 +2,7 @@ import { CardBlog } from "../CardBlog";
 import { Link } from "react-router-dom";
 import { useGetData } from "../../helpers";
 import { ScrollReveal } from "../ScrollReveal";
-import Loader from "../../components/Loader";
+import { Dots } from "../../components/Loader/Dots";
 import styles from "../Home/Blog.module.css";
 
 export function Blog({ isMobile }) {
@@ -32,7 +32,9 @@ export function Blog({ isMobile }) {
               />
             ))
           ) : (
-            <Loader />
+            <div className={`${styles.wrapper_loader} container`}>
+              <Dots />
+            </div>
           )}
         </div>
       </ScrollReveal>

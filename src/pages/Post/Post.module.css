@@ -177,6 +177,7 @@
   .content_post_title {
     box-shadow: 0px 4px 24px 0px rgba(54, 56, 73, 0.05);
     position: relative;
+    gap: 0.5rem;
     padding: 1.375rem 1.5rem;
     padding-bottom: 3.5rem;
     margin-right: 1.5rem;
@@ -198,7 +199,7 @@
   }
   .paragraph {
     transform: translateY(-2.5rem);
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
   }
   .wrapper_footer_post {
     margin: 0 1.5rem;

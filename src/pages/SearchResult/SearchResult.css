@@ -1,5 +1,6 @@
 .main_search_result .header {
-  background: url("../../assets/search_result_bg.jpg") no-repeat center / cover;
+  background: #201e24 url("../../assets/search_result_bg.jpg") no-repeat center /
+    cover;
 }
 
 .main_search_result .container_content {
@@ -25,8 +26,10 @@
 }
 
 .card_img_wrapper {
+  border-radius: 0.625rem;
   height: 25.375rem;
   background-color: #0e2b5c;
+  overflow: hidden;
 }
 
 .card_img_wrapper img {
@@ -34,7 +37,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 0.625rem;
 }
 
 .card_texts_wrapper {

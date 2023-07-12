@@ -1,35 +1,16 @@
 import { forwardRef, useState } from "react";
-import { useSubmit } from "react-router-dom";
+import { Form, useNavigation, useSubmit } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 export const FormSearch = forwardRef(
-  ({ placeholder, onCloseSearch = false, autoFocus = false }, ref) => {
+  ({ placeholder, autoFocus = false }, ref) => {
     const [search, setSearch] = useState("");
     const [isTouched, setIsTouched] = useState(false);
-    const submit = useSubmit();
-
-    function handleSubmit(e) {
-      e.preventDefault();
-      if (!search.trim()) {
-        return;
-      }
-      submit(
-        {
-          q: search,
-        },
-        {
-          method: "get",
-          action: "/buscar?index",
-        }
-      );
-      if (onCloseSearch) {
-        onCloseSearch();
-      }
-    }
+    const navigation = useNavigation();
 
     return (
-      <form
-        onSubmit={handleSubmit}
+      <Form
+        role="search"
         className={`search_form ${isTouched ? "active" : ""}`}
         onFocus={() => setIsTouched(true)}
         onBlur={() => setIsTouched(false)}
@@ -45,8 +26,9 @@ export const FormSearch = forwardRef(
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           ref={ref && ref}
+          disabled={navigation.state === "loading"}
         />
-      </form>
+      </Form>
     );
   }
 );

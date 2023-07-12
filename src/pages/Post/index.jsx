@@ -1,20 +1,28 @@
-import { useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { Fragment } from "react";
 import { Icon } from "@iconify/react";
 import { AsideBlog } from "../../components/AsideBlog";
-import { useGetData } from "../../helpers";
-import Loader from "../../components/Loader";
 import styles from "./Post.module.css";
+import api from "../../api/posts";
+
+export async function loader({ params }) {
+  const post = await api
+    .get(`/articles/${params.key}`)
+    .then((response) => response.data)
+    .catch((err) => {
+      throw new Response("", {
+        status: err.response.status,
+        statusText: err.response.statusText,
+      });
+    });
+
+  return { post };
+}
 
 export function Post() {
-  const { key } = useParams();
-  const post = useGetData(`/articles/${key}`, [key]) || false;
+  const { post } = useLoaderData();
   const stringCategories = post && post.categories.join(", ");
   const breadcrumb = post && ["Início", "Blog", stringCategories, post.title];
-
-  if (!post) {
-    return <Loader />;
-  }
 
   return (
     <main className={`container ${styles.container}`}>

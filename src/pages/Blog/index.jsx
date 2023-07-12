@@ -2,10 +2,11 @@ import { CardBlog } from "../../components/CardBlog";
 import { HeaderSection } from "../../components/HeaderSection";
 import { Pagination } from "../../components/Pagination";
 import { useState } from "react";
-import { useBreakpoint, useGetData } from "../../helpers.js";
-import Loader from "../../components/Loader";
-import styles from "./Blog.module.css";
+import { useBreakpoint } from "../../helpers.js";
 import { ScrollReveal } from "../../components/ScrollReveal";
+import styles from "./Blog.module.css";
+import api from "../../api/posts";
+import { useLoaderData } from "react-router-dom";
 
 const linksMenu = [
   {
@@ -18,9 +19,22 @@ const linksMenu = [
 ];
 let POSTS_PER_PAGE = 6;
 
+export async function loader() {
+  const posts = await api
+    .get("/articles")
+    .then((response) => response.data)
+    .catch((err) => {
+      throw new Response("", {
+        status: err.response.status,
+        statusText: err.response.statusText,
+      });
+    });
+  return { posts };
+}
+
 export function Blog() {
   const widthWindow = useBreakpoint();
-  POSTS_PER_PAGE = widthWindow <= 630 ? 3 : 6;
+  POSTS_PER_PAGE = widthWindow <= 450 ? 3 : 6;
 
   return (
     <main>
@@ -37,13 +51,13 @@ export function Blog() {
 
 function Posts() {
   const [pageIndex, setPageIndex] = useState(0);
-  const posts = useGetData("/articles");
+  const { posts } = useLoaderData();
 
   const startIndex = pageIndex * POSTS_PER_PAGE;
   const endIndex = startIndex + POSTS_PER_PAGE;
   const postsPerPage = posts.slice(startIndex, endIndex);
 
-  return posts.length > 0 ? (
+  return (
     <>
       <ScrollReveal origin="bottom">
         <article className={`${styles.posts_container} container`}>
@@ -73,7 +87,5 @@ function Posts() {
         </div>
       </ScrollReveal>
     </>
-  ) : (
-    <Loader />
   );
 }
