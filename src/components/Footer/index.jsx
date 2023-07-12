@@ -1,15 +1,23 @@
+import { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
+import { ButtonToTop } from "../ButtonToTop";
 import styles from "./Footer.module.css";
 import ecoLogo from "../../assets/ecoIcon.svg";
 
 export function Footer() {
-  const handleScrollToTop = () => {
-    document.body.scrollIntoView({
-      block: "start",
-      behavior: "smooth",
-    });
-  };
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowButton(window.scrollY * 2 >= document.body.offsetHeight / 2);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <footer className={styles.wrapper}>
@@ -100,17 +108,7 @@ export function Footer() {
           </div>
         </div>
 
-        <button
-          aria-label="Voltar ao topo"
-          type="button"
-          className={styles.back_to_top}
-          onClick={handleScrollToTop}
-        >
-          <Icon
-            icon="material-symbols:arrow-upward-rounded"
-            aria-hidden={true}
-          />
-        </button>
+        {showButton && <ButtonToTop />}
       </div>
     </footer>
   );
