@@ -31,7 +31,9 @@ class Newsletter {
             {
                return res.sendStatus(404);
             }
-             res.status(200).send(query);
+            else{
+                res.status(200).send(query);
+            }
         }
         catch(error:any)
         {
