@@ -16,6 +16,9 @@ newsletterRoutes.delete("/newsletter", async(req:Request, res:Response)=>{
     const newsletter:Newsletter = new Newsletter();
     newsletter.deleteEmail(req, res);
 })
-
+newsletterRoutes.get("/newsletter", async(req:Request, res:Response)=>{
+    const newsletter:Newsletter = new Newsletter();
+    newsletter.getAll(req, res);
+})
 
 export default newsletterRoutes;
