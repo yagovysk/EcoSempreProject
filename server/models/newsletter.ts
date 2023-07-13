@@ -7,12 +7,12 @@ class Newsletter {
     constructor() { }
     private currentDate: string = new Static().getCurrentDate();
     private async verifyEmail(email: string) {
-        const query: object | undefined = await Connection("newsletter").select("*").where({ email });
+        const query: object | undefined = await Connection("newsletter").select("*").where({ email }).first();
 
-        if (query !== undefined) {
-            return true;
+        if (query === undefined ) {
+            return false;
         }
-        return false;
+        return true;
     }
     private validateEmail(email: string) {
         const pattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -22,17 +22,32 @@ class Newsletter {
         }
         return false;
     }
+    public async getAll(req:Request, res:Response)
+    {
+        try{
+            const query:string[]= await Connection("newsletter").select("*");
+
+            if(query[0] === undefined || query === null)
+            {
+                res.sendStatus(404);
+            }
+            res.status(200).send(query);
+        }
+        catch(error:any)
+        {
+            res.sendStatus(400);
+        }
+    }
     public async registerEmail(req: Request, res: Response) {
         try {
 
 
-            const email: string = req.body;
-
+            const {email}: {email:string} = req.body;
             const isValid: boolean = this.validateEmail(email);
             if (isValid) {
                 const exist: boolean = await this.verifyEmail(email);
                 if (exist) {
-                    res.status(409).send("The e-mail already is registered!!!")
+                   return res.status(409).send("The e-mail already is registered!!!")
                 }
                 else {
                     await Connection("newsletter").insert({
@@ -43,6 +58,8 @@ class Newsletter {
                     res.sendStatus(201);
                 }
             }
+         res.sendStatus(400);
+        
 
         }
         catch (error: any) {
@@ -53,15 +70,15 @@ class Newsletter {
     public async deleteEmail(req:Request, res:Response)
     {
         try{
-            const email:string = req.body;
-
+            const {email}:{email:string} = req.body;
         const isValid:boolean = this.validateEmail(email);
+
         const exist:boolean = await this.verifyEmail(email);
         if(isValid)
         {
             if(exist)
             {
-                await Connection.delete("*").where({email}).first();
+                await Connection("newsletter").delete("*").where({email});
                 res.sendStatus(200);
             }
             else{
