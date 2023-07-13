@@ -1,9 +1,8 @@
-import logo from "../../assets/logoEcoSempre.png";
+import { forwardRef, useEffect, useRef, useState } from "react";
+import { Link, NavLink, Form, useNavigation } from "react-router-dom";
 import { Icon } from "@iconify/react";
-import { Link, NavLink } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
-import { FormSearch } from "../FormSearch";
-import { useClickAway } from "../../helpers";
+import { handleKeyboardTrap, useClickAway } from "../../helpers";
+import logo from "../../assets/logoEcoSempre.png";
 import "./Header.css";
 
 const linksEcoSempre = [
@@ -22,6 +21,10 @@ const linksEcoSempre = [
   {
     name: "FAQ",
     path: "/faq",
+  },
+  {
+    name: "Doação",
+    path: "/doar",
   },
 ];
 const linksPrograms = [
@@ -45,12 +48,93 @@ const linksPrograms = [
 
 export function Header() {
   const [isActive, setIsActive] = useState(false);
-  useEffect(() => {
-    document.body.style.overflow = isActive ? "hidden" : "initial";
-  }, [isActive]);
+  const [isSearchActive, setIsSearchActive] = useState(false);
+  const [isTouched, setIsTouched] = useState(false);
+  const navigation = useNavigation();
+  const focusableElementsMobile = useRef(null);
+  const focusableElementsSearch = useRef(null);
+  const lastFocusedElement = document.activeElement;
 
-  function handleOpenMenu() {
-    setIsActive(!isActive);
+  useEffect(() => {
+    if (navigation.state === "loading") {
+      handleToggleSearch(false);
+      handleOpenMenu(false);
+    }
+
+    document.body.style.overflow =
+      isActive || isSearchActive ? "hidden" : "initial";
+
+    if (isActive || isSearchActive) {
+      const firstTabStop =
+        isActive && !isSearchActive
+          ? focusableElementsMobile.current.get(0)
+          : focusableElementsSearch.current.get(0);
+      const lastTabStop =
+        isActive && !isSearchActive
+          ? focusableElementsMobile.current.get(
+              focusableElementsMobile.current.size - 1
+            )
+          : focusableElementsSearch.current.get(
+              focusableElementsSearch.current.size - 1
+            );
+
+      document.addEventListener("keydown", (e) => {
+        handleKeyboardTrap(
+          e,
+          isActive && !isSearchActive
+            ? () => setIsActive(false)
+            : () => setIsSearchActive(false),
+          firstTabStop,
+          lastTabStop
+        );
+      });
+
+      return () =>
+        document.removeEventListener("keydown", (e) => {
+          handleKeyboardTrap(
+            e,
+            isActive && !isSearchActive
+              ? () => setIsActive(false)
+              : () => setIsSearchActive(false),
+            firstTabStop,
+            lastTabStop
+          );
+        });
+    }
+  }, [isActive, isSearchActive, navigation.state]);
+
+  function handleOpenMenu(bool) {
+    setIsActive(bool);
+  }
+
+  function handleToggleSearch(bool) {
+    setIsSearchActive(bool);
+    if (!bool) {
+      lastFocusedElement.focus();
+    }
+  }
+
+  function getMap(isMobile) {
+    if (isMobile) {
+      if (!focusableElementsMobile.current) {
+        focusableElementsMobile.current = new Map();
+      }
+      return focusableElementsMobile.current;
+    } else {
+      if (!focusableElementsSearch.current) {
+        focusableElementsSearch.current = new Map();
+      }
+      return focusableElementsSearch.current;
+    }
+  }
+
+  function getRef(node, id, isMobile = true) {
+    const map = getMap(isMobile);
+    if (node) {
+      map.set(id, node);
+    } else {
+      map.delete(id);
+    }
   }
 
   return (
@@ -60,27 +144,70 @@ export function Header() {
           <img src={logo} alt="logo da EcoSempre" />
         </Link>
 
-        {!isActive && <Menu />}
+        {!isActive && <Menu onToggleSearch={handleToggleSearch} />}
 
-        <BurgerMenu onActive={handleOpenMenu} isActive={isActive} />
+        <BurgerMenu
+          ref={(node) => getRef(node, 0)}
+          onActive={handleOpenMenu}
+          isActive={isActive}
+        />
       </div>
-      {isActive && <MenuMobile setIsActive={setIsActive} />}
+
+      {isActive && (
+        <div
+          className="menu_mobile_container"
+          aria-expanded={isActive ? true : false}
+        >
+          <Menu
+            setIsActive={setIsActive}
+            onToggleSearch={handleToggleSearch}
+            ref={(node) => getRef(node, 1)}
+          />
+        </div>
+      )}
+
+      {isSearchActive && (
+        <div className="search_container">
+          <button
+            onClick={() => handleToggleSearch(false)}
+            type="button"
+            className="close_search"
+            ref={(node) => getRef(node, 0, false)}
+            aria-label="Fechar busca"
+          >
+            <Icon icon="ic:round-close" aria-hidden={true} />
+          </button>
+
+          <Form
+            role="search"
+            action="buscar"
+            className={`search_form ${isTouched ? "active" : ""}`}
+            onFocus={() => setIsTouched(true)}
+            onBlur={() => setIsTouched(false)}
+          >
+            <Icon className="search_icon" icon="fa6-solid:magnifying-glass" />
+            <input
+              type="text"
+              name="q"
+              autoFocus
+              aria-label="Digite aqui para buscar"
+              placeholder="Digite aqui para buscar"
+              className="search_input"
+              ref={(node) => getRef(node, 1, false)}
+              disabled={navigation.state === "loading"}
+            />
+          </Form>
+        </div>
+      )}
     </header>
   );
 }
 
-function Menu({ setIsActive = false, notClickAway = false }) {
-  const [isSearchActive, setIsSearchActive] = useState(false);
-
+const Menu = forwardRef(({ onToggleSearch, setIsActive = false }, ref) => {
   function handleCloseBurger() {
     if (setIsActive) {
       setIsActive(false);
     }
-  }
-
-  function handleCloseSearch() {
-    setIsSearchActive(false);
-    setIsActive(false);
   }
 
   return (
@@ -93,7 +220,6 @@ function Menu({ setIsActive = false, notClickAway = false }) {
         </li>
         <li className="menu_li">
           <Dropdown
-            notClickAway={notClickAway}
             label="EcoSempre"
             onActiveBurger={handleCloseBurger}
             links={linksEcoSempre}
@@ -101,7 +227,6 @@ function Menu({ setIsActive = false, notClickAway = false }) {
         </li>
         <li className="menu_li">
           <Dropdown
-            notClickAway={notClickAway}
             label="Programas"
             onActiveBurger={handleCloseBurger}
             links={linksPrograms}
@@ -120,22 +245,22 @@ function Menu({ setIsActive = false, notClickAway = false }) {
       </ul>
 
       <div className="contact-container">
-        <Icon
-          onClick={() => setIsSearchActive(true)}
-          icon="ph:magnifying-glass"
-          className="lupaicon"
-        />
-        {isSearchActive && (
-          <CampoDeBusca
-            onCloseSearch={handleCloseSearch}
-            onSearchActive={setIsSearchActive}
-          />
-        )}
+        <button
+          className="btn_search"
+          onClick={() => onToggleSearch(true)}
+          type="button"
+          aria-label="Buscar postagens"
+          aria-haspopup="dialog"
+        >
+          <Icon icon="ph:magnifying-glass" className="lupaicon" />
+        </button>
 
         <Link
           onClick={handleCloseBurger}
           className="btnContato contato"
           to="/contato"
+          role="button"
+          ref={ref}
         >
           Entre em contato
           <Icon icon="octicon:arrow-right-16" />
@@ -143,36 +268,30 @@ function Menu({ setIsActive = false, notClickAway = false }) {
       </div>
     </>
   );
-}
+});
 
-function MenuMobile({ setIsActive }) {
-  return (
-    <div className="menu_mobile_container">
-      <Menu setIsActive={setIsActive} notClickAway={true} />
-    </div>
-  );
-}
-
-function Dropdown({ label, links, onActiveBurger, notClickAway }) {
+const Dropdown = ({ label, links, onActiveBurger }) => {
   const [isActive, setIsActive] = useState(false);
   const elRef = useRef(null);
-  useClickAway(
-    elRef,
-    () => setIsActive(false),
-    ["click", "touchstart"],
-    notClickAway
-  );
+  useClickAway(elRef, () => setIsActive(false));
 
-  function handleClick() {
-    setIsActive(!isActive);
+  function handleToggleDropdown(e) {
+    if ((e.type === "keydown" && e.key === "Enter") || e.type === "click") {
+      setIsActive(!isActive);
+    }
   }
 
   return (
     <>
       <div
         ref={elRef}
-        onClick={handleClick}
+        onClick={handleToggleDropdown}
+        onKeyDown={handleToggleDropdown}
         className={`menu_item ${isActive && "active"}`}
+        tabIndex={0}
+        role="button"
+        aria-haspopup="menu"
+        aria-expanded={isActive ? true : false}
       >
         {label}
         <Icon className="arrow_menu_item" icon="mdi:caret" rotate={2} />
@@ -198,50 +317,20 @@ function Dropdown({ label, links, onActiveBurger, notClickAway }) {
       )}
     </>
   );
-}
+};
 
-function CampoDeBusca({ onSearchActive, onCloseSearch }) {
-  useEffect(() => {
-    function handleKeyDown(e) {
-      if (e.key === "Escape") {
-        onSearchActive(false);
-      }
-    }
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
+const BurgerMenu = forwardRef(({ onActive, isActive }, ref) => {
   return (
-    <div className="search_container">
-      <button
-        onClick={() => onSearchActive(false)}
-        type="button"
-        className="close_search"
-      >
-        <Icon icon="ic:round-close" />
-      </button>
-
-      <FormSearch
-        onCloseSearch={onCloseSearch}
-        placeholder="Digite aqui para buscar"
-      />
-    </div>
-  );
-}
-
-function BurgerMenu({ onActive, isActive }) {
-  return (
-    <div
-      onClick={() => onActive()}
+    <button
+      onClick={() => onActive(!isActive)}
       className={`menu_burger ${isActive && "active"}`}
-      aria-controls="menu"
-      aria-haspopup={true}
       aria-label={!isActive ? "Abrir menu" : "Fechar menu"}
-      aria-expanded={isActive ? true : false}
+      aria-haspopup="menu"
+      ref={ref}
     >
-      <div className="trace trace1"></div>
-      <div className="trace trace2"></div>
-      <div className="trace trace3"></div>
-    </div>
+      <div aria-hidden className="trace trace1"></div>
+      <div aria-hidden className="trace trace2"></div>
+      <div aria-hidden className="trace trace3"></div>
+    </button>
   );
-}
+});

@@ -1,12 +1,17 @@
 import styles from "./Loader.module.css";
-import { scrollToTop } from "../../helpers";
 
 function Loader() {
-  scrollToTop();
-
   return (
     <div className={styles.loader_wrapper}>
-      <span className={styles.loader}></span>
+      <div className={`${styles.loader_posts_wrapper}`}>
+        <span className={`${styles.loader}`}></span>
+        <span className={`${styles.loader}`}></span>
+        <span className={`${styles.loader}`}></span>
+      </div>
+      <div className={`${styles.loader_posts_wrapper}`}>
+        <span className={`${styles.loader}`}></span>
+        <span className={`${styles.loader}`}></span>
+      </div>
     </div>
   );
 }

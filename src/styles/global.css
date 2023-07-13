@@ -6,7 +6,6 @@
 
 :root {
   height: 100%;
-  scroll-behavior: smooth;
 }
 
 button {
@@ -23,6 +22,21 @@ a {
 .container {
   max-width: 1240px;
   margin: 0 auto;
+}
+
+.img_loading {
+  background: linear-gradient(0.25turn, transparent, #fff, transparent),
+    linear-gradient(#ddd, #ddd), linear-gradient(#ddd, #ddd),
+    linear-gradient(#ddd, #ddd);
+  background-repeat: no-repeat;
+  background-position: -215px 0, 0 0, 15px 150px, 15px 180px;
+  animation: loading 1.5s infinite alternate;
+}
+
+@keyframes loading {
+  to {
+    background-position: 215px 0, 0 0, 15px 150px, 15px 180px;
+  }
 }
 
 .btn {
@@ -74,6 +88,10 @@ a {
   line-height: 2rem;
 }
 
+.shake_input {
+  animation: shakeInput 500ms ease-in-out;
+}
+
 .link_more {
   color: #0e2b5c;
   font: 700 1rem "Roboto", sans-serif;
@@ -108,5 +126,31 @@ a {
 
   .link_more {
     font-size: 0.875rem;
+  }
+}
+
+@keyframes shakeInput {
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(7px);
+  }
+
+  40% {
+    transform: translateX(-7px);
+  }
+
+  60% {
+    transform: translateX(7px);
+  }
+
+  80% {
+    transform: translateX(-7px);
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }

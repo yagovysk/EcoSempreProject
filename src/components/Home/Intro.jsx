@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Autoplay, Navigation, Pagination } from "swiper";
-import logisticaImg from "../../assets/fundohome.png";
+import { ScrollReveal } from "../ScrollReveal";
+import florestImg from "../../assets/Imagem_Floresta.png";
 import sustentabilidadeImg from "../../assets/parceiros_bg.jpg";
 import coletasImg from "../../assets/coletas.jpg";
-import { ScrollReveal } from "../ScrollReveal";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -34,7 +34,7 @@ export function Intro() {
           <div className={`${styles.img_slider}`}>
             <img
               loading="lazy"
-              src={logisticaImg}
+              src={florestImg}
               alt="Imagem da Logística Reversa"
             />
           </div>

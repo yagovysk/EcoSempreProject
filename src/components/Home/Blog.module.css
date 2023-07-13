@@ -6,10 +6,13 @@
   padding: 8rem 1.5rem;
 }
 
+.idBlog.mobile {
+  background-color: #f6f7f8;
+}
+
 .texts {
   text-align: center;
   margin-top: 3rem;
-  margin-bottom: 3.75rem;
 }
 
 .grid_cards {
@@ -17,6 +20,13 @@
   grid-template-columns: repeat(auto-fit, minmax(16.125rem, 1fr));
   gap: 1.5rem;
   width: 100%;
+  margin-top: 3.75rem;
+}
+
+.wrapper_loader {
+  display: grid;
+  place-content: center;
+  height: 40vh;
 }
 
 .wrapper_link_more {

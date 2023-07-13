@@ -1,7 +1,6 @@
 import styles from "./Saiba.module.css";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
-import { scrollToTop } from "../../helpers";
 import { ScrollReveal } from "../ScrollReveal";
 
 export function Saiba() {
@@ -28,7 +27,6 @@ export function Saiba() {
               role="button"
               className={`btn ${styles.saibabutton}`}
               to="/materiais"
-              onClick={scrollToTop}
             >
               Explore todos os itens
               <span>🡢</span>
@@ -79,7 +77,7 @@ function Device({ classes, icon, title, description }) {
   return (
     <div className={classes.device}>
       <Icon icon={icon} />
-      <h3 className={classes.title}>{title}</h3>
+      <div className={classes.title}>{title}</div>
       <p className={classes.description}>{description}</p>
     </div>
   );
