@@ -29,9 +29,9 @@ class Newsletter {
 
             if(query[0] === undefined || query === null)
             {
-                res.sendStatus(404);
+               return res.sendStatus(404);
             }
-            res.status(200).send(query);
+             res.status(200).send(query);
         }
         catch(error:any)
         {
