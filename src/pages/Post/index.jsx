@@ -1,22 +1,30 @@
-import { useParams } from "react-router-dom";
-import { Fragment, useState } from "react";
+import { useLoaderData } from "react-router-dom";
+import { Fragment } from "react";
 import { Icon } from "@iconify/react";
 import { AsideBlog } from "../../components/AsideBlog";
-import { useGetData } from "../../helpers";
-import Loader from "../../components/Loader";
 import styles from "./Post.module.css";
+import api from "../../api/posts";
+
+export async function loader({ params }) {
+  const post = await api
+    .get(`/articles/${params.key}`)
+    .then((response) => response.data)
+    .catch((err) => {
+      throw new Response("", {
+        status: err.response.status,
+        statusText: err.response.statusText,
+      });
+    });
+
+  return { post };
+}
 
 export function Post() {
-  const { key } = useParams();
-  const posts = useGetData("/articles");
-
-  let post = posts && posts.filter((post) => post.id === Number(key));
-  post = post[0];
-
+  const { post } = useLoaderData();
   const stringCategories = post && post.categories.join(", ");
   const breadcrumb = post && ["Início", "Blog", stringCategories, post.title];
 
-  return posts.length > 0 ? (
+  return (
     <main className={`container ${styles.container}`}>
       <section className={styles.breadcrumb}>
         {breadcrumb.map((subtile, index) => (
@@ -37,7 +45,7 @@ export function Post() {
       </section>
 
       <article className={styles.post_container}>
-        <div className={styles.wrapper_img_post}>
+        <div className={`${styles.wrapper_img_post} img_loading`}>
           <img src={post.imgURL} className={styles.img_post} />
         </div>
 
@@ -48,42 +56,59 @@ export function Post() {
               <span className={styles.categories}>{stringCategories}</span>
               <span className={styles.small_information}>{post.author}</span>
             </div>
-            <h2 className={`title`}>{post.title}</h2>
+
+            <h2 className={`title ${styles.title}`}>{post.title}</h2>
           </section>
 
           <p className={styles.paragraph}>{post.content}</p>
-
-          <section className={styles.wrapper_footer_post}>
-            <div className={styles.tags_wrapper}>
-              {post.categories.map((category) => (
-                <span className={styles.tag} key={category}>
-                  {category}
-                </span>
-              ))}
-            </div>
-
-            <div className={styles.social_media_wrapper}>
-              <span className={styles.share}>Compartilhe</span>
-
-              <a href="/" target="_blank" className={styles.social_media}>
-                <Icon icon="entypo-social:instagram-with-circle" />
-              </a>
-
-              <a href="/" target="_blank" className={styles.social_media}>
-                <Icon icon="ic:baseline-facebook" />
-              </a>
-
-              <a href="/" target="_blank" className={styles.social_media}>
-                <Icon icon="ri:whatsapp-fill" />
-              </a>
-            </div>
-          </section>
         </div>
+
+        <section className={styles.wrapper_footer_post}>
+          <div className={styles.tags_wrapper}>
+            {post.categories.map((category) => (
+              <span className={styles.tag} key={category}>
+                {category}
+              </span>
+            ))}
+          </div>
+
+          <div className={styles.social_media_wrapper}>
+            <span className={styles.share}>Compartilhe</span>
+
+            <a
+              href="/"
+              target="_blank"
+              aria-label="Instagram"
+              className={styles.social_media}
+            >
+              <Icon
+                aria-hidden={true}
+                icon="entypo-social:instagram-with-circle"
+              />
+            </a>
+
+            <a
+              href="/"
+              target="_blank"
+              aria-label="Facebook"
+              className={styles.social_media}
+            >
+              <Icon aria-hidden={true} icon="ic:baseline-facebook" />
+            </a>
+
+            <a
+              href="/"
+              target="_blank"
+              aria-label="WhatsApp"
+              className={styles.social_media}
+            >
+              <Icon aria-hidden={true} icon="ri:whatsapp-fill" />
+            </a>
+          </div>
+        </section>
       </article>
 
       <AsideBlog />
     </main>
-  ) : (
-    <Loader />
   );
 }

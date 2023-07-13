@@ -22,6 +22,7 @@
 }
 
 .titles h2 {
+  margin: 0 auto;
   margin-top: 0.5rem;
   max-width: 30rem;
 }
@@ -68,9 +69,5 @@
   }
   .grid_materials {
     gap: 2rem;
-  }
-  /* Select all items except the first 8 ones */
-  .box_wrapper:nth-child(n + 8) {
-    display: none;
   }
 }

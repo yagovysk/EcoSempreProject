@@ -14,7 +14,11 @@ export function Pagination({
     (n, index) => index + 1
   );
   return (
-    <div className={styles.wrapper_pagination}>
+    <div
+      className={styles.wrapper_pagination}
+      role="navigation"
+      aria-label="Paginação"
+    >
       {sizePagesArr.map((page, index) => (
         <button
           key={index}
@@ -23,6 +27,8 @@ export function Pagination({
           className={`${styles.btn_pagination} ${
             page === pageIndex + 1 && styles.active
           }`}
+          aria-label={`Página atual, Página ${page}`}
+          aria-current={page === pageIndex + 1 ? "true" : "false"}
         >
           {page}
         </button>
@@ -32,6 +38,11 @@ export function Pagination({
         disabled={pageIndex + 1 >= sizePagination}
         onClick={() => onNextPage(pageIndex + 1)}
         className={`${styles.btn_pagination} ${styles.btn_arrow} `}
+        aria-label={
+          pageIndex + 1 >= sizePagination
+            ? "Fim das páginas"
+            : `Ir para a página ${pageIndex + 2}`
+        }
       >
         <Icon icon="octicon:arrow-right-16" />
       </button>

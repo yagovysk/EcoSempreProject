@@ -1,3 +1,7 @@
+.main_container {
+  overflow: hidden;
+}
+
 .header {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38)),
     url("../../assets/sustentabilidadeImg.png") no-repeat center bottom / cover;
@@ -82,12 +86,22 @@
 
 .container_coletas {
   position: relative;
-  max-width: 31.25rem;
   margin-left: 3rem;
+  max-width: 31.25rem;
+  width: 100%;
+}
+
+.wrapper_img_coletas {
+  height: 23.2765rem;
+  border-radius: 0.25rem;
+  background-color: #969696;
 }
 
 .wrapper_img_coletas img {
+  display: block;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 0.25rem;
 }
 
@@ -147,13 +161,15 @@
   }
   .container_coletas {
     margin: 0;
-    max-width: initial;
   }
 }
 
 @media (max-width: 630px) {
   .container_content {
     grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
+  }
+  .container_coletas {
+    max-width: initial;
   }
   .container_box_coletas {
     left: -1rem;
@@ -167,8 +183,8 @@
     gap: 1rem;
   }
   .wrapper_box_coletas svg {
-    width: 3rem;
-    height: 3rem;
+    width: 2.3rem;
+    height: 2.3rem;
   }
   .text_box_coletas {
     font-size: 0.9rem;
@@ -186,8 +202,18 @@
   .recycle_box {
     padding: 1rem 1.5rem;
   }
+  .wrapper_img_coletas {
+    height: 14.75rem;
+  }
   .container_box_coletas {
-    padding: 1.2rem;
+    padding: 1.4rem 1.7rem;
     min-height: initial;
+  }
+  .wrapper_box_coletas {
+    padding: 1.4rem 1.18rem;
+  }
+  .text_box_coletas {
+    font-size: 0.75rem;
+    line-height: 1.2rem;
   }
 }

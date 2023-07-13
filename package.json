@@ -10,11 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.18.1",
     "axios": "^1.4.0",
+    "lodash.throttle": "^4.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
-    "swiper": "^9.3.2"
+    "swiper": "^9.3.2",
+    "use-places-autocomplete": "^4.0.0"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.1.0",

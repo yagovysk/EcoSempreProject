@@ -1,7 +1,8 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Icon } from "@iconify/react";
+import { FormSubmitted } from "../FormSubmitted";
+import { Spinner } from "../Loader/Spinner";
 import api from "../../api/posts";
 import styles from "./FormTalkWithUs.module.css";
 
@@ -56,13 +57,19 @@ export function FormTalkWithUs() {
   }
 
   if (isSubmitSuccessful) {
-    return <FormSubmitted reset={reset} />;
+    return (
+      <FormSubmitted
+        title="Mensagem enviada com sucesso!"
+        description="Agradecemos o seu contato e retornaremos em breve."
+        reset={reset}
+      />
+    );
   }
 
   return (
     <div className={styles.form_wrapper}>
       <div>
-        <h1 className={styles.form_title}>Fale Conosco!</h1>
+        <div className={styles.form_title}>Fale Conosco!</div>
         <p className={styles.form_description}>
           Entre em contato conosco por meio do formulário abaixo. Estamos
           disponíveis para responder suas dúvidas, fornecer informações e
@@ -76,12 +83,16 @@ export function FormTalkWithUs() {
             <input
               type="text"
               placeholder="Nome"
-              className={styles.input_name}
+              className={`${styles.input_name} ${errors.name && "shake_input"}`}
               {...register("name")}
               aria-label="Seu nome"
+              aria-describedby={errors.name && "name-error"}
             />
             {errors.name && (
-              <span className={`error_message ${styles.error_message}`}>
+              <span
+                id={"name-error"}
+                className={`error_message ${styles.error_message}`}
+              >
                 {errors.name.message}
               </span>
             )}
@@ -91,12 +102,18 @@ export function FormTalkWithUs() {
             <input
               type="email"
               placeholder="Email"
-              className={styles.input_email}
+              className={`${styles.input_email} ${
+                errors.email && "shake_input"
+              }`}
               {...register("email")}
               aria-label="Seu email"
+              aria-describedby={errors.email && "email-error"}
             />
             {errors.email && (
-              <span className={`error_message ${styles.error_message}`}>
+              <span
+                id={"email-error"}
+                className={`error_message ${styles.error_message}`}
+              >
                 {errors.email.message}
               </span>
             )}
@@ -106,12 +123,16 @@ export function FormTalkWithUs() {
             <input
               type="text"
               placeholder="Telefone"
-              className={styles.input_tel}
+              className={`${styles.input_tel} ${errors.phone && "shake_input"}`}
               {...register("phone")}
               aria-label="Seu telefone"
+              aria-describedby={errors.phone && "phone-error"}
             />
             {errors.phone && (
-              <span className={`error_message ${styles.error_message}`}>
+              <span
+                id={"phone-error"}
+                className={`error_message ${styles.error_message}`}
+              >
                 {errors.phone.message}
               </span>
             )}
@@ -121,12 +142,18 @@ export function FormTalkWithUs() {
             <input
               type="text"
               placeholder="Assunto"
-              className={styles.input_subject}
+              className={`${styles.input_subject} ${
+                errors.subject && "shake_input"
+              }`}
               {...register("subject")}
               aria-label="Assunto do email"
+              aria-describedby={errors.subject && "subject-error"}
             />
             {errors.subject && (
-              <span className={`error_message ${styles.error_message}`}>
+              <span
+                id={"subject-error"}
+                className={`error_message ${styles.error_message}`}
+              >
                 {errors.subject.message}
               </span>
             )}
@@ -138,13 +165,19 @@ export function FormTalkWithUs() {
             }`}
           >
             <textarea
-              className={styles.input_message}
+              className={`${styles.input_message} ${
+                errors.message && "shake_input"
+              }`}
               {...register("message")}
               aria-label="Mensagem do email"
               placeholder="Mensagem"
+              aria-describedby={errors.message && "message-error"}
             ></textarea>
             {errors.message && (
-              <span className={`error_message ${styles.error_message}`}>
+              <span
+                id={"message-error"}
+                className={`error_message ${styles.error_message}`}
+              >
                 {errors.message.message}
               </span>
             )}
@@ -165,36 +198,6 @@ export function FormTalkWithUs() {
           )}
         </button>
       </form>
-    </div>
-  );
-}
-
-function Spinner() {
-  return <span className={`${styles.spinner} ${styles.btn_text}`}></span>;
-}
-
-function FormSubmitted({ reset }) {
-  return (
-    <div className={styles.form_submitted_wrapper}>
-      <div className={styles.icon_submitted_wrapper}>
-        <Icon
-          className={styles.icon_submitted}
-          icon="icon-park-solid:check-one"
-        />
-      </div>
-      <h2 className={`title ${styles.title_submitted}`}>
-        Mensagem enviada com sucesso!
-      </h2>
-      <p className={styles.paragraph_submitted}>
-        Agradecemos o seu contato e retornaremos em breve.
-      </p>
-      <button
-        type="button"
-        onClick={reset}
-        className={`btn btn-link ${styles.btn_submitted}`}
-      >
-        Concluído
-      </button>
     </div>
   );
 }

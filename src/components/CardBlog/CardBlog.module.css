@@ -45,6 +45,11 @@
 }
 
 .title {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: #232323;
   font: 500 1.25rem "IBM Plex Sans", sans-serif;
   line-height: 1.5rem;
@@ -65,9 +70,12 @@
 }
 
 .description {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-height: 5.5rem;
+  min-height: 5.5rem;
 
   color: #9b9b9b;
   font: 400 1rem "Roboto", sans-serif;
@@ -76,25 +84,23 @@
 }
 
 .btn {
-  background: white;
-  border: 2px solid #0e2b5c;
-  border-radius: 0.25rem;
-  color: #0e2b5c;
-  transition: 0.4s ease;
-}
-
-.card_wrapper:hover .btn {
-  background-color: #0e2b5c;
-  color: white;
-}
-
-.btn_link {
   display: flex;
   align-items: center;
   gap: 1.25rem;
   padding: 13px 21px;
   font: 700 0.75rem "Roboto", sans-serif;
   line-height: 14.5px;
+  background: white;
+  border: 2px solid #0e2b5c;
+  border-radius: 0.25rem;
+  color: #0e2b5c;
+  width: max-content;
+  transition: 0.4s ease;
+}
+
+.card_wrapper:hover .btn {
+  background-color: #0e2b5c;
+  color: white;
 }
 
 .arrow_icon {

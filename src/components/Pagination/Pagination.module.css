@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -36,4 +37,20 @@
   background-color: transparent;
   border: 0.125rem solid #919aa2;
   color: #0e2b5c;
+}
+
+@media (max-width: 500px) {
+  .wrapper_pagination {
+    gap: 0.8rem;
+  }
+  .btn_pagination {
+    width: auto;
+    height: max-content;
+    font-size: 1rem;
+    padding: 1.2rem 0.9rem;
+  }
+
+  .btn_pagination.btn_arrow {
+    padding: 0.7rem;
+  }
 }

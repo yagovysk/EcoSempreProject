@@ -1,4 +1,4 @@
-import { scrollToTop, useIncreaseNumber } from "../../helpers";
+import { useBreakpoint, useIncreaseNumber } from "../../helpers";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
@@ -10,6 +10,7 @@ import { FormTalkWithUs } from "../../components/FormTalkWithUs";
 import { Depoiments } from "../../components/Home/Depoiments";
 import { Faq } from "../../components/Faq";
 import { Blog } from "../../components/Home/Blog";
+import { ScrollReveal } from "../../components/ScrollReveal";
 
 import coletaimg from "../../assets/Coletasimg.png";
 import recycleIcon from "../../assets/recycleIcon.svg";
@@ -18,9 +19,9 @@ import plantaicon from "../../assets/plantaicon.svg";
 import sustentabilidadeImg from "../../assets/sustentabilidadeImg.png";
 import logisticard from "../../assets/logistica_reversa.png";
 import styles from "./Home.module.css";
-import { ScrollReveal } from "../../components/ScrollReveal";
 
 export function Home() {
+  const windowWidth = useBreakpoint();
   return (
     <main className={styles.main_content}>
       <Intro />
@@ -32,19 +33,20 @@ export function Home() {
         subtitle="Pontos de Coleta de Lixo Eletrônico"
         title="Encontre o Ponto de Coleta EcoSempre mais Próximo de Você!"
         linkText="Ver Pontos de Coleta"
-        imgCallbackComponent={() => <ImgColetas />}
+        imgCallbackComponent={ImgColetas}
       />
       <Parceiros />
       <Depoiments />
       <Faq numberPerList={3} isFAQPage={false} />
-      <Callwithus />
-      <Blog />
+      {windowWidth > 500 && <Callwithus />}
+      <Blog isMobile={windowWidth < 500 ? true : false} />
     </main>
   );
 }
 
 function Sobre() {
-  // 778 = discarded E-Waste number, 10 = duration of number update per ms
+  // 778 = discarded E-Waste number
+  // 10 = duration of number update per ms
   // 2 = amount that will increase per ms
   const numberGarbage = useIncreaseNumber(778, 10, 2);
 
@@ -52,21 +54,20 @@ function Sobre() {
     <div className="container">
       <div className={styles.sobre}>
         <div className={styles.containerImg}>
-          <picture className={styles.wrapper_sobre_img}>
-            <ScrollReveal origin="left" immediately={true}>
+          <picture className={`${styles.wrapper_sobre_img} img_loading`}>
+            <ScrollReveal origin="left">
               <img
-                loading="lazy"
                 className={styles.sobreImg}
                 src={sobreimg}
-                alt="imagem ilustrativa"
+                alt="Trabalhadores comemorando"
               />
             </ScrollReveal>
           </picture>
 
           <ScrollReveal origin="left" style={{ position: "absolute", top: 0 }}>
             <div className={styles["number-garbage-wrapper"]}>
-              <img loading="lazy" src={plantaicon} alt="Ilustração de planta" />
-              <p className={styles.numbers}>+ {numberGarbage} KG</p>
+              <img src={plantaicon} alt="Ícone de Planta" aria-hidden={true} />
+              <strong className={styles.numbers}>+ {numberGarbage} KG</strong>
               <span className={styles.residuos}>
                 Resíduos Eletrônicos Descartados
               </span>
@@ -74,7 +75,7 @@ function Sobre() {
           </ScrollReveal>
         </div>
 
-        <ScrollReveal origin="right" immediately={true}>
+        <ScrollReveal origin="right">
           <article className={styles.wrapper_texts}>
             <span className={`${styles.subtitle}`}>
               Nossa História e Compromisso Sustentável
@@ -132,7 +133,6 @@ function Sobre() {
               role="button"
               className={`${styles.btnSobre} btn`}
               to="/sobre"
-              onClick={scrollToTop}
             >
               Conheça Nossa História
               <span>🡢</span>
@@ -147,12 +147,13 @@ function Sobre() {
 function Sustentabilidade() {
   return (
     <div className={styles.sustentabilidadeBox}>
-      <div className={styles.sustentabilidade_img_wrapper}>
+      <div className={`${styles.sustentabilidade_img_wrapper} img_loading`}>
         <ScrollReveal origin="left">
           <img
             loading="lazy"
             src={sustentabilidadeImg}
-            className={styles.img}
+            className={styles.sustentabilidadeImg}
+            alt="Homem segurando criança reciclando plástico"
           />
         </ScrollReveal>
       </div>
@@ -196,11 +197,11 @@ function Logistica() {
             </h2>
           </div>
 
-          <div className={styles.logistic_card_wrapper}>
+          <div className={`${styles.logistic_card_wrapper}`}>
             <img
               loading="lazy"
               src={logisticard}
-              alt="card sobre logistica reversa"
+              alt="Card sobre logistica reversa"
             />
           </div>
         </ScrollReveal>
@@ -219,13 +220,14 @@ function ImgColetas() {
             className={styles.recycleIcon}
             src={recycleIcon}
             alt="Ícone de reciclagem"
+            aria-hidden={true}
           />
           <p className={styles.imgTextColetas}>
             Faça já sua Parte e Colabore Conosco
           </p>
         </div>
 
-        <div className={styles.wrapper_main_img_coletas}>
+        <div className={`${styles.wrapper_main_img_coletas} img_loading`}>
           <img
             loading="lazy"
             className={styles.coletaimg}
@@ -233,7 +235,7 @@ function ImgColetas() {
             alt="Imagem dos equipamentos coletados"
           />
         </div>
-        <div className={styles.behind}></div>
+        <div aria-hidden={true} className={styles.behind}></div>
       </ScrollReveal>
     </div>
   );

@@ -1,6 +1,6 @@
 .header {
   background-color: white;
-  box-shadow: 0px 2px 25px 0px #32323214;
+  box-shadow: 0px 2px 25px 0px rgba(50, 50, 50, 0.08);
 }
 .header_content {
   display: flex;
@@ -86,21 +86,27 @@
   gap: 2.1rem;
 }
 
-.lupaicon {
-  width: 1.3rem;
-  height: 1.3rem;
-  cursor: pointer;
+.btn_search {
+  background-color: transparent;
+  border: 0;
+  line-height: 0;
+  padding: 0.4rem;
   transition: 0.2s;
 }
 
-.lupaicon:hover {
+.btn_search:hover {
   color: #00c756;
+}
+
+.lupaicon {
+  width: 1.3rem;
+  height: 1.3rem;
+  pointer-events: none;
 }
 
 .btnContato {
   border: 0;
   background: none;
-  outline: 1px solid transparent;
   padding: 0.4375rem 1.2rem;
   background: #0e2b5c;
   border-radius: 0.3125rem;
@@ -254,9 +260,11 @@
 
 .menu_burger {
   display: none;
+  background-color: transparent;
+  border: 0;
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1066px) {
   .header_content {
     align-items: center;
   }
@@ -299,6 +307,7 @@
     background-color: #f2f3ff;
     position: absolute;
     z-index: 9999;
+    overflow: auto !important;
   }
   .header.on .header_content {
     background-color: white;
