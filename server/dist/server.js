@@ -9,6 +9,7 @@ const user_1 = __importDefault(require("./routes/user"));
 const tag_1 = __importDefault(require("./routes/tag"));
 const article_1 = __importDefault(require("./routes/article"));
 const contact_1 = __importDefault(require("./routes/contact"));
+const newsletter_1 = __importDefault(require("./routes/newsletter"));
 const createAdminUserScript_1 = __importDefault(require("./createAdminUserScript"));
 // setup admin
 (0, createAdminUserScript_1.default)();
@@ -20,4 +21,5 @@ app.use("/", user_1.default);
 app.use("/", article_1.default);
 app.use("/", contact_1.default);
 app.use("/", tag_1.default);
+app.use("/", newsletter_1.default);
 exports.default = app;
