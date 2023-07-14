@@ -21,4 +21,8 @@ tagRoutes.post("/tag", (req, res) => __awaiter(void 0, void 0, void 0, function*
     const tag = new tag_1.default();
     tag.createTag(req, res);
 }));
+tagRoutes.delete("/tag", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const tag = new tag_1.default();
+    tag.deleteTag(req, res);
+}));
 exports.default = tagRoutes;
