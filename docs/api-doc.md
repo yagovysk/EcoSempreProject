@@ -1,7 +1,7 @@
 *****Documentação Eco Sempre*****
 # Visão geral
 
-- [Visão geral das rotas](#visao-geral-das-rotas)
+- [Visão geral das rotas](#visão-geral-das-rotas)
 - [base url](#base-URL)
 
 ## Visão geral das rotas
@@ -14,7 +14,7 @@
 
 ### Usuário
 
-| Rota                 | Pétoodo   | Protegida |
+| Rota                 | Métoodo   | Protegida |
 |-----------------------|--------|-----------|
 | /user                 | POST   | Sim       |
 
@@ -35,6 +35,13 @@
 | /article/:key         | GET    | Sim       |
 | /article/:id          | DELETE | Sim       |
 | /article/:id          | PUT    | Sim       |
+
+### Tags
+| Rota                 | Método   | Protegida |
+|-----------------------|--------|-----------|
+| /tags| GET  | Sim   | 
+| /tag | DELETE | Sim |
+| /tag | POST | Sim |
 
 ## base URL
 
