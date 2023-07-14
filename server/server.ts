@@ -16,10 +16,10 @@ const app:Application = express();
 app.use(cors());
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-app.use("/", userRoutes);
-app.use("/", articleRoutes);
-app.use("/", contactRoutes);
-app.use("/", tagRoutes);
-app.use("/", newsletterRoutes);
+app.use("/api/v1", userRoutes);
+app.use("/api/v1", articleRoutes);
+app.use("/api/v1", contactRoutes);
+app.use("/api/v1", tagRoutes);
+app.use("/api/v1", newsletterRoutes);
 
 export default app;
