@@ -25,6 +25,16 @@ class Tag{
         }
         return true;
     }
+    private async verifyTagById (id:string)
+    {
+        const tag:object | undefined = await Connection("tags").select("*").where({id}).first();
+
+        if(tag === undefined )
+        {
+            return false;
+        }
+        return true;
+    }
    public async createTag (req:Request, res:Response){
     try{
         const {name}:{name:string} = req.body;

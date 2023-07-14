@@ -28,6 +28,15 @@ class Tag {
             return true;
         });
     }
+    verifyTagById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const tag = yield (0, connection_1.default)("tags").select("*").where({ id }).first();
+            if (tag === undefined) {
+                return false;
+            }
+            return true;
+        });
+    }
     createTag(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
