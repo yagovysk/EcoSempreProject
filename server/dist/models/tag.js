@@ -60,5 +60,27 @@ class Tag {
             }
         });
     }
+    deleteTag(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { tag_id } = req.body;
+                const id = Number(tag_id);
+                if (id <= 0) {
+                    throw new Error("invalid id");
+                }
+                const exist = yield this.verifyTagById(id);
+                if (exist) {
+                    yield (0, connection_1.default)("tags").delete("*").where({ id });
+                    res.sendStatus(200);
+                }
+                else {
+                    res.sendStatus(404);
+                }
+            }
+            catch (error) {
+                res.sendStatus(400);
+            }
+        });
+    }
 }
 exports.default = Tag;

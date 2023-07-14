@@ -25,7 +25,7 @@ class Tag{
         }
         return true;
     }
-    private async verifyTagById (id:string)
+    private async verifyTagById (id:number)
     {
         const tag:object | undefined = await Connection("tags").select("*").where({id}).first();
 
@@ -61,6 +61,31 @@ class Tag{
         res.sendStatus(400);
     }
     }
+
+    public async deleteTag(req:Request, res:Response){
+        try{
+            const {tag_id}:{tag_id:string} = req.body;
+            const id:number = Number(tag_id)
+            if(id <= 0)
+            {
+                throw new Error("invalid id");
+            }
+            const exist:boolean = await this.verifyTagById(id);
+
+            if(exist)
+            {
+                await Connection("tags").delete("*").where({id});
+                res.sendStatus(200);
+            }else{
+                res.sendStatus(404);
+            }
+        }
+        catch(error:any)
+        {
+            res.sendStatus(400);
+        }
+    }
+
 }
 
 export default Tag;
