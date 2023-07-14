@@ -3,6 +3,9 @@
 
 - [Visão geral das rotas](#visão-geral-das-rotas)
 - [base url](#base-URL)
+- [Authenticação](#autenticão)
+  - [Criar usuário](#criar-usuário)
+  - [Logar usuário](#logar-usuário)
 
 ## Visão geral das rotas
 
@@ -75,7 +78,7 @@ POST {{baseUrl}}/user
 | password | string | é necessário um senha com no mínimo 8 caracteres|
 
 
-## Logar usuário
+### Logar usuário
 Após a criação, a requisição deve ser feita para este endpoint para receber um token:
 
 
