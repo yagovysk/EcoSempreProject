@@ -16,6 +16,9 @@ tagRoutes.delete("/tag", async(req:Request, res:Response)=>{
     const tag:Tag = new Tag();
     tag.deleteTag(req, res);
 })
-
+tagRoutes.get("/tags", async(req:Request, res:Response)=>{
+    const tag:Tag = new Tag();
+    tag.getTags(req, res);
+})
 
 export default tagRoutes;
