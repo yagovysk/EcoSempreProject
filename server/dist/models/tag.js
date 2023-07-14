@@ -28,6 +28,15 @@ class Tag {
             return true;
         });
     }
+    verifyTagById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const tag = yield (0, connection_1.default)("tags").select("*").where({ id }).first();
+            if (tag === undefined) {
+                return false;
+            }
+            return true;
+        });
+    }
     createTag(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
@@ -44,6 +53,44 @@ class Tag {
                 }
                 else {
                     res.sendStatus(409);
+                }
+            }
+            catch (error) {
+                res.sendStatus(400);
+            }
+        });
+    }
+    deleteTag(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { tag_id } = req.body;
+                const id = Number(tag_id);
+                if (id <= 0) {
+                    throw new Error("invalid id");
+                }
+                const exist = yield this.verifyTagById(id);
+                if (exist) {
+                    yield (0, connection_1.default)("tags").delete("*").where({ id });
+                    res.sendStatus(200);
+                }
+                else {
+                    res.sendStatus(404);
+                }
+            }
+            catch (error) {
+                res.sendStatus(400);
+            }
+        });
+    }
+    getTags(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const tags = yield (0, connection_1.default)("tags").select("*");
+                if (tags[0] === undefined) {
+                    res.sendStatus(404);
+                }
+                else {
+                    res.status(200).send(tags);
                 }
             }
             catch (error) {
