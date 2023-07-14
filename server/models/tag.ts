@@ -85,6 +85,23 @@ class Tag{
             res.sendStatus(400);
         }
     }
+    public async getTags(req:Request, res:Response){
+        try{
+            const tags:string[] = await Connection("tags").select("*");
+
+        if(tags[0] === undefined)
+        {
+            res.sendStatus(404);
+        }
+        else{
+            res.status(200).send(tags)
+        }
+        }
+        catch(error:any)
+        {
+            res.sendStatus(400);
+        }
+    }
 
 }
 
