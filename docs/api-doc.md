@@ -37,11 +37,20 @@
 | /article/:id          | PUT    | Sim       |
 
 ### Tags
+
 | Rota                 | Método   | Protegida |
 |-----------------------|--------|-----------|
 | /tags| GET  | Sim   | 
 | /tag | DELETE | Sim |
 | /tag | POST | Sim |
+
+### Newsletter
+
+| Rota                 | Método   | Protegida |
+|-----------------------|--------|-----------|
+| /newsletter | GET  | Sim   | 
+| /newsletter | DELETE | Sim |
+| /newsletter | POST | Não |
 
 ## base URL
 
