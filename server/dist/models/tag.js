@@ -82,5 +82,21 @@ class Tag {
             }
         });
     }
+    getTags(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const tags = yield (0, connection_1.default)("tags").select("*");
+                if (tags[0] === undefined) {
+                    res.sendStatus(404);
+                }
+                else {
+                    res.status(200).send(tags);
+                }
+            }
+            catch (error) {
+                res.sendStatus(400);
+            }
+        });
+    }
 }
 exports.default = Tag;
