@@ -4,7 +4,7 @@ import jwt, { JwtPayload } from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 import Connection from "../database/connection";
-
+import Static from "../static";
 dotenv.config();
 
 type Login = {
@@ -23,6 +23,8 @@ class User {
     constructor() {
 
     }
+    private currentDate = new Static().getCurrentDate();
+
     private hashPassword(password: string) {
         // check if the pass is most longer then 8 
 
@@ -84,7 +86,11 @@ class User {
 
         try {
             const user: IUser = req.body;
-
+            const fullUser:IUser = {
+                ...user,
+                createdAt: this.currentDate,
+                updatedAt: this.currentDate
+            }
             const exist: boolean = await this.verifyUserByEmail(user.email);
 
             if (exist) {
@@ -94,10 +100,10 @@ class User {
             const hashedPassword = this.hashPassword(user.password);
 
             user.password = hashedPassword;
-            const result: string[] = await Connection("users").insert(user);
+              await Connection("users").insert(fullUser);
 
 
-            res.status(201).send(`Created! ${result[0]}`)
+            res.sendStatus(201)
         }
         catch (error: any) {
             res.status(400).send(error.message);
