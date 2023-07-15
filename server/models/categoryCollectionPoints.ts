@@ -55,6 +55,10 @@ class CategoryCollectionPoints{
             updatedAt: this.currentDate
         }
 
+        if(category.name === "" || category.name === undefined)
+        {
+            throw new Error("invalid")
+        }
         const alreadyExist:boolean = await this.verifyCategoryByname(category.name);
 
         if(alreadyExist)
