@@ -6,6 +6,7 @@
 - [Authenticação](#autenticão)
   - [Criar usuário](#criar-usuário)
   - [Logar usuário](#logar-usuário)
+ - [Categoria de pontos de coleta](#categoria-de-pontos-de-coleta)
 
 ## Visão geral das rotas
 
@@ -107,11 +108,44 @@ POST  {{baseUrl}}/authentication
   <summary>Exemplo de resposta com erro</summary>
   
   ```
-  {
+  
 Undefined binding(s) detected when compiling SELECT. Undefined column(s): [email
 ] query: select * from `users` where `email` = ?
-  }
+  
   ```
 </details>
 
+
+## Categoria de pontos de coleta
+
+### Criar categoria
+
+```
+POST {{baseUrl}}/category-collection-points
+```
+
+##### Corpo da requisição
+
+| parâmetro | tipo | Descrição |
+|-|-|-|
+| name | string | nome da categoria |
+
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  
+  ```
+  Created
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+
+  invalid
+  
+  ```
+</details>
 
