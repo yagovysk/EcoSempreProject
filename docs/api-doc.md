@@ -7,7 +7,7 @@
   - [Criar usuário](#criar-usuário)
   - [Logar usuário](#logar-usuário)
  - [Categoria de pontos de coleta](#categoria-de-pontos-de-coleta)
-
+  - [Criar categoria](#criar-categoria)
 ## Visão geral das rotas
 
 ### Autenticação
