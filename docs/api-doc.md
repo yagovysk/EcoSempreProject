@@ -10,6 +10,7 @@
     - [Criar categoria](#criar-categoria)
 -  [Pontos de coleta](#pontos-de-coleta)
     - [Criar ponto de coleta](#criar-ponto-de-coleta)
+    - [Obter pontos de coleta](#obter-pontos-de-coleta)
 ## Visão geral das rotas
 
 ### Autenticação
@@ -186,4 +187,36 @@ POST {{baseUrl}}/collection-point
   ```
 </details>
 
+### Obter pontos de coleta
 
+```
+POST {{baseUrl}}/collection-points
+```
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  
+  ```
+  [
+    {
+        "id": 1,
+        "name": "any name",
+        "address": "av: test any nº 200",
+        "state": "brasilia",
+        "cep": "00000000",
+        "size": "M",
+        "category_id": 1,
+        "createdAt": "2023-07-16T15:59:29.000Z",
+        "updatedAt": "2023-07-16T15:59:29.000Z"
+    }
+]
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  Bad Request
+  ```
+</details>
