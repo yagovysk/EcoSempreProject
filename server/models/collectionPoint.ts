@@ -17,7 +17,7 @@ interface ICollectionPoint{
 
 
 
-class collectionPoint{
+class CollectionPoint{
     constructor(){}
     private currentDate:string = new Static().getCurrentDate();
 
@@ -77,4 +77,4 @@ class collectionPoint{
     }
 }
 
-export default collectionPoint;
+export default CollectionPoint;
