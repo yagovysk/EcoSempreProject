@@ -4,25 +4,6 @@ import Connection from "../database/connection";
 import Static from "../static";
 
 
-// interface ICollectionPoints {
-//     name: string,
-//     address: string,
-//     cep: string
-//     category: number,
-//     state: string
-//     size: string
-// }
-
-
-
-// class collectionPoints{
-//     constructor(){}
-
-
-// }
-
-// export default collectionPoints;
-
 interface ICategoryCollectionPoints{
     name: string,
     createdAt?: string,
