@@ -33,13 +33,30 @@ class CollectionPoint{
     }
     private async checkCategorysExistence(category_id:number)
     {
-        const query:object | undefined = await Connection("collectionPoints").select("*").where({id:category_id}).first();
+        const query:object | undefined = await Connection("categoryCollectionPoints").select("*").where({id:category_id}).first();
 
         if(query === undefined)
         {
             return false;
         }
         return true;
+    }
+    public async getAll(req:Request, res:Response){
+        try{
+            const collectionPoints:string[] = await Connection("collectionPoints").select("*");
+
+        if(collectionPoints[0] === undefined)
+        {
+            res.sendStatus(404);
+        }
+        else{
+            res.status(200).send(collectionPoints);
+        }
+        }
+        catch(error:any)
+        {
+            res.sendStatus(400);
+        }
     }
     public async createCollectionPoint(req:Request,res:Response){
        try{
@@ -72,7 +89,7 @@ class CollectionPoint{
        }
        catch(error:any)
        {
-        res.sendStatus(400);
+        res.status(400).send(error.message);
        }
     }
 }
