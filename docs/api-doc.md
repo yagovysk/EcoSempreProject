@@ -6,7 +6,11 @@
 - [Authenticação](#autenticão)
   - [Criar usuário](#criar-usuário)
   - [Logar usuário](#logar-usuário)
-
+ - [Categoria de pontos de coleta](#categoria-de-pontos-de-coleta)
+    - [Criar categoria](#criar-categoria)
+-  [Pontos de coleta](#pontos-de-coleta)
+    - [Criar ponto de coleta](#criar-ponto-de-coleta)
+    - [Obter pontos de coleta](#obter-pontos-de-coleta)
 ## Visão geral das rotas
 
 ### Autenticação
@@ -107,11 +111,112 @@ POST  {{baseUrl}}/authentication
   <summary>Exemplo de resposta com erro</summary>
   
   ```
-  {
+  
 Undefined binding(s) detected when compiling SELECT. Undefined column(s): [email
 ] query: select * from `users` where `email` = ?
-  }
+  
   ```
 </details>
 
+## Categoria de pontos de coleta
 
+### Criar categoria
+
+```
+POST {{baseUrl}}/category-collection-points
+```
+
+##### Corpo da requisição
+
+| parâmetro | tipo | Descrição |
+|-|-|-|
+| name | string | nome da categoria |
+
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  
+  ```
+  Created
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+
+  Conflict
+  
+  ```
+</details>
+
+## Pontos de coleta
+
+### Criar ponto de coleta
+
+```
+POST {{baseUrl}}/collection-point
+```
+
+##### Corpo da requisição
+
+| parâmetro | tipo | Descrição |
+|-|-|-|
+| name | string | nome do ponto |
+| address | string | endereço completo do ponto de coleta |
+| cep | string | cep contendo apenas números |
+| category_id | number |id da categoria do ponto de coleta |
+| state | string | nome do estado |
+| size | string | tamanho do coletor ex: m, p e etc...|
+<details>
+  <summary>Exemplo de resposta</summary>
+  
+  ```
+  Created
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+
+  invalid
+  
+  ```
+</details>
+
+### Obter pontos de coleta
+
+```
+POST {{baseUrl}}/collection-points
+```
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  
+  ```
+  [
+    {
+        "id": 1,
+        "name": "any name",
+        "address": "av: test any nº 200",
+        "state": "brasilia",
+        "cep": "00000000",
+        "size": "M",
+        "category_id": 1,
+        "createdAt": "2023-07-16T15:59:29.000Z",
+        "updatedAt": "2023-07-16T15:59:29.000Z"
+    }
+]
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  Bad Request
+  ```
+</details>
