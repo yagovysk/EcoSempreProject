@@ -7,7 +7,9 @@
   - [Criar usuário](#criar-usuário)
   - [Logar usuário](#logar-usuário)
  - [Categoria de pontos de coleta](#categoria-de-pontos-de-coleta)
-  - [Criar categoria](#criar-categoria)
+    - [Criar categoria](#criar-categoria)
+-  [Pontos de coleta](#pontos-de-coleta)
+    - [Criar ponto de coleta](#criar-ponto-de-coleta)
 ## Visão geral das rotas
 
 ### Autenticação
@@ -115,7 +117,6 @@ Undefined binding(s) detected when compiling SELECT. Undefined column(s): [email
   ```
 </details>
 
-
 ## Categoria de pontos de coleta
 
 ### Criar categoria
@@ -144,8 +145,45 @@ POST {{baseUrl}}/category-collection-points
   
   ```
 
+  Conflict
+  
+  ```
+</details>
+
+## Pontos de coleta
+
+### Criar ponto de coleta
+
+```
+POST {{baseUrl}}/collection-point
+```
+
+##### Corpo da requisição
+
+| parâmetro | tipo | Descrição |
+|-|-|-|
+| name | string | nome do ponto |
+| address | string | endereço completo do ponto de coleta |
+| cep | string | cep contendo apenas números |
+| category_id | number |id da categoria do ponto de coleta |
+| state | string | nome do estado |
+| size | string | tamanho do coletor ex: m, p e etc...|
+<details>
+  <summary>Exemplo de resposta</summary>
+  
+  ```
+  Created
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+
   invalid
   
   ```
 </details>
+
 
