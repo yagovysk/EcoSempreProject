@@ -13,6 +13,10 @@ collectionPointRoutes.post("/collection-point", async(req:Request, res:Response)
 
     collectionPoint.createCollectionPoint(req, res);
 })
+collectionPointRoutes.get("/collection-points", async(req:Request,res:Response)=>{
+    const collectionPoint:CollectionPoint = new CollectionPoint();
 
+    collectionPoint.getAll(req, res);
+})
 
 export default collectionPointRoutes;
