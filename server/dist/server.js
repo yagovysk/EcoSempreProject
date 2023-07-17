@@ -11,6 +11,8 @@ const article_1 = __importDefault(require("./routes/article"));
 const contact_1 = __importDefault(require("./routes/contact"));
 const newsletter_1 = __importDefault(require("./routes/newsletter"));
 const createAdminUserScript_1 = __importDefault(require("./createAdminUserScript"));
+const categoryCollectionPoints_1 = __importDefault(require("./routes/categoryCollectionPoints"));
+const collectionPoint_1 = __importDefault(require("./routes/collectionPoint"));
 // setup admin
 (0, createAdminUserScript_1.default)();
 const app = (0, express_1.default)();
@@ -22,4 +24,6 @@ app.use("/api/v1", article_1.default);
 app.use("/api/v1", contact_1.default);
 app.use("/api/v1", tag_1.default);
 app.use("/api/v1", newsletter_1.default);
+app.use("/api/v1", categoryCollectionPoints_1.default);
+app.use("/api/v1", collectionPoint_1.default);
 exports.default = app;
