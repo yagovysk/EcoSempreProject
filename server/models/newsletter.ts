@@ -60,7 +60,9 @@ class Newsletter {
                     res.sendStatus(201);
                 }
             }
-         res.sendStatus(400);
+         else{
+            res.sendStatus(400);
+         }
         
 
         }
