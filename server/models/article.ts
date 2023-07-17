@@ -1,7 +1,9 @@
-import Connection from "../database/connection";
 import slugify from 'slugify';
-import Static from "../static";
 import { Request, Response } from "express";
+
+import Static from "../static";
+import Connection from "../database/connection";
+import Mailer from '../mailer';
 
 interface IArticle {
     title: string,
@@ -60,6 +62,7 @@ class Article {
         try {
             const article: IArticle = req.body;
             const isValid: boolean = this.articleValidate(article);
+            const mailer:Mailer = new Mailer();
             if (isValid) {
                 const exist: boolean = await this.verifyArticleByTitle(article.title);
 
@@ -76,6 +79,7 @@ class Article {
                     }
 
                     await Connection("articles").insert(fullArticle);
+                    await mailer.pushNotification(slugify(article.title))
                     res.status(201).send("Created Successfully!");
                     
                 }
