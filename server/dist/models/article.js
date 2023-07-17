@@ -12,9 +12,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const connection_1 = __importDefault(require("../database/connection"));
 const slugify_1 = __importDefault(require("slugify"));
 const static_1 = __importDefault(require("../static"));
+const connection_1 = __importDefault(require("../database/connection"));
+const mailer_1 = __importDefault(require("../mailer"));
 class Article {
     constructor() {
         this.currentDate = new static_1.default().getCurrentDate();
@@ -56,6 +57,7 @@ class Article {
             try {
                 const article = req.body;
                 const isValid = this.articleValidate(article);
+                const mailer = new mailer_1.default();
                 if (isValid) {
                     const exist = yield this.verifyArticleByTitle(article.title);
                     if (exist) {
@@ -64,6 +66,7 @@ class Article {
                     else {
                         const fullArticle = Object.assign(Object.assign({}, article), { createdAt: this.currentDate, updatedAt: this.currentDate, slug: (0, slugify_1.default)(article.title) });
                         yield (0, connection_1.default)("articles").insert(fullArticle);
+                        yield mailer.pushNotification((0, slugify_1.default)(article.title));
                         res.status(201).send("Created Successfully!");
                     }
                 }
