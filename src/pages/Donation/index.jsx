@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import { HeaderSection } from "../../components/HeaderSection";
 import { ScrollReveal } from "../../components/ScrollReveal";
+import { Tooltip } from "../../components/Tooltip";
 import { handleKeyboardTrap } from "../../helpers";
 import donationPeople1 from "../../assets/donation_people_1.png";
 import donationPeople2 from "../../assets/donation_people_2.png";
@@ -265,7 +266,6 @@ const ModalPix = (props) => {
             pix="99.999.999/0001-99"
             label="CNPJ:"
             refClipboard={(node) => getRef(node, 2)}
-            // positionTooltip={{ "--top": "21.4rem" }}
           />
         </div>
 
@@ -349,21 +349,12 @@ const PixInformation = ({
 
         <div className={styles.wrapper_tooltips}>
           {isTooltipOn && (
-            <ClipboardTooltip
+            <Tooltip
               title={!pixCopied ? "Copiar chave pix" : "Chave pix copiada!"}
             />
           )}
         </div>
       </button>
     </>
-  );
-};
-
-const ClipboardTooltip = ({ title }) => {
-  return (
-    <div className={`${styles.clipboard_tooltip_wrapper}`}>
-      <span>{title}</span>
-      <Icon icon="bxs:up-arrow" />
-    </div>
   );
 };
