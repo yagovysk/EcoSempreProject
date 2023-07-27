@@ -69,7 +69,7 @@ class Mailer{
         const result:number = Number(this.sendMail(pushMessage));
         let attempts = 3;
 
-        console.log("TENTATIVA: ", attempts)
+
         if(result == 500)
         {
             attempts--;
