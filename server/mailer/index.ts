@@ -12,7 +12,7 @@ interface IConfig{
     }
 }
 
-interface IPushMessage{
+interface IEmailMessage{
     from: string,
     to: string[] | string,
     subject: string,
@@ -26,9 +26,10 @@ interface NewsletterEmail {
     updatedAt: string;
   }
 
+
 class Mailer{
     constructor(){}
-    private async sendMail(message:IPushMessage){
+    private async sendMail(message:IEmailMessage){
         try{
             const config:IConfig = {
                 host: "smtp.office365.com",
@@ -59,7 +60,7 @@ class Mailer{
         const NewsletterEmails:NewsletterEmail[] = await Connection("newsletter").select("*");
         const emails: string[] = NewsletterEmails.map(register => register.email);
 
-        const pushMessage:IPushMessage = {
+        const pushMessage:IEmailMessage = {
             from: process.env.PUSH_EMAIL!,
             to: emails,
             subject:  "Nova publicação no blog da Eco Sempre",
@@ -87,6 +88,9 @@ class Mailer{
         }
 
     }
+    public async sendSchedule(attachments:string[]){
+        
+    }   
 }
 
 
