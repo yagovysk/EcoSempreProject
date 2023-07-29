@@ -1,9 +1,10 @@
 import nodemailer, {Transporter} from 'nodemailer';
 import dotenv from 'dotenv';
 import path from 'path';
+import fs from 'fs';
 dotenv.config();
 
-import { ScheduleMessage } from '../models/schedulePickUp';
+import SchedulePickup, { ScheduleMessage, Attachment } from '../models/schedulePickUp';
 import Connection from '../database/connection';
 
 interface IConfig{
@@ -35,6 +36,20 @@ interface NewsletterEmail {
 
 class Mailer{
     constructor(){}
+
+    private removeTemporaryAttachments(filePaths: Attachment[]) {
+        filePaths.forEach((attachment) => {
+          const filePath = attachment.path;
+          fs.unlink(filePath, (err) => {
+            if (err) {
+              console.error(`Error deleting file ${filePath}: ${err.message}`);
+            } else {
+              console.log(`File ${filePath} deleted successfully.`);
+            }
+          });
+        });
+      }
+      
     private async sendMail(message: IEmailMessage): Promise<number> {
         try {
             const config: IConfig = {
@@ -99,6 +114,7 @@ class Mailer{
     }
     public async pushSchedulePickup(message: ScheduleMessage): Promise<boolean> {
         try {
+            const schedulePickup:SchedulePickup = new SchedulePickup();
             const result: number = await this.sendMail(message);
             let attempts = 3;
     
@@ -110,10 +126,11 @@ class Mailer{
                     return false;
                 }
             } else {
+                this.removeTemporaryAttachments(message.attachments)
                 return true;
             }
         } catch (error) {
-            console.error(error);
+            this.removeTemporaryAttachments(message.attachments)
             return false;
         }
     }

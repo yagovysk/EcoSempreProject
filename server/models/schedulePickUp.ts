@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import path from 'path';
+import fs from 'fs';
+
 
 import Mailer from "../mailer";
 
@@ -23,7 +25,7 @@ export interface ScheduleMessage {
     attachments: Attachment[]
 }
 
-interface Attachment {
+export interface Attachment {
     filename: string;
     path: string;
 }
@@ -31,9 +33,7 @@ interface Attachment {
 class SchedulePickup {
     constructor() { }
 
-    private removeTemporaryAttachments(attachments: string[]) {
-
-    }
+   
 
     public async createSchedule(req: Request, res: Response, attachments: string[]) {
         try {
