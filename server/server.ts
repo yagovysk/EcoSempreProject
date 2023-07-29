@@ -9,6 +9,7 @@ import newsletterRoutes from './routes/newsletter';
 import createAdminUser from './createAdminUserScript';
 import categoryCollectionPointsRoutes from './routes/categoryCollectionPoints';
 import collectionPointRoutes from './routes/collectionPoint';
+import scheduleRoutes from './routes/schedulePickup';
 // setup admin
 createAdminUser();
 const app:Application = express();
@@ -23,5 +24,6 @@ app.use("/api/v1", tagRoutes);
 app.use("/api/v1", newsletterRoutes);
 app.use("/api/v1", categoryCollectionPointsRoutes);
 app.use("/api/v1", collectionPointRoutes);
+app.use("/api/v1", scheduleRoutes);
 
 export default app;
