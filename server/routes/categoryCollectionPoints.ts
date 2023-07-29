@@ -1,7 +1,11 @@
 import express, { Router, Request, Response } from 'express';
-import CategoryCollectionPoints from '../models/categoryCollectionPoints';
-import Middleware from '../auth/middleware';
 const categoryRoutes: Router = express.Router();
+import CategoryCollectionPoints from '../models/categoryCollectionPoints';
+
+
+import Middleware from '../auth/middleware';
+
+
 
 
 

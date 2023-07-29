@@ -1,11 +1,23 @@
-import express, { Router, Request, Response } from 'express';
-import SchedulePickup from '../models/schedulePickUp';
-import multer, {DiskStorageOptions} from 'multer';
-import path from 'path';
+import express, { Router, Request, Response, NextFunction } from 'express';
+import multer, {StorageEngine, Multer} from 'multer';
+import path from 'path'
 const scheduleRoutes: Router = express.Router();
 
-// Configuração do Multer para armazenar as imagens temporariamente
-const storage = multer.diskStorage({
+import SchedulePickup from '../models/schedulePickUp';
+
+export interface UploadedFile {
+    fieldname: string;
+    originalname: string;
+    encoding: string;
+    mimetype: string;
+    destination: string;
+    filename: string;
+    path: string;
+    size: number;
+  }
+  
+
+const storage:StorageEngine = multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, 'temp/');
     },
@@ -14,18 +26,22 @@ const storage = multer.diskStorage({
       cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
     },
   });
-  
-  const upload = multer({
-    storage: storage,
-    limits: { files: 3 }
-  });
 
 
+const upload:Multer= multer({storage, limits: {files: 3}});
 
-scheduleRoutes.post("/schedule-pickup", upload.array("attachments", 3), async (req:Request, res:Response)=>{
-    const schedulePickup:SchedulePickup = new SchedulePickup();
-    const attachments:string[] = req.files?.map((file)=> file.filename)
-    schedulePickup.createSchedule(req, res, attachments);
+scheduleRoutes.post("/schedule-pickup", upload.array("attachments", 3),  async(req:Request, res:Response)=>{
+
+    const schedulePickup: SchedulePickup = new SchedulePickup();
+    const files :UploadedFile[] | undefined   = req.files as UploadedFile[];
+
+    if(!files || !Array.isArray(files))
+    {
+        res.sendStatus(400);
+    }
+
+    const attachments:string[] = files.map( (file:any) =>  file.filename);
+   schedulePickup.createSchedule(req, res, attachments)
 })
 
 
