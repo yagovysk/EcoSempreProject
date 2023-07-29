@@ -1,7 +1,7 @@
 // THIS FILES WAS CREATED TO ADDING STATIC FUNCTIONS// 
 
 class Static{
-    public getCurrentDate = () =>
+    public getCurrentDate()
     {
         
     const date = new Date();
@@ -13,7 +13,8 @@ class Static{
     const seconds = ('0' + date.getSeconds()).slice(-2);
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
   }
-  
+
 }
+
 
 export default Static;

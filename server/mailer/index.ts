@@ -1,6 +1,10 @@
 import nodemailer, {Transporter} from 'nodemailer';
 import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
 dotenv.config();
+
+import SchedulePickup, { ScheduleMessage, Attachment } from '../models/schedulePickUp';
 import Connection from '../database/connection';
 
 interface IConfig{
@@ -12,11 +16,11 @@ interface IConfig{
     }
 }
 
-interface IPushMessage{
+interface IEmailMessage{
     from: string,
     to: string[] | string,
     subject: string,
-    html: string
+    html: string,
 }
 
 interface NewsletterEmail {
@@ -26,40 +30,61 @@ interface NewsletterEmail {
     updatedAt: string;
   }
 
+
+
+
+
 class Mailer{
     constructor(){}
-    private async sendMail(message:IPushMessage){
-        try{
-            const config:IConfig = {
+
+    private removeTemporaryAttachments(filePaths: Attachment[]) {
+        filePaths.forEach((attachment) => {
+          const filePath = attachment.path;
+          fs.unlink(filePath, (err) => {
+            if (err) {
+              console.error(`Error deleting file ${filePath}: ${err.message}`);
+            } else {
+              console.log(`File ${filePath} deleted successfully.`);
+            }
+          });
+        });
+      }
+      
+    private async sendMail(message: IEmailMessage): Promise<number> {
+        try {
+            const config: IConfig = {
                 host: "smtp.office365.com",
                 port: 587,
                 auth: {
                     user: process.env.PUSH_EMAIL!,
                     pass: process.env.PUSH_EMAIL_PASS!
                 }
-            }
-            const SUCESS_CODE = 200;
-            
-            const transporter:Transporter = nodemailer.createTransport(config);
-            transporter.sendMail(message, (error: unknown, info: unknown) => {
-                if (error)  throw new Error(`ERROR: ${error}`);
-                else{
-                    console.log("SUCESS?", info)
-                    return  SUCESS_CODE;
-                }
-            })
-        }
-        catch(error:any){
-            const ERROR_CODE= 500;
+            };
+            const SUCCESS_CODE: number = 200;
+    
+            const transporter: Transporter = nodemailer.createTransport(config);
+    
+            return new Promise((resolve, reject) => {
+                transporter.sendMail(message, (error: unknown, info: unknown) => {
+                    if (error) {
+                        reject(new Error(`ERROR: ${error}`));
+                    } else {
+                        resolve(SUCCESS_CODE);
+                    }
+                });
+            });
+        } catch (error) {
+            const ERROR_CODE: number = 500;
             return ERROR_CODE;
         }
     }
+    
 
     public async pushNotification(slug:string){
         const NewsletterEmails:NewsletterEmail[] = await Connection("newsletter").select("*");
         const emails: string[] = NewsletterEmails.map(register => register.email);
 
-        const pushMessage:IPushMessage = {
+        const pushMessage:IEmailMessage = {
             from: process.env.PUSH_EMAIL!,
             to: emails,
             subject:  "Nova publicação no blog da Eco Sempre",
@@ -69,7 +94,7 @@ class Mailer{
         const result:number = Number(this.sendMail(pushMessage));
         let attempts = 3;
 
-        console.log("TENTATIVA: ", attempts)
+
         if(result == 500)
         {
             attempts--;
@@ -87,6 +112,29 @@ class Mailer{
         }
 
     }
+    public async pushSchedulePickup(message: ScheduleMessage): Promise<boolean> {
+        try {
+            const schedulePickup:SchedulePickup = new SchedulePickup();
+            const result: number = await this.sendMail(message);
+            let attempts = 3;
+    
+            if (result === 500) {
+                attempts--;
+                if (attempts > 0) {
+                    return this.pushSchedulePickup(message);
+                } else {
+                    return false;
+                }
+            } else {
+                this.removeTemporaryAttachments(message.attachments)
+                return true;
+            }
+        } catch (error) {
+            this.removeTemporaryAttachments(message.attachments)
+            return false;
+        }
+    }
+    
 }
 
 
