@@ -10,10 +10,10 @@ describe("testing middlware", ()=>{
     })
    
    it("it should returns 200", async() =>{
-      const token:string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoxLCJleHAiOjE2ODYxNjA1MDgsImlhdCI6MTY4NjA3NDEwOH0.sjWD84VdDCYrdajB7esjXDBzD_XJPgu466DxbWQrlao";
+      const token:string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoxLCJleHAiOjE2OTEwMTY0NzYsImlhdCI6MTY5MDkzMDA3Nn0.A7LnU3O7sIeh74FBvAKVSvi11pCKM8qocboDHkkbBgQ";
 
     const res:Response = await supertest(app)
-    .get("/articles")
+    .get("/api/v1/articles")
     .set("Authorization", `Bearer ${token}`);
     expect(res.status).toBe(200);
     

@@ -4,24 +4,28 @@ import app from '../../server';
 
 
 
-describe("DELETE /contact/[id]", ()=>{
-    beforeAll(()=>{
-        process.env.NODE_ENV="test";
-    })
-    afterAll(()=>{
-        process.env.NODE_ENV="development";
+describe("get contact by Id", () => {
+
+    beforeAll(() => {
+        process.env.NODE_ENV = 'test';
     })
 
     it("should return status 200", async()=>{
         const res:Response = await supertest(app)
-        .delete("/contact/2");
+        .get("/api/v1/article/1");
 
         expect(res.status).toBe(200);
     })
-    it.only("should return status 404", async()=>{
+    it.only("should return status 404", async ()=>{
         const res:Response = await supertest(app)
-        .delete("/contact/89898");
+        .get("/api/v1/article/999");
 
         expect(res.status).toBe(404);
     })
-})
+
+    afterAll(() => {
+        process.env.NODE_ENV = 'development';
+    })
+    
+    
+    })

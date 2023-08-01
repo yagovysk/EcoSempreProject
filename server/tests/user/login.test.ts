@@ -27,7 +27,7 @@ describe("POST /authenticate", () => {
         user.email = process.env.ADMIN_EMAIL!;
         user.password = process.env.ADMIN_PASSWORD!;
         const res: Response = await supertest(app)
-            .post("/authentication")
+            .post("/api/v1/authentication")
             .send(user);
         expect(res.status).toBe(200);
     })

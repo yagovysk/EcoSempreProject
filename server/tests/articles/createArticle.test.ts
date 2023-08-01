@@ -27,7 +27,7 @@ describe("POST /article", () => {
 
   it.only("should return status 409", async () => {
     const res: Response = await supertest(app)
-      .post("/article")
+      .post("/api/v1/article")
       .send(article);
     expect(res.status).toBe(409);
   });

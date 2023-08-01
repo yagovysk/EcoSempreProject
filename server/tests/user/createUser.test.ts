@@ -10,23 +10,22 @@ const admin = {
     password: "teste123"
 }
 describe("POST /user", ()=>{
-   
+    beforeAll(()=>{
+        process.env.NODE_ENV="test";
+      })
     it("it should return 201 if  user was created", async() =>{
         const res:Response = await supertest(app)
-        .post("/user")
+        .post("/api/v1/user")
         .send(admin);
         expect(res.status).toBe(201);
     })
 
     it.only("it should return status 400", async()=>{
         const res:Response = await supertest(app)
-        .post("/user")
+        .post("/api/v1/user")
         .send(admin);   
         expect(res.status).toBe(400);
     })
-    beforeAll(()=>{
-        process.env.NODE_ENV="test";
-      })
       afterAll(()=>{
         process.env.NODE_ENV="development";
       })
