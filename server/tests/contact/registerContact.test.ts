@@ -18,7 +18,7 @@ describe("POST /contact", ()=>{
 
     it("it should  returns code 201", async ()=>{
         const res:Response = await supertest(app)
-        .post("/contact")
+        .post("/api/v1/contact")
         .send(contacForm);
 
         expect(res.status).toBe(201)

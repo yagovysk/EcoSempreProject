@@ -132,7 +132,7 @@ class Article {
                 const articles: string[] = await Connection("articles").select("*");
 
                 if (articles[0] === undefined) {
-                    res.status(404).send("doesn't exists articles");
+                    res.sendStatus(404);
                 }
                 res.status(200).send(articles);
             }

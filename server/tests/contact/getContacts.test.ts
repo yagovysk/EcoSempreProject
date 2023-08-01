@@ -6,21 +6,22 @@ describe("TEST CONTACT ROUTES", ()=>{
     beforeAll(()=>{
         process.env.NODE_ENV = "test";
     })
-    afterAll(()=>{
-        process.env.NODE_ENV = "development";
-    })
+   
     it("should returns status 200", async()=>{
         const res:Response  = await supertest(app)
-        .get("/contacts");
+        .get("/api/v1/contacts");
 
         expect(res.status).toBe(200);
     })
     it.only("should returns max 4 items", async ()=>{
         const res:Response  = await supertest(app)
-        .get("/contacts?limit=4&page=1");
+        .get("/api/v1/contacts?limit=4&page=1");
 
        
         expect(res.status).toBe(200)
       
+    })
+    afterAll(()=>{
+        process.env.NODE_ENV = "development";
     })
 })

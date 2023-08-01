@@ -25,7 +25,7 @@ const contacForm = {
 (0, globals_1.describe)("POST /contact", () => {
     (0, globals_1.it)("it should  returns code 201", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(server_1.default)
-            .post("/contact")
+            .post("/api/v1/contact")
             .send(contacForm);
         (0, globals_1.expect)(res.status).toBe(201);
     }));
