@@ -15,11 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const article_1 = __importDefault(require("../models/article"));
 const middleware_1 = __importDefault(require("../auth/middleware"));
-const blogMiddleware_1 = __importDefault(require("../auth/blogMiddleware"));
 const articleRoutes = express_1.default.Router();
 const middleware = new middleware_1.default();
-const blogMiddleware = new blogMiddleware_1.default();
-articleRoutes.get("/articles", blogMiddleware.handle, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+articleRoutes.get("/articles", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const article = new article_1.default();
     article.getArticles(req, res);
 }));
