@@ -11,7 +11,11 @@
    - [Obter todos os artigos registrados](#Obter-todos-os-artigos-registrados)
    - [Buscar artigo por slug ou id](#Buscar-artigo-por-slug-ou-id)
    - [Modificar artigo](#Modificar-artigo)
-   - [Excluir um artigo](#Excluindo-um-artigo)
+   - [Excluir um artigo](#Excluir-artigo)
+- [Tag](#tag)
+    - [Criar tag](#criar-tag)
+    - [Obter tags](#obter-todas-as-tags)
+    - [Deletar tag](#deletar-tag)
  - [Categoria de pontos de coleta](#categoria-de-pontos-de-coleta)
     - [Criar categoria](#criar-categoria)
 -  [Pontos de coleta](#pontos-de-coleta)
@@ -267,7 +271,7 @@ PUT {{baseUrl}}/article/[articleId]
   ```
 </details>
 
-### Excluindo  um artigo
+### Excluir artigo
 ⚠️ **autenticação exigida**
 ```
 DELETE {{baseUrl}}/article/[articleId]
@@ -286,6 +290,107 @@ DELETE {{baseUrl}}/article/[articleId]
   
   ```
   Bad Request
+  ```
+</details>
+
+
+## Tag
+
+### Criar tag
+⚠️ **autenticação exigida**
+```
+POST {{baseUrl}}/tag
+```
+
+##### Corpo da requisição
+
+| parâmetro | tipo | Descrição |
+|-|-|-|
+| name | string | nome da tag |
+
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  ```
+  1
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  Conflict
+  ```
+</details>
+
+### Obter todas as tags
+
+###### Sem paginação
+
+```
+GET {{baseUrl}}/tags
+```
+
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  ```
+  [
+    {
+        "id": 1,
+        "name": "ecologia",
+        "createdAt": "2023-06-26T20:40:44.000Z",
+        "updatedAt": "2023-06-26T20:40:44.000Z"
+    },
+    {
+        "id": 3,
+        "name": "lixo eletronico",
+        "createdAt": "2023-07-14T19:39:56.000Z",
+        "updatedAt": "2023-07-14T19:39:56.000Z"
+    },
+    {
+        "id": 4,
+        "name": "outra tag",
+        "createdAt": "2023-08-01T12:15:32.000Z",
+        "updatedAt": "2023-08-01T12:15:32.000Z"
+    }
+]
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  Not Found
+  ```
+</details>
+
+### Deletar tag
+⚠️ **autenticação exigida**
+```
+DELETE {{baseUrl}}/tag
+```
+
+##### Corpo da requisição
+
+| parâmetro | tipo | descrição |
+|-|-|-|
+| tag_id | number | id da tag que será exluída |
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  ```
+OK
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  Not Found
   ```
 </details>
 
@@ -321,6 +426,8 @@ POST {{baseUrl}}/category-collection-points
   
   ```
 </details>
+
+
 
 ## Pontos de coleta
 
