@@ -9,24 +9,24 @@ const article:object = {
 }
 describe("PUT /articles/[ID]", ()=>{
 
-
+    
+    beforeAll(()=>{
+        process.env.NODE_ENV="test";
+      })
     it("it should return status 200", async() =>{
         const res:Response = await supertest(app)
-        .put("/article/5")
+        .put("/api/v1/article/5")
         .send(article);
 
         expect(res.status).toBe(200);
     })
     it.only("it should return status 404", async() =>{
         const res:Response = await supertest(app)
-        .put("/article/100")
+        .put("/api/v1/article/100")
         .send(article);
     
         expect(res.status).toBe(404);
     })
-    beforeAll(()=>{
-        process.env.NODE_ENV="test";
-      })
       afterAll(()=>{
         process.env.NODE_ENV="development";
       })

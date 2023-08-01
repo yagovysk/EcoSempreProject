@@ -108,7 +108,7 @@ class Article {
                 else {
                     const articles = yield (0, connection_1.default)("articles").select("*");
                     if (articles[0] === undefined) {
-                        res.status(404).send("doesn't exists articles");
+                        res.sendStatus(404);
                     }
                     res.status(200).send(articles);
                 }
