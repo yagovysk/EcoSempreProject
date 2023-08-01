@@ -6,7 +6,7 @@
 - [Authenticação](#autenticão)
   - [Criar usuário](#criar-usuário)
   - [Logar usuário](#logar-usuário)
-- [Artigo|(#artigo)
+- [Artigo](#artigo)
    - [Registrar novo artigo](#registrar-novo-artigo)
    - [Obter todos os artigos registrados](#Obter-todos-os-artigos-registrados)
    - [Buscar artigo por slug ou id](#Buscar-artigo-por-slug-ou-id)
