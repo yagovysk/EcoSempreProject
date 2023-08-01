@@ -6,6 +6,12 @@
 - [Authenticação](#autenticão)
   - [Criar usuário](#criar-usuário)
   - [Logar usuário](#logar-usuário)
+- [Artigo|(#artigo)
+   - [Registrar novo artigo](#registrar-novo-artigo)
+   - [Obter todos os artigos registrados](#Obter-todos-os-artigos-registrados)
+   - [Buscar artigo por slug ou id](#Buscar-artigo-por-slug-ou-id)
+   - [Modificar artigo](#Modificar-artigo)
+   - [Excluir um artigo](#Excluindo-um-artigo)
  - [Categoria de pontos de coleta](#categoria-de-pontos-de-coleta)
     - [Criar categoria](#criar-categoria)
 -  [Pontos de coleta](#pontos-de-coleta)
@@ -118,10 +124,175 @@ Undefined binding(s) detected when compiling SELECT. Undefined column(s): [email
   ```
 </details>
 
+
+## Artigo
+
+### Registrar novo artigo
+⚠️ **autenticação exigida**
+```
+POST {{baseUrl}}/article
+```
+
+##### Corpo da requisição
+
+| parâmetro | tipo | Descrição |
+|-|-|-|
+| title | string | título da postagem |
+| author | string | nome do autor da publicação |
+| content | string | todo o conteúdo do blog em texto limpo, incluindo tags html inseridas pelo editor de texto |
+| author_id | number |id do author |
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  ```
+  Created Successfully!
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  The article already exists!
+  ```
+</details>
+
+### Obter todos os artigos registrados
+
+###### Sem paginação
+
+```
+GET {{baseUrl}}/articles
+```
+###### Com paginação
+
+```
+GET {{baseUrl}}/articles?page=1&limit=1
+```
+
+
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  ```
+  [
+    {
+        "id": 1,
+        "title": "5 things that  you could make in 2023",
+        "author": "ecosempre",
+        "content": "first1 second third fourth fifh",
+        "author_id": 1,
+        "slug": "5-things-that-you-could-make-in-2023",
+        "createdAt": "2023-05-31T16:54:25.000Z",
+        "updatedAt": "2023-05-31T16:54:25.000Z"
+    },
+    {
+        "id": 2,
+        "title": "Como criar um server express2",
+        "author": "Ecosempre",
+        "content": "this is only a test",
+        "author_id": 1,
+        "slug": "Como-criar-um-server-express2",
+        "createdAt": "2023-05-31T17:06:19.000Z",
+        "updatedAt": "2023-05-31T17:06:19.000Z"
+    }
+    ]
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  Not Found
+  ```
+</details>
+
+### Buscar artigo por slug  ou id
+
+```
+POST {{baseUrl}}/article/[slug]
+```
+
+
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  ```
+  {
+    "id": 2,
+    "title": "Como criar um server express2",
+    "author": "Ecosempre",
+    "content": "this is only a test",
+    "author_id": 1,
+    "slug": "Como-criar-um-server-express2",
+    "createdAt": "2023-05-31T17:06:19.000Z",
+    "updatedAt": "2023-05-31T17:06:19.000Z"
+}
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  Not Found
+  ```
+</details>
+
+### Modificar artigo
+⚠️ **autenticação exigida**
+```
+PUT {{baseUrl}}/article/[articleId]
+```
+
+##### Corpo da requisição
+
+|  parâmetro | novo valor | descrição |
+|-|-|-|
+| title | other title | o novo título de um artigo |
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  ```
+ OK
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  Bad Request
+  ```
+</details>
+
+### Excluindo  um artigo
+⚠️ **autenticação exigida**
+```
+DELETE {{baseUrl}}/article/[articleId]
+```
+
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  ```
+  Deleted
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  Bad Request
+  ```
+</details>
+
 ## Categoria de pontos de coleta
 
 ### Criar categoria
-
+⚠️ **autenticação exigida**
 ```
 POST {{baseUrl}}/category-collection-points
 ```
@@ -154,7 +325,7 @@ POST {{baseUrl}}/category-collection-points
 ## Pontos de coleta
 
 ### Criar ponto de coleta
-
+⚠️ **autenticação exigida**
 ```
 POST {{baseUrl}}/collection-point
 ```
