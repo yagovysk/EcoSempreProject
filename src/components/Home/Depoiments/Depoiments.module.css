@@ -1,5 +1,5 @@
 .idDepoiments {
-  background: #0e2a5a url("../../../assets/fundoDepoiments.png") no-repeat
+  background: #0e2a5a url('../../../assets/fundoDepoiments.png') no-repeat
     center / cover;
   padding: 8rem 0;
   overflow: hidden;
@@ -8,16 +8,16 @@
 
 .content {
   color: #fff;
-  margin: 0 auto 0 1.5rem;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 4.6rem;
+  max-width: calc(100vw - ((100vw - 1240px) / 2));
+  margin-left: auto;
 }
 
 .textsContainer {
   flex: 1;
-  margin-left: 110px;
+  margin-left: 1.5rem;
 }
 
 .titleFeedback {
@@ -25,7 +25,7 @@
 }
 
 .paragraph {
-  font: 500 1.0625rem "Roboto", sans-serif;
+  font: 500 1.0625rem 'Roboto', sans-serif;
   line-height: 1.6875rem;
 }
 
