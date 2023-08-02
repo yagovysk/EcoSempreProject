@@ -1,27 +1,27 @@
-import { useBreakpoint, useIncreaseNumber } from "../../helpers";
-import { Link } from "react-router-dom";
-import { Icon } from "@iconify/react";
+import { useBreakpoint, useIncreaseNumber } from '../../helpers'
+import { Link } from 'react-router-dom'
+import { Icon } from '@iconify/react'
 
-import { Intro } from "../../components/Home/Intro";
-import { Saiba } from "../../components/Home/Saiba";
-import { Coletas } from "../../components/Home/Coletas";
-import { ParceirosCard } from "../../components/ParceirosCard";
-import { FormTalkWithUs } from "../../components/FormTalkWithUs";
-import { Depoiments } from "../../components/Home/Depoiments";
-import { Faq } from "../../components/Faq";
-import { Blog } from "../../components/Home/Blog";
-import { ScrollReveal } from "../../components/ScrollReveal";
+import { Intro } from '../../components/Home/Intro'
+import { Saiba } from '../../components/Home/Saiba'
+import { Coletas } from '../../components/Home/Coletas'
+import { ParceirosCard } from '../../components/ParceirosCard'
+import { FormTalkWithUs } from '../../components/FormTalkWithUs'
+import { Depoiments } from '../../components/Home/Depoiments'
+import { Faq } from '../../components/Faq'
+import { Blog } from '../../components/Home/Blog'
+import { ScrollReveal } from '../../components/ScrollReveal'
 
-import coletaimg from "../../assets/Coletasimg.png";
-import recycleIcon from "../../assets/recycleIcon.svg";
-import sobreimg from "../../assets/sobreimg.png";
-import plantaicon from "../../assets/plantaicon.svg";
-import sustentabilidadeImg from "../../assets/sustentabilidadeImg.png";
-import logisticard from "../../assets/logistica_reversa.png";
-import styles from "./Home.module.css";
+import coletaimg from '../../assets/Coletasimg.png'
+import recycleIcon from '../../assets/recycleIcon.svg'
+import sobreimg from '../../assets/sobreimg.png'
+import plantaicon from '../../assets/plantaicon.svg'
+import sustentabilidadeImg from '../../assets/sustentabilidadeImg.png'
+import logisticard from '../../assets/logistica_reversa.png'
+import styles from './Home.module.css'
 
 export function Home() {
-  const windowWidth = useBreakpoint();
+  const windowWidth = useBreakpoint()
   return (
     <main className={styles.main_content}>
       <Intro />
@@ -41,14 +41,14 @@ export function Home() {
       {windowWidth > 500 && <Callwithus />}
       <Blog isMobile={windowWidth < 500 ? true : false} />
     </main>
-  );
+  )
 }
 
 function Sobre() {
   // 778 = discarded E-Waste number
   // 10 = duration of number update per ms
   // 2 = amount that will increase per ms
-  const numberGarbage = useIncreaseNumber(778, 10, 2);
+  const numberGarbage = useIncreaseNumber(778, 10, 2)
 
   return (
     <div className="container">
@@ -64,8 +64,8 @@ function Sobre() {
             </ScrollReveal>
           </picture>
 
-          <ScrollReveal origin="left" style={{ position: "absolute", top: 0 }}>
-            <div className={styles["number-garbage-wrapper"]}>
+          <ScrollReveal origin="left" style={{ position: 'absolute', top: 0 }}>
+            <div className={styles['number-garbage-wrapper']}>
               <img src={plantaicon} alt="Ícone de Planta" aria-hidden={true} />
               <strong className={styles.numbers}>+ {numberGarbage} KG</strong>
               <span className={styles.residuos}>
@@ -141,7 +141,7 @@ function Sobre() {
         </ScrollReveal>
       </div>
     </div>
-  );
+  )
 }
 
 function Sustentabilidade() {
@@ -174,7 +174,7 @@ function Sustentabilidade() {
               uma solução sustentável. Junte-se a nós nessa jornada e faça a sua
               parte para um mundo mais limpo e saudável.
             </p>
-            <Link className={`btn ${styles.saibamais}`} to="/">
+            <Link className={`btn ${styles.saibamais}`} to="/descarte">
               Saiba Mais
               <span>🡢</span>
             </Link>
@@ -182,7 +182,7 @@ function Sustentabilidade() {
         </ScrollReveal>
       </article>
     </div>
-  );
+  )
 }
 
 function Logistica() {
@@ -207,7 +207,7 @@ function Logistica() {
         </ScrollReveal>
       </section>
     </article>
-  );
+  )
 }
 
 function ImgColetas() {
@@ -238,7 +238,7 @@ function ImgColetas() {
         <div aria-hidden={true} className={styles.behind}></div>
       </ScrollReveal>
     </div>
-  );
+  )
 }
 
 function Parceiros() {
@@ -259,7 +259,7 @@ function Parceiros() {
         </div>
       </section>
     </article>
-  );
+  )
 }
 
 function Callwithus() {
@@ -291,5 +291,5 @@ function Callwithus() {
         </div>
       </div>
     </div>
-  );
+  )
 }
