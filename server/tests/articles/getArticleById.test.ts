@@ -7,6 +7,9 @@ import app from '../../server';
 
 describe("GET /article/[id]", ()=>{
 
+  beforeAll(()=>{
+    process.env.NODE_ENV="test";
+  })
     it.only("it should returns 404 status", async () =>{
 
         const res:Response = await supertest(app)
@@ -22,9 +25,6 @@ describe("GET /article/[id]", ()=>{
         expect(res.status).toBe(200);
 
 
-    })
-    beforeAll(()=>{
-      process.env.NODE_ENV="test";
     })
     afterAll(()=>{
       process.env.NODE_ENV="development";

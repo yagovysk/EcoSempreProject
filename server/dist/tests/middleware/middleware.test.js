@@ -20,9 +20,9 @@ const server_1 = __importDefault(require("../../server"));
         process.env.NODE_ENV = "development";
     });
     (0, globals_1.it)("it should returns 200", () => __awaiter(void 0, void 0, void 0, function* () {
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoxLCJleHAiOjE2ODYxNjA1MDgsImlhdCI6MTY4NjA3NDEwOH0.sjWD84VdDCYrdajB7esjXDBzD_XJPgu466DxbWQrlao";
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoxLCJleHAiOjE2OTEwMTY0NzYsImlhdCI6MTY5MDkzMDA3Nn0.A7LnU3O7sIeh74FBvAKVSvi11pCKM8qocboDHkkbBgQ";
         const res = yield (0, supertest_1.default)(server_1.default)
-            .get("/articles")
+            .get("/api/v1/articles")
             .set("Authorization", `Bearer ${token}`);
         (0, globals_1.expect)(res.status).toBe(200);
     }));

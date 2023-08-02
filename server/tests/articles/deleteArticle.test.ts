@@ -10,13 +10,13 @@ describe("DELETE /article/id", () =>{
     const id:number = 3;
     it("it should returns 404", async () =>{
         const res: Response = await supertest(app)
-        .delete(`/article/${id}`);
+        .delete(`/api/v1/article/${id}`);
         expect(res.status).toBe(200);
     })
     it.only("it should returns 404", async () =>{
    
         const res: Response = await supertest(app)
-        .delete(`/article/99999`);
+        .delete(`/api/v1/article/99999`);
         expect(res.status).toBe(404);
     })
   

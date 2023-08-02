@@ -1,17 +1,51 @@
-### Routes overview
+## Visão geral das rotas
 
+### Autenticação
 
-
-| Route                 | Verb   | Protected |
+| Rota                 | Método   | Protegida |
 |-----------------------|--------|-----------|
-| /authentication       | POST   | No        |
-| /user                 | POST   | Yes       |
-| /contact              | POST   | No        |
-| /contacts             | GET    | Yes       |
-| /articles             | GET    | Yes       |
-| /article              | POST   | Yes       |
-| /article/:key         | GET    | Yes       |
-| /article/:id          | DELETE | Yes       |
-| /article/:id          | PUT    | Yes       |
+| /authentication       | POST   | Não        |
+
+### Usuário
+
+| Rota                 | Métoodo   | Protegida |
+|-----------------------|--------|-----------|
+| /user                 | POST   | Sim       |
+
+### Contatos
+
+| Rota                 | Método   | Protegida |
+|-----------------------|--------|-----------|
+| /contact              | POST   | Não        |
+| /contacts             | GET    | Sim       |
 
 
+### artigos
+
+
+| Rota                 | Método   | Protegida |
+|-----------------------|--------|-----------|
+| /articles             | GET    | Sim       |
+| /article              | POST   | Sim       |
+| /article/:key         | GET    | Sim       |
+| /article/:id          | DELETE | Sim       |
+| /article/:id          | PUT    | Sim       |
+
+### Tags
+
+| Rota                 | Método   | Protegida |
+|-----------------------|--------|-----------|
+| /tags| GET  | Sim   | 
+| /tag | DELETE | Sim |
+| /tag | POST | Sim |
+
+### Newsletter
+
+| Rota                 | Método   | Protegida |
+|-----------------------|--------|-----------|
+| /newsletter | GET  | Sim   | 
+| /newsletter | DELETE | Sim |
+| /newsletter | POST | Não |
+
+
+[Documentação](https://github.com/YrllanBrandao/EcoSempreProject/blob/main/docs/api-doc.md)
