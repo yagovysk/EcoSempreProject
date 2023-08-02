@@ -16,9 +16,11 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const connection_1 = __importDefault(require("../database/connection"));
+const static_1 = __importDefault(require("../static"));
 dotenv_1.default.config();
 class User {
     constructor() {
+        this.currentDate = new static_1.default().getCurrentDate();
         this.getRole = (email) => __awaiter(this, void 0, void 0, function* () {
             const role = yield (0, connection_1.default)("roles")
                 .join("users", "roles.user_id", "=", "users.id")
@@ -43,14 +45,15 @@ class User {
         this.createUser = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const user = req.body;
+                const fullUser = Object.assign(Object.assign({}, user), { createdAt: this.currentDate, updatedAt: this.currentDate });
                 const exist = yield this.verifyUserByEmail(user.email);
                 if (exist) {
                     throw new Error("The user already exist");
                 }
                 const hashedPassword = this.hashPassword(user.password);
                 user.password = hashedPassword;
-                const result = yield (0, connection_1.default)("users").insert(user);
-                res.status(201).send(`Created! ${result[0]}`);
+                yield (0, connection_1.default)("users").insert(fullUser);
+                res.sendStatus(201);
             }
             catch (error) {
                 res.status(400).send(error.message);

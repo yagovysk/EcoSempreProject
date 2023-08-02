@@ -32,7 +32,7 @@ const user = {
         user.email = process.env.ADMIN_EMAIL;
         user.password = process.env.ADMIN_PASSWORD;
         const res = yield (0, supertest_1.default)(server_1.default)
-            .post("/authentication")
+            .post("/api/v1/authentication")
             .send(user);
         (0, globals_1.expect)(res.status).toBe(200);
     }));
