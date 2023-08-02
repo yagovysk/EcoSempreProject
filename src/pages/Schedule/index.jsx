@@ -339,11 +339,12 @@ function FormSchedule() {
           <div className={`${styles.wrapper_field_image}`}>
             <Icon icon="teenyicons:attach-solid" />
             <span className={styles.input_image_text}>Anexar imagens</span>
-            <div className={styles.container_images_select} title={imagesSelected.map(image => image.name).join(", ")}>
+            <div
+              className={styles.container_images_select}
+              title={imagesSelected.map((image) => image.name).join(', ')}
+            >
               {imagesSelected.length > 0 &&
-                imagesSelected.map(
-                  (image) => `${image.name}`
-                )}
+                imagesSelected.map((image) => `${image.name}`)}
             </div>
           </div>
         </label>

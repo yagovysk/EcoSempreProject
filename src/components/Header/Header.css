@@ -31,7 +31,7 @@
 }
 
 .menu .menu_li::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -0.125rem;
   left: 0;
@@ -51,7 +51,7 @@
   gap: 0.4rem;
 
   color: #081e46;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   text-rendering: optimizeLegibility;
   font-style: normal;
   font-weight: 600;
@@ -67,7 +67,7 @@
 }
 
 .menu .menu_item.active::before {
-  content: "";
+  content: '';
   display: block;
   height: 0.2rem;
   width: 100%;
@@ -122,7 +122,7 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   text-align: center;
   font-weight: 700;
@@ -152,7 +152,7 @@
 .dropdown_list {
   display: flex;
   flex-direction: column;
-  font: 400 0.875rem "Roboto", sans-serif;
+  font: 400 0.875rem 'Roboto', sans-serif;
   line-height: 1.06rem;
   color: #9b9b9b;
   list-style: none;
@@ -174,11 +174,11 @@
 
 .dropdown_item::before,
 .dropdown_item.active::before {
-  content: "";
+  content: '';
   display: block;
   width: 0.75rem;
   height: 0.75rem;
-  background: url("../../assets/arrow_link.svg") no-repeat center;
+  background: url('../../assets/arrow_link.svg') no-repeat center;
   position: absolute;
   left: -1.2rem;
   transform: translateX(-1.8rem);
@@ -192,7 +192,7 @@
 }
 
 .dropdown_item:not(.active):hover:before {
-  content: "";
+  content: '';
   transform: translateX(0);
   opacity: 1;
 }
@@ -250,7 +250,7 @@
   padding: 0.8rem 1.5rem;
   width: 100%;
 
-  font: 500 2.125rem "IBM Plex Sans", sans-serif;
+  font: 500 2.125rem 'IBM Plex Sans', sans-serif;
   color: #848e9f;
 }
 
@@ -340,7 +340,7 @@
     width: 100%;
   }
   .header.on .dropdown_list {
-    font: 500 1rem "Roboto", sans-serif;
+    font: 500 1rem 'Roboto', sans-serif;
     color: #0e2b5c;
   }
   .header.on .dropdown_item {
@@ -356,6 +356,7 @@
     font-size: 2rem;
     transition: 0.3s;
   }
+
   .header.on .menu_item.active .arrow_menu_item {
     rotate: 180deg;
   }
