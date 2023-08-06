@@ -21,6 +21,7 @@
 -  [Pontos de coleta](#pontos-de-coleta)
     - [Criar ponto de coleta](#criar-ponto-de-coleta)
     - [Obter pontos de coleta](#obter-pontos-de-coleta)
+- [Agendamento de coleta](#agendamento-de-coleta)
 ## Visão geral das rotas
 
 ### Autenticação
@@ -581,3 +582,22 @@ POST {{baseUrl}}/collection-points
   Bad Request
   ```
 </details>
+
+## Agendamento de coleta
+
+### Criar agendamento
+
+```POST {{baseUrl}}/schedule-pickup```
+
+##### Corpo da requisição
+
+| parâmetro | tipo | Descrição |
+|-|-|-|
+| name | string | nome da empresa ou pessoa |
+| email | string | endereço de e-mail do solicitante|
+| phone | string | número de telefone |
+| cep | string | código postal |
+| state | string | nome do estado |
+| city | string | nome da cidade |
+| materials| string | descrição dos materiais e quantidade |
+| attachments | file | imagens anexadas(máximo 3) |
