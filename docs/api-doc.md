@@ -601,3 +601,25 @@ POST {{baseUrl}}/collection-points
 | city | string | nome da cidade |
 | materials| string | descrição dos materiais e quantidade |
 | attachments | file | imagens anexadas(máximo 3) |
+
+##### Status
+| código | Descrição | 
+|-|-|
+| 200 | Sucesso |
+| 400 | Ocorreu um erro na requisição |
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  
+  ```
+ok
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  Bad Request
+  ```
+</details>
