@@ -21,6 +21,7 @@
 -  [Pontos de coleta](#pontos-de-coleta)
     - [Criar ponto de coleta](#criar-ponto-de-coleta)
     - [Obter pontos de coleta](#obter-pontos-de-coleta)
+- [Agendamento de coleta](#agendamento-de-coleta)
 ## Visão geral das rotas
 
 ### Autenticação
@@ -91,6 +92,11 @@ POST {{baseUrl}}/user
 | email | string | Um email válido que será usado para o login e outras opções |
 | password | string | é necessário um senha com no mínimo 8 caracteres|
 
+##### Status
+| código | Descrição | 
+|-|-|
+| 201 | sucesso na criação do usuário |
+| 400 | Ocorreu um erro na requisição |
 
 ### Logar usuário
 Após a criação, a requisição deve ser feita para este endpoint para receber um token:
@@ -106,6 +112,13 @@ POST  {{baseUrl}}/authentication
 |-|-|-|
 | email | string | e-mail cadastrado |
 | password | string | Senha que foi definida na criação do usuário |
+
+##### Status
+| código | Descrição | 
+|-|-|
+| 201 | sucesso na criação do usuário |
+| 400 | Ocorreu um erro na requisição |
+
 
 <details>
   <summary>Exemplo de resposta</summary>
@@ -146,6 +159,13 @@ POST {{baseUrl}}/article
 | content | string | todo o conteúdo do blog em texto limpo, incluindo tags html inseridas pelo editor de texto |
 | author_id | number |id do author |
 
+##### Status
+| código | Descrição | 
+|-|-|
+| 201 | Artigo criado com sucesso |
+| 400 | Ocorreu um erro na requisição |
+| 409 | O artigo já existe |
+
 <details>
   <summary>Exemplo de resposta</summary>
   ```
@@ -174,7 +194,12 @@ GET {{baseUrl}}/articles
 GET {{baseUrl}}/articles?page=1&limit=1
 ```
 
-
+##### Status
+| código | Descrição | 
+|-|-|
+| 200 | Sucesso |
+| 400 | Ocorreu um erro na requisição |
+| 404 | Não existem artigos cadastrados |
 
 <details>
   <summary>Exemplo de resposta</summary>
@@ -184,7 +209,7 @@ GET {{baseUrl}}/articles?page=1&limit=1
         "id": 1,
         "title": "5 things that  you could make in 2023",
         "author": "ecosempre",
-        "content": "first1 second third fourth fifh",
+        "content": "first1 second third fourth fifth",
         "author_id": 1,
         "slug": "5-things-that-you-could-make-in-2023",
         "createdAt": "2023-05-31T16:54:25.000Z",
@@ -194,7 +219,7 @@ GET {{baseUrl}}/articles?page=1&limit=1
         "id": 2,
         "title": "Como criar um server express2",
         "author": "Ecosempre",
-        "content": "this is only a test",
+        "content": "This is only a test",
         "author_id": 1,
         "slug": "Como-criar-um-server-express2",
         "createdAt": "2023-05-31T17:06:19.000Z",
@@ -218,7 +243,12 @@ GET {{baseUrl}}/articles?page=1&limit=1
 POST {{baseUrl}}/article/[slug]
 ```
 
-
+##### Status
+| código | Descrição | 
+|-|-|
+| 200 | Sucesso |
+| 400 | Ocorreu um erro na requisição |
+| 404 | Não existem artigos cadastrados |
 
 <details>
   <summary>Exemplo de resposta</summary>
@@ -250,11 +280,19 @@ POST {{baseUrl}}/article/[slug]
 PUT {{baseUrl}}/article/[articleId]
 ```
 
-##### Corpo da requisição
+##### Corpo da requisição(exemplo)
 
 |  parâmetro | novo valor | descrição |
 |-|-|-|
 | title | other title | o novo título de um artigo |
+| content | other content | novo conteúdo com mudanças |
+
+##### Status
+| código | Descrição | 
+|-|-|
+| 200 | Sucesso |
+| 400 | Ocorreu um erro na requisição |
+| 404 | Não existem artigos cadastrados |
 
 <details>
   <summary>Exemplo de resposta</summary>
@@ -277,6 +315,12 @@ PUT {{baseUrl}}/article/[articleId]
 DELETE {{baseUrl}}/article/[articleId]
 ```
 
+##### Status
+| código | Descrição | 
+|-|-|
+| 200 | Sucesso |
+| 400 | Ocorreu um erro na requisição |
+| 404 | Não existem artigos cadastrados |
 
 <details>
   <summary>Exemplo de resposta</summary>
@@ -308,6 +352,12 @@ POST {{baseUrl}}/tag
 |-|-|-|
 | name | string | nome da tag |
 
+##### Status
+| código | Descrição | 
+|-|-|
+| 200 | Sucesso |
+| 400 | Ocorreu um erro na requisição |
+| 409 | conflito |
 
 <details>
   <summary>Exemplo de resposta</summary>
@@ -332,6 +382,12 @@ POST {{baseUrl}}/tag
 GET {{baseUrl}}/tags
 ```
 
+##### Status
+| código | Descrição | 
+|-|-|
+| 200 | Sucesso |
+| 400 | Ocorreu um erro na requisição |
+| 404 | Não existem tags registradas|
 
 <details>
   <summary>Exemplo de resposta</summary>
@@ -379,6 +435,13 @@ DELETE {{baseUrl}}/tag
 |-|-|-|
 | tag_id | number | id da tag que será exluída |
 
+##### Status
+| código | Descrição | 
+|-|-|
+| 200 | Sucesso |
+| 400 | Ocorreu um erro na requisição |
+| 404 | A tag não existe |
+
 <details>
   <summary>Exemplo de resposta</summary>
   ```
@@ -408,6 +471,12 @@ POST {{baseUrl}}/category-collection-points
 |-|-|-|
 | name | string | nome da categoria |
 
+##### Status
+| código | Descrição | 
+|-|-|
+| 201 | Sucesso |
+| 400 | Ocorreu um erro na requisição |
+| 409 | conflito |
 
 <details>
   <summary>Exemplo de resposta</summary>
@@ -447,6 +516,15 @@ POST {{baseUrl}}/collection-point
 | category_id | number |id da categoria do ponto de coleta |
 | state | string | nome do estado |
 | size | string | tamanho do coletor ex: m, p e etc...|
+
+##### Status
+| código | Descrição | 
+|-|-|
+| 201 | Sucesso |
+| 400 | Ocorreu um erro na requisição |
+| 409 | conflito |
+
+
 <details>
   <summary>Exemplo de resposta</summary>
   
@@ -470,6 +548,12 @@ POST {{baseUrl}}/collection-point
 ```
 POST {{baseUrl}}/collection-points
 ```
+##### Status
+| código | Descrição | 
+|-|-|
+| 201 | Sucesso |
+| 400 | Ocorreu um erro na requisição |
+| 404 | Não existem pontos de coleta registrados |
 
 <details>
   <summary>Exemplo de resposta</summary>
@@ -488,6 +572,47 @@ POST {{baseUrl}}/collection-points
         "updatedAt": "2023-07-16T15:59:29.000Z"
     }
 ]
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  Bad Request
+  ```
+</details>
+
+## Agendamento de coleta
+
+### Criar agendamento
+
+```POST {{baseUrl}}/schedule-pickup```
+
+##### Corpo da requisição
+
+| parâmetro | tipo | Descrição |
+|-|-|-|
+| name | string | nome da empresa ou pessoa |
+| email | string | endereço de e-mail do solicitante|
+| phone | string | número de telefone |
+| cep | string | código postal |
+| state | string | nome do estado |
+| city | string | nome da cidade |
+| materials| string | descrição dos materiais e quantidade |
+| attachments | file | imagens anexadas(máximo 3) |
+
+##### Status
+| código | Descrição | 
+|-|-|
+| 200 | Sucesso |
+| 400 | Ocorreu um erro na requisição |
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  
+  ```
+ok
   ```
 </details>
 
