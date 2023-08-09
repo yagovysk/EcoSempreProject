@@ -1,27 +1,27 @@
-import { HeaderSection } from "../../components/HeaderSection";
-import { Coletas } from "../../components/Home/Coletas";
-import { Icon } from "@iconify/react";
+import { Icon } from '@iconify/react'
+import { HeaderSection } from '../../components/HeaderSection'
+import { ScrollReveal } from '../../components/ScrollReveal'
+import { Coletas } from '../../components/Coletas'
 
-import threeR from "../../assets/three_r.png";
-import pessoasReciclando from "../../assets/pessoas_reciclando.png";
-import recycleIcon from "../../assets/recycleIcon.svg";
-import coletaimg from "../../assets/Coletasimg.png";
-import styles from "./Descarte.module.css";
-import { ScrollReveal } from "../../components/ScrollReveal";
+import { threeR, peopleRecycling } from '../../assets/imgs/descarte'
+import { coletasImg } from '../../assets/imgs/home'
+import { recycleIcon } from '../../assets/icons'
+
+import styles from './Descarte.module.css'
 
 const linksMenu = [
   {
-    name: "Início",
-    path: "/",
+    name: 'Início',
+    path: '/',
   },
   {
-    name: "Programas",
-    path: "/descarte",
+    name: 'Programas',
+    path: '/descarte',
   },
   {
-    name: "Descarte Correto do Lixo Eletrônico",
+    name: 'Descarte Correto do Lixo Eletrônico',
   },
-];
+]
 
 export function Descarte() {
   return (
@@ -82,7 +82,7 @@ export function Descarte() {
 
         <div className={`${styles.wrapper_img} ${styles.wrapper_img2}`}>
           <ScrollReveal origin="top">
-            <img src={pessoasReciclando} alt="Pessoas reciclando garrafa PET" />
+            <img src={peopleRecycling} alt="Pessoas reciclando garrafa PET" />
             <div aria-hidden={true} className={styles.medium_box}></div>
           </ScrollReveal>
         </div>
@@ -121,7 +121,7 @@ export function Descarte() {
         />
       </article>
     </main>
-  );
+  )
 }
 
 function ImgColetas() {
@@ -129,7 +129,7 @@ function ImgColetas() {
     <div className={styles.container_coletas}>
       <ScrollReveal origin="right">
         <div className={`${styles.wrapper_img_coletas}`}>
-          <img src={coletaimg} alt="Imagem dos equipamentos coletados" />
+          <img src={coletasImg} alt="Imagem dos equipamentos coletados" />
         </div>
 
         <div className={styles.container_box_coletas}>
@@ -142,5 +142,5 @@ function ImgColetas() {
         </div>
       </ScrollReveal>
     </div>
-  );
+  )
 }

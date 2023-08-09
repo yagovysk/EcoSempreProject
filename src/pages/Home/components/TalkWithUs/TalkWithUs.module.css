@@ -1,0 +1,66 @@
+.idfaleconosco {
+  background: #0e2b5cfb url('../../assets/Callwithusimg.png');
+}
+
+.wrapper_content {
+  display: flex;
+  align-items: center;
+  gap: 4.2rem;
+  padding: 0 1.5rem 3.5rem 1.5rem;
+}
+
+.wrapper_form {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0px 0.375rem 3.875rem 0px #1b1a1a26;
+  padding: 3.5rem;
+  transform: translateY(7rem);
+  z-index: 2;
+}
+
+.wrapper_form input,
+.wrapper_form textarea {
+  padding: 1.25rem;
+}
+
+.wrapper_form button {
+  width: 100%;
+}
+
+.title {
+  color: white !important;
+}
+
+.description {
+  font: 500 1rem 'Roboto', sans-serif;
+  line-height: 1.7rem;
+  color: white;
+  opacity: 0.8;
+}
+
+@media (max-width: 1100px) {
+  .wrapper_content {
+    flex-direction: column-reverse;
+    padding: 4rem 1.5rem;
+  }
+
+  .wrapper_form {
+    transform: translateY(0);
+  }
+
+  .wrapper_form input,
+  .wrapper_form textarea {
+    width: 100%;
+  }
+
+  .texts_callWithUs {
+    max-width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 715px) {
+  .wrapper_form {
+    padding: 1.9rem;
+  }
+}

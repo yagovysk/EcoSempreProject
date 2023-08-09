@@ -11,8 +11,9 @@
 }
 
 .header {
-  background: #30312f url("../../assets/bg-material-list.jpg") no-repeat center /
-    cover;
+  background: #30312f
+    url('../../assets/imgs/materialList/bg-header-material-list.webp') no-repeat
+    center / cover;
 }
 
 .titles {
@@ -52,7 +53,7 @@
 .material_name {
   color: #0e2b5c;
   text-align: center;
-  font: 600 1rem "Roboto", sans-serif;
+  font: 600 1rem 'Roboto', sans-serif;
   line-height: 1.2rem;
 }
 

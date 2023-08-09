@@ -55,12 +55,21 @@
   color: #00c756;
 }
 .question_title {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.5rem;
   transition: 0.3s ease;
 }
 .wrapper_box.show_answer .question_title {
+  display: block;
+  -webkit-line-clamp: initial;
+  -webkit-box-orient: initial;
   color: #00c756;
 }
 
@@ -119,6 +128,9 @@
   }
   .question_title,
   .answer {
+    display: block;
+    -webkit-line-clamp: initial;
+    -webkit-box-orient: initial;
     font-size: 0.875rem;
   }
   .icon_plus,

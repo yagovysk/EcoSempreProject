@@ -1,6 +1,6 @@
 .header {
-  background: #815f41 url('../../assets/bg_agende_coleta.png') no-repeat center /
-    cover;
+  background: #815f41 url('../../assets/imgs/schedule/bg-header-schedule.webp')
+    no-repeat center / cover;
 }
 
 .container_schedule {

@@ -1,6 +1,6 @@
 .header {
-  background: #374a59 url("../../assets/Blogfundo.png") no-repeat bottom center /
-    cover;
+  background: #374a59 url('../../assets/imgs/blog/bg-header-blog.webp')
+    no-repeat bottom center / cover;
 }
 
 .posts_container {
