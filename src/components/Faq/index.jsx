@@ -1,24 +1,24 @@
-import { useId, useRef, useState } from "react";
-import { Icon } from "@iconify/react";
-import { firstListQuestions, secondListQuestions } from "../../data";
-import { Link } from "react-router-dom";
-import { ScrollReveal } from "../ScrollReveal";
-import style from "./Faq.module.css";
+import { useId, useRef, useState } from 'react'
+import { Icon } from '@iconify/react'
+import { firstListQuestions, secondListQuestions } from '../../utils/dataFAQ'
+import { Link } from 'react-router-dom'
+import { ScrollReveal } from '../ScrollReveal'
+import style from './Faq.module.css'
 
 export function Faq({
   numberPerList,
   isFAQPage,
   immediatelyStartReveal = false,
 }) {
-  const [activeIndex, setActiveIndex] = useState(false);
-  const firstListQuestionsSliced = firstListQuestions.slice(0, numberPerList);
-  const secondListQuestionsSliced = secondListQuestions.slice(0, numberPerList);
+  const [activeIndex, setActiveIndex] = useState(false)
+  const firstListQuestionsSliced = firstListQuestions.slice(0, numberPerList)
+  const secondListQuestionsSliced = secondListQuestions.slice(0, numberPerList)
 
   function showAnswer(index) {
     if (activeIndex === index) {
-      setActiveIndex(false);
+      setActiveIndex(false)
     } else {
-      setActiveIndex(index);
+      setActiveIndex(index)
     }
   }
 
@@ -52,48 +52,48 @@ export function Faq({
       {!isFAQPage && (
         <ScrollReveal origin="top">
           <Link to="/faq" className={`link_more ${style.link_more_faq}`}>
-            Clique aqui para acessar todas as dúvidas {">>"}
+            Clique aqui para acessar todas as dúvidas {'>>'}
           </Link>
         </ScrollReveal>
       )}
     </article>
-  );
+  )
 }
 
 function ListQuestions({ questions, activeIndex, onShow }) {
-  const answersRef = useRef(null);
+  const answersRef = useRef(null)
 
   function getHeightRef(id) {
-    const map = getMap();
-    const node = map.get(id);
+    const map = getMap()
+    const node = map.get(id)
     if (node) {
-      return node.scrollHeight;
+      return node.scrollHeight
     }
   }
   function getMap() {
     if (!answersRef.current) {
-      answersRef.current = new Map();
+      answersRef.current = new Map()
     }
-    return answersRef.current;
+    return answersRef.current
   }
 
   function handleShowAnswer(e, id) {
-    if ((e.type === "keydown" && e.key === "Enter") || e.type === "click") {
-      onShow(id);
+    if ((e.type === 'keydown' && e.key === 'Enter') || e.type === 'click') {
+      onShow(id)
     }
   }
 
   return (
     <div className={style.list_faq}>
       {questions.map((question) => {
-        const isActive = question.id === activeIndex;
+        const isActive = question.id === activeIndex
         const classesWrapperBox = `${style.wrapper_box} ${
           isActive && style.show_answer
-        }`;
+        }`
         const heightAnswer = answersRef.current
           ? getHeightRef(question.id)
-          : "0";
-        const questionId = useId();
+          : '0'
+        const questionId = useId()
 
         return (
           <div
@@ -127,17 +127,17 @@ function ListQuestions({ questions, activeIndex, onShow }) {
               className={style.panel}
               style={
                 heightAnswer && {
-                  "--height": `${heightAnswer}px`,
+                  '--height': `${heightAnswer}px`,
                 }
               }
             >
               <p
                 ref={(node) => {
-                  const map = getMap();
+                  const map = getMap()
                   if (node) {
-                    map.set(question.id, node);
+                    map.set(question.id, node)
                   } else {
-                    map.delete(question.id);
+                    map.delete(question.id)
                   }
                 }}
                 className={`${style.answer}`}
@@ -146,8 +146,8 @@ function ListQuestions({ questions, activeIndex, onShow }) {
               </p>
             </div>
           </div>
-        );
+        )
       })}
     </div>
-  );
+  )
 }

@@ -1,6 +1,6 @@
 .header {
-  background: #1d3864 url("../../assets/parceiros_bg.jpg") no-repeat bottom
-    center / cover;
+  background: #1d3864 url('../../assets/imgs/partners/bg-header-partners.webp')
+    no-repeat bottom center / cover;
 }
 
 .content_texts {
@@ -34,7 +34,7 @@
 }
 
 .paragraph {
-  font: 400 1rem "Roboto", sans-serif;
+  font: 400 1rem 'Roboto', sans-serif;
   line-height: 1.7rem;
   color: #9b9b9b;
 }
@@ -86,7 +86,7 @@
 }
 
 .sustentabilidade_paragraph {
-  font: 700 1.06rem "Roboto", sans-serif;
+  font: 700 1.06rem 'Roboto', sans-serif;
   line-height: 1.4rem;
 }
 
@@ -130,7 +130,7 @@
 
 .paragraph_text_partners {
   color: white;
-  font: 700 1.09rem "Roboto", sans-serif;
+  font: 700 1.09rem 'Roboto', sans-serif;
   line-height: 1.5rem;
 }
 

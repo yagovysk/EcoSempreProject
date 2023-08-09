@@ -1,23 +1,27 @@
-import { HeaderSection } from "../../components/HeaderSection";
-import { ParceirosCard } from "../../components/ParceirosCard";
-import sustentabilidade from "../../assets/logistica_sustentabilidade.png";
-import person from "../../assets/pessoa_sustentabilidade.png";
-import styles from "./LogisticaReversa.module.css";
-import { ScrollReveal } from "../../components/ScrollReveal";
+import { HeaderSection } from '../../components/HeaderSection'
+import { ParceirosCard } from '../../components/ParceirosCard'
+import { ScrollReveal } from '../../components/ScrollReveal'
+
+import {
+  logisticaSustentabilidade,
+  personWithSign,
+} from '../../assets/imgs/logisticaReversa'
+
+import styles from './LogisticaReversa.module.css'
 
 const linksMenu = [
   {
-    name: "Início",
-    path: "/",
+    name: 'Início',
+    path: '/',
   },
   {
-    name: "Programas",
-    path: "/logistica",
+    name: 'Programas',
+    path: '/logistica',
   },
   {
-    name: "Logística Reversa",
+    name: 'Logística Reversa',
   },
-];
+]
 
 export function LogisticaReversa() {
   return (
@@ -69,7 +73,7 @@ export function LogisticaReversa() {
           <ScrollReveal origin="top">
             <div aria-hidden={true} className={styles.small_box}></div>
             <img
-              src={sustentabilidade}
+              src={logisticaSustentabilidade}
               alt="Mão segurando símbolos da sustentabilidade"
             />
             <div aria-hidden={true} className={styles.big_box}></div>
@@ -78,7 +82,10 @@ export function LogisticaReversa() {
 
         <div className={`${styles.wrapper_img} ${styles.wrapper_img2}`}>
           <ScrollReveal origin="top">
-            <img src={person} alt="Homem segurando placa com logo ecológica" />
+            <img
+              src={personWithSign}
+              alt="Homem segurando placa com logo ecológica"
+            />
             <div aria-hidden={true} className={styles.medium_box}></div>
           </ScrollReveal>
         </div>
@@ -108,5 +115,5 @@ export function LogisticaReversa() {
         <ParceirosCard />
       </article>
     </main>
-  );
+  )
 }

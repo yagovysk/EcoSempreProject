@@ -1,9 +1,12 @@
-import Parceiro1 from "../../assets/Parceiro1.svg";
-import Parceiro2 from "../../assets/Parceiro2.svg";
-import Parceiro3 from "../../assets/Parceiro3.svg";
-import Parceiro4 from "../../assets/Parceiro4.svg";
-import Parceiro5 from "../../assets/Parceiro5.svg";
-import styles from "./ParceirosCard.module.css";
+import {
+  partner1,
+  partner2,
+  partner3,
+  partner4,
+  partner5,
+} from '../../assets/imgs/partners'
+
+import styles from './ParceirosCard.module.css'
 
 export function ParceirosCard() {
   return (
@@ -12,7 +15,7 @@ export function ParceirosCard() {
         <img
           loading="lazy"
           className={styles.parceiro}
-          src={Parceiro1}
+          src={partner1}
           alt="logo parceiro 1"
         />
       </a>
@@ -20,7 +23,7 @@ export function ParceirosCard() {
         <img
           loading="lazy"
           className={styles.parceiro}
-          src={Parceiro2}
+          src={partner2}
           alt="logo parceiro 2"
         />
       </a>
@@ -28,7 +31,7 @@ export function ParceirosCard() {
         <img
           loading="lazy"
           className={styles.parceiro}
-          src={Parceiro3}
+          src={partner3}
           alt="logo parceiro 3"
         />
       </a>
@@ -36,7 +39,7 @@ export function ParceirosCard() {
         <img
           loading="lazy"
           className={styles.parceiro}
-          src={Parceiro4}
+          src={partner4}
           alt="logo parceiro 4"
         />
       </a>
@@ -44,10 +47,10 @@ export function ParceirosCard() {
         <img
           loading="lazy"
           className={styles.parceiro}
-          src={Parceiro5}
+          src={partner5}
           alt="logo parceiro 5"
         />
       </a>
     </div>
-  );
+  )
 }

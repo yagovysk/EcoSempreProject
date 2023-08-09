@@ -1,26 +1,29 @@
-import styles from "./Partners.module.css";
-import ecoLogo from "../../assets/ecoIcon.svg";
-import partnersPeople from "../../assets/partners_people.png";
-import quotes from "../../assets/quotes.svg";
-import half_man1 from "../../assets/partners_half_img1.png";
-import half_man2 from "../../assets/partners_half_img2.png";
-import { HeaderSection } from "../../components/HeaderSection";
-import { ParceirosCard } from "../../components/ParceirosCard";
-import { ScrollReveal } from "../../components/ScrollReveal";
+import { HeaderSection } from '../../components/HeaderSection'
+import { ParceirosCard } from '../../components/ParceirosCard'
+import { ScrollReveal } from '../../components/ScrollReveal'
+
+import {
+  firstHalfPeople,
+  secondHalfPeople,
+  partnersPeople,
+} from '../../assets/imgs/partners'
+import { ecoIcon, quotes } from '../../assets/icons'
+
+import styles from './Partners.module.css'
 
 const linksMenu = [
   {
-    name: "Início",
-    path: "/",
+    name: 'Início',
+    path: '/',
   },
   {
-    name: "EcoSempre",
-    path: "/parceiros",
+    name: 'EcoSempre',
+    path: '/parceiros',
   },
   {
-    name: "Parceiros",
+    name: 'Parceiros',
   },
-];
+]
 
 export function Partners() {
   return (
@@ -57,11 +60,11 @@ export function Partners() {
               <div className={`${styles.wrapper_img} ${styles.wrapper_img1}`}>
                 <img
                   className={styles.img_person}
-                  src={half_man1}
-                  alt="Homens trabalhando"
+                  src={firstHalfPeople}
+                  alt=""
                 />
                 <div className={styles.sustentabilidade_wrapper}>
-                  <img src={ecoLogo} alt="" aria-hidden={true} />
+                  <img src={ecoIcon} alt="" aria-hidden={true} />
                   <p className={styles.sustentabilidade_paragraph}>
                     Soluções inovadoras para um mundo sustentável
                   </p>
@@ -73,8 +76,8 @@ export function Partners() {
               <div className={`${styles.wrapper_img} ${styles.img2}`}>
                 <img
                   className={styles.img_person}
-                  src={half_man2}
-                  alt="Homens trabalhando"
+                  src={secondHalfPeople}
+                  alt=""
                 />
               </div>
             </ScrollReveal>
@@ -125,7 +128,7 @@ export function Partners() {
         <ParceirosCard />
       </div>
     </main>
-  );
+  )
 }
 
 function Texts({ subtitle, title, paragraphs }) {
@@ -147,5 +150,5 @@ function Texts({ subtitle, title, paragraphs }) {
         </section>
       </ScrollReveal>
     </section>
-  );
+  )
 }

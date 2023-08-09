@@ -5,18 +5,22 @@
 .header_content {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0 1.25rem;
 }
 .logo {
-  display: grid;
+  display: block;
   place-content: center;
-  max-width: 13.125rem;
-  max-height: 6.25rem;
+  max-width: 15rem;
+  height: 3.25rem;
+  width: 100%;
 }
 
 .logo img {
   display: block;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .menu {
@@ -33,7 +37,7 @@
 .menu .menu_li::after {
   content: '';
   position: absolute;
-  bottom: -0.125rem;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 0.2rem;
@@ -72,12 +76,17 @@
   height: 0.2rem;
   width: 100%;
   position: absolute;
-  bottom: -0.125rem;
+  bottom: 0;
   background-color: #00c756;
 }
 
 .menu .arrow_menu_item {
   font-size: 1.2rem;
+  transition: rotate .3s;
+}
+
+.menu_item.active .arrow_menu_item {
+  rotate: 180deg;
 }
 
 .contact-container {
@@ -139,7 +148,6 @@
 /* Dropdown */
 .wrapper_dropdown {
   position: absolute;
-  top: 6.1rem;
   left: -2rem;
   background-color: white;
   border-radius: 0 0 0.5rem 0.5rem;
@@ -178,7 +186,7 @@
   display: block;
   width: 0.75rem;
   height: 0.75rem;
-  background: url('../../assets/arrow_link.svg') no-repeat center;
+  background: url('../../assets/icons/arrow_link.svg') no-repeat center;
   position: absolute;
   left: -1.2rem;
   transform: translateX(-1.8rem);
@@ -266,6 +274,8 @@
 
 @media (max-width: 1066px) {
   .header_content {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
     align-items: center;
   }
 
