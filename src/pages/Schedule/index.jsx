@@ -198,7 +198,7 @@ function FormSchedule() {
 
   return (
     <form
-      enctype="multipart/form-data"
+      encType="multipart/form-data"
       onSubmit={handleSubmit(onSubmit)}
       className={`${styles.form}`}
     >

@@ -46,6 +46,10 @@ const linksPrograms = [
     name: 'Agendar coleta',
     path: '/agendar',
   },
+  {
+    name: 'Reflorestamento',
+    path: '/reflorestamento',
+  },
 ]
 
 export function Header() {
