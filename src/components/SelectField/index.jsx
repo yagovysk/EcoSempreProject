@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
-import { Icon } from "@iconify/react";
-import { handleKeyboardTrap, useClickAway } from "../../helpers";
-import styles from "./SelectField.module.css";
+import { useRef, useState } from 'react'
+import { Icon } from '@iconify/react'
+import { useClickAway } from '../../hooks/useClickAway'
+import { keyboardTrap } from '../../utils/keyboardTrap'
+import styles from './SelectField.module.css'
 
 export const SelectField = ({
   name,
@@ -12,82 +13,77 @@ export const SelectField = ({
   error,
   ...props
 }) => {
-  const [isActive, setIsActive] = useState(false);
-  const focusableElements = useRef(null);
-  const selectContainerRef = useRef(null);
-  const selectRef = useRef(null);
+  const [isActive, setIsActive] = useState(false)
+  const focusableElements = useRef(null)
+  const selectContainerRef = useRef(null)
+  const selectRef = useRef(null)
   const filteredOptions = options.filter((option) =>
-    option.toLowerCase().includes(field.value ? field.value.toLowerCase() : "")
-  );
-  useClickAway(selectContainerRef, () => setIsActive(false));
+    option.toLowerCase().includes(field.value ? field.value.toLowerCase() : '')
+  )
+  useClickAway(selectContainerRef, () => setIsActive(false))
 
   function handleSelectOption(e, option = false) {
-    if (e.type === "click") {
-      setIsActive(false);
-      setValue(name, option);
+    if (e.type === 'click') {
+      setIsActive(false)
+      setValue(name, option)
     }
 
-    if (e.type === "keydown") {
-      if (e.key === "Enter") {
-        setIsActive(!isActive);
+    if (e.type === 'keydown') {
+      if (e.key === 'Enter') {
+        setIsActive(!isActive)
 
         if (option) {
-          setValue(name, option);
+          setValue(name, option)
         }
       }
 
       if (isActive) {
-        focusableElements.current.set(0, selectContainerRef.current);
-        const firstTabStop = focusableElements.current.get(0);
+        focusableElements.current.set(0, selectContainerRef.current)
+        const firstTabStop = focusableElements.current.get(0)
         const lastTabStop = focusableElements.current.get(
           focusableElements.current.size - 1
-        );
+        )
 
-        handleKeyboardTrap(
-          e,
-          () => setIsActive(false),
-          firstTabStop,
-          lastTabStop
-        );
+        keyboardTrap(e, () => setIsActive(false), firstTabStop, lastTabStop)
 
-        if (e.key === "ArrowDown") {
-          e.preventDefault();
+        if (e.key === 'ArrowDown') {
+          e.preventDefault()
 
           if (e.target.nextElementSibling === selectRef.current) {
-            e.target.nextElementSibling.firstElementChild.focus();
+            e.target.nextElementSibling.firstElementChild.focus()
           }
 
-          if (!e.target.nextElementSibling) return;
-          e.target.nextElementSibling.focus();
+          if (!e.target.nextElementSibling) return
+          e.target.nextElementSibling.focus()
         }
 
-        if (e.key === "ArrowUp") {
-          e.preventDefault();
+        if (e.key === 'ArrowUp') {
+          e.preventDefault()
 
-          if (!e.target.previousElementSibling) return;
-          e.target.previousElementSibling.focus();
+          if (!e.target.previousElementSibling) return
+          e.target.previousElementSibling.focus()
         }
       }
     }
   }
 
   function handleChange() {
-    setIsActive(true);
+    setIsActive(true)
   }
 
   function getMap() {
     if (!focusableElements.current) {
-      focusableElements.current = new Map();
+      focusableElements.current = new Map()
     }
-    return focusableElements.current;
+    return focusableElements.current
   }
 
   function getRef(node, id) {
-    const map = getMap();
+    const map = getMap()
     if (node) {
-      map.set(id, node);
+      map.set(id, node)
     } else {
-      map.delete(id);
+      map.delete(id)
     }
   }
 
@@ -110,8 +106,8 @@ export const SelectField = ({
           placeholder={label}
           {...field}
           onChange={(e) => {
-            field.onChange(e);
-            handleChange();
+            field.onChange(e)
+            handleChange()
           }}
           {...props}
         />
@@ -142,5 +138,5 @@ export const SelectField = ({
         </div>
       )}
     </div>
-  );
-};
+  )
+}

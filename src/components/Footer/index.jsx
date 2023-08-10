@@ -1,23 +1,24 @@
-import { useState, useEffect } from "react";
-import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
-import { ButtonToTop } from "../ButtonToTop";
-import styles from "./Footer.module.css";
-import ecoLogo from "../../assets/ecoIcon.svg";
+import { useState, useEffect } from 'react'
+import { Icon } from '@iconify/react'
+import { Link } from 'react-router-dom'
+import { ButtonToTop } from '../ButtonToTop'
+
+import styles from './Footer.module.css'
+import { ecoIcon } from '../../assets/icons'
 
 export function Footer() {
-  const [showButton, setShowButton] = useState(false);
+  const [showButton, setShowButton] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowButton(window.scrollY * 2 >= document.body.offsetHeight / 2);
-    };
+      setShowButton(window.scrollY * 2 >= document.body.offsetHeight / 2)
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   return (
     <footer className={styles.wrapper}>
@@ -97,7 +98,7 @@ export function Footer() {
         <ScheduleCard />
         <div className={styles.second_content}>
           <div className={styles.copyright}>
-            @2023 EcoSempre. Todos Direitos Reservados. Love by{" "}
+            @2023 EcoSempre. Todos Direitos Reservados. Love by{' '}
             <a
               target="_blank"
               className={styles.copyright_author}
@@ -111,19 +112,19 @@ export function Footer() {
         {showButton && <ButtonToTop />}
       </div>
     </footer>
-  );
+  )
 }
 
 function Logo() {
   return (
     <div className={styles.logo}>
-      <img loading="lazy" src={ecoLogo} alt="" aria-hidden={true} />
+      <img loading="lazy" src={ecoIcon} alt="" aria-hidden={true} />
       <div className={styles.logo_title}>
         EcoSempre
         <span className={styles.logo_subtitle}>Logística Reversa</span>
       </div>
     </div>
-  );
+  )
 }
 
 function Newsletter() {
@@ -192,7 +193,7 @@ function Newsletter() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function ScheduleCard() {
@@ -226,5 +227,5 @@ function ScheduleCard() {
         </Link>
       </div>
     </div>
-  );
+  )
 }

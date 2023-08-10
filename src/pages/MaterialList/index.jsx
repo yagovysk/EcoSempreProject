@@ -1,149 +1,149 @@
-import { Icon } from "@iconify/react";
-import { HeaderSection } from "../../components/HeaderSection";
-import { ScrollReveal } from "../../components/ScrollReveal";
-import { useBreakpoint } from "../../helpers";
-import styles from "./MaterialList.module.css";
+import { Icon } from '@iconify/react'
+import { HeaderSection } from '../../components/HeaderSection'
+import { ScrollReveal } from '../../components/ScrollReveal'
+import { useBreakpoint } from '../../hooks/useBreakpoint'
+import styles from './MaterialList.module.css'
 
 const listMaterials = [
   {
-    icon: "mdi:smartphone-wireless",
-    name: "Smartphones",
+    icon: 'mdi:smartphone-wireless',
+    name: 'Smartphones',
   },
   {
-    icon: "mdi:computer",
-    name: "Notebooks",
+    icon: 'mdi:computer',
+    name: 'Notebooks',
   },
   {
-    icon: "mdi:printer",
-    name: "Impressoras",
+    icon: 'mdi:printer',
+    name: 'Impressoras',
   },
   {
-    icon: "material-symbols:linked-camera",
-    name: "Câmeras",
+    icon: 'material-symbols:linked-camera',
+    name: 'Câmeras',
   },
   {
-    icon: "bi:router-fill",
-    name: "Roteadores",
+    icon: 'bi:router-fill',
+    name: 'Roteadores',
   },
   {
-    icon: "game-icons:battery-pack",
-    name: "Pilhas",
+    icon: 'game-icons:battery-pack',
+    name: 'Pilhas',
   },
   {
-    icon: "ic:outline-desktop-mac",
-    name: "Computadores",
+    icon: 'ic:outline-desktop-mac',
+    name: 'Computadores',
   },
   {
-    icon: "zondicons:tablet",
-    name: "Tablets",
+    icon: 'zondicons:tablet',
+    name: 'Tablets',
   },
   {
-    icon: "mdi:vacuum-cleaner",
-    name: "Aspiradores de Pó",
+    icon: 'mdi:vacuum-cleaner',
+    name: 'Aspiradores de Pó',
   },
   {
-    icon: "material-symbols:multicooker",
-    name: "Panelas de Pressão Elétrica",
+    icon: 'material-symbols:multicooker',
+    name: 'Panelas de Pressão Elétrica',
   },
   {
-    icon: "mingcute:router-modem-fill",
-    name: "Modens",
+    icon: 'mingcute:router-modem-fill',
+    name: 'Modens',
   },
   {
-    icon: "ic:baseline-keyboard",
-    name: "Teclados",
+    icon: 'ic:baseline-keyboard',
+    name: 'Teclados',
   },
   {
-    icon: "mingcute:game-2-fill",
-    name: "Videogames",
+    icon: 'mingcute:game-2-fill',
+    name: 'Videogames',
   },
   {
-    icon: "ri:dvd-fill",
-    name: "DVDPlayers",
+    icon: 'ri:dvd-fill',
+    name: 'DVDPlayers',
   },
   {
-    icon: "ion:headset-sharp",
-    name: "Fones de Ouvido",
+    icon: 'ion:headset-sharp',
+    name: 'Fones de Ouvido',
   },
   {
-    icon: "material-symbols:scanner",
-    name: "Scanners",
+    icon: 'material-symbols:scanner',
+    name: 'Scanners',
   },
   {
-    icon: "ion:scale-sharp",
-    name: "Balanças",
+    icon: 'ion:scale-sharp',
+    name: 'Balanças',
   },
   {
-    icon: "ph:television-simple-bold",
-    name: "Televisões",
+    icon: 'ph:television-simple-bold',
+    name: 'Televisões',
   },
   {
-    icon: "icon-park-solid:sound-one",
-    name: "Caixas de Som",
+    icon: 'icon-park-solid:sound-one',
+    name: 'Caixas de Som',
   },
   {
-    icon: "ph:fan-fill",
-    name: "Ventiladores",
+    icon: 'ph:fan-fill',
+    name: 'Ventiladores',
   },
   {
-    icon: "game-icons:toaster",
-    name: "Torradeiras",
+    icon: 'game-icons:toaster',
+    name: 'Torradeiras',
   },
   {
-    icon: "ic:round-flashlight-on",
-    name: "Lanternas",
+    icon: 'ic:round-flashlight-on',
+    name: 'Lanternas',
   },
   {
-    icon: "mdi:projector",
-    name: "Projetores de Video",
+    icon: 'mdi:projector',
+    name: 'Projetores de Video',
   },
   {
-    icon: "material-symbols:tools-power-drill",
-    name: "Furadeiras",
+    icon: 'material-symbols:tools-power-drill',
+    name: 'Furadeiras',
   },
   {
-    icon: "mingcute:air-condition-fill",
-    name: "Ar Condicionado",
+    icon: 'mingcute:air-condition-fill',
+    name: 'Ar Condicionado',
   },
   {
-    icon: "vaadin:harddrive",
-    name: "External Hard Drive (HDD)",
+    icon: 'vaadin:harddrive',
+    name: 'External Hard Drive (HDD)',
   },
   {
-    icon: "jam:hairdryer-f",
-    name: "Secadores de Cabelo",
+    icon: 'jam:hairdryer-f',
+    name: 'Secadores de Cabelo',
   },
   {
-    icon: "mdi:grill",
-    name: "Churrasqueiras Elétricas",
+    icon: 'mdi:grill',
+    name: 'Churrasqueiras Elétricas',
   },
   {
-    icon: "icon-park-solid:oven",
-    name: "Fornos Elétricos",
+    icon: 'icon-park-solid:oven',
+    name: 'Fornos Elétricos',
   },
   {
-    icon: "mdi:washing-machine",
-    name: "Máquinas de Lavar",
+    icon: 'mdi:washing-machine',
+    name: 'Máquinas de Lavar',
   },
-];
+]
 const linksMenu = [
   {
-    name: "Início",
-    path: "/",
+    name: 'Início',
+    path: '/',
   },
   {
-    name: "Programas",
-    path: "/materiais",
+    name: 'Programas',
+    path: '/materiais',
   },
   {
-    name: "Lista de Materiais",
+    name: 'Lista de Materiais',
   },
-];
+]
 
 export function MaterialList() {
-  const widthWindow = useBreakpoint();
+  const widthWindow = useBreakpoint()
   const materials =
-    widthWindow > 630 ? listMaterials : listMaterials.slice(0, 8);
+    widthWindow > 630 ? listMaterials : listMaterials.slice(0, 8)
 
   return (
     <main className={styles.main_content}>
@@ -177,13 +177,13 @@ export function MaterialList() {
         </ScrollReveal>
 
         <a className={`link_more ${styles.link_complete_list}`} href="#">
-          Clique aqui para acessar a lista completa {">>"}
+          Clique aqui para acessar a lista completa {'>>'}
         </a>
       </div>
     </main>
-  );
+  )
 }
 
 function Box({ children }) {
-  return <div className={styles.box_wrapper}>{children}</div>;
+  return <div className={styles.box_wrapper}>{children}</div>
 }

@@ -4,7 +4,8 @@
 
 .header {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38)),
-    url("../../assets/sustentabilidadeImg.png") no-repeat center bottom / cover;
+    url('../../assets/imgs/home/sustentabilidade-img.webp') no-repeat center
+      bottom / cover;
 }
 .container_content {
   display: grid;
@@ -15,7 +16,7 @@
 }
 
 .paragraph {
-  font: 400 1rem "Roboto", sans-serif;
+  font: 400 1rem 'Roboto', sans-serif;
   color: #9b9b9b;
   line-height: 1.7rem;
 }
@@ -131,7 +132,7 @@
 }
 
 .text_box_coletas {
-  font: 700 1.06rem "Roboto", sans-serif;
+  font: 700 1.06rem 'Roboto', sans-serif;
   line-height: 1.7rem;
 }
 

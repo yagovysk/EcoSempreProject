@@ -1,21 +1,21 @@
-import { HeaderSection } from "../../components/HeaderSection";
-import { Faq } from "../../components/Faq";
-import { firstListQuestions } from "../../data";
-import styles from "./FAQ.module.css";
+import { HeaderSection } from '../../components/HeaderSection'
+import { Faq } from '../../components/Faq'
+import { firstListQuestions } from '../../utils/dataFAQ'
+import styles from './FAQ.module.css'
 
 const linksMenu = [
   {
-    name: "Início",
-    path: "/",
+    name: 'Início',
+    path: '/',
   },
   {
-    name: "EcoSempre",
-    path: "/faq",
+    name: 'EcoSempre',
+    path: '/faq',
   },
   {
-    name: "FAQ",
+    name: 'FAQ',
   },
-];
+]
 
 export function FAQ() {
   return (
@@ -34,5 +34,5 @@ export function FAQ() {
         />
       </div>
     </main>
-  );
+  )
 }

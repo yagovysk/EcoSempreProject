@@ -1,6 +1,7 @@
 .header {
-  background: #870f10 url("../../assets/Imagem_Floresta.png") no-repeat bottom
-    center / cover;
+  background: #35490a
+    url('../../assets/imgs/logisticaReversa/bg-header-logistica-reversa.webp')
+    no-repeat bottom center / cover;
 }
 
 .container_content {
@@ -12,7 +13,7 @@
 }
 
 .paragraph {
-  font: 400 1rem "Roboto", sans-serif;
+  font: 400 1rem 'Roboto', sans-serif;
   color: #9b9b9b;
   line-height: 1.7rem;
 }

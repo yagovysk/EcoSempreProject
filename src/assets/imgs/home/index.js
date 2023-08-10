@@ -1,0 +1,7 @@
+export { default as bgTalkWithUs } from './bg-talk-with-us.webp'
+export { default as coletasImg } from './coletas-img.webp'
+export { default as bgSustentabilidade } from './bg-sustentabilidade.webp'
+export { default as bgTestimonials } from './bg-testimonials.webp'
+export { default as logisticaReversaCycle } from './logistica-reversa-cycle.png'
+export { default as peopleBuilding } from './people-building.webp'
+export { default as sustentabilidadeImg } from './sustentabilidade-img.webp'

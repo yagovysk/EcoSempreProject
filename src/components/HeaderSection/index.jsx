@@ -1,14 +1,14 @@
-import { Icon } from "@iconify/react";
-import { Fragment } from "react";
-import { Link } from "react-router-dom";
-import { ScrollReveal } from "../ScrollReveal";
-import styles from "./HeaderSection.module.css";
+import { Icon } from '@iconify/react'
+import { Fragment } from 'react'
+import { Link } from 'react-router-dom'
+import { ScrollReveal } from '../ScrollReveal'
+import styles from './HeaderSection.module.css'
 
 export function HeaderSection({ title, linksMenu, className }) {
-  const contentWithoutLastLink = linksMenu.slice(0, linksMenu.length - 1);
-  const lastLink = linksMenu[linksMenu.length - 1];
+  const contentWithoutLastLink = linksMenu.slice(0, linksMenu.length - 1)
+  const lastLink = linksMenu[linksMenu.length - 1]
   return (
-    <div className={`${styles.header} ${className}`}>
+    <div className={`${className} ${styles.header}`}>
       <ScrollReveal origin="bottom" immediately={true}>
         <h1 className={styles.titleHeader}>{title}</h1>
       </ScrollReveal>
@@ -34,5 +34,5 @@ export function HeaderSection({ title, linksMenu, className }) {
         </div>
       </ScrollReveal>
     </div>
-  );
+  )
 }

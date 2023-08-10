@@ -1,0 +1,92 @@
+.sustentabilidadeBox {
+  display: flex;
+  align-items: center;
+  background: #0e2b5c url('../../assets/fundob.png') no-repeat top center /
+    cover;
+  gap: 3.6rem;
+  width: 100%;
+}
+
+.scroll_reveal_sustentabilidade {
+  width: max-content;
+}
+
+.sustentabilidade_img_wrapper {
+  max-width: 59.5rem;
+  height: 37.3rem;
+  width: 100%;
+}
+.sustentabilidadeImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wrapper_texts_sustentabilidade {
+  padding: 5rem 1.5rem;
+}
+
+.porque {
+  color: white !important;
+}
+.sustentabilidadeP {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.7rem;
+  color: white;
+  opacity: 0.8;
+}
+.saibamais {
+  display: flex;
+  align-items: center;
+  gap: 1.625rem;
+  width: max-content;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9375rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+.saibamais:hover {
+  color: #0e2b5c;
+  background: #ffffff;
+  transform: translateY(-4px);
+}
+
+@media (max-width: 1100px) {
+  .sustentabilidadeBox {
+    overflow: hidden;
+    gap: 2.3rem;
+  }
+
+  .scroll_reveal_sustentabilidade {
+    width: 100%;
+  }
+
+  .sustentabilidade_img_wrapper .sustentabilidadeImg {
+    object-position: 68%;
+  }
+}
+
+@media (max-width: 942px) {
+  .sustentabilidadeBox {
+    flex-direction: column;
+  }
+
+  .sustentabilidade_img_wrapper {
+    max-width: 100%;
+    height: 100%;
+  }
+  .wrapper_texts_sustentabilidade {
+    padding: 1rem 1.5rem 4.125rem 1.5rem;
+    max-width: initial !important;
+  }
+}
+
+@media (max-width: 715px) {
+  .sustentabilidadeBox {
+    gap: 1.3rem;
+  }
+}

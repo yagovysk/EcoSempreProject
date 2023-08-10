@@ -1,6 +1,6 @@
 .header {
-  background: #815f41 url("../../assets/bg_agende_coleta.png") no-repeat center /
-    cover;
+  background: #815f41 url('../../assets/imgs/schedule/bg-header-schedule.webp')
+    no-repeat center / cover;
 }
 
 .container_schedule {
@@ -21,7 +21,7 @@
 }
 
 .paragraph {
-  font: 400 1rem "Roboto", sans-serif;
+  font: 400 1rem 'Roboto', sans-serif;
   color: #9b9b9b;
   line-height: 1.375rem;
 }
@@ -48,12 +48,12 @@
 }
 
 .label_input {
-  font: 500 1rem "Roboto", sans-serif;
+  font: 500 1rem 'Roboto', sans-serif;
   color: #525252;
 }
 
 .input {
-  font: 400 1rem "Roboto", sans-serif;
+  font: 400 1rem 'Roboto', sans-serif;
   color: #525252;
 
   border: 1.5px solid #e7ebef;
@@ -88,8 +88,56 @@
   bottom: -2rem;
 }
 
+.error_image,
+.wrapper_container_field_image {
+  position: relative;
+}
+
+.input_image {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.wrapper_field_image {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #061b49;
+  cursor: pointer;
+  position: relative;
+  border: 1.5px solid transparent;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.input_image:focus ~ .wrapper_field_image {
+  border: 1.5px solid #00c756;
+  box-shadow: 0px 0px 0px 2px rgba(0, 199, 86, 0.25);
+}
+
+.wrapper_field_image svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.input_image_text {
+  font: 500 1rem 'Roboto', sans-serif;
+  line-height: 1.4rem;
+}
+
+.container_images_select {
+  /* display: -webkit-box;
+  -webkit-line-clamp: 2; */
+  max-width: 11rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  /* height: 24.4px; */
+}
+
 .btn {
-  font: 700 1rem "Roboto", sans-serif;
+  font: 700 1rem 'Roboto', sans-serif;
   line-height: 2.5rem;
   color: white;
   margin-top: 1rem;
