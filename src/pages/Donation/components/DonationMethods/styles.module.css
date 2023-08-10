@@ -1,0 +1,90 @@
+.wrapper_donation_content {
+  display: grid;
+  place-content: center;
+  gap: 5rem;
+  text-align: center;
+  background: #f6f7f8;
+  padding: 3.63rem 1.5rem;
+  padding-bottom: 10.56rem;
+}
+
+.wrapper_text_donation {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.wrapper_cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.wrapper_card_donation {
+  flex: 1 1 24rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  background-color: white;
+  border-radius: 6px;
+  padding: 4rem 6rem;
+}
+
+.wrapper_icon_donation {
+  border-radius: 50%;
+  padding: 1.19rem;
+}
+
+.icon {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.wrapper_icon_donation.pix {
+  background-color: #32bcad26;
+  color: #32bcad;
+}
+
+.wrapper_icon_donation.vakinha {
+  background-color: #00a65126;
+}
+
+.title_donation {
+  display: block;
+  font: 500 1.5rem 'IBM Plex Sans', sans-serif;
+  line-height: 1.75rem;
+  color: #0e2b5c;
+}
+
+.description_donation {
+  color: #9b9b9b;
+  font: 400 1rem 'Roboto', sans-serif;
+  line-height: 1.5rem;
+}
+
+.btn_donation {
+  display: block;
+  margin-top: 1rem;
+  color: white;
+  font: 700 0.875rem 'Roboto', sans-serif;
+  line-height: 1.4rem;
+  padding: 0.7rem 2.25rem !important;
+}
+
+.btn_donation:hover {
+  background-color: #0e2b5c;
+}
+
+@media (max-width: 630px) {
+  .wrapper_donation_content {
+    padding-bottom: 3.5rem;
+    gap: 3rem;
+  }
+
+  .wrapper_card_donation {
+    padding: 2.6rem 3rem;
+  }
+}

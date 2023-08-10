@@ -109,10 +109,10 @@
   display: block;
   width: 1rem;
   height: 1rem;
-  background: url("../../assets/arrow_link.svg") no-repeat center;
+  background: url("../../assets/icons/arrow_link.svg") no-repeat center;
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7479%)
     hue-rotate(8deg) brightness(98%) contrast(106%);
-  transform: translateX(2.5rem);
+  transform: translateX(-1.5rem);
   transition: 0.3s;
 }
 

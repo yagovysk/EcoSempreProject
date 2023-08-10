@@ -4,7 +4,9 @@
 }
 
 .header {
-  background: #9e4c18 url("../../assets/coletas.jpg") no-repeat center / cover;
+  background: #8c4519
+    url('../../assets/imgs/pontosDeColeta/bg-header-coletas.webp') no-repeat
+    center / cover;
 }
 
 .content_container {
@@ -26,7 +28,7 @@
 
 .paragraph {
   color: #9b9b9b;
-  font: 400 1rem "Roboto", sans-serif;
+  font: 400 1rem 'Roboto', sans-serif;
   line-height: 1.7rem;
 }
 
@@ -37,7 +39,7 @@
   box-shadow: 0px 12px 56px 0px #10295421;
   padding: 2.8rem;
   margin: 0 auto;
-  font: 400 1rem "Roboto", sans-serif;
+  font: 400 1rem 'Roboto', sans-serif;
   line-height: 0.9rem;
   width: 37.9rem;
 }
@@ -104,7 +106,7 @@
 }
 
 .btn_collects {
-  font: 700 0.9375rem "Roboto", sans-serif;
+  font: 700 0.9375rem 'Roboto', sans-serif;
   line-height: 2.5rem;
   color: white;
 }
@@ -114,12 +116,12 @@
 }
 
 .pontos_coleta_wrapper {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin-top: 3rem;
 }
 
 .title_pontos_coleta {
-  font: 700 1.125rem "Roboto", sans-serif;
+  font: 700 1.125rem 'Roboto', sans-serif;
   line-height: 1.9rem;
   color: #0e2b5c;
   margin-bottom: 1.5rem;

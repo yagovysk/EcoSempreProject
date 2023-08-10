@@ -1,144 +1,150 @@
-import { forwardRef, useEffect, useRef, useState } from "react";
-import { Link, NavLink, Form, useNavigation } from "react-router-dom";
-import { Icon } from "@iconify/react";
-import { handleKeyboardTrap, useClickAway } from "../../helpers";
-import logo from "../../assets/logoEcoSempre.png";
-import "./Header.css";
+import { forwardRef, useEffect, useRef, useState } from 'react'
+import { Link, NavLink, Form, useNavigation } from 'react-router-dom'
+import { Icon } from '@iconify/react'
+import { keyboardTrap } from '../../utils/keyboardTrap'
+import { useClickAway } from '../../hooks/useClickAway'
+
+import logo from '../../assets/imgs/logoEcoSempre.webp'
+import './Header.css'
 
 const linksEcoSempre = [
   {
-    name: "Sobre Nós",
-    path: "/sobre",
+    name: 'Sobre Nós',
+    path: '/sobre',
   },
   {
-    name: "Contato",
-    path: "/contato",
+    name: 'Contato',
+    path: '/contato',
   },
   {
-    name: "Parceiros",
-    path: "/parceiros",
+    name: 'Parceiros',
+    path: '/parceiros',
   },
   {
-    name: "FAQ",
-    path: "/faq",
+    name: 'FAQ',
+    path: '/faq',
   },
   {
-    name: "Doação",
-    path: "/doar",
+    name: 'Doação',
+    path: '/doar',
   },
-];
+]
 const linksPrograms = [
   {
-    name: "Logística Reversa",
-    path: "/logistica",
+    name: 'Logística Reversa',
+    path: '/logistica',
   },
   {
-    name: "Descarte Correto do Lixo Eletrônico",
-    path: "/descarte",
+    name: 'Descarte Correto do Lixo Eletrônico',
+    path: '/descarte',
   },
   {
-    name: "Lista de Materiais",
-    path: "/materiais",
+    name: 'Lista de Materiais',
+    path: '/materiais',
   },
   {
-    name: "Agendar coleta",
-    path: "/agendar",
+    name: 'Agendar coleta',
+    path: '/agendar',
   },
-];
+  {
+    name: 'Reflorestamento',
+    path: '/reflorestamento',
+  },
+]
 
 export function Header() {
-  const [isActive, setIsActive] = useState(false);
-  const [isSearchActive, setIsSearchActive] = useState(false);
-  const [isTouched, setIsTouched] = useState(false);
-  const navigation = useNavigation();
-  const focusableElementsMobile = useRef(null);
-  const focusableElementsSearch = useRef(null);
-  const lastFocusedElement = document.activeElement;
+  const [isActive, setIsActive] = useState(false)
+  const [isSearchActive, setIsSearchActive] = useState(false)
+  const [isTouched, setIsTouched] = useState(false)
+  const navigation = useNavigation()
+  const focusableElementsMobile = useRef(null)
+  const focusableElementsSearch = useRef(null)
+  const lastFocusedElement = document.activeElement
 
   useEffect(() => {
-    if (navigation.state === "loading") {
-      handleToggleSearch(false);
-      handleOpenMenu(false);
+    if (navigation.state === 'loading') {
+      handleToggleSearch(false)
+      handleOpenMenu(false)
     }
 
     document.body.style.overflow =
-      isActive || isSearchActive ? "hidden" : "initial";
+      isActive || isSearchActive ? 'hidden' : 'initial'
 
     if (isActive || isSearchActive) {
       const firstTabStop =
         isActive && !isSearchActive
           ? focusableElementsMobile.current.get(0)
-          : focusableElementsSearch.current.get(0);
+          : focusableElementsSearch.current.get(0)
       const lastTabStop =
         isActive && !isSearchActive
           ? focusableElementsMobile.current.get(
-              focusableElementsMobile.current.size - 1
+              focusableElementsMobile.current.size - 1,
             )
           : focusableElementsSearch.current.get(
-              focusableElementsSearch.current.size - 1
-            );
+              focusableElementsSearch.current.size - 1,
+            )
 
-      document.addEventListener("keydown", (e) => {
-        handleKeyboardTrap(
+      document.addEventListener('keydown', (e) => {
+        keyboardTrap(
           e,
           isActive && !isSearchActive
             ? () => setIsActive(false)
             : () => setIsSearchActive(false),
           firstTabStop,
-          lastTabStop
-        );
-      });
+          lastTabStop,
+        )
+      })
 
       return () =>
-        document.removeEventListener("keydown", (e) => {
-          handleKeyboardTrap(
+        document.removeEventListener('keydown', (e) => {
+          keyboardTrap(
             e,
             isActive && !isSearchActive
               ? () => setIsActive(false)
               : () => setIsSearchActive(false),
             firstTabStop,
-            lastTabStop
-          );
-        });
+            lastTabStop,
+          )
+        })
     }
-  }, [isActive, isSearchActive, navigation.state]);
+  }, [isActive, isSearchActive, navigation.state])
 
   function handleOpenMenu(bool) {
-    setIsActive(bool);
+    setIsActive(bool)
   }
 
   function handleToggleSearch(bool) {
-    setIsSearchActive(bool);
+    setIsSearchActive(bool)
     if (!bool) {
-      lastFocusedElement.focus();
+      lastFocusedElement.focus()
     }
   }
 
   function getMap(isMobile) {
     if (isMobile) {
       if (!focusableElementsMobile.current) {
-        focusableElementsMobile.current = new Map();
+        focusableElementsMobile.current = new Map()
       }
-      return focusableElementsMobile.current;
+      return focusableElementsMobile.current
     } else {
       if (!focusableElementsSearch.current) {
-        focusableElementsSearch.current = new Map();
+        focusableElementsSearch.current = new Map()
       }
-      return focusableElementsSearch.current;
+      return focusableElementsSearch.current
     }
   }
 
   function getRef(node, id, isMobile = true) {
-    const map = getMap(isMobile);
+    const map = getMap(isMobile)
     if (node) {
-      map.set(id, node);
+      map.set(id, node)
     } else {
-      map.delete(id);
+      map.delete(id)
     }
   }
 
   return (
-    <header className={`header ${isActive && "on"}`}>
+    <header className={`header ${isActive && 'on'}`}>
       <div className="container header_content">
         <Link aria-label="Voltar para o início" className="logo" to="/">
           <img src={logo} alt="logo da EcoSempre" />
@@ -154,10 +160,7 @@ export function Header() {
       </div>
 
       {isActive && (
-        <div
-          className="menu_mobile_container"
-          aria-expanded={isActive ? true : false}
-        >
+        <div className="menu_mobile_container" aria-expanded={!!isActive}>
           <Menu
             setIsActive={setIsActive}
             onToggleSearch={handleToggleSearch}
@@ -181,7 +184,7 @@ export function Header() {
           <Form
             role="search"
             action="buscar"
-            className={`search_form ${isTouched ? "active" : ""}`}
+            className={`search_form ${isTouched ? 'active' : ''}`}
             onFocus={() => setIsTouched(true)}
             onBlur={() => setIsTouched(false)}
           >
@@ -194,19 +197,22 @@ export function Header() {
               placeholder="Digite aqui para buscar"
               className="search_input"
               ref={(node) => getRef(node, 1, false)}
-              disabled={navigation.state === "loading"}
+              disabled={navigation.state === 'loading'}
             />
           </Form>
         </div>
       )}
     </header>
-  );
+  )
 }
 
-const Menu = forwardRef(({ onToggleSearch, setIsActive = false }, ref) => {
+const Menu = forwardRef(function Menu(
+  { onToggleSearch, setIsActive = false },
+  ref,
+) {
   function handleCloseBurger() {
     if (setIsActive) {
-      setIsActive(false);
+      setIsActive(false)
     }
   }
 
@@ -267,17 +273,17 @@ const Menu = forwardRef(({ onToggleSearch, setIsActive = false }, ref) => {
         </Link>
       </div>
     </>
-  );
-});
+  )
+})
 
 const Dropdown = ({ label, links, onActiveBurger }) => {
-  const [isActive, setIsActive] = useState(false);
-  const elRef = useRef(null);
-  useClickAway(elRef, () => setIsActive(false));
+  const [isActive, setIsActive] = useState(false)
+  const elRef = useRef(null)
+  useClickAway(elRef, () => setIsActive(false))
 
   function handleToggleDropdown(e) {
-    if ((e.type === "keydown" && e.key === "Enter") || e.type === "click") {
-      setIsActive(!isActive);
+    if ((e.type === 'keydown' && e.key === 'Enter') || e.type === 'click') {
+      setIsActive(!isActive)
     }
   }
 
@@ -287,11 +293,11 @@ const Dropdown = ({ label, links, onActiveBurger }) => {
         ref={elRef}
         onClick={handleToggleDropdown}
         onKeyDown={handleToggleDropdown}
-        className={`menu_item ${isActive && "active"}`}
+        className={`menu_item ${isActive && 'active'}`}
         tabIndex={0}
         role="button"
         aria-haspopup="menu"
-        aria-expanded={isActive ? true : false}
+        aria-expanded={!!isActive}
       >
         {label}
         <Icon className="arrow_menu_item" icon="mdi:caret" rotate={2} />
@@ -304,7 +310,7 @@ const Dropdown = ({ label, links, onActiveBurger }) => {
               <li key={link.name} onClick={onActiveBurger}>
                 <NavLink
                   className={`dropdown_item ${
-                    links.length - 1 === index && "last_item"
+                    links.length - 1 === index && 'last_item'
                   }`}
                   to={link.path}
                 >
@@ -316,15 +322,15 @@ const Dropdown = ({ label, links, onActiveBurger }) => {
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-const BurgerMenu = forwardRef(({ onActive, isActive }, ref) => {
+const BurgerMenu = forwardRef(function BurgerMenu({ onActive, isActive }, ref) {
   return (
     <button
       onClick={() => onActive(!isActive)}
-      className={`menu_burger ${isActive && "active"}`}
-      aria-label={!isActive ? "Abrir menu" : "Fechar menu"}
+      className={`menu_burger ${isActive && 'active'}`}
+      aria-label={!isActive ? 'Abrir menu' : 'Fechar menu'}
       aria-haspopup="menu"
       ref={ref}
     >
@@ -332,5 +338,5 @@ const BurgerMenu = forwardRef(({ onActive, isActive }, ref) => {
       <div aria-hidden className="trace trace2"></div>
       <div aria-hidden className="trace trace3"></div>
     </button>
-  );
-});
+  )
+})

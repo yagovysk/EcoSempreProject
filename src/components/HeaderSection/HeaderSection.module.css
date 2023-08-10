@@ -12,7 +12,7 @@
 }
 
 .titleHeader {
-  font: 700 4.375rem "IBM Plex Sans", sans-serif;
+  font: 700 4.375rem 'IBM Plex Sans', sans-serif;
   line-height: 5.125rem;
   letter-spacing: 0.11rem;
   max-width: 44.6rem;
@@ -23,8 +23,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 0.25rem;
-  font: 400 1rem "Roboto", sans-serif;
+  font: 400 1rem 'Roboto', sans-serif;
+  text-align: center;
 }
 
 .menu_item {
