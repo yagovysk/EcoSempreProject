@@ -224,7 +224,7 @@
   position: absolute;
   right: 0;
   border: 0;
-  background: #00c756;
+  background: #00c756 !important;
   color: white;
   padding: 0.8rem;
   font-size: 1.5rem;
@@ -233,7 +233,7 @@
 }
 
 .close_search:hover {
-  background-color: #0e2b5c;
+  background-color: #0e2b5c !important;
 }
 
 .search_container .search_form {
@@ -282,6 +282,12 @@
   .menu,
   .contact-container {
     display: none;
+  }
+
+  .dropdown_item::before, 
+  .dropdown_item.active::before,
+  .dropdown_item:not(.active):hover::before {
+    content: none;
   }
 
   .menu_burger {
