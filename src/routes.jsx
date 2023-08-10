@@ -1,24 +1,25 @@
-import { createBrowserRouter } from "react-router-dom";
-import { Default } from "./layouts/Default";
-import { Home } from "./pages/Home";
-import { AboutUs } from "./pages/AboutUs";
-import { MaterialList } from "./pages/MaterialList";
-import { Blog, loader as blogLoader } from "./pages/Blog";
-import { Contact } from "./pages/Contact";
-import { PontosDeColeta } from "./pages/PontosDeColeta";
-import { FAQ } from "./pages/FAQ";
-import { Partners } from "./pages/Partners";
-import { Post, loader as postLoader } from "./pages/Post";
-import { SearchResult, loader as searchLoader } from "./pages/SearchResult";
-import { LogisticaReversa } from "./pages/LogisticaReversa";
-import { Descarte } from "./pages/Descarte";
-import { Schedule } from "./pages/Schedule";
-import { Donation } from "./pages/Donation";
-import { ErrorPage } from "./pages/ErrorPage";
+import { createBrowserRouter } from 'react-router-dom'
+import { Default } from './layouts/Default'
+import { Home } from './pages/Home'
+import { AboutUs } from './pages/AboutUs'
+import { MaterialList } from './pages/MaterialList'
+import { Blog, loader as blogLoader } from './pages/Blog'
+import { Contact } from './pages/Contact'
+import { PontosDeColeta } from './pages/PontosDeColeta'
+import { FAQ } from './pages/FAQ'
+import { Partners } from './pages/Partners'
+import { Post, loader as postLoader } from './pages/Post'
+import { SearchResult, loader as searchLoader } from './pages/SearchResult'
+import { LogisticaReversa } from './pages/LogisticaReversa'
+import { Descarte } from './pages/Descarte'
+import { Schedule } from './pages/Schedule'
+import { Donation } from './pages/Donation'
+import { ErrorPage } from './pages/ErrorPage'
+import { Reforestation } from './pages/Reforestation'
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Default />,
     errorElement: <ErrorPage />,
     children: [
@@ -26,66 +27,70 @@ export const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
           {
-            path: "/",
+            path: '/',
             element: <Home />,
           },
           {
-            path: "/sobre",
+            path: '/sobre',
             element: <AboutUs />,
           },
           {
-            path: "/contato",
+            path: '/contato',
             element: <Contact />,
           },
           {
-            path: "/materiais",
+            path: '/materiais',
             element: <MaterialList />,
           },
           {
-            path: "/coletas",
+            path: '/coletas',
             element: <PontosDeColeta />,
           },
           {
-            path: "/blog",
+            path: '/blog',
             element: <Blog />,
             loader: blogLoader,
           },
           {
-            path: "/posts/:key",
+            path: '/posts/:key',
             element: <Post />,
             loader: postLoader,
           },
           {
-            path: "/faq",
+            path: '/faq',
             element: <FAQ />,
           },
           {
-            path: "/parceiros",
+            path: '/parceiros',
             element: <Partners />,
           },
           {
-            path: "/buscar",
+            path: '/buscar',
             element: <SearchResult />,
             loader: searchLoader,
           },
           {
-            path: "/logistica",
+            path: '/logistica',
             element: <LogisticaReversa />,
           },
           {
-            path: "/descarte",
+            path: '/descarte',
             element: <Descarte />,
           },
           {
-            path: "/agendar",
+            path: '/agendar',
             element: <Schedule />,
           },
           {
-            path: "/doar",
+            path: '/doar',
             element: <Donation />,
+          },
+          {
+            path: '/reflorestamento',
+            element: <Reforestation />,
           },
         ],
       },
     ],
   },
-]);
+])

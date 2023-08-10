@@ -7,6 +7,11 @@ export default {
         'green-300': '#00C756',
         blue: '#0B2653',
         'gray-600': '#9B9B9B',
+        'gray-100': '#f6f7f8',
+      },
+
+      fontSize: {
+        title: '2.5rem',
       },
 
       fontFamily: {
@@ -17,11 +22,14 @@ export default {
           'system-ui',
           'sans-serif',
         ],
+        inter: 'Inter, sans-serif',
       },
 
       backgroundImage: {
-        'arrow-dropdown': 'url("./src/assets/icons/arrow_link.svg")'
-      }
+        'arrow-dropdown': 'url("./src/assets/icons/arrow_link.svg")',
+        'header-reforestation':
+          'url("./src/assets/imgs/reforestation/bg-header-reforestation.wepb")',
+      },
     },
   },
   plugins: [],
