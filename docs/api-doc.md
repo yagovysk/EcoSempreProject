@@ -242,7 +242,7 @@ GET {{baseUrl}}/articles?page=1&limit=1
 ### Buscar artigo por slug  ou id
 
 ```
-POST {{baseUrl}}/article/[slug]
+GET  {{baseUrl}}/article/[slug]
 ```
 
 ##### Status
