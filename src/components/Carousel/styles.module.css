@@ -1,6 +1,5 @@
 .carousel_wrapper {
   position: relative;
-  padding-right: 1.5rem;
   border-radius: 0.25rem;
   max-width: 35.4rem;
 }
@@ -19,7 +18,8 @@
 .experiences_wrapper {
   position: absolute;
   bottom: 2.5rem;
-  right: -2.2rem;
+  right: 0rem;
+  margin-right: -2.5rem;
   background-color: #00c756;
   color: white;
   border-radius: 0.25rem;
