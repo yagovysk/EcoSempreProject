@@ -20,17 +20,7 @@ export const PixInformation = ({ label, pix }) => {
   return (
     <Tooltip.Provider>
       <Tooltip.Root delayDuration={0}>
-        <button
-          type="button"
-          className={styles.wrapper_pix_information}
-          aria-label={
-            !pixCopied
-              ? 'Clique aqui para copiar a chave pix'
-              : 'Chave pix copiada com sucesso'
-          }
-          onClick={handleCopyToClipboard}
-          onKeyDown={handleCopyToClipboard}
-        >
+        <div className={styles.wrapper_pix_information}>
           <p>
             <span className={`${styles.pix_label}`}>{label}</span>{' '}
             <span ref={pixRef} className={`${styles.pix}`}>
@@ -38,10 +28,19 @@ export const PixInformation = ({ label, pix }) => {
             </span>
           </p>
 
-          <Tooltip.Trigger className={styles.btn_clipboard}>
+          <Tooltip.Trigger
+            className={styles.btn_clipboard}
+            aria-label={
+              !pixCopied
+                ? 'Clique aqui para copiar a chave pix'
+                : 'Chave pix copiada com sucesso'
+            }
+            onClick={handleCopyToClipboard}
+            onKeyDown={handleCopyToClipboard}
+          >
             <Icon icon="lucide:copy" className={styles.icon_clipboard} />
           </Tooltip.Trigger>
-        </button>
+        </div>
 
         <TooltipContent
           title={!pixCopied ? 'Copiar chave pix' : 'Chave pix copiada!'}
