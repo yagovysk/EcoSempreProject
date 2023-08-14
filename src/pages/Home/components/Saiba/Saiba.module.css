@@ -93,6 +93,12 @@
     padding: 1.5rem;
     box-shadow: 0px 5px 42px 0px #2324260d;
   }
+
+  .device svg {
+    margin: 0 auto;
+    margin-bottom: 1.625rem;
+  }
+
   .device .description {
     max-width: initial;
   }

@@ -1,10 +1,12 @@
 .loader_wrapper {
   display: grid;
+  grid-auto-rows: max-content;
   gap: 2rem;
   margin-bottom: 2rem;
 }
 
 .loader_posts_wrapper {
+  align-self: self-start;
   display: grid;
   grid-auto-rows: 8.875rem;
   gap: 1rem;
