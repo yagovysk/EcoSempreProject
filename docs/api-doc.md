@@ -12,6 +12,8 @@
    - [Buscar artigo por slug ou id](#Buscar-artigo-por-slug-ou-id)
    - [Modificar artigo](#Modificar-artigo)
    - [Excluir um artigo](#Excluir-artigo)
+- [Contato](#contato)
+  - [Criar contato](#criar-contato)
 - [Tag](#tag)
     - [Criar tag](#criar-tag)
     - [Obter tags](#obter-todas-as-tags)
@@ -240,7 +242,7 @@ GET {{baseUrl}}/articles?page=1&limit=1
 ### Buscar artigo por slug  ou id
 
 ```
-POST {{baseUrl}}/article/[slug]
+GET  {{baseUrl}}/article/[slug]
 ```
 
 ##### Status
@@ -337,6 +339,158 @@ DELETE {{baseUrl}}/article/[articleId]
   ```
 </details>
 
+## Contato
+
+### Criar contato
+
+```
+POST {{baeUrl}}/contact
+```
+
+##### Corpo da requisição
+
+| parâmetro | tipo | Descrição |
+|-|-|-|
+| name | string | nome da pessoa ou empresa |
+| email | string | email para contato |
+| subject | string | assunto do contato |
+| phone | string | número de telefone para contato |
+
+##### Status
+| código | Descrição | 
+|-|-|
+| 201 | Sucesso |
+| 400 | Erro na requisição |
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  ```
+  [
+    49
+]
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  Bad Request
+  ```
+</details>
+
+### Obter contatos
+⚠️ **autenticação exigida**
+```
+POST {{baeUrl}}/contacts
+```
+
+
+##### Status
+| código | Descrição | 
+|-|-|
+| 200 | Sucesso |
+| 400 | Erro na requisição |
+| 404| Não existem contatos |
+<details>
+  <summary>Exemplo de resposta</summary>
+  ```
+  [
+    {
+        "id": 4,
+        "name": "any",
+        "email": "any@tipes.com",
+        "subject": "anyway",
+        "phone": " 40028922",
+        "message": "anything",
+        "createdAt": "2023-06-05T15:23:05.000Z"
+    },
+    {
+        "id": 5,
+        "name": "any",
+        "email": "jacuraru@tipes.com",
+        "subject": "any",
+        "phone": " 40028922",
+        "message": "anything",
+        "createdAt": "2023-06-05T15:23:07.000Z"
+    }
+]
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  Bad Request
+  ```
+</details>
+
+### Obter contato pelo ID
+⚠️ **autenticação exigida**
+```
+POST {{baeUrl}}/contact/[id]
+```
+
+
+##### Status
+| código | Descrição | 
+|-|-|
+| 200 | Sucesso |
+| 400 | Erro na requisição |
+| 404| Não existem contatos |
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  ```
+ {
+    "id": 4,
+    "name": "any",
+    "email": "any@tipes.com",
+    "subject": "anyway",
+    "phone": " 40028922",
+    "message": "anything",
+    "createdAt": "2023-06-05T15:23:05.000Z"
+}
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  Bad Request
+  ```
+</details>
+
+### Deletar contato
+⚠️ **autenticação exigida**
+```
+POST {{baeUrl}}/contact/[id]
+```
+
+
+##### Status
+| código | Descrição | 
+|-|-|
+| 200 | Sucesso |
+| 400 | Erro na requisição |
+| 404| Não existem contatos |
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  ```
+OK
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  Not Found
+  ```
+</details>
 
 ## Tag
 
