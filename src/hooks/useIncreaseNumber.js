@@ -11,7 +11,7 @@ export function useIncreaseNumber(n, duration, increase) {
     }, duration)
 
     return () => clearInterval(increaseNumberInterval)
-  }, [number])
+  }, [number, n, duration, increase])
 
   return number
 }

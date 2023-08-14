@@ -10,6 +10,7 @@ import { ScrollReveal } from '../../components/ScrollReveal'
 import { headquarters, peopleWithNotebook } from '../../assets/imgs/aboutUs'
 
 import styles from './styles.module.css'
+import { useIncreaseNumber } from '../../hooks/useIncreaseNumber'
 
 const linksMenu = [
   {
@@ -28,6 +29,8 @@ const linksMenu = [
 const images = [peopleWithNotebook, peopleWithNotebook, peopleWithNotebook]
 
 export function AboutUs() {
+  const experienceYears = useIncreaseNumber(10, 100, 1)
+
   return (
     <main className={styles.main_container}>
       <HeaderSection
@@ -94,7 +97,9 @@ export function AboutUs() {
           </div>
 
           <div className="rounded grid gap-1 text-center md:gap-3 px-2 place-items-center place-content-center font-semibold text-white font-IBM-plex-sans bg-green-300 absolute z-10 w-40 h-32 sm:w-48 sm:h-64 bottom-0 lg:bottom-10 lg:-right-10 md:px-5">
-            <strong className="block text-4xl sm:text-7xl">+10</strong>
+            <strong className="block text-4xl sm:text-7xl">
+              +{experienceYears}
+            </strong>
             <span className="text-sm sm:text-base sm:whitespace-nowrap">
               Anos de Experiências
             </span>
