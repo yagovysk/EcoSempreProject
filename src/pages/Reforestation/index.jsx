@@ -99,10 +99,13 @@ export function Reforestation() {
           </div>
         </ScrollReveal>
 
-        <div
-          className="rounded w-28 h-32 bg-green-300 absolute -z-10 -right-0 -bottom-7 md:right-36 lg:right-16"
+        <ScrollReveal
+          origin="right"
           aria-hidden
-        ></div>
+          className="rounded w-28 h-32 bg-green-300 absolute -z-10 -right-0 -bottom-7 md:right-36 lg:right-16"
+        >
+          <div></div>
+        </ScrollReveal>
       </DescriptionPage.Root>
 
       <HowItWorks className="my-20" />
