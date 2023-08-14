@@ -1,4 +1,4 @@
-import styles from "./Loader.module.css";
+import styles from './Loader.module.css'
 
 function Loader() {
   return (
@@ -13,7 +13,7 @@ function Loader() {
         <span className={`${styles.loader}`}></span>
       </div>
     </div>
-  );
+  )
 }
 
-export default Loader;
+export default Loader

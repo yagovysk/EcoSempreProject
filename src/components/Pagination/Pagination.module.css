@@ -7,6 +7,10 @@
 }
 
 .btn_pagination {
+  display: grid;
+  place-content: center;
+  place-items: center;
+
   width: 3.125rem;
   height: 3.125rem;
   background-color: transparent;

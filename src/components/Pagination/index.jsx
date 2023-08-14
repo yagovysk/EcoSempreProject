@@ -1,5 +1,5 @@
-import { Icon } from "@iconify/react";
-import styles from "./Pagination.module.css";
+import { Icon } from '@iconify/react'
+import styles from './Pagination.module.css'
 
 export function Pagination({
   pageIndex,
@@ -7,12 +7,12 @@ export function Pagination({
   postsPerPage,
   postsLength,
 }) {
-  const sizePagination = Math.ceil(postsLength / postsPerPage);
+  const sizePagination = Math.ceil(postsLength / postsPerPage)
 
   const sizePagesArr = Array.from(
     Array(sizePagination),
-    (n, index) => index + 1
-  );
+    (n, index) => index + 1,
+  )
   return (
     <div
       className={styles.wrapper_pagination}
@@ -28,7 +28,7 @@ export function Pagination({
             page === pageIndex + 1 && styles.active
           }`}
           aria-label={`Página atual, Página ${page}`}
-          aria-current={page === pageIndex + 1 ? "true" : "false"}
+          aria-current={page === pageIndex + 1 ? 'true' : 'false'}
         >
           {page}
         </button>
@@ -40,12 +40,12 @@ export function Pagination({
         className={`${styles.btn_pagination} ${styles.btn_arrow} `}
         aria-label={
           pageIndex + 1 >= sizePagination
-            ? "Fim das páginas"
+            ? 'Fim das páginas'
             : `Ir para a página ${pageIndex + 2}`
         }
       >
         <Icon icon="octicon:arrow-right-16" />
       </button>
     </div>
-  );
+  )
 }
