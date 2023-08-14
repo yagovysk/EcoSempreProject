@@ -27,3 +27,7 @@
   background: #777;
   transform: translateY(-4px);
 }
+
+.parceirosCard a img {
+  max-width: none;
+}
