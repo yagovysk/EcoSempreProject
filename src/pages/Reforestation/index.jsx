@@ -7,9 +7,11 @@ import { ScrollReveal } from '../../components/ScrollReveal'
 import {
   peopleReforesting,
   personPlating,
+  bgHeaderReforestation,
 } from '../../assets/imgs/reforestation'
 
 import styles from './styles.module.css'
+import { Carousel } from '../../components/Carousel'
 
 const linksBreadcrumb = [
   {
@@ -25,6 +27,8 @@ const linksBreadcrumb = [
   },
 ]
 
+const images = [peopleReforesting, personPlating, bgHeaderReforestation]
+
 export function Reforestation() {
   return (
     <main className="overflow-hidden">
@@ -34,7 +38,7 @@ export function Reforestation() {
         className={`${styles.header} hyphens-auto`}
       />
 
-      <DescriptionPage.Root className="container">
+      <DescriptionPage.Root className="container relative">
         <DescriptionPage.Content className="">
           <ScrollReveal origin="left" className="h-auto">
             <DescriptionPage.Subtitle subtitle="Restaurando a Natureza" />
@@ -71,21 +75,34 @@ export function Reforestation() {
           </ScrollReveal>
         </DescriptionPage.Content>
 
-        <DescriptionPage.ImageContainer className="self-end justify-self-center">
-          <ScrollReveal origin="right">
-            <img
-              src={peopleReforesting}
-              className="rounded-md"
-              alt="Pessoas plantando uma árvore"
-              loading="lazy"
-            />
+        <ScrollReveal
+          origin="right"
+          className="overflow-hidden h-auto lg:overflow-visible self-end"
+        >
+          <div className="overflow-hidden rounded md:max-w-lg lg:max-w-sm mx-auto">
+            <Carousel.Root>
+              <Carousel.Content>
+                {images.map((image, index) => (
+                  <div className="keen-slider__slide" key={index}>
+                    <img
+                      src={image}
+                      className="h-full w-full object-cover"
+                      alt=""
+                    />
+                  </div>
+                ))}
 
-            <div
-              className="rounded w-28 h-32 bg-green-300 absolute -z-10 -bottom-7 -right-7"
-              aria-hidden
-            ></div>
-          </ScrollReveal>
-        </DescriptionPage.ImageContainer>
+                <Carousel.PrevButton className="!left-4" />
+                <Carousel.NextButton />
+              </Carousel.Content>
+            </Carousel.Root>
+          </div>
+        </ScrollReveal>
+
+        <div
+          className="rounded w-28 h-32 bg-green-300 absolute -z-10 -right-0 -bottom-7 md:right-36 lg:right-16"
+          aria-hidden
+        ></div>
       </DescriptionPage.Root>
 
       <HowItWorks className="my-20" />
