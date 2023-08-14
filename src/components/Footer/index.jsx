@@ -102,7 +102,8 @@ export function Footer() {
             <a
               target="_blank"
               className={styles.copyright_author}
-              href="www.google.com"
+              href="https://togyrogroupvictory.com/"
+              rel="noreferrer"
             >
               Togyro Group Victory
             </a>
