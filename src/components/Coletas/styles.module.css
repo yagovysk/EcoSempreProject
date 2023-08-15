@@ -1,21 +1,9 @@
 .wrapper {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 2.375rem;
+  gap: 2.75rem;
   align-items: center;
-  padding: var(--padding, 8rem) 1.5rem;
-}
-
-.textsContainer {
-  flex: 1 0 25rem;
-}
-
-.paragraph {
-  color: #9b9b9b;
-  font: 400 1rem "Roboto", sans-serif;
-  line-height: 1.68rem;
-  margin-right: 3rem;
+  padding: var(--padding);
 }
 
 .btnColeta {
@@ -31,14 +19,16 @@
   transform: translateY(-4px);
 }
 
+@media (max-width: 1023px) {
+  .wrapper {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 630px) {
   .wrapper {
     justify-content: start;
     padding: 3rem 1.5rem;
-  }
-  .textsContainer {
-    flex: 1 0 0;
-    max-width: initial !important;
   }
   .btnColeta {
     font-size: 0.75rem !important;

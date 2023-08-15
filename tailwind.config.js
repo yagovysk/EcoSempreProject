@@ -27,8 +27,6 @@ export default {
 
       backgroundImage: {
         'arrow-dropdown': 'url("./src/assets/icons/arrow_link.svg")',
-        'header-reforestation':
-          'url("./src/assets/imgs/reforestation/bg-header-reforestation.wepb")',
       },
     },
   },
