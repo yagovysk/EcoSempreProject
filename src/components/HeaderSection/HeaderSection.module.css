@@ -48,6 +48,12 @@
   height: 1rem;
 }
 
+@media (max-width: 1023px) {
+  .header {
+    margin-bottom: 4rem;
+  }
+}
+
 @media (max-width: 630px) {
   .header {
     height: 20.75rem;

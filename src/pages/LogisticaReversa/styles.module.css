@@ -1,0 +1,21 @@
+.header {
+  background: #35490a
+    url('../../assets/imgs/logisticaReversa/bg-header-logistica-reversa.webp')
+    no-repeat bottom center / cover;
+}
+
+.partners_wrapper {
+  display: grid;
+  place-content: center;
+  background-color: #f6f7f8;
+  padding: 5rem 1.5rem;
+  margin-top: 7rem;
+}
+
+@media (max-width: 630px) {
+  .partners_wrapper {
+    background-color: white;
+    border-top: 1px solid #eaeaea;
+    padding: 3rem 1.5rem;
+  }
+}

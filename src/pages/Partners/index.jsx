@@ -69,7 +69,7 @@ export function Partners() {
           </ScrollReveal>
         </DescriptionPage.Content>
 
-        <DescriptionPage.ImageContainer className="self-end h-full justify-self-center">
+        <DescriptionPage.ImageContainer className="self-end h-full sm:py-5 justify-self-center">
           <ScrollReveal origin="right" className="flex gap-7">
             <div className="border border-green-300 overflow-hidden relative self-end h-full w-full">
               <img

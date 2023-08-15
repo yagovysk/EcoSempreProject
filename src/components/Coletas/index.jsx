@@ -1,43 +1,42 @@
+import * as DescriptionPage from '../DescriptionPage'
+
 import { Link } from 'react-router-dom'
 import { ScrollReveal } from '../ScrollReveal'
-import styles from './Coletas.module.css'
+import styles from './styles.module.css'
 
 export function Coletas({
   subtitle,
   title,
   linkText,
   imgCallbackComponent: ImgComponent,
-  padding = '8rem',
+  padding = '8rem 1.5rem',
 }) {
   return (
     <div
       className={`container ${styles.wrapper}`}
       style={{ '--padding': padding }}
     >
-      <article className={`textsContainer ${styles.textsContainer}`}>
+      <DescriptionPage.Content className="lg:max-w-xl">
         <ScrollReveal origin="left">
-          <span className={`small-text`}>{subtitle}</span>
-          <section className={`texts`}>
-            <h2 className={`title`}>{title}</h2>
-            <p className={styles.paragraph}>
-              Ao utilizar o Ponto de Coleta EcoSempre, você contribui para a
-              redução do impacto ambiental e para a promoção da economia
-              circular. Faça parte dessa iniciativa e ajude a construir um
-              futuro mais sustentável para todos. Juntos, podemos fazer a
-              diferença!
-            </p>
+          <DescriptionPage.Subtitle subtitle={subtitle} />
+          <DescriptionPage.Title className="mt-2" title={title} />
+          <DescriptionPage.Paragraph className="py-6">
+            Ao utilizar o Ponto de Coleta EcoSempre, você contribui para a
+            redução do impacto ambiental e para a promoção da economia circular.
+            Faça parte dessa iniciativa e ajude a construir um futuro mais
+            sustentável para todos. Juntos, podemos fazer a diferença!
+          </DescriptionPage.Paragraph>
 
-            <Link
-              role="button"
-              to="/coletas"
-              className={`btn btn-link ${styles.btnColeta}`}
-            >
-              {linkText}
-              <span>🡢</span>
-            </Link>
-          </section>
+          <Link
+            role="button"
+            to="/coletas"
+            className={`btn btn-link ${styles.btnColeta}`}
+          >
+            {linkText}
+            <span>🡢</span>
+          </Link>
         </ScrollReveal>
-      </article>
+      </DescriptionPage.Content>
 
       <ImgComponent />
     </div>
