@@ -34,7 +34,7 @@ export const ScrollReveal = ({
       if (!immediately) window.removeEventListener('scroll', handleScrollReveal)
       if (delayAnimation) clearTimeout(delayAnimation)
     }
-  }, [])
+  }, [immediately])
 
   return (
     <div

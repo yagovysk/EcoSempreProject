@@ -1,4 +1,5 @@
 import * as DescriptionPage from '../../components/DescriptionPage'
+import { useRef } from 'react'
 
 import { ContactCard } from '../../components/ContactCard'
 import { ParceirosCard } from '../../components/ParceirosCard'
@@ -6,11 +7,11 @@ import { HeaderSection } from '../../components/HeaderSection'
 import { Map } from '../../components/Map'
 import { Carousel } from '../../components/Carousel'
 import { ScrollReveal } from '../../components/ScrollReveal'
+import { useIncreaseNumber } from '../../hooks/useIncreaseNumber'
 
 import { headquarters, peopleWithNotebook } from '../../assets/imgs/aboutUs'
 
 import styles from './styles.module.css'
-import { useIncreaseNumber } from '../../hooks/useIncreaseNumber'
 
 const linksMenu = [
   {
@@ -29,7 +30,8 @@ const linksMenu = [
 const images = [peopleWithNotebook, peopleWithNotebook, peopleWithNotebook]
 
 export function AboutUs() {
-  const experienceYears = useIncreaseNumber(10, 100, 1)
+  const experienceYearRef = useRef(null)
+  const experienceYears = useIncreaseNumber(10, 100, 1, experienceYearRef)
 
   return (
     <main className={styles.main_container}>
@@ -90,13 +92,16 @@ export function AboutUs() {
                   </div>
                 ))}
 
-                <Carousel.PrevButton className="left-40 sm:left-48 lg:left-5" />
-                <Carousel.NextButton className="right-1 sm:right-2 lg:right-40" />
+                <Carousel.PrevButton className="left-40 sm:left-60 lg:left-5" />
+                <Carousel.NextButton className="right-0 sm:right-2 lg:right-40" />
               </Carousel.Content>
             </Carousel.Root>
           </div>
 
-          <div className="rounded grid gap-1 text-center md:gap-3 px-2 place-items-center place-content-center font-semibold text-white font-IBM-plex-sans bg-green-300 absolute z-10 w-40 h-32 sm:w-48 sm:h-64 bottom-0 lg:bottom-10 lg:-right-10 md:px-5">
+          <div
+            ref={experienceYearRef}
+            className="rounded grid gap-1 text-center md:gap-3 px-2 place-items-center place-content-center font-semibold text-white font-IBM-plex-sans bg-green-300 absolute z-10 w-40 h-32 sm:w-48 sm:h-64 bottom-0 lg:bottom-10 lg:-right-10 md:px-5"
+          >
             <strong className="block text-4xl sm:text-7xl">
               +{experienceYears}
             </strong>

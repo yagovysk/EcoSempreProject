@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { Icon } from '@iconify/react'
 import { Link } from 'react-router-dom'
 
@@ -10,10 +11,12 @@ import { plantIcon } from '../../../../assets/icons'
 import styles from './Sobre.module.css'
 
 export function Sobre() {
+  const numberGarbageRef = useRef(null)
+
   // 778 = discarded E-Waste number
   // 10 = duration of number update per ms
   // 2 = amount that will increase per ms
-  const numberGarbage = useIncreaseNumber(778, 10, 2)
+  const numberGarbage = useIncreaseNumber(778, 10, 2, numberGarbageRef)
 
   return (
     <div className="container">
@@ -30,7 +33,10 @@ export function Sobre() {
           </ScrollReveal>
 
           <ScrollReveal origin="left" style={{ position: 'absolute', top: 0 }}>
-            <div className={styles['number-garbage-wrapper']}>
+            <div
+              ref={numberGarbageRef}
+              className={styles['number-garbage-wrapper']}
+            >
               <img src={plantIcon} alt="Ícone de Planta" aria-hidden={true} />
               <strong className={styles.numbers}>+ {numberGarbage} KG</strong>
               <span className={styles.residuos}>
