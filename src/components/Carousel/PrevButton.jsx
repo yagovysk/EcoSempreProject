@@ -7,7 +7,7 @@ export function PrevButton({ ...props }) {
   return (
     <button
       {...props}
-      className={`absolute text-[#D7D7D757] z-10 left-48 bottom-4 ${props.className}`}
+      className={`absolute text-[#D7D7D757] z-10 bottom-4 ${props.className}`}
       onClick={() => instanceRef.current && instanceRef.current.prev()}
       type="button"
     >

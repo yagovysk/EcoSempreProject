@@ -1,17 +1,41 @@
 import { useState, useEffect } from 'react'
 
-export function useIncreaseNumber(n, duration, increase) {
+export function useIncreaseNumber(amount, duration, increase, ref) {
   const [number, setNumber] = useState(0)
+  const [isTimeToIncreaseNumber, setIsTimeToIncreaseNumber] = useState(false)
 
   useEffect(() => {
-    const increaseNumberInterval = setInterval(() => {
-      if (number < n) {
-        setNumber(number + increase)
-      }
-    }, duration)
+    if (!ref) return
+
+    function handleScrollReveal() {
+      const threeQuartersWindow = window.innerHeight * 0.75
+      const windowTop = window.scrollY + threeQuartersWindow
+      const positionTopElement =
+        ref.current.getBoundingClientRect().top + window.scrollY
+
+      setIsTimeToIncreaseNumber(windowTop > positionTopElement)
+    }
+
+    window.addEventListener('scroll', handleScrollReveal)
+
+    return () => {
+      window.removeEventListener('scroll', handleScrollReveal)
+    }
+  }, [ref])
+
+  useEffect(() => {
+    let increaseNumberInterval
+
+    if (isTimeToIncreaseNumber) {
+      if (number >= amount) return
+
+      increaseNumberInterval = setInterval(() => {
+        setNumber((prevNumber) => prevNumber + increase)
+      }, [duration])
+    }
 
     return () => clearInterval(increaseNumberInterval)
-  }, [number, n, duration, increase])
+  }, [number, amount, duration, increase, isTimeToIncreaseNumber])
 
   return number
 }
