@@ -9,6 +9,7 @@
 - [Artigo](#artigo)
    - [Registrar novo artigo](#registrar-novo-artigo)
    - [Obter todos os artigos registrados](#Obter-todos-os-artigos-registrados)
+   - [Buscar artigos por tag](#buscar-artigos-por-tag)
    - [Buscar artigo por slug ou id](#Buscar-artigo-por-slug-ou-id)
    - [Modificar artigo](#Modificar-artigo)
    - [Excluir um artigo](#Excluir-artigo)
@@ -228,6 +229,49 @@ GET {{baseUrl}}/articles?page=1&limit=1
         "updatedAt": "2023-05-31T17:06:19.000Z"
     }
     ]
+  ```
+</details>
+
+<details>
+  <summary>Exemplo de resposta com erro</summary>
+  
+  ```
+  Not Found
+  ```
+</details>
+
+### Obter artigos por tag
+
+
+```
+GET {{baseUrl}}/[[tagName]]
+```
+
+##### Status
+| código | Descrição | 
+|-|-|
+| 200 | Sucesso |
+| 400 | Ocorreu um erro na requisição |
+| 404 | Não existem artigos cadastrados |
+
+<details>
+  <summary>Exemplo de resposta</summary>
+  ```
+[
+	{
+		"id": 1,
+		"title": "any",
+		"author": "Eco Sempre",
+		"content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+		"author_id": 1,
+		"slug": "novo-titulo1",
+		"createdAt": "2023-06-26T20:40:44.000Z",
+		"updatedAt": "2023-06-26T20:40:44.000Z",
+		"article_id": 58,
+		"tag_id": 1,
+		"name": "ecologia"
+	}
+]
   ```
 </details>
 
