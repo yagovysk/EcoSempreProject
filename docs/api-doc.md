@@ -9,12 +9,13 @@
 - [Artigo](#artigo)
    - [Registrar novo artigo](#registrar-novo-artigo)
    - [Obter todos os artigos registrados](#Obter-todos-os-artigos-registrados)
-   - [Buscar artigos por tag](#buscar-artigos-por-tag)
+   - [Obter artigos por tag](#obter-artigos-por-tag)
    - [Buscar artigo por slug ou id](#Buscar-artigo-por-slug-ou-id)
    - [Modificar artigo](#Modificar-artigo)
    - [Excluir um artigo](#Excluir-artigo)
 - [Contato](#contato)
   - [Criar contato](#criar-contato)
+  - [Obter contatos][#obter-contatos] 
 - [Tag](#tag)
     - [Criar tag](#criar-tag)
     - [Obter tags](#obter-todas-as-tags)
@@ -425,8 +426,16 @@ POST {{baeUrl}}/contact
 
 ### Obter contatos
 ⚠️ **autenticação exigida**
+
+###### Sem paginação
+
 ```
-POST {{baeUrl}}/contacts
+GET {{baseUrl}}/articles
+```
+###### Com paginação
+
+```
+GET {{baseUrl}}/articles?page=1&limit=1
 ```
 
 
