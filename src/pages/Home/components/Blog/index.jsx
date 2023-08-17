@@ -1,12 +1,14 @@
-import { CardBlog } from '../../../../components/CardBlog'
 import { Link } from 'react-router-dom'
-import { useGetData } from '../../../../hooks/useGetData'
+import { useFetchData } from '../../../../hooks/useFetchData'
+
+import { CardBlog } from '../../../../components/CardBlog'
 import { ScrollReveal } from '../../../../components/ScrollReveal'
 import { Dots } from '../../../../components/Loader/Dots'
+
 import styles from './Blog.module.css'
 
 export function Blog({ isMobile }) {
-  const posts = useGetData('/articles?_page=1&_limit=3')
+  const { data: posts, isLoading } = useFetchData('/articles?_page=1&_limit=3')
 
   return (
     <div className={`${styles.idBlog} container ${isMobile && styles.mobile}`}>
@@ -18,7 +20,7 @@ export function Blog({ isMobile }) {
       </section>
       <ScrollReveal origin="top">
         <div className={styles.grid_cards}>
-          {posts.length > 0 ? (
+          {!isLoading ? (
             posts.map((post) => (
               <CardBlog
                 key={post.id}

@@ -115,7 +115,7 @@ export function PontosDeColeta() {
         linksMenu={linksMenu}
       />
 
-      <DescriptionPage.Root className={`container gap-y-10 lg:gap-y-16 px-0`}>
+      <DescriptionPage.Root className={`container gap-y-10 lg:gap-y-16 !px-0`}>
         <DescriptionPage.Content className="px-6 xl:px-0 text-center lg:text-left">
           <ScrollReveal origin="bottom">
             <DescriptionPage.Subtitle subtitle="Nossos Pontos" />
