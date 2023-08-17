@@ -3,12 +3,12 @@ import { Default } from './layouts/Default'
 import { Home } from './pages/Home'
 import { AboutUs } from './pages/AboutUs'
 import { MaterialList } from './pages/MaterialList'
-import { Blog, loader as blogLoader } from './pages/Blog'
+import { Blog } from './pages/Blog'
 import { Contact } from './pages/Contact'
 import { PontosDeColeta } from './pages/PontosDeColeta'
 import { FAQ } from './pages/FAQ'
 import { Partners } from './pages/Partners'
-import { Post, loader as postLoader } from './pages/Post'
+import { Post } from './pages/Post'
 import { SearchResult, loader as searchLoader } from './pages/SearchResult'
 import { LogisticaReversa } from './pages/LogisticaReversa'
 import { Descarte } from './pages/Descarte'
@@ -49,12 +49,10 @@ export const router = createBrowserRouter([
           {
             path: '/blog',
             element: <Blog />,
-            loader: blogLoader,
           },
           {
             path: '/posts/:key',
             element: <Post />,
-            loader: postLoader,
           },
           {
             path: '/faq',
