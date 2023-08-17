@@ -1,30 +1,19 @@
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useFetchData } from '../../hooks/useFetchData'
+
 import Loader from '../Loader'
-import api from '../../api/posts'
+
 import styles from './AsideBlog.module.css'
 
 export function AsideBlog() {
-  const [recentPosts, setRecentPosts] = useState('')
-  const [tags, setTags] = useState('')
-  const [categories, setCategories] = useState('')
+  const { data: recentPosts, isLoading: isLoadingRecentPosts } = useFetchData(
+    '/articles?_sort=timestamp&_order=desc&_limit=3',
+  )
+  const { data: tags, isLoading: isLoadingTags } = useFetchData('/tags')
+  const { data: categories, isLoading: isLoadingCategories } =
+    useFetchData('/categories')
 
-  useEffect(() => {
-    async function getData(endpoint, setState) {
-      try {
-        const response = await api.get(endpoint)
-        setState(response.data)
-      } catch (err) {
-        console.log(`Error: ${err.message}`)
-      }
-    }
-
-    getData('/articles?_sort=timestamp&_order=desc&_limit=3', setRecentPosts)
-    getData('/tags', setTags)
-    getData('/categories', setCategories)
-  }, [])
-
-  if (!recentPosts && !tags && !categories) {
+  if (isLoadingRecentPosts && isLoadingCategories && isLoadingTags) {
     return <Loader />
   }
 

@@ -5,6 +5,7 @@ import { HeaderSection } from '../../components/HeaderSection'
 import { AsideBlog } from '../../components/AsideBlog'
 import { Pagination } from '../../components/Pagination'
 import api from '../../api/posts'
+
 import './SearchResult.css'
 
 const linksMenu = [
