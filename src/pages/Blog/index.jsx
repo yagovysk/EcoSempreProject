@@ -1,13 +1,14 @@
+import { useState } from 'react'
+import { useFetchData } from '../../hooks/useFetchData'
+import { useBreakpoint } from '../../hooks/useBreakpoint'
+
 import { CardBlog } from '../../components/CardBlog'
 import { HeaderSection } from '../../components/HeaderSection'
 import { Pagination } from '../../components/Pagination'
-import { useState } from 'react'
-import { useBreakpoint } from '../../hooks/useBreakpoint'
 import { ScrollReveal } from '../../components/ScrollReveal'
-import { useLoaderData } from 'react-router-dom'
+import { Loader } from './components/Loader'
 
-import styles from './Blog.module.css'
-import api from '../../api/posts'
+import styles from './styles.module.css'
 
 const linksMenu = [
   {
@@ -20,29 +21,17 @@ const linksMenu = [
 ]
 let POSTS_PER_PAGE = 6
 
-export async function loader() {
-  const posts = await api
-    .get('/articles')
-    .then((response) => response.data)
-    .catch((err) => {
-      throw new Response('', {
-        status: err.response.status,
-        statusText: err.response.statusText,
-      })
-    })
-  return { posts }
-}
-
 export function Blog() {
   const widthWindow = useBreakpoint()
-  POSTS_PER_PAGE = widthWindow <= 500 ? 3 : 6
-
   const [pageIndex, setPageIndex] = useState(0)
-  const { posts } = useLoaderData()
+
+  const { data: posts, isLoading } = useFetchData('/articles')
+
+  POSTS_PER_PAGE = widthWindow <= 500 ? 3 : 6
 
   const startIndex = pageIndex * POSTS_PER_PAGE
   const endIndex = startIndex + POSTS_PER_PAGE
-  const postsPerPage = posts.slice(startIndex, endIndex)
+  const postsPerPage = !isLoading && posts.slice(startIndex, endIndex)
 
   return (
     <main>
@@ -52,33 +41,40 @@ export function Blog() {
         linksMenu={linksMenu}
       />
 
-      <ScrollReveal origin="bottom">
-        <article className={`${styles.posts_container} container`}>
-          {postsPerPage.map((post) => (
-            <CardBlog
-              key={post.id}
-              img={post.imgURL}
-              imgAlt="Imagem de floresta"
-              categories={post.categories}
-              title={post.title}
-              timestamp={post.timestamp}
-              description={post.content}
-              path={post.id}
-            />
-          ))}
-        </article>
-      </ScrollReveal>
+      {isLoading ? (
+        <ScrollReveal origin="bottom">
+          <Loader />
+        </ScrollReveal>
+      ) : (
+        <>
+          <ScrollReveal origin="bottom">
+            <article className={`${styles.posts_container} container`}>
+              {postsPerPage.map((post) => (
+                <CardBlog
+                  key={post.id}
+                  img={post.imgURL}
+                  categories={post.categories}
+                  title={post.title}
+                  timestamp={post.timestamp}
+                  description={post.content}
+                  path={post.id}
+                />
+              ))}
+            </article>
+          </ScrollReveal>
 
-      <ScrollReveal origin="top">
-        <div className={styles.pagination_container}>
-          <Pagination
-            postsPerPage={POSTS_PER_PAGE}
-            pageIndex={pageIndex}
-            onNextPage={setPageIndex}
-            postsLength={posts.length}
-          />
-        </div>
-      </ScrollReveal>
+          <ScrollReveal origin="top">
+            <div className={styles.pagination_container}>
+              <Pagination
+                postsPerPage={POSTS_PER_PAGE}
+                pageIndex={pageIndex}
+                onNextPage={setPageIndex}
+                postsLength={posts.length}
+              />
+            </div>
+          </ScrollReveal>
+        </>
+      )}
     </main>
   )
 }

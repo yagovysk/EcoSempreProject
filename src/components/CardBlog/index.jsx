@@ -1,22 +1,21 @@
-import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
-import styles from "./CardBlog.module.css";
+import { Icon } from '@iconify/react'
+import { Link } from 'react-router-dom'
+import styles from './CardBlog.module.css'
 
 export function CardBlog({
   img,
-  imgAlt,
   categories,
   title,
   timestamp,
   description,
   path,
 }) {
-  const copyCategories = [...categories].join(", ");
+  const copyCategories = [...categories].join(', ')
 
   return (
     <article className={styles.card_wrapper}>
       <div className={`${styles.img_wrapper} img_loading`}>
-        <img loading="lazy" src={img} alt={imgAlt} />
+        <img loading="lazy" src={img} alt="" />
       </div>
 
       <div className={styles.categories_wrapper}>
@@ -43,12 +42,12 @@ export function CardBlog({
           <Icon
             className={styles.arrow_icon}
             icon="material-symbols:arrow-circle-right-rounded"
-            aria-hidden={true}
+            aria-hidden
           />
         </Link>
       </section>
 
-      <div aria-hidden={true} className={styles.trace}></div>
+      <div aria-hidden className={styles.trace}></div>
     </article>
-  );
+  )
 }

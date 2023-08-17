@@ -1,15 +1,18 @@
-import { useRouteError } from "react-router-dom";
-import styles from "./ErrorPage.module.css";
+import { useRouteError } from 'react-router-dom'
+import styles from './ErrorPage.module.css'
 
 export const ErrorPage = () => {
-  const error = useRouteError();
+  const error = useRouteError()
+
+  console.log(error)
+
   return (
     <main className={`${styles.main_content}`}>
       <div className={`${styles.wrapper_error_icon}`}>
         <ErrorIcon />
       </div>
       <h1 className={`${styles.title} title`}>
-        <span className={styles.error_status}>{error.status}</span>{" "}
+        <span className={styles.error_status}>{error.status}</span>{' '}
         {error.statusText || error.message}
       </h1>
       <p className={styles.paragraph}>
@@ -19,8 +22,8 @@ export const ErrorPage = () => {
         minutos.
       </p>
     </main>
-  );
-};
+  )
+}
 
 const ErrorIcon = () => {
   return (
@@ -75,9 +78,9 @@ const ErrorIcon = () => {
           width="216.45"
           height="161.475"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -109,9 +112,9 @@ const ErrorIcon = () => {
           width="205.664"
           height="171.728"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -138,5 +141,5 @@ const ErrorIcon = () => {
         </filter>
       </defs>
     </svg>
-  );
-};
+  )
+}

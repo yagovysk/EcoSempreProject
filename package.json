@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:server": "json-server --watch data/db.json --routes data/routes.json --port 8080 -d 500",
+    "dev:server": "json-server --watch data/db.json --routes data/routes.json --port 8080 -d 1000",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
@@ -22,6 +22,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
     "swiper": "^9.3.2",
+    "swr": "^2.2.1",
     "use-places-autocomplete": "^4.0.0"
   },
   "devDependencies": {
