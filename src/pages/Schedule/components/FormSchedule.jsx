@@ -1,5 +1,4 @@
 import { Controller, useFormContext } from 'react-hook-form'
-import { useState } from 'react'
 
 import { Input } from '../../../components/Form/Input'
 import { Spinner } from '../../../components/Loader/Spinner'
