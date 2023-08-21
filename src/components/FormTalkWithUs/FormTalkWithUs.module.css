@@ -32,43 +32,6 @@
   gap: 2rem;
 }
 
-.form_inputs div {
-  position: relative;
-}
-
-.form_inputs input,
-.form_inputs textarea {
-  font: 400 1rem "Roboto", sans-serif;
-  line-height: 0.9rem;
-  border: 1.5px solid #e7ebef;
-  border-radius: 0.25rem;
-  outline: 1px solid transparent;
-  color: #525252;
-}
-
-.form_inputs div.error_wrapper_input input,
-.form_inputs div.error_wrapper_input textarea {
-  border: 1.5px solid #ef4444;
-  box-shadow: 0px 0px 0px 2px rgba(239, 68, 68, 0.35);
-}
-
-.error_message {
-  position: absolute;
-  bottom: -2rem;
-  left: 0;
-}
-
-.form_inputs input:focus,
-.form_inputs textarea:focus {
-  border: 1.5px solid #00c756;
-  box-shadow: 0px 0px 0px 2px rgba(0, 199, 86, 0.25);
-}
-
-.form_inputs input::placeholder,
-.form_inputs textarea::placeholder {
-  color: #929090;
-}
-
 .form_title {
   font: 700 2rem "IBM Plex Sans", sans-serif;
   line-height: 2.875rem;
@@ -121,12 +84,6 @@
       "subject"
       "msg";
     gap: 1.5rem;
-  }
-
-  .error_message {
-    position: absolute;
-    bottom: -1.8rem;
-    left: 0;
   }
 }
 
