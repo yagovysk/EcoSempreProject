@@ -27,18 +27,6 @@
 
 .tooltip_arrow {
   fill: white;
+  width: 0.875rem;
+  height: 0.5rem;
 }
-
-@media (max-width: 630px) {
-  .tooltip_wrapper {
-    padding: 0.5rem;
-  }
-}
-
-@media (max-width: 430px) {
-  .tooltip_wrapper {
-    font-size: 0.6rem;
-    line-height: 0.5rem;
-  }
-}
-
