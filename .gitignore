@@ -4,3 +4,4 @@ data
 /src/api
 
 dist
+.env*
