@@ -108,9 +108,12 @@ export function QueryCollectForm({ setPontosColeta, setCoordinates }) {
     setValue,
     suggestions: { status, data },
     clearSuggestions,
-  } = usePlacesAutocomplete()
+  } = usePlacesAutocomplete({
+    callbackName: 'Loading',
+  })
 
   console.log(status)
+  console.log(value)
 
   const queryCollect = useForm({
     resolver: zodResolver(queryCollectFormSchema),
@@ -140,13 +143,13 @@ export function QueryCollectForm({ setPontosColeta, setCoordinates }) {
       lat,
       lng,
     })
+    setPontosColeta(pontosColeta)
   }
 
   function queryPontosColeta(data) {
     handleSelect(data.address)
     console.log(data)
     setPontosColeta(pontosColeta)
-    // window.scrollBy(0, document.body.offsetHeight)
   }
 
   return (

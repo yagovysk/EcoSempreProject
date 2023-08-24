@@ -1,5 +1,5 @@
 import * as DescriptionPage from '../../components/DescriptionPage'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 import { HeaderSection } from '../../components/HeaderSection'
 import { Map } from '../../components/Map'
@@ -21,9 +21,18 @@ const linksMenu = [
 export function PontosDeColeta() {
   const [pontosColeta, setPontosColeta] = useState('')
   const [coordinates, setCoordinates] = useState({})
+
+  const containerMapRef = useRef(null)
   const mapRef = useRef({})
 
-  console.log(coordinates)
+  useEffect(() => {
+    if (Object.keys(coordinates).length > 0) {
+      const positionBottomContainerMap =
+        containerMapRef.current.getBoundingClientRect().bottom
+
+      window.scrollTo(0, positionBottomContainerMap)
+    }
+  }, [coordinates])
 
   return (
     <main className={styles.main_content}>
@@ -57,7 +66,7 @@ export function PontosDeColeta() {
         />
 
         <div className="col-span-full">
-          <div className={styles.map_wrapper}>
+          <div ref={containerMapRef} className={styles.map_wrapper}>
             <Map mapRef={mapRef} coordinates={coordinates} />
           </div>
 

@@ -9,6 +9,7 @@ import {
 import { useCallback, useState } from 'react'
 
 import { mapIndicator } from '../../assets/icons'
+import { MapIndicator } from './components/MapIndicator'
 
 const center = {
   lat: -15.8398885,
@@ -21,7 +22,7 @@ const googleMapsOptions = {
   clickableIcons: false,
 }
 
-export function Map({ mapRef, coordinates }) {
+export function Map({ mapRef, coordinates = {} }) {
   const [directions, setDirections] = useState()
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
@@ -82,7 +83,7 @@ export function Map({ mapRef, coordinates }) {
           />
         )}
 
-        {coordinates && (
+        {Object.keys(coordinates).length > 0 && (
           <>
             <Marker position={coordinates} />
 
@@ -90,10 +91,10 @@ export function Map({ mapRef, coordinates }) {
               <Marker
                 key={ponto.lat + ponto.lng}
                 position={ponto}
-                icon={mapIndicator}
                 onClick={() => {
                   fetchDirections(ponto)
                 }}
+                icon={mapIndicator}
               />
             ))}
 
