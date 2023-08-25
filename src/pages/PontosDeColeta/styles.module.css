@@ -28,10 +28,10 @@
 }
 
 .input {
-  padding: 1.4rem 2rem;
+  padding: 1.25rem 1.5rem;
   border: 1.5px solid #e7ebef;
   border-radius: 0.25rem;
-  color: #232323;
+  color: #0e2b5c;
   width: 100%;
   font: inherit;
   outline: 1px solid transparent;
@@ -153,10 +153,6 @@
   .wrapper_form {
     width: 100%;
     padding: 1.8rem;
-  }
-
-  .input {
-    padding: 1.25rem;
   }
 
   .location_input {

@@ -1,8 +1,9 @@
-import { ContactCard } from "../../components/ContactCard";
-import { FormTalkWithUs } from "../../components/FormTalkWithUs";
-import { Map } from "../../components/Map";
-import { ScrollReveal } from "../../components/ScrollReveal";
-import styles from "./Contact.module.css";
+import { ContactCard } from '../../components/ContactCard'
+import { FormTalkWithUs } from '../../components/FormTalkWithUs'
+import { Map } from '../../components/Map'
+import { ScrollReveal } from '../../components/ScrollReveal'
+
+import styles from './Contact.module.css'
 
 export function Contact() {
   return (
@@ -21,5 +22,5 @@ export function Contact() {
         </div>
       </ScrollReveal>
     </main>
-  );
+  )
 }

@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .swiper-buttons {
-    --swiper-navigation-color: rgba(215, 215, 215, 0.34);
-    --swiper-navigation-size: 2rem;
-  }
-
-}
-
 :root {
   height: 100%;
 }
