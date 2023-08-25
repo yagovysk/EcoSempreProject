@@ -13,7 +13,7 @@ export function HowItWorks({ ...props }) {
           <DescriptionPage.Title title="Nosso Compromisso Sustentável" />
         </section>
 
-        <div className="flex max-lg:flex-col items-baseline gap-8 mb-8">
+        <div className="flex max-lg:flex-col justify-center items-baseline gap-8 mb-8">
           <Step title="Reflorestamento Ambiental" number={1}>
             A necessidade da conservação ambiental leva à uma ação fundamental
             na EcoSempre. Nossa missão é colaborar com escolas, empresas e

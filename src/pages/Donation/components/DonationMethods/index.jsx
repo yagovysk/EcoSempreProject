@@ -22,7 +22,7 @@ export function DonationMethods() {
         </ScrollReveal>
       </section>
 
-      <section className={`${styles.wrapper_cards}`}>
+      <ScrollReveal origin="bottom" className={`${styles.wrapper_cards}`}>
         <div className={`${styles.wrapper_card_donation}`}>
           <div className={`${styles.wrapper_icon_donation} ${styles.pix}`}>
             <Icon
@@ -71,11 +71,12 @@ export function DonationMethods() {
             href={vakinhaLink}
             target="_blank"
             className={`btn ${styles.btn_donation}`}
+            rel="noreferrer"
           >
             Fazer Doação
           </a>
         </div>
-      </section>
+      </ScrollReveal>
     </article>
   )
 }

@@ -8,7 +8,6 @@
 
 .wrapper_content {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   gap: 5.25rem;
   padding: 0 1.5rem;
@@ -30,21 +29,20 @@
   width: 100%;
 }
 
+@media (max-width: 1023px) {
+  .wrapper_content {
+    flex-direction: column;
+    align-items: start;
+    gap: 2rem;
+  }
+}
+
 @media (max-width: 640px) {
   .map_wrapper {
     height: 16rem;
   }
-  .wrapper_content {
-    gap: 2rem;
-  }
   .wrapper_form {
     padding: 1.8rem;
     flex-basis: 18rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .wrapper_form {
-    flex-basis: 16rem;
   }
 }
