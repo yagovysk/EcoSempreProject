@@ -4,9 +4,19 @@
 }
 
 .partners_card_container {
-  display: grid;
-  place-content: center;
   width: 100%;
   margin-top: 7rem;
-  padding: 4rem 2rem;
+  padding: 4rem 4.5rem;
+  overflow-x: auto;
+}
+
+.partners_card_container::-webkit-scrollbar {
+  height: 6px;
+  background-color: #f6f7f8;
+  border-radius: 0.9rem;
+}
+
+.partners_card_container::-webkit-scrollbar-thumb {
+  background-color: #b0b5ba;
+  border-radius: 0.9rem;
 }

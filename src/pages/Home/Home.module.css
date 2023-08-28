@@ -87,17 +87,15 @@
 
 .idParceiros {
   background: #f6f7f8;
-  padding: 3.125rem 1.5rem 3.75rem 1.5rem;
-  overflow: auto;
-  touch-action: pan-x;
+  padding: 3.125rem 1.5rem 0.25rem 1.5rem;
 }
-.idParceiros::-webkit-scrollbar {
+.idParceiros *::-webkit-scrollbar {
   height: 5px;
   background: #f6f7f8;
   border-radius: 0.9rem;
 }
 
-.idParceiros::-webkit-scrollbar-thumb {
+.idParceiros *::-webkit-scrollbar-thumb {
   background-color: #b0b5ba;
   border-radius: 0.9rem;
 }
@@ -113,14 +111,11 @@
 }
 
 .wrapper_parceiros_card {
-  padding: 5rem 0;
-  overflow: auto;
-}
-
-@media (max-width: 1100px) {
-  .wrapper_parceiros_card {
-    width: 100%;
-  }
+  padding-top: 5rem;
+  padding-bottom: 6.25rem;
+  overflow-x: auto;
+  touch-action: pan-x;
+  width: 100%;
 }
 
 @media (max-width: 715px) {
@@ -138,9 +133,9 @@
     background-color: white;
     padding: 4rem 2.8rem;
     border-top: 2px solid #eaeaea;
+    overflow-x: auto;
   }
   .wrapper_parceiros_card {
-    overflow: initial;
     padding: 0;
     width: auto;
   }
@@ -150,7 +145,6 @@
 }
 
 @media (max-width: 450px) {
-
   .wrapperImgColetas {
     padding: 1.5rem 0 1.5rem 1.5rem;
   }

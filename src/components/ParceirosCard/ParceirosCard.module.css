@@ -1,9 +1,8 @@
 .parceirosCard {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  overflow: auto;
-  touch-action: pan-x;
+  gap: 4.5rem;
+  padding: 1rem;
 }
 
 .parceirosCard::-webkit-scrollbar {
@@ -21,13 +20,16 @@
   display: block;
   transition: 0.3s ease;
   border-radius: 0.3rem;
-  padding: 1rem;
+  filter: grayscale(1);
 }
 .parceirosCard a:hover {
-  background: #777;
   transform: translateY(-4px);
+  filter: grayscale(0);
 }
 
-.parceirosCard a img {
+.parceirosCard img {
   max-width: none;
+  width: 8rem;
+  aspect-ratio: 3/2;
+  object-fit: contain;
 }
