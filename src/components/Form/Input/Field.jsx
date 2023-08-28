@@ -1,6 +1,8 @@
+/* eslint-disable react/display-name */
+import { forwardRef } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-export function Field({ name, ...props }) {
+export const Field = forwardRef(({ name, ...props }, ref) => {
   const {
     register,
     formState: { errors },
@@ -8,17 +10,19 @@ export function Field({ name, ...props }) {
 
   const error = errors[name]
 
+  const registerInput = name ? register(name) : {}
+
   return (
     <input
+      ref={ref}
       {...props}
-      {...register(name)}
+      {...registerInput}
       type={props.type || 'text'}
-      className={`py-5 ${
-        !error && 'focus:border-green-300 focus:shadow-input'
-      } outline-none px-6 border-[1.5px] font-roboto ${
-        !error ? 'border-gray-200' : 'border-red-500'
-      } ${error && 'shadow-error animate-shake'} rounded ${props.className}`}
+      className={`input-form ${
+        error &&
+        'border-red-500 shadow-error animate-shake focus:border-red-500 focus:shadow-error'
+      } ${props.className}`}
       aria-invalid={!!error}
     />
   )
-}
+})

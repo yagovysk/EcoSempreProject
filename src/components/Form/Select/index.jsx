@@ -40,7 +40,7 @@ export function Select({ children, placeholder, name, ...props }) {
         >
           <ScrollArea.Root type="hover">
             <SelectPrimitive.Viewport asChild>
-              <ScrollArea.Viewport className="w-[--radix-select-trigger-width] select-scrollbar max-h-56 bg-white rounded-lg py-4 shadow-[0px_0px_20.35px_-2px_rgba(0,0,0,0.10)]">
+              <ScrollArea.Viewport className="w-[--radix-select-trigger-width] select-scrollbar max-h-56 bg-white rounded-lg py-4 shadow-md">
                 {children}
               </ScrollArea.Viewport>
             </SelectPrimitive.Viewport>

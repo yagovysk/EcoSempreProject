@@ -1,12 +1,37 @@
-import styles from "./Map.module.css";
+import { GoogleMap, useLoadScript } from '@react-google-maps/api'
 
-export function Map() {
+const center = {
+  lat: -15.8398885,
+  lng: -48.0183334,
+}
+
+const googleMapsOptions = {
+  mapId: '4f43d1fc4ed26442',
+  disableDefaultUI: true,
+  clickableIcons: false,
+  center,
+  zoom: 11,
+}
+
+export function Map({ children, ...props }) {
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+    libraries: ['places'],
+  })
+
+  if (!isLoaded) return <div className="w-full h-full bg-slate-200" />
+
   return (
-    <iframe
-      className={styles.map}
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20345164.6274076!2d-39.14299119999995!3d51.50329730000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604b900d26973%3A0x4291f3172409ea92!2sLondon%20Eye!5e0!3m2!1spt-BR!2sbr!4v1685471411241!5m2!1spt-BR!2sbr"
-      loading="lazy"
-      referrerPolicy="no-referrer-when-downgrade"
-    ></iframe>
-  );
+    <div className="w-full h-full">
+      <GoogleMap
+        zoom={11}
+        center={center}
+        mapContainerClassName="w-full h-full"
+        options={googleMapsOptions}
+        {...props}
+      >
+        {children}
+      </GoogleMap>
+    </div>
+  )
 }
