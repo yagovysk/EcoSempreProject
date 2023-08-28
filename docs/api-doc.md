@@ -164,6 +164,7 @@ POST {{baseUrl}}/article
 | author | string | nome do autor da publicação |
 | content | string | todo o conteúdo do blog em texto limpo, incluindo tags html inseridas pelo editor de texto |
 | author_id | number |id do author |
+| tags_ids | array | os ids das tags |
 
 ##### Status
 | código | Descrição | 
