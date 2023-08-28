@@ -56,9 +56,7 @@ export function Home() {
       />
 
       <article id="parceiros" className={styles.idParceiros}>
-        <section
-          className={`max-w-none mx-0 md:max-w-[1240px] md:mx-auto ${styles.content_parceiros}`}
-        >
+        <section className={`${styles.content_parceiros}`}>
           <div className={styles.texts_parceiros}>
             <ScrollReveal origin="bottom">
               <span className={`small-text`}>Nossos Parceiros</span>

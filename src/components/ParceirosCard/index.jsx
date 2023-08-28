@@ -26,7 +26,7 @@ const partners = [
 
 export function ParceirosCard() {
   return (
-    <div className={styles.parceirosCard}>
+    <div className={`${styles.parceirosCard} min-[1760px]:justify-center`}>
       {partners.map((partner) => (
         <a key={partner} href="#">
           <img
