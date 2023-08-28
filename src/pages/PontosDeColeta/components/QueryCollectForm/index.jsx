@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { Controller, FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useId } from 'react'
+import { useEffect, useId, useRef } from 'react'
 import { Icon } from '@iconify/react'
 
 import { Select } from '../../../../components/Form/Select'
@@ -99,8 +99,28 @@ const pontosColeta = [
   },
 ]
 
+const options = {
+  componentRestrictions: {
+    country: 'br',
+  },
+  fields: ['address_components', 'geometry', 'icon', 'name'],
+  types: ['establishment'],
+}
+
 export function QueryCollectForm({ setPontosColeta, setCoordinates }) {
   const fieldsId = useId()
+
+  // useEffect(() => {
+  //   autoCompleteRef.current = new window.google.maps.places.Autocomplete(
+  //     inputRef.current,
+  //     options,
+  //   )
+
+  //   autoCompleteRef.current.addListener('place_changed', async () => {
+  //     const place = await autoCompleteRef.current.getPlace()
+  //     console.log({ place })
+  //   })
+  // }, [])
 
   const {
     ready,
@@ -109,11 +129,18 @@ export function QueryCollectForm({ setPontosColeta, setCoordinates }) {
     suggestions: { status, data },
     clearSuggestions,
   } = usePlacesAutocomplete({
-    callbackName: 'Loading',
+    requestOptions: {
+      componentRestrictions: {
+        country: 'br',
+      },
+      language: 'pt-BR',
+    },
+    debounce: 300,
   })
 
+  console.log(ready)
   console.log(status)
-  console.log(value)
+  // console.log(data)
 
   const queryCollect = useForm({
     resolver: zodResolver(queryCollectFormSchema),
@@ -148,7 +175,7 @@ export function QueryCollectForm({ setPontosColeta, setCoordinates }) {
 
   function queryPontosColeta(data) {
     handleSelect(data.address)
-    console.log(data)
+    // console.log(data)
     setPontosColeta(pontosColeta)
   }
 
@@ -171,6 +198,7 @@ export function QueryCollectForm({ setPontosColeta, setCoordinates }) {
                     handleSelect(e)
                     field.onChange(e)
                   }}
+                  disabled={!ready}
                 >
                   <Combobox.Input
                     placeholder="Digite um endereço"
@@ -185,7 +213,6 @@ export function QueryCollectForm({ setPontosColeta, setCoordinates }) {
                       errors.address &&
                       'border-red-500 shadow-error animate-shake focus:border-red-500 focus:shadow-error'
                     }`}
-                    disabled={!ready}
                   />
                   <Combobox.Options className="absolute top-20 w-full shadow-md bg-white py-4 rounded-lg">
                     {status === 'OK' && data ? (
@@ -204,15 +231,16 @@ export function QueryCollectForm({ setPontosColeta, setCoordinates }) {
                       </Combobox.Option>
                     )}
                   </Combobox.Options>
+                  {/* <Input.Field
+                    placeholder="Digite um endereço"
+                    aria-label="Digite um endereço"
+                    aria-describedby={`${fieldsId}-address`}
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                    disabled={!ready}
+                    ref={inputRef}
+                  /> */}
                 </Combobox>
-                // <Input.Field
-                //   placeholder="Digite um endereço"
-                //   aria-label="Digite um endereço"
-                //   aria-describedby={`${fieldsId}-address`}
-                //   value={value}
-                //   onChange={(e) => setValue(e.target.value)}
-                //   disabled={!ready}
-                // />
               )}
             />
             {errors.address && (

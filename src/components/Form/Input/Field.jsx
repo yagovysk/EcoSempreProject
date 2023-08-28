@@ -1,6 +1,8 @@
+/* eslint-disable react/display-name */
+import { forwardRef } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-export function Field({ name, ...props }) {
+export const Field = forwardRef(({ name, ...props }, ref) => {
   const {
     register,
     formState: { errors },
@@ -12,6 +14,7 @@ export function Field({ name, ...props }) {
 
   return (
     <input
+      ref={ref}
       {...props}
       {...registerInput}
       type={props.type || 'text'}
@@ -22,4 +25,4 @@ export function Field({ name, ...props }) {
       aria-invalid={!!error}
     />
   )
-}
+})

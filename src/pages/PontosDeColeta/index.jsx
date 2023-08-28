@@ -7,6 +7,7 @@ import { ScrollReveal } from '../../components/ScrollReveal'
 import { QueryCollectForm } from './components/QueryCollectForm'
 
 import styles from './styles.module.css'
+import { MapColetas } from './components/MapColetas'
 
 const linksMenu = [
   {
@@ -67,7 +68,9 @@ export function PontosDeColeta() {
 
         <div className="col-span-full">
           <div ref={containerMapRef} className={styles.map_wrapper}>
-            <Map mapRef={mapRef} coordinates={coordinates} />
+            <Map>
+              <MapColetas mapRef={mapRef} coordinates={coordinates} />
+            </Map>
           </div>
 
           {pontosColeta && (
