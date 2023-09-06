@@ -1,15 +1,18 @@
+import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import { z } from 'zod'
 import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Icon } from '@iconify/react'
 
 import { HeaderSection } from '../../components/HeaderSection'
 import { ScrollReveal } from '../../components/ScrollReveal'
 import { FormSubmitted } from '../../components/FormSubmitted'
-
 import { FormSchedule } from './components/FormSchedule'
+import * as Toast from '../../components/Toast'
+import api from '../../lib/axios'
 
 import styles from './styles.module.css'
-import { useSWRConfig } from 'swr'
 
 const linksMenu = [
   {
@@ -84,7 +87,8 @@ const initialValues = {
 }
 
 export const Schedule = () => {
-  const { mutate } = useSWRConfig()
+  const [hasError, setHasError] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const scheduleForm = useForm({
     resolver: zodResolver(scheduleSchema),
@@ -97,7 +101,18 @@ export const Schedule = () => {
     reset,
   } = scheduleForm
 
-  if (isSubmitSuccessful) {
+  async function onSubmit(data) {
+    try {
+      setIsLoading(() => true)
+      await api.post('/schedule-pickup', data)
+      setHasError(() => false)
+    } catch (err) {
+      setHasError(() => true)
+      setIsLoading(() => false)
+    }
+  }
+
+  if (isSubmitSuccessful && !hasError) {
     return (
       <article
         className={`container ${styles.container_schedule} ${styles.form_submitted}`}
@@ -109,19 +124,6 @@ export const Schedule = () => {
         />
       </article>
     )
-  }
-
-  console.log(isSubmitSuccessful)
-
-  async function onSubmit(data) {
-    try {
-      await mutate('/schedule-pickup', data)
-    } catch (err) {
-      throw new Response('', {
-        status: err.response.status,
-        statusText: err.response.statusText,
-      })
-    }
   }
 
   return (
@@ -162,6 +164,36 @@ export const Schedule = () => {
           </form>
         </ScrollReveal>
       </article>
+
+      {hasError &&
+        !isLoading &&
+        createPortal(
+          <Toast.Root>
+            <Toast.Content forceMount={isLoading}>
+              <div className="flex p-3 gap-3 mr-8">
+                <Icon
+                  icon="material-symbols:error"
+                  className="w-6 h-6"
+                  color="#DD425A"
+                />
+                <div className="flex flex-col gap-2 flex-1">
+                  <Toast.Title className="font-medium text-gray-800">
+                    Oops! Parece que ocorreu um erro
+                  </Toast.Title>
+                  <Toast.Description className="text-sm text-gray-800">
+                    Não conseguimos enviar suas informações ao servidor.
+                    Verifique sua conexão ou tente novamente mais tarde.
+                  </Toast.Description>
+
+                  <Toast.Close className="bg-red-500 p-3 rounded font-medium text-white mt-1 ml-auto text-sm/none">
+                    Compreendido!
+                  </Toast.Close>
+                </div>
+              </div>
+            </Toast.Content>
+          </Toast.Root>,
+          document.body,
+        )}
     </main>
   )
 }

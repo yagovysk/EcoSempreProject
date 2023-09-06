@@ -8,8 +8,6 @@ import { Textarea } from '../../../components/Form/Textarea'
 import { ErrorMessage } from '../../../components/Form/ErrorMessage'
 import { ImageInput } from './ImageInput'
 
-import styles from '../styles.module.css'
-
 const states = ['Acre', 'Amapá', 'Amazonas', 'Bahia', 'Ceará', 'Paraíba']
 const cities = [
   'Águia Branca',
@@ -133,11 +131,9 @@ export function FormSchedule() {
       <ImageInput />
 
       <button
-        disabled={isSubmitting}
         type="submit"
-        className={`btn ${styles.btn} disabled:cursor-not-allowed ${
-          isSubmitting && styles.submitting
-        }`}
+        className={`btn text-white col-span-full font-bold font-roboto leading-10 mt-4 disabled:cursor-not-allowed disabled:opacity-60 disabled:leading-none disabled:h-[58px] hover:bg-blue disabled:hover:bg-green-300`}
+        disabled={isSubmitting}
       >
         {isSubmitting ? <Spinner /> : 'Agendar Coleta'}
       </button>
