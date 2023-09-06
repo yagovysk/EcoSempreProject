@@ -6,24 +6,40 @@ import { AsideBlog } from '../../components/AsideBlog'
 import { Loader } from './components/Loader'
 import { BreadcrumbLoader } from './components/BreadcrumbLoader'
 import { useFetchData } from '../../hooks/useFetchData'
+import { dateFormatter } from '../../utils/dateFormatter'
 
 import styles from './styles.module.css'
 
 export function Post() {
   const { key } = useParams()
-  const { data: post, isLoading } = useFetchData(`/articles/${key}`)
+  const {
+    data: post,
+    isLoading: isLoadingPost,
+    error,
+  } = useFetchData(`/article/${key}`)
+  const { data: tags, isLoading: isLoadingTags } = useFetchData('/tags')
 
-  const stringCategories = !isLoading && post.categories.join(', ')
-  const breadcrumb = !isLoading && [
+  if (error) {
+    throw new Response('', {
+      status: error.request.status <= 0 ? 500 : error.request.status,
+      statusText: error.request.statusText || 'Internal Server Error',
+      message: error.message,
+    })
+  }
+
+  const categories = null
+
+  // const stringCategories = !isLoading && post.categories.join(', ')
+  const breadcrumb = !isLoadingPost && [
     'Início',
     'Blog',
-    stringCategories,
+    'Sustentabilidade, Ecologia',
     post.title,
   ]
 
   return (
     <main className={`container ${styles.container}`}>
-      {!isLoading ? (
+      {!isLoadingPost ? (
         <section className={styles.breadcrumb}>
           {breadcrumb.map((subtile, index) => (
             <Fragment key={index}>
@@ -45,21 +61,27 @@ export function Post() {
         <BreadcrumbLoader />
       )}
 
-      {isLoading ? (
+      {isLoadingPost || isLoadingTags ? (
         <Loader />
       ) : (
         <article className={styles.post_container}>
           <div className={`${styles.wrapper_img_post} img_loading`}>
-            <img src={post.imgURL} alt="" className={styles.img_post} />
+            <img
+              src={post.imgURL || 'https://source.unsplash.com/random/500x500'}
+              alt=""
+              className={styles.img_post}
+            />
           </div>
 
           <div className={styles.content_post}>
             <section className={styles.content_post_title}>
               <div className={styles.wrapper_small_information}>
                 <time className={styles.small_information}>
-                  {post.timestamp}
+                  {dateFormatter(post.createdAt)}
                 </time>
-                <span className={styles.categories}>{stringCategories}</span>
+                <span className={styles.categories}>
+                  {'Sustentabilidade, Ecologia'}
+                </span>
                 <span className={styles.small_information}>{post.author}</span>
               </div>
 
@@ -71,11 +93,12 @@ export function Post() {
 
           <section className={styles.wrapper_footer_post}>
             <div className={styles.tags_wrapper}>
-              {post.categories.map((category) => (
-                <span className={styles.tag} key={category}>
-                  {category}
-                </span>
-              ))}
+              {categories &&
+                post.categories.map((category) => (
+                  <span className={styles.tag} key={category}>
+                    {category}
+                  </span>
+                ))}
             </div>
 
             <div className={styles.social_media_wrapper}>

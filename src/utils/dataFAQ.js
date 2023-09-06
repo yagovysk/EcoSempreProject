@@ -1,7 +1,7 @@
 export const firstListQuestions = [
   {
     id: 1,
-    question: "Por que devo reciclar eletroeletrônicos de forma correta?",
+    question: 'Por que devo reciclar eletroeletrônicos de forma correta?',
     answer: `Pois é fundamental para proteger o meio ambiente e promover a
       sustentabilidade. Quando você recicla esses dispositivos de forma correta,
       evita que eles se tornem lixo eletrônico, reduzindo a poluição
@@ -10,7 +10,7 @@ export const firstListQuestions = [
 
   {
     id: 2,
-    question: "Quais tipos de eletroeletrônicos a EcoSempre coleta?",
+    question: 'Quais tipos de eletroeletrônicos a EcoSempre coleta?',
     answer: `A EcoSempre coleta diversos tipos de eletroeletrônicos
      e de resíduos eletrônicos também, garantindo a destinação adequada
     para esses equipamentos. Confira alguns exemplos: Celulares, notebooks
@@ -20,7 +20,7 @@ export const firstListQuestions = [
 
   {
     id: 3,
-    question: "Como faço para descartar corretamente esses materiais?",
+    question: 'Como faço para descartar corretamente esses materiais?',
     answer: `A EcoSempre disponibiliza pontos de coleta estrategicamente
     localizados para o descarte adequado de seus produtos eletrônicos. Para
     encontrar o ponto de coleta mais próximo de você, visite nosso site e utilize
@@ -46,12 +46,12 @@ export const firstListQuestions = [
     desejam implementar ações sustentáveis, incluindo a instalação de pontos de coleta exclusivos e o
     suporte necessário para conscientizar e engajar os moradores.`,
   },
-];
+]
 
 export const secondListQuestions = [
   {
     id: 6,
-    question: "O que é Logística Reversa?",
+    question: 'O que é Logística Reversa?',
     answer: `A Logística Reversa é o processo de coletar, transportar,
       armazenar e descartar corretamente os resíduos, proporcionando um
       ciclo sustentável para os produtos descartados. É uma abordagem que 
@@ -60,7 +60,7 @@ export const secondListQuestions = [
   },
   {
     id: 7,
-    question: "Quais são os benefícios da Logística Reversa?",
+    question: 'Quais são os benefícios da Logística Reversa?',
     answer: `A Logística Reversa traz uma série de benefícios, como a redução
     do impacto ambiental, a conservação de recursos naturais, a promoção da economia
     circular, a geração de empregos na indústria de reciclagem e a melhoria da imagem
@@ -68,7 +68,7 @@ export const secondListQuestions = [
   },
   {
     id: 8,
-    question: "Como faço para trabalhar em parceria com a EcoSempre?",
+    question: 'Como faço para trabalhar em parceria com a EcoSempre?',
     answer: `Se você deseja trabalhar em parceria conosco, ficaremos felizes em recebe-lo!
     Entre em contato conosco através do nosso time  e informe seus dados e sua proposta de
     parceria, incluindo informações sobre sua empresa e como você acredita que podemos colaborar
@@ -76,7 +76,7 @@ export const secondListQuestions = [
   },
   {
     id: 9,
-    question: "A EcoSempre participa de eventos e workshops sobre o tema?",
+    question: 'A EcoSempre participa de eventos e workshops sobre o tema?',
     answer: `Sim, a EcoSempre está comprometida em promover a conscientização e a educação sobre a
     importância da reciclagem e do descarte adequado de lixo eletrônico. Nós participamos regularmente
     de eventos relacionados ao tema, como feiras de sustentabilidade, workshops e outros. Siga-nos nas
@@ -90,4 +90,4 @@ export const secondListQuestions = [
     localização e a abrangência da campanha. Caso já tenham realizado edições anteriores, compartilhe
     conosco os detalhes para que possamos entender melhor os objetivos do projeto.`,
   },
-];
+]

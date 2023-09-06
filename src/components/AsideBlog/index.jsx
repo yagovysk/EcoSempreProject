@@ -1,43 +1,45 @@
 import { Link } from 'react-router-dom'
 import { useFetchData } from '../../hooks/useFetchData'
+import { dateFormatter } from '../../utils/dateFormatter'
 
 import Loader from '../Loader'
 
 import styles from './AsideBlog.module.css'
 
 export function AsideBlog() {
+  const categories = null
   const { data: recentPosts, isLoading: isLoadingRecentPosts } = useFetchData(
-    '/articles?_sort=timestamp&_order=desc&_limit=3',
+    '/articles?page=1&limit=3',
   )
   const { data: tags, isLoading: isLoadingTags } = useFetchData('/tags')
-  const { data: categories, isLoading: isLoadingCategories } =
-    useFetchData('/categories')
+  // const { data: categories, isLoading: isLoadingCategories } =
+  //   useFetchData('/categories')
 
-  if (isLoadingRecentPosts && isLoadingCategories && isLoadingTags) {
+  if (isLoadingRecentPosts || isLoadingTags) {
     return <Loader />
   }
 
   return (
     <aside className={styles.aside}>
       <section className={styles.box_aside_posts}>
-        <h3 className={styles.title_box_aside}>Posts Recentes</h3>
-        <div className={styles.recent_post_container}>
+        <strong className={styles.title_box_aside}>Posts Recentes</strong>
+        <div className="pt-4">
           {recentPosts &&
             recentPosts.map((post) => (
               <Link
                 key={post.id}
-                to={`/posts/${post.id}`}
+                to={`/posts/${post.slug}`}
                 className={styles.recent_post_wrapper}
               >
                 <picture className={styles.recent_post_wrapper_img}>
                   <img
-                    src={post.imgURL}
+                    src={'https://source.unsplash.com/random/500x500'}
                     alt=""
                     className={styles.recent_post_img}
                   />
                 </picture>
                 <time className={styles.recent_post_timestamp}>
-                  {post.timestamp}
+                  {dateFormatter(post.createdAt)}
                 </time>
                 <p className={styles.recent_post_title}>{post.title}</p>
               </Link>
@@ -46,27 +48,39 @@ export function AsideBlog() {
       </section>
 
       <section className={styles.box_aside}>
-        <h3 className={styles.title_box_aside}>Categorias</h3>
-        <div className={styles.categories_wrapper}>
-          {categories &&
-            categories.map((category) => (
-              <Link key={category} to={`/`} className={styles.category_aside}>
-                {category}
-              </Link>
-            ))}
-        </div>
+        <strong className={styles.title_box_aside}>Categorias</strong>
+        {categories ? (
+          <div className={styles.categories_wrapper}>
+            {categories &&
+              categories.map((category) => (
+                <Link key={category} to={`/`} className={styles.category_aside}>
+                  {category}
+                </Link>
+              ))}
+          </div>
+        ) : (
+          <p className="pt-4 font-roboto text-gray-500">
+            Não conseguimos encontrar nenhuma categoria no momento.
+          </p>
+        )}
       </section>
 
       <section className={styles.box_aside}>
-        <h3 className={styles.title_box_aside}>Tags</h3>
-        <div className={styles.tags_wrapper_aside}>
-          {tags &&
-            tags.map((tag) => (
-              <Link key={tag} to={`/`} className={styles.tag}>
-                {tag}
-              </Link>
-            ))}
-        </div>
+        <strong className={styles.title_box_aside}>Tags</strong>
+        {!tags ? (
+          <p className={`pt-4 font-roboto text-gray-500`}>
+            Não conseguimos encontrar nenhuma tag no momento.
+          </p>
+        ) : (
+          <div className={styles.tags_wrapper_aside}>
+            {tags &&
+              tags.map((tag) => (
+                <Link key={tag.id} to={`/`} className={styles.tag}>
+                  {tag.name}
+                </Link>
+              ))}
+          </div>
+        )}
       </section>
     </aside>
   )

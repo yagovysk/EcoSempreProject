@@ -16,7 +16,7 @@ export function ImageInput() {
     formState: { errors },
   } = useFormContext()
 
-  const files = watch('images')
+  const files = watch('attachments')
 
   return (
     <Tooltip.Provider delayDuration={0}>
@@ -24,8 +24,10 @@ export function ImageInput() {
         <label className="relative col-span-full">
           <Tooltip.Trigger
             type="button"
-            onClick={() =>
-              imageLabelRef.current && imageLabelRef.current.click()
+            onKeyDown={(e) =>
+              imageLabelRef.current &&
+              e.key === 'Enter' &&
+              imageLabelRef.current.click()
             }
             className="outline-none border-[1.5px] border-transparent focus:shadow-input focus:border-green-300"
           >
@@ -45,12 +47,12 @@ export function ImageInput() {
             multiple
             accept="image/.jpeg,.jpg,.png"
             className="hidden"
-            {...register('images')}
+            {...register('attachments')}
           />
 
-          {errors.images && (
+          {errors.attachments && (
             <ErrorMessage className="!static block">
-              {errors.images.message}
+              {errors.attachments.message}
             </ErrorMessage>
           )}
 

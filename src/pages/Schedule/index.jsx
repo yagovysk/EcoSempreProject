@@ -8,9 +8,8 @@ import { FormSubmitted } from '../../components/FormSubmitted'
 
 import { FormSchedule } from './components/FormSchedule'
 
-import api from '../../api/posts'
-
 import styles from './styles.module.css'
+import { useSWRConfig } from 'swr'
 
 const linksMenu = [
   {
@@ -53,7 +52,7 @@ const scheduleSchema = z.object({
   state: z.string().nonempty('Obrigatório'),
   city: z.string().nonempty('Obrigatório'),
   materials: z.string().nonempty('Obrigatório').trim(),
-  images: z
+  attachments: z
     .any()
     .transform((files) => files && Array.from(files))
     .refine(
@@ -81,10 +80,12 @@ const initialValues = {
   state: '',
   city: '',
   materials: '',
-  images: null,
+  attachments: null,
 }
 
 export const Schedule = () => {
+  const { mutate } = useSWRConfig()
+
   const scheduleForm = useForm({
     resolver: zodResolver(scheduleSchema),
     defaultValues: initialValues,
@@ -110,11 +111,11 @@ export const Schedule = () => {
     )
   }
 
-  async function onSubmit(data) {
-    console.log(data)
+  console.log(isSubmitSuccessful)
 
+  async function onSubmit(data) {
     try {
-      await api.post('/contact', data)
+      await mutate('/schedule-pickup', data)
     } catch (err) {
       throw new Response('', {
         status: err.response.status,

@@ -2,7 +2,7 @@ import { Icon } from '@iconify/react'
 import styles from './Pagination.module.css'
 
 export function Pagination({
-  pageIndex,
+  currentPage,
   onNextPage,
   postsPerPage,
   postsLength,
@@ -25,23 +25,23 @@ export function Pagination({
           type="button"
           onClick={() => onNextPage(index)}
           className={`${styles.btn_pagination} ${
-            page === pageIndex + 1 && styles.active
+            page === currentPage + 1 && styles.active
           }`}
           aria-label={`Página atual, Página ${page}`}
-          aria-current={page === pageIndex + 1 ? 'true' : 'false'}
+          aria-current={page === currentPage + 1 ? 'true' : 'false'}
         >
           {page}
         </button>
       ))}
       <button
         type="button"
-        disabled={pageIndex + 1 >= sizePagination}
-        onClick={() => onNextPage(pageIndex + 1)}
+        disabled={currentPage + 1 >= sizePagination}
+        onClick={() => onNextPage(currentPage + 1)}
         className={`${styles.btn_pagination} ${styles.btn_arrow} `}
         aria-label={
-          pageIndex + 1 >= sizePagination
+          currentPage + 1 >= sizePagination
             ? 'Fim das páginas'
-            : `Ir para a página ${pageIndex + 2}`
+            : `Ir para a página ${currentPage + 2}`
         }
       >
         <Icon icon="octicon:arrow-right-16" />

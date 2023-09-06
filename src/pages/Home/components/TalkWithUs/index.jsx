@@ -1,13 +1,16 @@
 import { FormTalkWithUs } from '../../../../components/FormTalkWithUs'
 import { ScrollReveal } from '../../../../components/ScrollReveal'
+
 import styles from './TalkWithUs.module.css'
 
 export function TalkWithUs() {
   return (
     <div className={styles.idfaleconosco}>
-      <div className={`container ${styles.wrapper_content}`}>
+      <div
+        className={`container flex flex-col-reverse min-[1101px]:grid min-[1101px]:grid-cols-talk-with-us ${styles.wrapper_content}`}
+      >
         <ScrollReveal origin="top">
-          <div className={styles.wrapper_form}>
+          <div className={`${styles.wrapper_form}`}>
             <FormTalkWithUs />
           </div>
         </ScrollReveal>

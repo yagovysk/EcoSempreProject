@@ -46,13 +46,14 @@
 
 .title {
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   color: #232323;
   font: 500 1.25rem "IBM Plex Sans", sans-serif;
   line-height: 1.5rem;
+  min-height: 4.5rem;
 }
 
 .timestamp_wrapper {

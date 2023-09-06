@@ -6,7 +6,8 @@
 }
 
 .box_aside_posts {
-  padding: 1.125rem;
+  display: block;
+  padding: 2rem 1.125rem 1.5rem 1.125rem;
   height: max-content;
 }
 
@@ -74,6 +75,11 @@
 }
 
 .recent_post_title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  hyphens: auto;
   color: #0e2b5c;
   font: 700 0.9rem "IBM Plex Sans", sans-serif;
   line-height: 1.25rem;
@@ -147,6 +153,10 @@
 }
 
 @media (max-width: 350px) {
+  .recent_post_wrapper {
+    padding: 0.875rem;
+  }
+
   .recent_post_wrapper_img {
     width: 3.5rem;
     height: 3.5rem;
@@ -154,9 +164,6 @@
   }
   .box_aside {
     padding: 1.5rem;
-  }
-  .box_aside_posts {
-    padding: 0.5rem;
   }
   .box_aside_posts .title_box_aside {
     padding: 1rem 0 0 1rem;

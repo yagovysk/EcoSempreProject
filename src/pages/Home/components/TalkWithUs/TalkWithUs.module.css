@@ -3,7 +3,7 @@
 }
 
 .wrapper_content {
-  display: flex;
+  display: grid;
   align-items: center;
   gap: 4.2rem;
   padding: 0 1.5rem 3.5rem 1.5rem;
@@ -16,6 +16,7 @@
   padding: 3.5rem;
   transform: translateY(7rem);
   z-index: 2;
+  width: 100%;
 }
 
 .wrapper_form input,

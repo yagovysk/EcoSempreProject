@@ -1,8 +1,5 @@
 node_modules
 
-data
-/src/api
-
 dist
 .env.local
 .env

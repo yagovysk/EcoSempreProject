@@ -16,6 +16,7 @@ import { Schedule } from './pages/Schedule'
 import { Donation } from './pages/Donation'
 import { ErrorPage } from './pages/ErrorPage'
 import { Reforestation } from './pages/Reforestation'
+import { ColetasProvider } from './contexts/ColetasContext'
 
 export const router = createBrowserRouter([
   {
@@ -44,7 +45,11 @@ export const router = createBrowserRouter([
           },
           {
             path: '/coletas',
-            element: <PontosDeColeta />,
+            element: (
+              <ColetasProvider>
+                <PontosDeColeta />
+              </ColetasProvider>
+            ),
           },
           {
             path: '/blog',

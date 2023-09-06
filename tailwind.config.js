@@ -15,6 +15,10 @@ export default {
         title: '2.5rem',
       },
 
+      gridTemplateColumns: {
+        'talk-with-us': 'minmax(0, 39.5rem) minmax(0, 1fr)',
+      },
+
       fontFamily: {
         roboto: ['Roboto', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         'IBM-plex-sans': [
@@ -37,6 +41,9 @@ export default {
 
       animation: {
         shake: 'shakeInput 500ms ease-in-out',
+        hide: 'hide 100ms ease-in',
+        slideIn: 'slideIn 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        swipeOut: 'swipeOut 100ms ease-out',
       },
 
       keyframes: {
@@ -51,6 +58,18 @@ export default {
 
           '40%, 80%': {
             transform: 'translateX(-7px)',
+          },
+        },
+        slideIn: {
+          from: {
+            transform: 'translateX(calc(100% + var(--viewport-padding-top)))',
+          },
+          to: { transform: 'translateX(0)' },
+        },
+        swipeOut: {
+          from: { transform: 'translateX(var(--radix-toast-swipe-end-x))' },
+          to: {
+            transform: 'translateX(calc(100% + var(--viewport-padding-top)))',
           },
         },
       },

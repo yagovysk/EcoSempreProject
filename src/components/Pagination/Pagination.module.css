@@ -35,6 +35,7 @@
 
 .btn_arrow:disabled {
   opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .btn_arrow:hover:disabled {

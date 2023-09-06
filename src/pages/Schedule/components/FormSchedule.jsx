@@ -135,7 +135,9 @@ export function FormSchedule() {
       <button
         disabled={isSubmitting}
         type="submit"
-        className={`btn ${styles.btn} ${isSubmitting && styles.submitting}`}
+        className={`btn ${styles.btn} disabled:cursor-not-allowed ${
+          isSubmitting && styles.submitting
+        }`}
       >
         {isSubmitting ? <Spinner /> : 'Agendar Coleta'}
       </button>

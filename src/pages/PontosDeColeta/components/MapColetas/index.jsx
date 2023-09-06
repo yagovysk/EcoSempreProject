@@ -1,10 +1,12 @@
 /* eslint-disable no-undef */
-import { useState, useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
-import { Circle, Marker, DirectionsRenderer } from '@react-google-maps/api'
+import { Circle, Marker, GoogleMap, OverlayView } from '@react-google-maps/api'
 
-import { Map } from '../../../../components/Map'
-import { mapIndicator } from '../../../../assets/icons'
+import { Marker as CustomMarker } from '../Marker'
+import { useColetasContext } from '../../../../contexts/ColetasContext'
+import { Loader } from '../Loader'
+import { useFetchData } from '../../../../hooks/useFetchData'
 
 const center = {
   lat: -15.8398885,
@@ -15,12 +17,16 @@ const googleMapsOptions = {
   mapId: '4f43d1fc4ed26442',
   disableDefaultUI: true,
   clickableIcons: false,
-  center,
-  zoom: 11,
 }
 
-export function MapColetas({ mapRef, coordinates = [] }) {
-  const [directions, setDirections] = useState()
+const getPixelPositionOffset = (width, height) => ({
+  x: -(width / 2),
+  y: -(height / 2),
+})
+
+export function MapColetas() {
+  const { mapRef, userAddressCoordinates, nearbyPontosColetas, RADIUS } =
+    useColetasContext()
 
   const onLoad = useCallback(
     (map) => {
@@ -31,90 +37,54 @@ export function MapColetas({ mapRef, coordinates = [] }) {
     [mapRef],
   )
 
-  const pontosColetas = generatePontosDeColeta(coordinates || center)
+  console.log(userAddressCoordinates)
 
-  const fetchDirections = (pontoColeta) => {
-    if (!coordinates) return
-
-    const service = new google.maps.DirectionsService()
-
-    service.route(
-      {
-        origin: coordinates,
-        destination: pontoColeta,
-        travelMode: google.maps.TravelMode.DRIVING,
-      },
-      (result, status) => {
-        if (status === 'OK' && result) {
-          setDirections(result)
-        }
-      },
-    )
-  }
   return (
-    <Map onLoad={onLoad}>
-      {directions && (
-        <DirectionsRenderer
-          directions={directions}
-          options={{
-            polylineOptions: {
-              zIndex: 50,
-              strokeColor: '#0457E3',
-              strokeWeight: 5,
-            },
-          }}
-        />
-      )}
+    <div className="w-full h-full">
+      <GoogleMap
+        center={center}
+        zoom={11}
+        mapContainerClassName="w-full h-full"
+        options={googleMapsOptions}
+        onLoad={onLoad}
+      >
+        {userAddressCoordinates && (
+          <>
+            <Marker position={userAddressCoordinates}></Marker>
 
-      {Object.keys(coordinates).length > 0 && (
-        <>
-          <Marker position={coordinates} />
+            {nearbyPontosColetas.length &&
+              nearbyPontosColetas.map((ponto) => (
+                <OverlayView
+                  key={ponto.id}
+                  position={ponto.location}
+                  mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+                  getPixelPositionOffset={getPixelPositionOffset}
+                >
+                  <CustomMarker pontoDeColeta={ponto} />
+                </OverlayView>
+              ))}
 
-          {pontosColetas.map((ponto) => (
-            <Marker
-              key={ponto.lat + ponto.lng}
-              position={ponto}
-              onClick={() => {
-                fetchDirections(ponto)
-              }}
-              icon={mapIndicator}
-            ></Marker>
-          ))}
-
-          <Circle center={coordinates} radius={15000} options={closeOptions} />
-        </>
-      )}
-    </Map>
+            <Circle
+              center={userAddressCoordinates}
+              radius={RADIUS}
+              options={closeOptions}
+            />
+          </>
+        )}
+      </GoogleMap>
+    </div>
   )
 }
 
-const defaultOptions = {
+const closeOptions = {
   strokeOpacity: 0.5,
   strokeWeight: 2,
   clickable: false,
   draggable: false,
   editable: false,
   visible: true,
-}
-
-const closeOptions = {
-  ...defaultOptions,
   zIndex: 3,
   fillOpacity: 0.15,
   strokeColor: '#0457E3',
   fillColor: '#0457E3',
-}
-
-const generatePontosDeColeta = (position) => {
-  const _pontos = []
-  for (let i = 0; i < 50; i++) {
-    const direction = Math.random() < 0.5 ? -2 : 2
-
-    _pontos.push({
-      lat: position.lat + Math.random() / direction,
-      lng: position.lng + Math.random() / direction,
-    })
-  }
-
-  return _pontos
 }

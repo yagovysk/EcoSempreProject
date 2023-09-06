@@ -4,8 +4,6 @@ import styles from './ErrorPage.module.css'
 export const ErrorPage = () => {
   const error = useRouteError()
 
-  console.log(error)
-
   return (
     <main className={`${styles.main_content}`}>
       <div className={`${styles.wrapper_error_icon}`}>
@@ -25,7 +23,7 @@ export const ErrorPage = () => {
   )
 }
 
-const ErrorIcon = () => {
+const ErrorIcon = (props) => {
   return (
     <svg
       width="422"
@@ -33,6 +31,7 @@ const ErrorIcon = () => {
       viewBox="0 0 422 324"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
         d="M377.752 163.526C377.752 181.336 374.786 198.606 369.393 214.796C348.09 278.21 287.958 323.814 217.579 323.814C146.931 323.814 86.7987 277.94 65.4963 214.527C62.5301 205.622 60.3729 196.447 59.0246 187.002C57.946 179.177 57.4067 171.351 57.4067 163.526C57.4067 151.923 58.755 140.589 60.9122 129.795C76.2823 57.477 140.729 3.23828 217.579 3.23828C268.813 3.23828 314.384 27.2544 343.506 64.493C345.663 67.1915 347.551 69.6201 349.438 72.3185C355.64 80.9535 360.764 90.3981 365.078 100.382C373.168 119.811 377.752 141.129 377.752 163.526Z"
