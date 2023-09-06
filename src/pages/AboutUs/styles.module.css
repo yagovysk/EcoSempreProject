@@ -39,8 +39,20 @@
 /* Partners section */
 .partners_content {
   display: grid;
-  place-content: center;
+  overflow-x: auto;
   height: 12.5rem; /* 200px */
+  padding: 0 4rem;
+}
+
+.partners_content::-webkit-scrollbar {
+  height: 5px;
+  background: #fff;
+  border-radius: 0.9rem;
+}
+
+.partners_content::-webkit-scrollbar-thumb {
+  background-color: #b0b5ba;
+  border-radius: 0.9rem;
 }
 
 @media (max-width: 430px) {

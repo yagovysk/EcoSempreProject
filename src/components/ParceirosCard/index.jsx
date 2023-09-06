@@ -1,28 +1,6 @@
-import {
-  partner1,
-  partner2,
-  partner3,
-  partner4,
-  partner5,
-  partner6,
-  partner7,
-  partner8,
-  partner9,
-} from '../../assets/imgs/partners'
+import { partners } from '../../assets/imgs/partners'
 
 import styles from './ParceirosCard.module.css'
-
-const partners = [
-  partner1,
-  partner2,
-  partner3,
-  partner4,
-  partner5,
-  partner6,
-  partner7,
-  partner8,
-  partner9,
-]
 
 export function ParceirosCard() {
   return (

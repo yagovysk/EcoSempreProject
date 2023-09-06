@@ -6,16 +6,27 @@
 
 .partners_wrapper {
   display: grid;
-  place-content: center;
   background-color: #f6f7f8;
-  padding: 5rem 1.5rem;
+  padding: 5rem 3.5rem;
   margin-top: 7rem;
+  overflow-x: auto;
+}
+
+.partners_wrapper::-webkit-scrollbar {
+  height: 6px;
+  background-color: transparent;
+  border-radius: 0.9rem;
+}
+
+.partners_wrapper::-webkit-scrollbar-thumb {
+  background-color: #b0b5ba;
+  border-radius: 0.9rem;
 }
 
 @media (max-width: 630px) {
   .partners_wrapper {
     background-color: white;
     border-top: 1px solid #eaeaea;
-    padding: 3rem 1.5rem;
+    padding: 3rem 4.5rem;
   }
 }
