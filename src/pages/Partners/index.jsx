@@ -104,7 +104,7 @@ export function Partners() {
           <ScrollReveal origin="right" className="h-auto">
             <DescriptionPage.Subtitle subtitle="Nossos Parceiros" />
             <DescriptionPage.Title
-              className="mt-2"
+              className="mt-2 hyphens-auto"
               title="Conheça Alguns de
               Nossos Parceiros de
               Negócios"

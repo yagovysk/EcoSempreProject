@@ -39,7 +39,7 @@ export function LogisticaReversa() {
           <ScrollReveal origin="bottom" className="h-auto">
             <DescriptionPage.Subtitle subtitle="Logística Reversa" />
             <DescriptionPage.Title
-              className="mt-2 mb-10"
+              className="mt-2 mb-10 hyphens-auto"
               title="Nosso Compromisso com a Sustentabilidade"
             />
           </ScrollReveal>

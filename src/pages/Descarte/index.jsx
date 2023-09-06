@@ -41,7 +41,7 @@ export function Descarte() {
           <ScrollReveal origin="bottom" className="h-auto">
             <DescriptionPage.Subtitle subtitle="Descarte Responsável" />
             <DescriptionPage.Title
-              className="mt-2 mb-6"
+              className="mt-2 mb-6 hyphens-auto"
               title="Proteja o Meio Ambiente e Contribua para a Sustentabilidade"
             />
           </ScrollReveal>

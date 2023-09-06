@@ -38,32 +38,34 @@ export const Donation = () => {
       <DescriptionPage.Root className="container relative lg:gap-y-44 !mb-12 md:!mb-28">
         <DescriptionPage.Content>
           <ScrollReveal origin="left" className="h-auto">
-            <DescriptionPage.Subtitle subtitle="Sustentabilidade em Ação" />
+            <DescriptionPage.Subtitle subtitle="Colabore Conosco" />
             <DescriptionPage.Title
               className="mt-2"
-              title="Nossa Experiência, Trajetória e Inovação Permanente"
+              title="Faça uma Doação e Ajude Nosso Projeto"
             />
           </ScrollReveal>
 
           <ScrollReveal origin="left">
             <div className="flex flex-col gap-6">
               <DescriptionPage.Paragraph className="mt-5 lg:mt-10">
-                Se fortalecem por meio de parcerias estratégicas, certificações
-                ambientais e colaboração com organizações líderes em
-                sustentabilidade.
+                Na EcoSempre, acreditamos que a doação é uma forma poderosa de
+                promover a mudança. Ao fazer uma doação, você está nos ajudando
+                a continuar oferecendo recursos educacionais, organizando
+                eventos e expandindo nossa infraestrutura de coleta e
+                reciclagem. Seu apoio direto é fundamental para que possamos
+                continuar a inspirar e engajar a comunidade em práticas
+                sustentáveis.
               </DescriptionPage.Paragraph>
 
               <DescriptionPage.Paragraph>
-                Graças a essas colaborações, podemos oferecer aos nossos
-                clientes soluções abrangentes e serviços especializados que
-                abordam os desafios e necessidades específicas relacionadas ao
-                descarte e reciclagem de resíduos eletrônicos.
-              </DescriptionPage.Paragraph>
-
-              <DescriptionPage.Paragraph>
-                Estamos comprometidos em fazer um impacto positivo no meio
-                ambiente e na sociedade, promovendo a economia circular e
-                contribuindo para a construção de um futuro mais sustentável.
+                Cada doação que recebemos tem um impacto significativo. Com seus
+                recursos, podemos alcançar mais pessoas, educar sobre a
+                importância da reciclagem do lixo eletrônico e incentivar
+                práticas sustentáveis. Além disso, sua contribuição nos ajuda a
+                investir em tecnologias avançadas de reciclagem e desenvolver
+                parcerias estratégicas para fortalecer a logística reversa.
+                Juntos, podemos criar um futuro mais limpo, saudável e
+                sustentável para todos.
               </DescriptionPage.Paragraph>
             </div>
           </ScrollReveal>
