@@ -4,7 +4,12 @@ import { Icon } from '@iconify/react'
 import { useEffect, useState } from 'react'
 import { Close } from './Close'
 
-export function Content({ children, duration = 5000, ...props }) {
+export function Content({
+  children,
+  duration = 5000,
+  colorProgressBar = '#ef4444',
+  ...props
+}) {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
@@ -35,10 +40,11 @@ export function Content({ children, duration = 5000, ...props }) {
         value={progress}
       >
         <Progress.Indicator
-          className={`bg-red-500 w-full h-full rounded-full ease-linear transition-transform`}
+          className={`w-full h-full rounded-full ease-linear transition-transform`}
           style={{
             transform: `translateX(-${100 - progress}%)`,
             transitionDuration: `${duration}ms`,
+            backgroundColor: colorProgressBar,
           }}
         />
       </Progress.Root>
