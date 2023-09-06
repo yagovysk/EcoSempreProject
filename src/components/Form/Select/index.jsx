@@ -18,7 +18,9 @@ export function Select({ children, placeholder, name, ...props }) {
           !error ? 'focus:shadow-input focus:border-green-300' : 'shadow-error'
         } text-gray-600 items-center justify-between py-5 px-6 w-full rounded border-[1.5px] ${
           !error ? 'border-gray-200' : 'border-red-500'
-        }`}
+        }
+          disabled:cursor-not-allowed
+        `}
       >
         <SelectPrimitive.Value aria-label={props.value || placeholder}>
           {props.value || placeholder}

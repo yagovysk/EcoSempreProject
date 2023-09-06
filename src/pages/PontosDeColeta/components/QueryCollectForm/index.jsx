@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { Controller, FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect, useId } from 'react'
+import { useId } from 'react'
 import { Icon } from '@iconify/react'
 
 import { Select } from '../../../../components/Form/Select'
@@ -26,7 +26,11 @@ const queryCollectFormSchema = z.object({
 const categories = ['Óleo', 'Tecnologia', 'Resíduos']
 
 export function QueryCollectForm() {
-  const { updateUserAddressCoordinates, mapRef } = useColetasContext()
+  const {
+    updateUserAddressCoordinates,
+    mapRef,
+    error: apiError,
+  } = useColetasContext()
   const fieldsId = useId()
 
   const {
@@ -100,7 +104,7 @@ export function QueryCollectForm() {
                       handleSelect(e)
                       field.onChange(e)
                     }}
-                    disabled={!ready}
+                    disabled={!ready || apiError}
                   >
                     <Combobox.Input
                       placeholder="Digite um endereço"
@@ -111,7 +115,7 @@ export function QueryCollectForm() {
                         field.onChange(e)
                       }}
                       aria-describedby={`${fieldsId}-address`}
-                      className={`input-form ${
+                      className={`input-form disabled:cursor-not-allowed ${
                         errors.address &&
                         'border-red-500 shadow-error animate-shake focus:border-red-500 focus:shadow-error'
                       }`}
@@ -149,7 +153,11 @@ export function QueryCollectForm() {
             control={control}
             render={({ field }) => {
               return (
-                <Select placeholder="Selecione uma categoria" {...field}>
+                <Select
+                  disabled={!ready || apiError}
+                  placeholder="Selecione uma categoria"
+                  {...field}
+                >
                   {categories.map((category) => {
                     return (
                       <SelectItem key={category} value={category.toLowerCase()}>
@@ -168,7 +176,11 @@ export function QueryCollectForm() {
           </div>
         </FormProvider>
 
-        <button type="submit" className={`btn ${styles.btn_collects}`}>
+        <button
+          type="submit"
+          className={`btn ${styles.btn_collects} disabled:hover:bg-green-300 disabled:cursor-not-allowed disabled:opacity-60`}
+          disabled={!ready || apiError}
+        >
           Ver Todos os Pontos de Coleta
         </button>
       </form>

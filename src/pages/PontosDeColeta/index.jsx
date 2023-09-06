@@ -1,5 +1,8 @@
 import * as DescriptionPage from '../../components/DescriptionPage'
+import * as Toast from '../../components/Toast'
 import { useRef, useEffect } from 'react'
+import { createPortal } from 'react-dom'
+import { Icon } from '@iconify/react'
 
 import { HeaderSection } from '../../components/HeaderSection'
 import { Map } from '../../components/Map'
@@ -23,7 +26,12 @@ const linksMenu = [
 
 export function PontosDeColeta() {
   const containerMapRef = useRef(null)
-  const { userAddressCoordinates, nearbyPontosColetas } = useColetasContext()
+  const {
+    userAddressCoordinates,
+    nearbyPontosColetas,
+    error: apiError,
+    isLoading,
+  } = useColetasContext()
 
   useEffect(() => {
     if (userAddressCoordinates) {
@@ -35,8 +43,6 @@ export function PontosDeColeta() {
       window.scrollTo(0, positionTopContainerMap)
     }
   }, [userAddressCoordinates])
-
-  console.log(nearbyPontosColetas)
 
   return (
     <main className={styles.main_content}>
@@ -108,6 +114,35 @@ export function PontosDeColeta() {
           </div>
         </DescriptionPage.Root>
       </Map>
+
+      {apiError &&
+        createPortal(
+          <Toast.Root>
+            <Toast.Content forceMount={isLoading}>
+              <div className="flex p-3 gap-3 mr-8">
+                <Icon
+                  icon="material-symbols:error"
+                  className="w-6 h-6"
+                  color="#DD425A"
+                />
+                <div className="flex flex-col gap-2 flex-1">
+                  <Toast.Title className="font-medium text-gray-800">
+                    Oops! Parece que ocorreu um erro
+                  </Toast.Title>
+                  <Toast.Description className="text-sm text-gray-800">
+                    Não conseguimos conectar ao servidor. Verifique sua conexão
+                    de internet ou tente novamente mais tarde.
+                  </Toast.Description>
+
+                  <Toast.Close className="bg-red-500 p-3 rounded font-medium text-white mt-1 ml-auto text-sm/none">
+                    Compreendido!
+                  </Toast.Close>
+                </div>
+              </div>
+            </Toast.Content>
+          </Toast.Root>,
+          document.body,
+        )}
     </main>
   )
 }

@@ -8,7 +8,7 @@ const RADIUS = 20000
 export function ColetasProvider({ children }) {
   const [userAddressCoordinates, setUserAddressCoordinates] = useState()
   const mapRef = useRef({})
-  const { data, isLoading } = useFetchData('/collection-points', {
+  const { data, isLoading, error } = useFetchData('/collection-points', {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
   })
@@ -56,6 +56,7 @@ export function ColetasProvider({ children }) {
         updateUserAddressCoordinates,
         pontosDeColeta,
         isLoading,
+        error,
         mapRef,
         RADIUS,
         nearbyPontosColetas,
