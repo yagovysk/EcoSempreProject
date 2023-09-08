@@ -17,7 +17,8 @@
 
 .grid_cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16.125rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(16.125rem, 23.125rem));
+  justify-content: center;
   gap: 1.5rem;
   width: 100%;
   margin-top: 3.75rem;

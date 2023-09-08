@@ -5,8 +5,9 @@
 
 .posts_container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16.8rem, 1fr));
-  gap: 3rem 3.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(16.8rem, 23.125rem));
+  gap: 3rem 2.5rem;
+  justify-content: center;
   padding: 0 1.5rem;
   padding-bottom: 3rem;
 }

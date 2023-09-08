@@ -17,7 +17,6 @@ export function Post() {
     isLoading: isLoadingPost,
     error,
   } = useFetchData(`/article/${key}`)
-  const { data: tags, isLoading: isLoadingTags } = useFetchData('/tags')
 
   if (error) {
     throw new Response('', {
@@ -27,13 +26,15 @@ export function Post() {
     })
   }
 
-  const categories = null
+  const categories =
+    !isLoadingPost &&
+    post.categories.map((category) => category.replaceAll('-', ' '))
 
-  // const stringCategories = !isLoading && post.categories.join(', ')
+  const stringCategories = !isLoadingPost && categories.join(', ')
   const breadcrumb = !isLoadingPost && [
     'Início',
     'Blog',
-    'Sustentabilidade, Ecologia',
+    stringCategories,
     post.title,
   ]
 
@@ -61,7 +62,7 @@ export function Post() {
         <BreadcrumbLoader />
       )}
 
-      {isLoadingPost || isLoadingTags ? (
+      {isLoadingPost ? (
         <Loader />
       ) : (
         <article className={styles.post_container}>
@@ -79,8 +80,11 @@ export function Post() {
                 <time className={styles.small_information}>
                   {dateFormatter(post.createdAt)}
                 </time>
-                <span className={styles.categories}>
-                  {'Sustentabilidade, Ecologia'}
+                <span
+                  title={stringCategories}
+                  className={`${styles.categories} whitespace-nowrap`}
+                >
+                  {stringCategories}
                 </span>
                 <span className={styles.small_information}>{post.author}</span>
               </div>
@@ -93,10 +97,10 @@ export function Post() {
 
           <section className={styles.wrapper_footer_post}>
             <div className={styles.tags_wrapper}>
-              {categories &&
-                post.categories.map((category) => (
-                  <span className={styles.tag} key={category}>
-                    {category}
+              {post.tags.length &&
+                post.tags.map((tag) => (
+                  <span className={styles.tag} key={tag}>
+                    {tag.replaceAll('-', ' ')}
                   </span>
                 ))}
             </div>

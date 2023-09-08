@@ -35,7 +35,7 @@ export function Blog() {
 
   if (!isLoading && error) {
     throw new Response('', {
-      status: error.request.status <= 0 ? 500 : error.request.status,
+      status: error.request.status || 500,
       statusText: error.request.statusText || 'Internal Server Error',
       message: error.message,
     })

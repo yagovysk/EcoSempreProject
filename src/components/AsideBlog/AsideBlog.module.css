@@ -24,6 +24,7 @@
 }
 
 .title_box_aside {
+  display: block;
   color: #0e2b5c;
   font: 700 1.125rem "Roboto", sans-serif;
   line-height: 0.9rem;
@@ -31,7 +32,7 @@
 }
 
 .box_aside_posts .title_box_aside {
-  padding: 1rem 1.5rem 0 1.2rem;
+  padding-left: 1.3rem;
 }
 
 .recent_post_wrapper {
@@ -166,6 +167,6 @@
     padding: 1.5rem;
   }
   .box_aside_posts .title_box_aside {
-    padding: 1rem 0 0 1rem;
+    padding-left: 0.5rem;
   }
 }

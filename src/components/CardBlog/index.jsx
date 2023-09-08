@@ -5,7 +5,6 @@ import { dateFormatter } from '../../utils/dateFormatter'
 import styles from './CardBlog.module.css'
 
 export function CardBlog({ post }) {
-  // const copyCategories = [...categories].join(', ')
   const timestamp = dateFormatter(post.createdAt)
 
   return (
@@ -19,7 +18,11 @@ export function CardBlog({ post }) {
       </div>
 
       <div className={styles.categories_wrapper}>
-        <span>Sustentabilidade, Ecologia</span>
+        <span>
+          {post.categories
+            ? post.categories.join(', ').replaceAll('-', ' ')
+            : null}
+        </span>
       </div>
 
       <section className={styles.content_text}>

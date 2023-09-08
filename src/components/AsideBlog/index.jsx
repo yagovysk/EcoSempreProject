@@ -7,15 +7,14 @@ import Loader from '../Loader'
 import styles from './AsideBlog.module.css'
 
 export function AsideBlog() {
-  const categories = null
   const { data: recentPosts, isLoading: isLoadingRecentPosts } = useFetchData(
     '/articles?page=1&limit=3',
   )
   const { data: tags, isLoading: isLoadingTags } = useFetchData('/tags')
-  // const { data: categories, isLoading: isLoadingCategories } =
-  //   useFetchData('/categories')
+  const { data: categories, isLoading: isLoadingCategories } =
+    useFetchData('/category-article')
 
-  if (isLoadingRecentPosts || isLoadingTags) {
+  if (isLoadingRecentPosts || isLoadingTags || isLoadingCategories) {
     return <Loader />
   }
 
@@ -23,7 +22,7 @@ export function AsideBlog() {
     <aside className={styles.aside}>
       <section className={styles.box_aside_posts}>
         <strong className={styles.title_box_aside}>Posts Recentes</strong>
-        <div className="pt-4">
+        <div>
           {recentPosts &&
             recentPosts.map((post) => (
               <Link
@@ -53,13 +52,17 @@ export function AsideBlog() {
           <div className={styles.categories_wrapper}>
             {categories &&
               categories.map((category) => (
-                <Link key={category} to={`/`} className={styles.category_aside}>
-                  {category}
+                <Link
+                  key={category}
+                  to={`/articles/${category.name}`}
+                  className={styles.category_aside}
+                >
+                  {category.name.replaceAll('-', ' ')}
                 </Link>
               ))}
           </div>
         ) : (
-          <p className="pt-4 font-roboto text-gray-500">
+          <p className="font-roboto text-gray-500">
             Não conseguimos encontrar nenhuma categoria no momento.
           </p>
         )}
@@ -68,15 +71,15 @@ export function AsideBlog() {
       <section className={styles.box_aside}>
         <strong className={styles.title_box_aside}>Tags</strong>
         {!tags ? (
-          <p className={`pt-4 font-roboto text-gray-500`}>
+          <p className={`font-roboto text-gray-500`}>
             Não conseguimos encontrar nenhuma tag no momento.
           </p>
         ) : (
-          <div className={styles.tags_wrapper_aside}>
+          <div className={`${styles.tags_wrapper_aside}`}>
             {tags &&
               tags.map((tag) => (
                 <Link key={tag.id} to={`/`} className={styles.tag}>
-                  {tag.name}
+                  {tag.name.replaceAll('-', ' ')}
                 </Link>
               ))}
           </div>
