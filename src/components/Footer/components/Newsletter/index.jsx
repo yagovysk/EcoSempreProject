@@ -1,4 +1,4 @@
-import { useReducer, useState } from 'react'
+import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Icon } from '@iconify/react'
 
@@ -17,9 +17,9 @@ const formNewsletterSchema = z.object({
 })
 
 export function Newsletter() {
-  const [successful, setSuccessful] = useState(undefined)
-  const [isLoading, setIsLoading] = useState(undefined)
-  const [error, setError] = useState(undefined)
+  const [successful, setSuccessful] = useState(null)
+  const [isLoading, setIsLoading] = useState(null)
+  const [error, setError] = useState(null)
 
   const {
     handleSubmit,
@@ -33,9 +33,11 @@ export function Newsletter() {
   async function handleRegisterNewsletter(data) {
     try {
       setIsLoading(() => true)
-      await new Promise((resolve, reject) => setTimeout(() => resolve(), 1000))
 
-      // await api.post('/schedule-pickup', data)
+      await api.post('/newsletter', {
+        email: data.email,
+      })
+
       setSuccessful(() => true)
       setError(() => false)
     } catch (err) {
@@ -44,7 +46,6 @@ export function Newsletter() {
       setSuccessful(() => false)
     }
     reset()
-    console.log(data)
   }
 
   return (

@@ -104,7 +104,15 @@ export const Schedule = () => {
   async function onSubmit(data) {
     try {
       setIsLoading(() => true)
-      await api.post('/schedule-pickup', data)
+      await api.post('/schedule-pickup', {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        cep: data.cep,
+        state: data.state,
+        materials: data.materials,
+        attachments: data.attachments || null,
+      })
       setHasError(() => false)
     } catch (err) {
       setHasError(() => true)

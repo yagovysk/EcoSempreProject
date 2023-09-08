@@ -1,4 +1,5 @@
 import { useId, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { z } from 'zod'
 import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -14,7 +15,6 @@ import * as Toast from '../Toast'
 
 import api from '../../lib/axios'
 import styles from './FormTalkWithUs.module.css'
-import { createPortal } from 'react-dom'
 
 const talkWithUsFormSchema = z.object({
   name: z
@@ -61,7 +61,13 @@ export function FormTalkWithUs() {
   async function onSubmit(data) {
     try {
       setIsLoading(() => true)
-      await api.post('/contact', data)
+      await api.post('/contact', {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        subject: data.subject,
+        message: data.message,
+      })
       setHasError(() => false)
     } catch (err) {
       setHasError(() => true)
