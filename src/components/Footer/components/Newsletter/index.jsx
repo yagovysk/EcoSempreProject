@@ -139,11 +139,13 @@ export function Newsletter() {
                 />
                 <div className="flex flex-col gap-2 flex-1">
                   <Toast.Title className="font-medium text-gray-800">
-                    Seu email foi cadastrado com sucesso!
+                    Parabéns! 🎉 Sua inscrição na nossa newsletter foi um
+                    sucesso.
                   </Toast.Title>
                   <Toast.Description className="text-sm text-gray-800 pb-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-                    minima deserunt tenetur adipisci dolores.
+                    Você agora faz parte da nossa comunidade e receberá as
+                    últimas notícias, atualizações e ofertas exclusivas
+                    diretamente na sua caixa de entrada.
                   </Toast.Description>
                 </div>
               </div>
