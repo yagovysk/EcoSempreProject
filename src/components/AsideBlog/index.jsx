@@ -38,7 +38,7 @@ export function AsideBlog() {
                   />
                 </picture>
                 <time className={styles.recent_post_timestamp}>
-                  {dateFormatter(post.createdAt)}
+                  {/* {dateFormatter(post.createdAt)} */}
                 </time>
                 <p className={styles.recent_post_title}>{post.title}</p>
               </Link>
@@ -54,7 +54,7 @@ export function AsideBlog() {
               categories.map((category) => (
                 <Link
                   key={category}
-                  to={`/articles/${category.name}`}
+                  to={`/buscar?category=${category.name}`}
                   className={styles.category_aside}
                 >
                   {category.name.replaceAll('-', ' ')}
@@ -78,7 +78,11 @@ export function AsideBlog() {
           <div className={`${styles.tags_wrapper_aside}`}>
             {tags &&
               tags.map((tag) => (
-                <Link key={tag.id} to={`/`} className={styles.tag}>
+                <Link
+                  key={tag.id}
+                  to={`/buscar?tag=${tag.name}`}
+                  className={styles.tag}
+                >
                   {tag.name.replaceAll('-', ' ')}
                 </Link>
               ))}

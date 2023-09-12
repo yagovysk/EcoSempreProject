@@ -102,6 +102,7 @@ export const Schedule = () => {
   } = scheduleForm
 
   async function onSubmit(data) {
+    console.log(data)
     try {
       setIsLoading(() => true)
       await api.post('/schedule-pickup', {
@@ -110,8 +111,9 @@ export const Schedule = () => {
         phone: data.phone,
         cep: data.cep,
         state: data.state,
+        city: data.city,
         materials: data.materials,
-        attachments: data.attachments || null,
+        attachments: data.attachments,
       })
       setHasError(() => false)
     } catch (err) {

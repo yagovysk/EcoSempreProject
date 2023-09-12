@@ -5,14 +5,17 @@ import { dateFormatter } from '../../utils/dateFormatter'
 import styles from './CardBlog.module.css'
 
 export function CardBlog({ post }) {
-  const timestamp = dateFormatter(post.createdAt)
+  const timestamp = '11 de setembro, 2023'
+  // const timestamp = dateFormatter(post.createdAt)
 
   return (
     <article className={styles.card_wrapper}>
       <div className={`${styles.img_wrapper} img_loading`}>
         <img
           loading="lazy"
-          src={post.img || 'https://source.unsplash.com/random/500x500'}
+          src={
+            post.thumbnail_url || 'https://source.unsplash.com/random/500x500'
+          }
           alt=""
         />
       </div>
