@@ -38,7 +38,7 @@ export function AsideBlog() {
                   />
                 </picture>
                 <time className={styles.recent_post_timestamp}>
-                  {/* {dateFormatter(post.createdAt)} */}
+                  {dateFormatter(post.createdAt)}
                 </time>
                 <p className={styles.recent_post_title}>{post.title}</p>
               </Link>
