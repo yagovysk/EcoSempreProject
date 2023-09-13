@@ -17,6 +17,8 @@ import { Donation } from './pages/Donation'
 import { ErrorPage } from './pages/ErrorPage'
 import { Reforestation } from './pages/Reforestation'
 import { ColetasProvider } from './contexts/ColetasContext'
+import { Admin } from './pages/Admin'
+import { AdminLogin } from './pages/Admin/components/AdminLogin'
 
 export const router = createBrowserRouter([
   {
@@ -93,6 +95,18 @@ export const router = createBrowserRouter([
             element: <Reforestation />,
           },
         ],
+      },
+    ],
+  },
+  {
+    children: [
+      {
+        path: '/admin',
+        element: <Admin />,
+      },
+      {
+        path: '/admin/login',
+        element: <AdminLogin />,
       },
     ],
   },
