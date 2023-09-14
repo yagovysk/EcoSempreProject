@@ -6,6 +6,7 @@ const AdminContext = createContext({})
 
 export function AdminProvider({ children }) {
   const token = JSON.parse(localStorage.getItem('@ecoSempre-v1:token'))
+  const isTokenExpires = token && token.expires <= new Date().getDate()
 
   const responsePosts = useFetchWithToken('/articles', token && token.token)
   const responseNewsletter = useFetchWithToken(
@@ -18,6 +19,30 @@ export function AdminProvider({ children }) {
   if (!token) {
     return (
       <div className="p-4 font-bold text-2xl font-inter">Acesso restrito</div>
+    )
+  }
+
+  if (isTokenExpires) {
+    return (
+      <div className="p-4 font-inter">
+        <p className="font-bold text-2xl">Acesso expirou!</p>
+        <p className="text-base font-normal max-w-xs mt-1 text-gray-700">
+          Logue novamente para ter acesso ao painel de administrador!
+        </p>
+      </div>
+    )
+  }
+
+  if (
+    responsePosts.error ||
+    responseCollectionPoints.error ||
+    responseContacts.error ||
+    responseNewsletter.error
+  ) {
+    return (
+      <div className="font-roboto p-4 text-zinc-900 animate-pulse">
+        Erro interno no servidor
+      </div>
     )
   }
 
@@ -49,6 +74,7 @@ export function AdminProvider({ children }) {
         collectionPoints: {
           ...responseCollectionPoints,
         },
+        token,
       }}
     >
       {children}

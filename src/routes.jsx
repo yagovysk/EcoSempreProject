@@ -19,6 +19,8 @@ import { Reforestation } from './pages/Reforestation'
 import { ColetasProvider } from './contexts/ColetasContext'
 import { Admin } from './pages/Admin'
 import { AdminLogin } from './pages/Admin/components/AdminLogin'
+import { AdminNewPost } from './pages/Admin/pages/AdminNewPost'
+import { AdminLayout } from './layouts/AdminLayout'
 
 export const router = createBrowserRouter([
   {
@@ -101,12 +103,22 @@ export const router = createBrowserRouter([
   {
     children: [
       {
-        path: '/admin',
-        element: <Admin />,
-      },
-      {
         path: '/admin/login',
         element: <AdminLogin />,
+      },
+      {
+        path: '/admin',
+        element: <AdminLayout />,
+        children: [
+          {
+            path: '/admin',
+            element: <Admin />,
+          },
+          {
+            path: '/admin/new-post',
+            element: <AdminNewPost />,
+          },
+        ],
       },
     ],
   },

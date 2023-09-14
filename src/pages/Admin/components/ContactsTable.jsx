@@ -8,10 +8,10 @@ import api from '../../../lib/axios'
 
 export function ContactsTable() {
   const [contactDialogId, setContactDialogId] = useState(null)
-  const token = JSON.parse(localStorage.getItem('@ecoSempre-v1:token'))
 
   const {
     contacts: { data, error, mutate },
+    token,
   } = useAdmin()
 
   const contacts = data && [...data].reverse()

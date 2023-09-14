@@ -35,7 +35,7 @@ export function DataResume() {
         number={collectionPoints ? collectionPoints.length : 0}
       />
       <Box
-        title="Quantidade de contatos"
+        title="Pessoas que entraram em contato"
         number={contacts ? contacts.length : 0}
       />
       <Box

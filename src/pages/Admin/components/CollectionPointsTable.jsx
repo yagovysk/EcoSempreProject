@@ -1,12 +1,54 @@
 import { Icon } from '@iconify/react'
 import { useAdmin } from '../../../contexts/AdminContext'
-import * as Dialog from '@radix-ui/react-dialog'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import * as Dialog from '@radix-ui/react-dialog'
+import api from '../../../lib/axios'
 
 export function CollectionPointsTable() {
+  const [collectionPointDialogId, setCollectionPointDialogId] = useState(null)
   const {
-    collectionPoints: { data },
+    collectionPoints: { data, mutate },
+    token,
   } = useAdmin()
+
+  const handleOpenDialog = (id) => {
+    setCollectionPointDialogId((prevId) => {
+      if (prevId === id) {
+        return null
+      } else {
+        return id
+      }
+    })
+  }
+
+  const handleDeleteCollectionPoint = async (id) => {
+    const agreed = confirm(
+      'Você tem certeza que quer deletar esse ponto de coleta?',
+    )
+
+    if (!agreed) return
+
+    try {
+      await api.delete(`/collection-point`, {
+        data: {
+          id: data.id,
+        },
+        headers: {
+          Authorization: `Bearer ${token.token}`,
+        },
+      })
+      const newData = data.filter(
+        (collectionPoint) => collectionPoint.id !== id,
+      )
+      mutate(newData)
+      setCollectionPointDialogId(null)
+    } catch (err) {
+      alert(
+        'Não conseguimos deletar o contato. Verifique a sua internet ou tente novamente mais tarde.',
+      )
+    }
+  }
 
   return (
     <div className="overflow-auto max-h-[750px] w-full">
@@ -26,8 +68,8 @@ export function CollectionPointsTable() {
               return (
                 <Dialog.Root
                   key={collectionPoint.id}
-                  // open={collectionPointDialogId === collectionPoint.id}
-                  // onOpenChange={() => handleOpenDialog(collectionPoint.id)}
+                  open={collectionPointDialogId === collectionPoint.id}
+                  onOpenChange={() => handleOpenDialog(collectionPoint.id)}
                 >
                   <tr className="text-zinc-900">
                     <td className="p-4 bg-zinc-50 overflow-hidden">
@@ -57,6 +99,11 @@ export function CollectionPointsTable() {
                               <button
                                 type="button"
                                 className="text-red-500 p-2 w-max rounded border-2 border-transparent transition-colors hover:border-red-500"
+                                onClick={() =>
+                                  handleDeleteCollectionPoint(
+                                    collectionPoint.id,
+                                  )
+                                }
                               >
                                 <Icon
                                   icon="ant-design:delete-filled"

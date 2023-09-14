@@ -55,7 +55,7 @@ export function AdminLogin() {
       })
     } catch (err) {
       setIsLoading(() => false)
-      setError(() => true)
+      setError(() => err)
     }
   }
 
@@ -125,11 +125,14 @@ export function AdminLogin() {
                 />
                 <div className="flex flex-col gap-2 flex-1">
                   <Toast.Title className="font-medium text-gray-800">
-                    Email ou senha incorretos!
+                    {error.request.status === 0
+                      ? 'Erro ao tentar se conectar no servidor'
+                      : 'Email ou senha incorretos!'}
                   </Toast.Title>
                   <Toast.Description className="text-sm text-gray-800">
-                    Verifique se as informações inseridas estão corretas ou
-                    tente novamente mais tarde.
+                    {error.request.status === 0
+                      ? 'Aguarde alguns minutos ou tente novamente mais tarde.'
+                      : 'Verifique se as informações inseridas estão corretas ou tente novamente mais tarde.'}
                   </Toast.Description>
                 </div>
               </div>
