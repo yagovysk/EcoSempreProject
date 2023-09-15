@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { Fragment } from 'react'
 import { Icon } from '@iconify/react'
+import parse from 'html-react-parser'
 
 import { AsideBlog } from '../../components/AsideBlog'
 import { Loader } from './components/Loader'
@@ -68,7 +69,10 @@ export function Post() {
         <article className={styles.post_container}>
           <div className={`${styles.wrapper_img_post} img_loading`}>
             <img
-              src={post.imgURL || 'https://source.unsplash.com/random/500x500'}
+              src={
+                post.thumbnail_url ||
+                'https://source.unsplash.com/random/500x500'
+              }
               alt=""
               className={styles.img_post}
             />
@@ -92,7 +96,7 @@ export function Post() {
               <h2 className={`title ${styles.title}`}>{post.title}</h2>
             </section>
 
-            <p className={styles.paragraph}>{post.content}</p>
+            <p className={styles.paragraph}>{parse(post.content)}</p>
           </div>
 
           <section className={styles.wrapper_footer_post}>

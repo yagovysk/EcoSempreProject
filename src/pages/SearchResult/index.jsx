@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { HeaderSection } from '../../components/HeaderSection'
 import { AsideBlog } from '../../components/AsideBlog'
 import { Pagination } from '../../components/Pagination'
+import parse from 'html-react-parser'
 import api from '../../lib/axios'
 
 import './SearchResult.css'
@@ -101,7 +102,7 @@ export function SearchResult() {
 
                 <section className={'card_texts_wrapper'}>
                   <h2 className={`title title_card`}>{post.title}</h2>
-                  <p className={'content'}>{post.content}</p>
+                  <p className={'content'}>{parse(post.content)}</p>
                   <Link
                     to={`/posts/${post.slug}`}
                     className={`link_more ${'card_link'}`}

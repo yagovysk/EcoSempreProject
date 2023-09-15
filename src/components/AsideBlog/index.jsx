@@ -32,7 +32,10 @@ export function AsideBlog() {
               >
                 <picture className={styles.recent_post_wrapper_img}>
                   <img
-                    src={'https://source.unsplash.com/random/500x500'}
+                    src={
+                      post.thumbnail_url ||
+                      'https://source.unsplash.com/random/500x500'
+                    }
                     alt=""
                     className={styles.recent_post_img}
                   />

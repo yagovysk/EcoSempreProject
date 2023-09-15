@@ -1,12 +1,12 @@
 import { Icon } from '@iconify/react'
 import { Link } from 'react-router-dom'
 import { dateFormatter } from '../../utils/dateFormatter'
+import parse from 'html-react-parser'
 
 import styles from './CardBlog.module.css'
 
 export function CardBlog({ post }) {
-  const timestamp = '11 de setembro, 2023'
-  // const timestamp = dateFormatter(post.createdAt)
+  const timestamp = dateFormatter(post.createdAt)
 
   return (
     <article className={styles.card_wrapper}>
@@ -36,7 +36,7 @@ export function CardBlog({ post }) {
           <span>{post.author}</span>
         </div>
 
-        <p className={styles.description}>{post.content}</p>
+        <p className={styles.description}>{parse(post.content)}</p>
 
         <Link
           aria-label="Saiba mais sobre o post"
