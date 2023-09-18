@@ -7,6 +7,9 @@ import styles from './CardBlog.module.css'
 
 export function CardBlog({ post }) {
   const timestamp = dateFormatter(post.createdAt)
+  const categories = post.categories
+    ? post.categories.join(', ').replaceAll('-', ' ')
+    : null
 
   return (
     <article className={styles.card_wrapper}>
@@ -21,11 +24,7 @@ export function CardBlog({ post }) {
       </div>
 
       <div className={styles.categories_wrapper}>
-        <span>
-          {post.categories
-            ? post.categories.join(', ').replaceAll('-', ' ')
-            : null}
-        </span>
+        <span title={categories}>{categories}</span>
       </div>
 
       <section className={styles.content_text}>
