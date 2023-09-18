@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: minmax(550px, 778px) minmax(280px, 331px);
   justify-content: space-between;
+  align-items: start;
   gap: 2rem;
   padding: 0 1.25rem;
   padding-bottom: 6.875rem;
@@ -83,6 +84,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   line-height: 0.9rem;
+  white-space: nowrap;
 }
 
 .paragraph {
@@ -212,6 +214,8 @@
 @media (max-width: 425px) {
   .categories {
     font-size: 0.9rem;
+    white-space: normal;
+    line-height: 1.2;
   }
 
   .title {

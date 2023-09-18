@@ -86,7 +86,7 @@ export function Post() {
                 </time>
                 <span
                   title={stringCategories}
-                  className={`${styles.categories} whitespace-nowrap`}
+                  className={`${styles.categories}`}
                 >
                   {stringCategories}
                 </span>
