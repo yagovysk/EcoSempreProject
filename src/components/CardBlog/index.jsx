@@ -5,14 +5,14 @@ import parse from 'html-react-parser'
 
 import styles from './CardBlog.module.css'
 
-export function CardBlog({ post }) {
+export function CardBlog({ post, ...props }) {
   const timestamp = dateFormatter(post.createdAt)
   const categories = post.categories
     ? post.categories.join(', ').replaceAll('-', ' ')
     : null
 
   return (
-    <article className={styles.card_wrapper}>
+    <article {...props} className={`${styles.card_wrapper} ${props.className}`}>
       <div className={`${styles.img_wrapper} img_loading`}>
         <img
           loading="lazy"

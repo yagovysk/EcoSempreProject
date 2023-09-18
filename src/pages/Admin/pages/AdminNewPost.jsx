@@ -8,7 +8,9 @@ import { FormCategories } from './components/FormCategories'
 import { FormTags } from './components/FormTags'
 import { useAdmin } from '../../../contexts/AdminContext'
 import { Spinner } from '../../../components/Loader/Spinner'
+import { HeadingAdmin } from '../components/HeadingAdmin'
 import api from '../../../lib/axios'
+import { PostEditorContent } from '../components/PostEditorContent'
 
 const newPostFormSchema = z.object({
   title: z
@@ -44,7 +46,10 @@ const newPostFormSchema = z.object({
 })
 
 export function AdminNewPost() {
-  const { token } = useAdmin()
+  const {
+    token,
+    posts: { mutate: mutatePosts },
+  } = useAdmin()
 
   const formNewPost = useForm({
     resolver: zodResolver(newPostFormSchema),
@@ -52,7 +57,7 @@ export function AdminNewPost() {
       title: '',
       author: 'EcoSempre',
       authorId: 4,
-      content: '',
+      content: 'Adicione aqui o conteúdo da sua postagem',
       imageURL: '',
       categories: [],
       tags: [],
@@ -90,9 +95,10 @@ export function AdminNewPost() {
             Authorization: `Bearer ${token.token}`,
           },
         },
-        alert('Uhuul 🎉! Postagem adicionada com sucesso!'),
-        reset(),
       )
+      mutatePosts()
+      alert('Uhuul 🎉! Postagem adicionada com sucesso!')
+      reset()
     } catch (err) {
       alert(
         'Erro! Não conseguimos criar a sua postagem. Verifique a conexão com a internet ou tente novamente mais tarde.',
@@ -103,9 +109,7 @@ export function AdminNewPost() {
   return (
     <>
       <header className="pb-8 border-b">
-        <h1 className="text-gray-700 text-4xl mb-1 font-IBM-plex-sans">
-          Adicione um novo post ao Blog
-        </h1>
+        <HeadingAdmin>Adicione um novo post ao Blog</HeadingAdmin>
       </header>
 
       <main className="mt-8">
@@ -142,26 +146,11 @@ export function AdminNewPost() {
                 control={control}
                 render={({ field }) => {
                   return (
-                    <Editor
-                      init={{
-                        menubar: false,
-                        elementpath: false,
-                        language: 'pt_BR',
-                      }}
+                    <PostEditorContent
                       value={field.value}
-                      onEditorChange={(newValue, _) =>
+                      onEditorChange={(newValue) =>
                         setValue('content', newValue)
                       }
-                      apiKey={import.meta.env.VITE_TINY_EDITOR_API_KEY}
-                      initialValue="Adicione aqui o conteúdo da sua postagem"
-                      toolbar="undo redo | bold italic underline | alignLeft alignCenter alignRight | indent outdent | numlist bullist | preview fullscreen"
-                      plugins={[
-                        'wordcount',
-                        'lists',
-                        'advlist',
-                        'preview',
-                        'fullscreen',
-                      ]}
                     />
                   )
                 }}
@@ -230,10 +219,8 @@ export function AdminNewPost() {
 
             <button
               type="submit"
-              className={`col-span-full flex justify-center items-center gap-4 btn text-white font-medium h-14 hover:bg-blue ${
-                isSubmitting &&
-                'opacity-70 hover:bg-green-300 cursor-not-allowed'
-              }`}
+              className={`col-span-full flex justify-center items-center gap-4 btn text-white font-medium h-14 hover:bg-blue disabled:opacity-70 disabled:hover:bg-green-300 disabled:cursor-not-allowed`}
+              disabled={isSubmitting}
             >
               {isSubmitting ? (
                 <>

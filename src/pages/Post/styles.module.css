@@ -93,8 +93,14 @@
   line-height: 1.7rem;
   text-align: justify;
   transform: translateY(-4rem);
-  white-space: pre-wrap;
   padding: 0 2.8rem;
+}
+
+.paragraph ul, .paragraph ol, .paragraph menu {
+  all: revert;
+  padding: 0;
+  margin: 0;
+  margin-left: 1rem;
 }
 
 .wrapper_footer_post {

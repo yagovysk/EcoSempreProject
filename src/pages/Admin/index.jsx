@@ -4,15 +4,14 @@ import { ContactsTable } from './components/ContactsTable'
 import { DataResume } from './components/DataResume'
 import { CollectionPointsTable } from './components/CollectionPointsTable'
 import { NewsletterTable } from './components/NewsletterTable'
+import { HeadingAdmin } from './components/HeadingAdmin'
 
 export function Admin() {
   return (
     <>
       <header className="border-b pb-9">
-        <h1 className="text-gray-800 text-4xl mb-1 font-IBM-plex-sans">
-          Bem vindo, Administrador(a)!
-        </h1>
-        <p className="text-gray-500 font-medium text-lg">
+        <HeadingAdmin>Bem vindo, Administrador(a)!</HeadingAdmin>
+        <p className="text-gray-500 font-medium text-lg mt-1">
           O que você quer fazer?
         </p>
 
@@ -37,19 +36,11 @@ export function Admin() {
           </Link>
 
           <Link
-            to="/admin"
-            className="rounded flex p-4 gap-2 items-center max-w-[14rem] bg-blue text-white transition-all border-2 border-blue hover:bg-white hover:text-blue hover:-translate-y-1 duration-300"
+            to="/admin/posts"
+            className="rounded flex p-4 gap-2 items-center bg-blue text-white transition-all border-2 border-blue hover:bg-white hover:text-blue hover:-translate-y-1 duration-300"
           >
-            <Icon icon="fe:edit" className="w-5 h-5" />
-            <span className="flex-1">Editar uma postagem</span>
-          </Link>
-
-          <Link
-            to="/admin"
-            className="rounded flex p-4 gap-2 items-center max-w-[14rem] bg-red-500 text-white transition-all border-2 border-red-500 hover:bg-white hover:text-red-500 hover:-translate-y-1 duration-300"
-          >
-            <Icon icon="ant-design:delete-filled" className="w-5 h-5" />
-            <span className="flex-1">Deletar postagens</span>
+            <Icon icon="majesticons:article-search-line" className="w-5 h-5" />
+            <span className="flex-1">Ver postagens</span>
           </Link>
         </div>
       </header>

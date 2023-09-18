@@ -21,6 +21,11 @@ import { Admin } from './pages/Admin'
 import { AdminLogin } from './pages/Admin/components/AdminLogin'
 import { AdminNewPost } from './pages/Admin/pages/AdminNewPost'
 import { AdminLayout } from './layouts/AdminLayout'
+import { AdminPosts } from './pages/Admin/pages/AdminPosts'
+import {
+  AdminEditPost,
+  loader as editPostLoader,
+} from './pages/Admin/pages/AdminEditPost'
 
 export const router = createBrowserRouter([
   {
@@ -109,6 +114,7 @@ export const router = createBrowserRouter([
       {
         path: '/admin',
         element: <AdminLayout />,
+        errorElement: <ErrorPage />,
         children: [
           {
             path: '/admin',
@@ -117,6 +123,15 @@ export const router = createBrowserRouter([
           {
             path: '/admin/new-post',
             element: <AdminNewPost />,
+          },
+          {
+            path: '/admin/posts',
+            element: <AdminPosts />,
+          },
+          {
+            path: '/admin/edit/post/:id',
+            element: <AdminEditPost />,
+            loader: editPostLoader,
           },
         ],
       },

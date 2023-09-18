@@ -36,38 +36,37 @@ export function Sidebar() {
         </Link>
       </div>
 
-      <LinkSidebar path="/admin" icon="material-symbols:dashboard">
-        Dashboard
-      </LinkSidebar>
-
-      <LinkSidebar
-        path="/admin/add-collection-point"
-        icon="material-symbols:location-on-rounded"
+      <nav
+        className="flex flex-col gap-5"
+        onMouseOver={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
       >
-        Adicionar ponto de coleta
-      </LinkSidebar>
+        <LinkSidebar path="/admin" icon="material-symbols:dashboard">
+          Dashboard
+        </LinkSidebar>
 
-      <LinkSidebar
-        path="/admin/edit-collection-point"
-        icon="material-symbols:edit-location-alt-rounded"
-      >
-        Editar pontos de coleta
-      </LinkSidebar>
+        <LinkSidebar
+          path="/admin/add-collection-point"
+          icon="material-symbols:location-on-rounded"
+        >
+          Adicionar ponto de coleta
+        </LinkSidebar>
 
-      <LinkSidebar path="/admin/new-post" icon="mdi:pencil">
-        Nova postagem
-      </LinkSidebar>
+        <LinkSidebar
+          path="/admin/edit-collection-point"
+          icon="material-symbols:edit-location-alt-rounded"
+        >
+          Editar pontos de coleta
+        </LinkSidebar>
 
-      <LinkSidebar path="/admin/edit/:id-post" icon="fe:edit">
-        Editar postagens
-      </LinkSidebar>
+        <LinkSidebar path="/admin/new-post" icon="mdi:pencil">
+          Nova postagem
+        </LinkSidebar>
 
-      <LinkSidebar
-        path="/admin/delete/:id-post"
-        icon="ant-design:delete-filled"
-      >
-        Deletar postagens
-      </LinkSidebar>
+        <LinkSidebar path="/admin/posts" icon="majesticons:article-search-line">
+          Ver postagens
+        </LinkSidebar>
+      </nav>
     </div>
   )
 }
@@ -77,6 +76,7 @@ function LinkSidebar({ icon, children, path }) {
     <NavLink
       to={path}
       className="grid sidebar-link overflow-hidden grid-cols-sidebar-admin gap-3 rounded-lg whitespace-nowrap p-3 transition-colors hover:bg-white hover:text-blue"
+      end
     >
       <Icon icon={icon} className="w-6 h-6" />
       <span className={`transition-opacity font-medium`}>{children}</span>
