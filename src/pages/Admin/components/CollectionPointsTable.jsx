@@ -9,7 +9,7 @@ export function CollectionPointsTable() {
   const [collectionPointDialogId, setCollectionPointDialogId] = useState(null)
   const {
     collectionPoints: { data, mutate },
-    token,
+    admin,
   } = useAdmin()
 
   const handleOpenDialog = (id) => {
@@ -35,7 +35,7 @@ export function CollectionPointsTable() {
           id: data.id,
         },
         headers: {
-          Authorization: `Bearer ${token.token}`,
+          Authorization: `Bearer ${admin.token}`,
         },
       })
       const newData = data.filter(

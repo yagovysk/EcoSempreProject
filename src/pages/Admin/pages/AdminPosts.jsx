@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 export function AdminPosts() {
   const {
     posts: { data, mutate, isValidating },
-    token,
+    admin,
   } = useAdmin()
 
   console.log(isValidating)
@@ -23,7 +23,7 @@ export function AdminPosts() {
     try {
       await api.delete(`/article/${id}`, {
         headers: {
-          Authorization: `Bearer ${token.token}`,
+          Authorization: `Bearer ${admin.token}`,
         },
       })
       mutate()

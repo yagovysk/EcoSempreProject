@@ -11,7 +11,7 @@ export function ContactsTable() {
 
   const {
     contacts: { data, error, mutate },
-    token,
+    admin,
   } = useAdmin()
 
   const contacts = data && [...data].reverse()
@@ -43,7 +43,7 @@ export function ContactsTable() {
     try {
       await api.delete(`/contact/${id}`, {
         headers: {
-          Authorization: `Bearer ${token.token}`,
+          Authorization: `Bearer ${admin.token}`,
         },
       })
       const newData = contacts.filter((contact) => contact.id !== id)

@@ -5,18 +5,18 @@ import { useFetchData } from '../hooks/useFetchData'
 const AdminContext = createContext({})
 
 export function AdminProvider({ children }) {
-  const token = JSON.parse(localStorage.getItem('@ecoSempre-v1:token'))
-  const isTokenExpires = token && token.expires <= new Date().getDate()
+  const admin = JSON.parse(localStorage.getItem('@ecoSempre-v1:token'))
+  const isTokenExpires = admin && admin.expires <= new Date().getDate()
 
-  const responsePosts = useFetchWithToken('/articles', token && token.token)
+  const responsePosts = useFetchWithToken('/articles', admin && admin.token)
   const responseNewsletter = useFetchWithToken(
     '/newsletter',
-    token && token.token,
+    admin && admin.token,
   )
-  const responseContacts = useFetchWithToken('/contacts', token && token.token)
+  const responseContacts = useFetchWithToken('/contacts', admin && admin.token)
   const responseCollectionPoints = useFetchData('/collection-points')
 
-  if (!token) {
+  if (!admin) {
     return (
       <div className="p-4 font-bold text-2xl font-inter">Acesso restrito</div>
     )
@@ -74,7 +74,7 @@ export function AdminProvider({ children }) {
         collectionPoints: {
           ...responseCollectionPoints,
         },
-        token,
+        admin,
       }}
     >
       {children}

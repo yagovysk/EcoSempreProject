@@ -1,4 +1,3 @@
-import { Editor } from '@tinymce/tinymce-react'
 import { Input } from '../../../components/Form/Input'
 import { Controller, FormProvider, useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -24,7 +23,7 @@ const newPostFormSchema = z.object({
   categories: z
     .array(
       z.object({
-        name: z.string(),
+        name: z.string().transform((name) => name.split()),
         id_category: z.number().min(1),
       }),
     )
@@ -36,7 +35,7 @@ const newPostFormSchema = z.object({
   tags: z
     .array(
       z.object({
-        name: z.string(),
+        name: z.string().transform((name) => name.split()),
         id_tag: z.number().min(1),
       }),
     )
@@ -47,7 +46,7 @@ const newPostFormSchema = z.object({
 
 export function AdminNewPost() {
   const {
-    token,
+    admin,
     posts: { mutate: mutatePosts },
   } = useAdmin()
 
@@ -92,14 +91,19 @@ export function AdminNewPost() {
         },
         {
           headers: {
-            Authorization: `Bearer ${token.token}`,
+            Authorization: `Bearer ${admin.token}`,
           },
         },
       )
-      mutatePosts()
-      alert('Uhuul 🎉! Postagem adicionada com sucesso!')
       reset()
+      alert('Uhuul 🎉! Postagem adicionada com sucesso!')
+      mutatePosts()
     } catch (err) {
+      if (err.response.status === 409) {
+        alert('Erro! A postagem que você está tentando criar já existe')
+        return
+      }
+
       alert(
         'Erro! Não conseguimos criar a sua postagem. Verifique a conexão com a internet ou tente novamente mais tarde.',
       )

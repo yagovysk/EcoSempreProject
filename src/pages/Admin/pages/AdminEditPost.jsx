@@ -8,9 +8,9 @@ import { ErrorMessage } from '../../../components/Form/ErrorMessage'
 import { Spinner } from '../../../components/Loader/Spinner'
 import { PostEditorContent } from '../components/PostEditorContent'
 import { useAdmin } from '../../../contexts/AdminContext'
+import { Icon } from '@iconify/react'
 
 import api from '../../../lib/axios'
-import { Icon } from '@iconify/react'
 
 export async function loader({ params }) {
   let post = null
@@ -41,7 +41,7 @@ export function AdminEditPost() {
   const { post } = useLoaderData()
 
   const {
-    token,
+    admin,
     posts: { mutate: mutatePosts },
   } = useAdmin()
 
@@ -75,7 +75,7 @@ export function AdminEditPost() {
         },
         {
           headers: {
-            Authorization: `Bearer ${token.token}`,
+            Authorization: `Bearer ${admin.token}`,
           },
         },
       )

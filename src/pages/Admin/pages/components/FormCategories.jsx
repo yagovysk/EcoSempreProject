@@ -16,7 +16,7 @@ export function FormCategories() {
     mutate,
     isValidating,
   } = useFetchData('/category-article')
-  const { token } = useAdmin()
+  const { admin } = useAdmin()
 
   const {
     formState: { errors },
@@ -54,23 +54,25 @@ export function FormCategories() {
     }
 
     try {
-      await api.post(
-        '/category-article',
-        {
-          name,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token.token}`,
+      const idNewCategory = await api
+        .post(
+          '/category-article',
+          {
+            name,
           },
-        },
-      )
-      mutate()
-      setNewCategory('')
+          {
+            headers: {
+              Authorization: `Bearer ${admin.token}`,
+            },
+          },
+        )
+        .then((res) => res.data)
       appendCategory({
-        id_category: id,
+        id_category: idNewCategory.id,
         name,
       })
+      mutate()
+      setNewCategory('')
     } catch (err) {
       alert('Ocorreu um erro! Não conseguimos adicionar sua categoria.')
     }

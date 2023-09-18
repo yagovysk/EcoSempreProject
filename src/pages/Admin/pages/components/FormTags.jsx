@@ -16,7 +16,7 @@ export function FormTags() {
     mutate,
     isValidating,
   } = useFetchData('/tags')
-  const { token } = useAdmin()
+  const { admin } = useAdmin()
 
   const {
     formState: { errors },
@@ -51,21 +51,23 @@ export function FormTags() {
     }
 
     try {
-      await api.post(
-        '/tag',
-        {
-          name,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token.token}`,
+      const idNewTag = await api
+        .post(
+          '/tag',
+          {
+            name,
           },
-        },
-      )
+          {
+            headers: {
+              Authorization: `Bearer ${admin.token}`,
+            },
+          },
+        )
+        .then((res) => res.data)
       mutate()
       setQuery('')
       appendTag({
-        id_tag: id,
+        id_tag: idNewTag[0],
         name,
       })
     } catch (err) {
