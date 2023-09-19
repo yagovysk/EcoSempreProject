@@ -1,12 +1,16 @@
 import React, { createContext, useContext } from 'react'
 import { useFetchWithToken } from '../hooks/useFetchWithToken'
 import { useFetchData } from '../hooks/useFetchData'
+import jwtDecode from 'jwt-decode'
+import { getUnixTime } from 'date-fns'
 
 const AdminContext = createContext({})
 
 export function AdminProvider({ children }) {
   const admin = JSON.parse(localStorage.getItem('@ecoSempre-v1:token'))
-  const isTokenExpires = admin && admin.expires <= new Date().getDate()
+  const decodedToken = admin && jwtDecode(admin.token)
+  const isTokenExpires =
+    decodedToken && decodedToken.exp <= getUnixTime(new Date())
 
   const responsePosts = useFetchWithToken('/articles', admin && admin.token)
   const responseNewsletter = useFetchWithToken(
@@ -40,7 +44,7 @@ export function AdminProvider({ children }) {
     responseNewsletter.error
   ) {
     return (
-      <div className="font-roboto p-4 text-zinc-900 animate-pulse">
+      <div className="font-roboto p-4 text-zinc-900">
         Erro interno no servidor
       </div>
     )

@@ -1,8 +1,8 @@
 import { HeadingAdmin } from '../components/HeadingAdmin'
-import { useAdmin } from '../../../contexts/AdminContext'
-import { CardBlog } from '../../../components/CardBlog'
+import { useAdmin } from '../../contexts/AdminContext'
+import { CardBlog } from '../../components/CardBlog'
 import { Icon } from '@iconify/react'
-import api from '../../../lib/axios'
+import api from '../../lib/axios'
 
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { Link } from 'react-router-dom'

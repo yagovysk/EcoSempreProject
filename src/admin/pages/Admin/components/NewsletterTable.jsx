@@ -1,5 +1,5 @@
-import { useAdmin } from '../../../contexts/AdminContext'
-import { dateFormatter } from '../../../utils/dateFormatter'
+import { useAdmin } from '../../../../contexts/AdminContext'
+import { dateFormatter } from '../../../../utils/dateFormatter'
 
 export function NewsletterTable() {
   const {

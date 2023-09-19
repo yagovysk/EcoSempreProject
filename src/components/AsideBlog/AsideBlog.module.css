@@ -9,6 +9,7 @@
   display: block;
   padding: 2rem 1.125rem 1.5rem 1.125rem;
   height: max-content;
+  overflow: hidden;
 }
 
 .box_aside,
@@ -16,11 +17,12 @@
   background-color: #f4f4f4;
   border-radius: 0.625rem;
   border-top: 0.3125rem solid #00c756;
-  overflow: hidden;
 }
 
 .box_aside {
   padding: 2.125rem 2.375rem;
+  max-height: 24rem;
+  overflow-y: auto;
 }
 
 .title_box_aside {

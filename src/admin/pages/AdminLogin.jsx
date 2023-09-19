@@ -3,12 +3,13 @@ import { Icon } from '@iconify/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FormProvider, useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { Input } from '../../../components/Form/Input'
-import { ErrorMessage } from '../../../components/Form/ErrorMessage'
+import { Input } from '../../components/Form/Input'
+import { ErrorMessage } from '../../components/Form/ErrorMessage'
 import { useState } from 'react'
-import * as Toast from '../../../components/Toast'
-import api from '../../../lib/axios'
 import { useNavigate } from 'react-router-dom'
+
+import * as Toast from '../../components/Toast'
+import api from '../../lib/axios'
 
 const adminFormSchema = z.object({
   email: z.string().email('Email inválido').nonempty('Obrigatório'),
@@ -39,13 +40,8 @@ export function AdminLogin() {
       setIsLoading(() => false)
       setError(() => false)
 
-      const today = new Date()
-      const tomorrow = new Date(today)
-      tomorrow.setDate(today.getDate() + 1)
-
       const token = {
         token: authentication.token,
-        expires: tomorrow.getDate(),
       }
 
       localStorage.setItem('@ecoSempre-v1:token', JSON.stringify(token))

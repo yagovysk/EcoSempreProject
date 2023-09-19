@@ -7,9 +7,9 @@ import { FormCategories } from './components/FormCategories'
 import { FormTags } from './components/FormTags'
 import { useAdmin } from '../../../contexts/AdminContext'
 import { Spinner } from '../../../components/Loader/Spinner'
-import { HeadingAdmin } from '../components/HeadingAdmin'
+import { HeadingAdmin } from '../../components/HeadingAdmin'
 import api from '../../../lib/axios'
-import { PostEditorContent } from '../components/PostEditorContent'
+import { PostEditorContent } from '../../components/PostEditorContent'
 
 const newPostFormSchema = z.object({
   title: z

@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import * as Dialog from '@radix-ui/react-dialog'
-import { dateFormatter } from '../../../utils/dateFormatter'
+import { dateFormatter } from '../../../../utils/dateFormatter'
 import { Icon } from '@iconify/react'
-import { useAdmin } from '../../../contexts/AdminContext'
+import { useAdmin } from '../../../../contexts/AdminContext'
+import { AdminModal } from '../../../components/AdminModal'
 
-import api from '../../../lib/axios'
+import * as Dialog from '@radix-ui/react-dialog'
+import api from '../../../../lib/axios'
 
 export function ContactsTable() {
   const [contactDialogId, setContactDialogId] = useState(null)
@@ -83,46 +84,38 @@ export function ContactsTable() {
                         {contact.name}
                       </Dialog.Trigger>
 
-                      <Dialog.Portal>
-                        <Dialog.Overlay className="bg-[rgba(22,22,27,0.67)] fixed inset-0 grid place-items-center overflow-y-auto z-50">
-                          <Dialog.Content className="bg-white p-8 pb-6 flex flex-col gap-4 rounded relative max-w-xl w-full font-roboto">
-                            <Dialog.Close className="text-green-300 absolute right-8 top-8">
-                              <Icon icon="ic:round-close" className="w-6 h-6" />
-                            </Dialog.Close>
+                      <AdminModal>
+                        <Dialog.Title className="text-zinc-950 font-IBM-plex-sans font-bold text-2xl">
+                          {contact.subject}
+                        </Dialog.Title>
+                        <Dialog.Description className="text-gray-600 whitespace-pre-wrap mt-2">
+                          {contact.message}
+                        </Dialog.Description>
 
-                            <Dialog.Title className="text-zinc-950 font-IBM-plex-sans font-bold text-2xl">
-                              {contact.subject}
-                            </Dialog.Title>
-                            <Dialog.Description className="text-gray-600 whitespace-pre-wrap mt-2">
-                              {contact.message}
-                            </Dialog.Description>
+                        <address className="flex text-sm text-zinc-950 flex-wrap gap-2 w-full not-italic">
+                          <div className="capitalize">{contact.name}</div> |
+                          <a
+                            className="text-blue underline"
+                            href={`mailto:${contact.email}`}
+                          >
+                            {contact.email}
+                          </a>{' '}
+                          |<div>{contact.phone}</div>
+                        </address>
 
-                            <address className="flex text-sm text-zinc-950 flex-wrap gap-2 w-full not-italic">
-                              <div className="capitalize">{contact.name}</div> |
-                              <a
-                                className="text-blue underline"
-                                href={`mailto:${contact.email}`}
-                              >
-                                {contact.email}
-                              </a>{' '}
-                              |<div>{contact.phone}</div>
-                            </address>
-
-                            <div className="grid border-t pt-3 mt-2">
-                              <button
-                                type="button"
-                                className="text-red-500 p-2 w-max rounded border-2 border-transparent transition-colors hover:border-red-500"
-                                onClick={() => handleDeleteContact(contact.id)}
-                              >
-                                <Icon
-                                  icon="ant-design:delete-filled"
-                                  className="w-5 h-5"
-                                />
-                              </button>
-                            </div>
-                          </Dialog.Content>
-                        </Dialog.Overlay>
-                      </Dialog.Portal>
+                        <div className="grid border-t pt-3 mt-2">
+                          <button
+                            type="button"
+                            className="text-red-500 p-2 w-max rounded border-2 border-transparent transition-colors hover:border-red-500"
+                            onClick={() => handleDeleteContact(contact.id)}
+                          >
+                            <Icon
+                              icon="ant-design:delete-filled"
+                              className="w-5 h-5"
+                            />
+                          </button>
+                        </div>
+                      </AdminModal>
                     </td>
                     <td className="p-4 bg-zinc-50 overflow-hidden text-ellipsis">
                       <a

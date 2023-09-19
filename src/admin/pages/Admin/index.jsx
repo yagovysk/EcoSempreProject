@@ -4,7 +4,7 @@ import { ContactsTable } from './components/ContactsTable'
 import { DataResume } from './components/DataResume'
 import { CollectionPointsTable } from './components/CollectionPointsTable'
 import { NewsletterTable } from './components/NewsletterTable'
-import { HeadingAdmin } from './components/HeadingAdmin'
+import { HeadingAdmin } from '../../components/HeadingAdmin'
 
 export function Admin() {
   return (

@@ -3,14 +3,14 @@ import { z } from 'zod'
 import { HeadingAdmin } from '../components/HeadingAdmin'
 import { Controller, FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Input } from '../../../components/Form/Input'
-import { ErrorMessage } from '../../../components/Form/ErrorMessage'
-import { Spinner } from '../../../components/Loader/Spinner'
+import { Input } from '../../components/Form/Input'
+import { ErrorMessage } from '../../components/Form/ErrorMessage'
+import { Spinner } from '../../components/Loader/Spinner'
 import { PostEditorContent } from '../components/PostEditorContent'
-import { useAdmin } from '../../../contexts/AdminContext'
+import { useAdmin } from '../../contexts/AdminContext'
 import { Icon } from '@iconify/react'
 
-import api from '../../../lib/axios'
+import api from '../../lib/axios'
 
 export async function loader({ params }) {
   let post = null

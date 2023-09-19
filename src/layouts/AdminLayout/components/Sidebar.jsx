@@ -52,19 +52,16 @@ export function Sidebar() {
           Adicionar ponto de coleta
         </LinkSidebar>
 
-        <LinkSidebar
-          path="/admin/edit-collection-point"
-          icon="material-symbols:edit-location-alt-rounded"
-        >
-          Editar pontos de coleta
-        </LinkSidebar>
-
         <LinkSidebar path="/admin/new-post" icon="mdi:pencil">
           Nova postagem
         </LinkSidebar>
 
         <LinkSidebar path="/admin/posts" icon="majesticons:article-search-line">
-          Ver postagens
+          Ver blog
+        </LinkSidebar>
+
+        <LinkSidebar path="/admin/post-labels" icon="mdi:tag">
+          Categorias e Tags do Blog
         </LinkSidebar>
       </nav>
     </div>

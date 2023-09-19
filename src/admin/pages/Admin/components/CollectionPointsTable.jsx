@@ -1,9 +1,11 @@
 import { Icon } from '@iconify/react'
-import { useAdmin } from '../../../contexts/AdminContext'
+import { useAdmin } from '../../../../contexts/AdminContext'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AdminModal } from '../../../components/AdminModal'
+
 import * as Dialog from '@radix-ui/react-dialog'
-import api from '../../../lib/axios'
+import api from '../../../../lib/axios'
 
 export function CollectionPointsTable() {
   const [collectionPointDialogId, setCollectionPointDialogId] = useState(null)
@@ -77,50 +79,40 @@ export function CollectionPointsTable() {
                         {collectionPoint.name}
                       </Dialog.Trigger>
 
-                      <Dialog.Portal>
-                        <Dialog.Overlay className="z-50 bg-[rgba(22,22,27,0.67)] fixed inset-0 grid place-items-center overflow-y-auto">
-                          <Dialog.Content className="bg-white p-8 pb-6 flex flex-col gap-4 rounded relative max-w-xl w-full font-roboto">
-                            <Dialog.Close className="text-green-300 absolute right-8 top-8">
-                              <Icon icon="ic:round-close" className="w-6 h-6" />
-                            </Dialog.Close>
+                      <AdminModal>
+                        <Dialog.Title className="text-zinc-950 font-IBM-plex-sans font-bold text-2xl">
+                          {collectionPoint.name}
+                        </Dialog.Title>
+                        <Dialog.Description className="text-gray-600 whitespace-pre-wrap mt-2">
+                          <div>Endereço: {collectionPoint.address} </div>
+                          <div>CEP: {collectionPoint.cep} </div>
+                          <div>Estado: {collectionPoint.state} </div>
+                          <div>Cidade: {collectionPoint.city} </div>
+                          <div>Tamanho do coletor: {collectionPoint.size}</div>
+                        </Dialog.Description>
 
-                            <Dialog.Title className="text-zinc-950 font-IBM-plex-sans font-bold text-2xl">
-                              {collectionPoint.name}
-                            </Dialog.Title>
-                            <Dialog.Description className="text-gray-600 whitespace-pre-wrap mt-2">
-                              <div>Endereço: {collectionPoint.address} </div>
-                              <div>CEP: {collectionPoint.cep} </div>
-                              <div>Estado: {collectionPoint.state} </div>
-                              <div>Cidade: {collectionPoint.city} </div>
-                              <div>Tamanho: {collectionPoint.size}</div>
-                            </Dialog.Description>
+                        <div className="flex border-t pt-3 mt-2">
+                          <button
+                            type="button"
+                            className="text-red-500 p-2 w-max rounded border-2 border-transparent transition-colors hover:border-red-500"
+                            onClick={() =>
+                              handleDeleteCollectionPoint(collectionPoint.id)
+                            }
+                          >
+                            <Icon
+                              icon="ant-design:delete-filled"
+                              className="w-5 h-5"
+                            />
+                          </button>
 
-                            <div className="flex border-t pt-3 mt-2">
-                              <button
-                                type="button"
-                                className="text-red-500 p-2 w-max rounded border-2 border-transparent transition-colors hover:border-red-500"
-                                onClick={() =>
-                                  handleDeleteCollectionPoint(
-                                    collectionPoint.id,
-                                  )
-                                }
-                              >
-                                <Icon
-                                  icon="ant-design:delete-filled"
-                                  className="w-5 h-5"
-                                />
-                              </button>
-
-                              <Link
-                                to="/admin"
-                                className="text-blue p-2 w-max rounded border-2 border-transparent transition-colors hover:border-blue"
-                              >
-                                <Icon icon="fe:edit" className="w-5 h-5" />
-                              </Link>
-                            </div>
-                          </Dialog.Content>
-                        </Dialog.Overlay>
-                      </Dialog.Portal>
+                          <Link
+                            to="/admin"
+                            className="text-blue p-2 w-max rounded border-2 border-transparent transition-colors hover:border-blue"
+                          >
+                            <Icon icon="fe:edit" className="w-5 h-5" />
+                          </Link>
+                        </div>
+                      </AdminModal>
                     </td>
 
                     <td className="p-4 bg-zinc-50 overflow-hidden text-ellipsis">

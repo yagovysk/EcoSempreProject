@@ -1,4 +1,5 @@
-import { useAdmin } from '../../../contexts/AdminContext'
+import { useAdmin } from '../../../../contexts/AdminContext'
+import { BoxResume } from '../../../components/BoxResume'
 
 export function DataResume() {
   const {
@@ -26,31 +27,22 @@ export function DataResume() {
 
   return (
     <div className="flex items-center flex-wrap gap-5 font-inter text-zinc-900 mb-4">
-      <Box
+      <BoxResume
         title="Emails cadastrados na Newsletter"
         number={newsletter ? newsletter.length : 0}
       />
-      <Box
+      <BoxResume
         title="Pontos de coleta cadastrados"
         number={collectionPoints ? collectionPoints.length : 0}
       />
-      <Box
+      <BoxResume
         title="Pessoas que entraram em contato"
         number={contacts ? contacts.length : 0}
       />
-      <Box
+      <BoxResume
         title="Quantidade de postagens no Blog"
         number={posts ? posts.length : 0}
       />
-    </div>
-  )
-}
-
-function Box({ title, number }) {
-  return (
-    <div className="rounded-lg border grid gap-2 py-10 px-6 text-center max-w-[14rem] w-full h-48 shadow-md bg-white">
-      <div className="font-bold text-green-300 text-[2.5rem]">{number}</div>
-      <div className="text-sm text-gray-700 font-medium">{title}</div>
     </div>
   )
 }

@@ -17,15 +17,16 @@ import { Donation } from './pages/Donation'
 import { ErrorPage } from './pages/ErrorPage'
 import { Reforestation } from './pages/Reforestation'
 import { ColetasProvider } from './contexts/ColetasContext'
-import { Admin } from './pages/Admin'
-import { AdminLogin } from './pages/Admin/components/AdminLogin'
-import { AdminNewPost } from './pages/Admin/pages/AdminNewPost'
 import { AdminLayout } from './layouts/AdminLayout'
-import { AdminPosts } from './pages/Admin/pages/AdminPosts'
+import { Admin } from './admin/pages/Admin'
+import { AdminLogin } from './admin/pages/AdminLogin'
+import { AdminNewPost } from './admin/pages/AdminNewPost'
+import { AdminPosts } from './admin/pages/AdminPosts'
 import {
   AdminEditPost,
   loader as editPostLoader,
-} from './pages/Admin/pages/AdminEditPost'
+} from './admin/pages/AdminEditPost'
+import { AdminPostLabels } from './admin/pages/AdminPostLabels'
 
 export const router = createBrowserRouter([
   {
@@ -132,6 +133,10 @@ export const router = createBrowserRouter([
             path: '/admin/edit/post/:id',
             element: <AdminEditPost />,
             loader: editPostLoader,
+          },
+          {
+            path: '/admin/post-labels',
+            element: <AdminPostLabels />,
           },
         ],
       },
