@@ -4,6 +4,7 @@ import { useFetchData } from '../../../hooks/useFetchData'
 import { TagsBox } from './components/TagsBox'
 import { CategoriesBox } from './components/CategoriesBox'
 import { createContext, useContext } from 'react'
+import { Link } from 'react-router-dom'
 
 const AdminPostLabelsContext = createContext({})
 
@@ -36,7 +37,11 @@ export function AdminPostLabels() {
       <header>
         <HeadingAdmin>Categorias e Tags do Blog</HeadingAdmin>
         <p className="text-sm mt-3 text-gray-600 flex items-center">
-          Clique na tag/categoria para editá-la ou removê-la.
+          Para adicionar novas tags e categorias
+          <Link to="/admin/new-post" className="ml-1 text-green-300 underline">
+            clique aqui
+          </Link>
+          .
         </p>
       </header>
 

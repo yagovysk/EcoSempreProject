@@ -64,7 +64,7 @@ export function AdminPosts() {
                   <DropdownMenu.Content className="bg-white rounded space-y-1 p-3 shadow-md">
                     <DropdownMenu.Item className="outline-0">
                       <Link
-                        to={`/admin/edit/post/${post.id}`}
+                        to={`/admin/edit/post/${post.slug}`}
                         className="flex items-center gap-2 text-blue duration-300 transition-colors p-2 hover:bg-blue hover:text-white rounded"
                       >
                         <Icon icon="fe:edit" className="w-5 h-5" />

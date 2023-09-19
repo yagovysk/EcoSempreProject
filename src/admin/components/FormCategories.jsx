@@ -1,12 +1,12 @@
 import { useFieldArray, useFormContext } from 'react-hook-form'
-import { ErrorMessage } from '../../../../components/Form/ErrorMessage'
-import { useFetchData } from '../../../../hooks/useFetchData'
+import { ErrorMessage } from '../../components/Form/ErrorMessage'
+import { useFetchData } from '../../hooks/useFetchData'
 import { Combobox } from '@headlessui/react'
 import { Icon } from '@iconify/react'
 import { useState } from 'react'
-import { useAdmin } from '../../../../contexts/AdminContext'
-import { Spinner } from '../../../../components/Loader/Spinner'
-import api from '../../../../lib/axios'
+import { useAdmin } from '../../contexts/AdminContext'
+import { Spinner } from '../../components/Loader/Spinner'
+import api from '../../lib/axios'
 
 export function FormCategories() {
   const [newCategory, setNewCategory] = useState('')

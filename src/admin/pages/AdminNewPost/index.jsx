@@ -3,13 +3,14 @@ import { Controller, FormProvider, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ErrorMessage } from '../../../components/Form/ErrorMessage'
-import { FormCategories } from './components/FormCategories'
-import { FormTags } from './components/FormTags'
+import { FormCategories } from '../../components/FormCategories'
+import { FormTags } from '../../components/FormTags'
 import { useAdmin } from '../../../contexts/AdminContext'
 import { Spinner } from '../../../components/Loader/Spinner'
 import { HeadingAdmin } from '../../components/HeadingAdmin'
-import api from '../../../lib/axios'
 import { PostEditorContent } from '../../components/PostEditorContent'
+
+import api from '../../../lib/axios'
 
 const newPostFormSchema = z.object({
   title: z
