@@ -17,7 +17,7 @@ export function Admin() {
 
         <div className="flex flex-wrap items-center gap-3 mt-8">
           <Link
-            to="/admin"
+            to="/admin/new-collection-point"
             className="rounded flex p-4 gap-2 items-center bg-green-300 text-white transition-all border-2 border-green-300 hover:bg-blue hover:border-blue hover:-translate-y-1 duration-300"
           >
             <Icon

@@ -15,6 +15,7 @@ import { usePostLabels } from '../../AdminPostLabels'
 import { Input } from '../../../../components/Form/Input'
 import { ErrorMessage } from '../../../../components/Form/ErrorMessage'
 import { Spinner } from '../../../../components/Loader/Spinner'
+import { ButtonAdmin } from '../../../components/ButtonAdmin'
 
 import api from '../../../../lib/axios'
 
@@ -210,9 +211,9 @@ export function CategoriesBox() {
                     value={category.id}
                   />
 
-                  <button
+                  <ButtonAdmin
                     type="submit"
-                    className={`w-full mt-6 mb-3 flex justify-center items-center gap-4 btn text-white font-medium h-12 hover:bg-blue disabled:opacity-70 disabled:hover:bg-green-300 disabled:cursor-not-allowed`}
+                    className={`w-full mt-6 mb-3 h-12`}
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
@@ -222,7 +223,7 @@ export function CategoriesBox() {
                     ) : (
                       'Enviar'
                     )}
-                  </button>
+                  </ButtonAdmin>
                 </FormProvider>
               </form>
             </AdminModal>

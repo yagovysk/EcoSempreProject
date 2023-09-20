@@ -14,6 +14,8 @@ export function CollectionPointsTable() {
     admin,
   } = useAdmin()
 
+  const collectionPoints = data && [...data].reverse()
+
   const handleOpenDialog = (id) => {
     setCollectionPointDialogId((prevId) => {
       if (prevId === id) {
@@ -34,20 +36,18 @@ export function CollectionPointsTable() {
     try {
       await api.delete(`/collection-point`, {
         data: {
-          id: data.id,
+          id,
         },
         headers: {
           Authorization: `Bearer ${admin.token}`,
         },
       })
-      const newData = data.filter(
-        (collectionPoint) => collectionPoint.id !== id,
-      )
-      mutate(newData)
+      mutate()
       setCollectionPointDialogId(null)
+      alert('Ponto de coleta deletado com sucesso!')
     } catch (err) {
       alert(
-        'Não conseguimos deletar o contato. Verifique a sua internet ou tente novamente mais tarde.',
+        'Não conseguimos deletar o ponto de coleta. Verifique a sua internet ou tente novamente mais tarde.',
       )
     }
   }
@@ -65,8 +65,8 @@ export function CollectionPointsTable() {
           </tr>
         </thead>
         <tbody>
-          {data ? (
-            data.map((collectionPoint) => {
+          {collectionPoints ? (
+            collectionPoints.map((collectionPoint) => {
               return (
                 <Dialog.Root
                   key={collectionPoint.id}

@@ -12,6 +12,7 @@ import { Spinner } from '../../../../components/Loader/Spinner'
 import { AdminModal } from '../../../components/AdminModal'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import { ButtonAdmin } from '../../../components/ButtonAdmin'
 
 import * as Dialog from '@radix-ui/react-dialog'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
@@ -196,9 +197,9 @@ export function TagsBox() {
 
                   <input type="hidden" {...register('id')} value={tag.id} />
 
-                  <button
+                  <ButtonAdmin
                     type="submit"
-                    className={`w-full mt-6 mb-3 flex justify-center items-center gap-4 btn text-white font-medium h-12 hover:bg-blue disabled:opacity-70 disabled:hover:bg-green-300 disabled:cursor-not-allowed`}
+                    className={`w-full mt-6 mb-3 h-12`}
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
@@ -208,7 +209,7 @@ export function TagsBox() {
                     ) : (
                       'Enviar'
                     )}
-                  </button>
+                  </ButtonAdmin>
                 </FormProvider>
               </form>
             </AdminModal>

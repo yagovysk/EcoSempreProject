@@ -12,7 +12,7 @@ export function AdminProvider({ children }) {
   const isTokenExpires =
     decodedToken && decodedToken.exp <= getUnixTime(new Date())
 
-  const responsePosts = useFetchWithToken('/articles', admin && admin.token)
+  const responsePosts = useFetchData('/articles')
   const responseNewsletter = useFetchWithToken(
     '/newsletter',
     admin && admin.token,

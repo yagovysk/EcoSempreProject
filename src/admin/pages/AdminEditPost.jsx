@@ -14,6 +14,7 @@ import { FormCategories } from '../components/FormCategories'
 import { FormTags } from '../components/FormTags'
 
 import api from '../../lib/axios'
+import { ButtonAdmin } from '../components/ButtonAdmin'
 
 export async function loader({ params }) {
   let post = null
@@ -232,9 +233,9 @@ export function AdminEditPost() {
             <FormCategories />
             <FormTags />
 
-            <button
+            <ButtonAdmin
               type="submit"
-              className={`col-span-full flex justify-center items-center gap-4 btn text-white font-medium h-14 hover:bg-blue disabled:opacity-70 disabled:hover:bg-green-300 disabled:cursor-not-allowed`}
+              className={`col-span-full`}
               disabled={isSubmitting}
             >
               {isSubmitting ? (
@@ -244,7 +245,7 @@ export function AdminEditPost() {
               ) : (
                 'Enviar'
               )}
-            </button>
+            </ButtonAdmin>
           </FormProvider>
         </form>
       </main>

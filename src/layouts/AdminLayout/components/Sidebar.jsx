@@ -46,7 +46,7 @@ export function Sidebar() {
         </LinkSidebar>
 
         <LinkSidebar
-          path="/admin/add-collection-point"
+          path="/admin/new-collection-point"
           icon="material-symbols:location-on-rounded"
         >
           Adicionar ponto de coleta

@@ -9,6 +9,7 @@ import { useAdmin } from '../../../contexts/AdminContext'
 import { Spinner } from '../../../components/Loader/Spinner'
 import { HeadingAdmin } from '../../components/HeadingAdmin'
 import { PostEditorContent } from '../../components/PostEditorContent'
+import { ButtonAdmin } from '../../components/ButtonAdmin'
 
 import api from '../../../lib/axios'
 
@@ -222,9 +223,9 @@ export function AdminNewPost() {
             <FormCategories />
             <FormTags />
 
-            <button
+            <ButtonAdmin
               type="submit"
-              className={`col-span-full flex justify-center items-center gap-4 btn text-white font-medium h-14 hover:bg-blue disabled:opacity-70 disabled:hover:bg-green-300 disabled:cursor-not-allowed`}
+              className={`col-span-full`}
               disabled={isSubmitting}
             >
               {isSubmitting ? (
@@ -234,7 +235,7 @@ export function AdminNewPost() {
               ) : (
                 'Enviar'
               )}
-            </button>
+            </ButtonAdmin>
           </FormProvider>
         </form>
       </main>
