@@ -31,8 +31,8 @@ export async function loader({ request }) {
     .then((response) => response.data)
     .catch((err) => {
       throw new Response('', {
-        status: err.response.status,
-        statusText: err.response.statusText,
+        status: err.request.status || 500,
+        statusText: err.request.statusText || 'Internal Server Error',
       })
     })
 
