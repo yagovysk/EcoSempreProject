@@ -73,7 +73,7 @@
 }
 .social_medias {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   gap: 1.125rem;
   opacity: 0.5;
 }

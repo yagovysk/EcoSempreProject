@@ -32,7 +32,7 @@
 @media (max-width: 1023px) {
   .wrapper_content {
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     gap: 2rem;
   }
 }

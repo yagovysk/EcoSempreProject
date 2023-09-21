@@ -380,7 +380,7 @@
   .header.on .contact-container {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: start;
+    justify-content: flex-start;
   }
   .header.on .btnContato {
     width: max-content;
