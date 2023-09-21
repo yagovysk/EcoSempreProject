@@ -10,8 +10,16 @@ export function ColetasProvider({ children }) {
   const mapRef = useRef({})
   const { data, isLoading, error } = useFetchData('/collection-points', {
     revalidateOnFocus: false,
-    revalidateOnReconnect: false,
+    revalidateIfStale: false,
+    onErrorRetry: (error, key, config, revalidate, { retryCount }) => {
+      if (error.response.status === 404) return
+
+      // Retry after 10 seconds
+      setTimeout(() => revalidate({ retryCount }), 10 * 1000)
+    },
   })
+
+  const apiError = error && error.request.status !== 404
 
   const randomCoordinates = generatePontosDeColeta(
     userAddressCoordinates || {
@@ -56,7 +64,7 @@ export function ColetasProvider({ children }) {
         updateUserAddressCoordinates,
         pontosDeColeta,
         isLoading,
-        error,
+        apiError,
         mapRef,
         RADIUS,
         nearbyPontosColetas,

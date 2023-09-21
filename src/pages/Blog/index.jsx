@@ -43,7 +43,7 @@ export function Blog() {
 
   const startIndex = currentPage * POSTS_PER_PAGE
   const endIndex = startIndex + POSTS_PER_PAGE
-  const postsPerPage = !isLoading && posts.slice(startIndex, endIndex)
+  const postsPerPage = posts && posts.slice(startIndex, endIndex)
 
   return (
     <main>
@@ -53,11 +53,13 @@ export function Blog() {
         linksMenu={linksMenu}
       />
 
-      {isLoading ? (
+      {isLoading && (
         <ScrollReveal origin="bottom">
           <Loader />
         </ScrollReveal>
-      ) : (
+      )}
+
+      {posts && (
         <>
           <ScrollReveal origin="bottom">
             <article className={`${styles.posts_container} container`}>

@@ -42,8 +42,10 @@ export function Blog({ isMobile }) {
                 className="w-12 h-12 text-blue"
               />
               <p className="text-gray-500 text-lg font-roboto max-w-md text-center font-medium">
-                Oops! Parece que ocorreu um erro no servidor. Recarregue a
-                página ou tente novamente mais tarde.
+                {error.request.status !== 404
+                  ? `Oops! Parece que ocorreu um erro no servidor. Recarregue a 
+                  página ou tente novamente mais tarde.`
+                  : `Oops! Parece que não temos nenhuma postagem no blog ainda.`}
               </p>
             </div>
           )}
