@@ -8,6 +8,7 @@ import { AdminNewPost } from '../admin/pages/AdminNewPost'
 import { AdminPostLabels } from '../admin/pages/AdminPostLabels'
 import { AdminPosts } from '../admin/pages/AdminPosts'
 import { CreateCollectionPoint } from '../admin/pages/CreateCollectionPoint'
+import { EditCollectionPoint } from '../admin/pages/EditCollectionPoint'
 import { AdminLayout } from '../layouts/AdminLayout'
 import { ErrorPage } from '../pages/ErrorPage'
 
@@ -46,6 +47,10 @@ export const adminRoutes = {
         {
           path: '/admin/new-collection-point',
           element: <CreateCollectionPoint />,
+        },
+        {
+          path: '/admin/edit-collection-point/:id',
+          element: <EditCollectionPoint />,
         },
       ],
     },

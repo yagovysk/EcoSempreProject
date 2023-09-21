@@ -1,3 +1,4 @@
+import { useNavigate, useParams } from 'react-router-dom'
 import { FormProvider, useForm } from 'react-hook-form'
 import { HeadingAdmin } from '../../components/HeadingAdmin'
 import { z } from 'zod'
@@ -5,11 +6,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Spinner } from '../../../components/Loader/Spinner'
 import { ButtonAdmin } from '../../components/ButtonAdmin'
 import { useAdmin } from '../../../contexts/AdminContext'
-import { CreateForm } from './components/CreateForm'
 
 import api from '../../../lib/axios'
+import { EditForm } from './components/EditForm'
 
-const createCollectionPointFormSchema = z.object({
+const editCollectionPointFormSchema = z.object({
+  id: z.coerce.number(),
   name: z.string().nonempty('Obrigatório'),
   address: z.string().nonempty('Obrigatório'),
   cep: z.coerce
@@ -37,36 +39,52 @@ const createCollectionPointFormSchema = z.object({
     .transform((category) => category.id),
 })
 
-export function CreateCollectionPoint() {
+export function EditCollectionPoint() {
+  const { id } = useParams()
   const {
     admin,
-    collectionPoints: { mutate },
+    collectionPoints: { data },
   } = useAdmin()
 
-  const createCollectionPointForm = useForm({
-    resolver: zodResolver(createCollectionPointFormSchema),
+  const collectionPoint = data.find(
+    (collectionPoint) => collectionPoint.id === Number(id),
+  )
+
+  const navigate = useNavigate()
+
+  const editCollectionPointForm = useForm({
+    resolver: zodResolver(editCollectionPointFormSchema),
     defaultValues: {
-      state: '',
-      city: '',
-      size: '',
-      category: {
-        name: '',
-        id: null,
-      },
+      name: collectionPoint.name,
+      address: collectionPoint.address,
+      cep: collectionPoint.cep,
+      state: collectionPoint.state,
+      city: collectionPoint.city,
+      size: collectionPoint.size,
+      category: collectionPoint.category_id
+        ? {
+            name: collectionPoint.name,
+            id: collectionPoint.category_id,
+          }
+        : {
+            name: '',
+            id: null,
+          },
     },
   })
 
   const {
+    register,
     handleSubmit,
     formState: { isSubmitting },
-    reset,
-  } = createCollectionPointForm
+  } = editCollectionPointForm
 
-  async function handleCreateCollectionPoint(data) {
+  async function handleEditCollectionPoint(data) {
     try {
-      await api.post(
+      await api.put(
         '/collection-point',
         {
+          id: data.id,
           name: data.name,
           address: data.address,
           cep: data.cep,
@@ -82,12 +100,11 @@ export function CreateCollectionPoint() {
         },
       )
 
-      alert('Ponto de coleta adicionado com sucesso!')
-      reset()
-      mutate()
+      alert('Ponto de coleta editado com sucesso!')
+      navigate('/admin')
     } catch (err) {
       alert(
-        'Erro ao tentarmos criar seu ponto de coleta. Verifique a conexão de internet ou tente novamente mais tarde',
+        'Erro ao tentarmos editar seu ponto de coleta. Verifique a conexão de internet ou tente novamente mais tarde',
       )
     }
   }
@@ -95,27 +112,32 @@ export function CreateCollectionPoint() {
   return (
     <div className="flex flex-col gap-8 ">
       <header>
-        <HeadingAdmin>Adicionar novo ponto de coleta</HeadingAdmin>
+        <HeadingAdmin>Editar &quot;{collectionPoint.name}&quot;</HeadingAdmin>
       </header>
 
       <hr />
 
       <main className="max-w-7xl">
         <form
-          onSubmit={handleSubmit(handleCreateCollectionPoint)}
+          onSubmit={handleSubmit(handleEditCollectionPoint)}
           className="grid grid-cols-new-post-form gap-8 text-gray-800"
         >
-          <FormProvider {...createCollectionPointForm}>
-            <CreateForm />
+          <input type="hidden" {...register('id')} value={collectionPoint.id} />
+          <FormProvider {...editCollectionPointForm}>
+            <EditForm />
           </FormProvider>
 
-          <ButtonAdmin className="col-span-full" disabled={isSubmitting}>
+          <ButtonAdmin
+            type="submit"
+            className="col-span-full"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? (
               <>
                 <Spinner />
               </>
             ) : (
-              'Enviar'
+              'Editar'
             )}
           </ButtonAdmin>
         </form>

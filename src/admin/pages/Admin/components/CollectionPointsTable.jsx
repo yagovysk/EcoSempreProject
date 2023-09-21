@@ -106,7 +106,7 @@ export function CollectionPointsTable() {
                           </button>
 
                           <Link
-                            to="/admin"
+                            to={`/admin/edit-collection-point/${collectionPoint.id}`}
                             className="text-blue p-2 w-max rounded border-2 border-transparent transition-colors hover:border-blue"
                           >
                             <Icon icon="fe:edit" className="w-5 h-5" />

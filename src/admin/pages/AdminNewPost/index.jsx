@@ -37,7 +37,7 @@ const newPostFormSchema = z.object({
   tags: z
     .array(
       z.object({
-        name: z.string().transform((name) => name.split()),
+        name: z.string().trim(),
         id_tag: z.number().min(1),
       }),
     )
