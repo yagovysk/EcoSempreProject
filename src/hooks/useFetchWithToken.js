@@ -12,9 +12,11 @@ async function fetchWithToken(url, token) {
   return response
 }
 
-export function useFetchWithToken(endpoint, token) {
-  const response = useSWR([endpoint, token], ([url, token]) =>
-    fetchWithToken(url, token),
+export function useFetchWithToken(endpoint, token, options = {}) {
+  const response = useSWR(
+    [endpoint, token],
+    ([url, token]) => fetchWithToken(url, token),
+    options,
   )
 
   return {
