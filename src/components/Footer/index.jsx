@@ -79,7 +79,7 @@ export function Footer() {
                   <Link to="/sobre">Quem Somos</Link>
                 </li>
                 <li>
-                  <Link to="/coletas">Pontos de Coleta</Link>
+                  <Link to="/buscar-coletas">Pontos de Coleta</Link>
                 </li>
                 <li>
                   <Link to="/blog">Nosso Blog</Link>

@@ -19,8 +19,6 @@ export function ColetasProvider({ children }) {
     },
   })
 
-  const apiError = error && error.request.status !== 404
-
   const randomCoordinates = generatePontosDeColeta(
     userAddressCoordinates || {
       lat: -15.8398885,
@@ -64,7 +62,7 @@ export function ColetasProvider({ children }) {
         updateUserAddressCoordinates,
         pontosDeColeta,
         isLoading,
-        apiError,
+        error,
         mapRef,
         RADIUS,
         nearbyPontosColetas,

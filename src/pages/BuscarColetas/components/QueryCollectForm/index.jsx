@@ -17,22 +17,16 @@ import usePlacesAutocomplete, {
 } from 'use-places-autocomplete'
 import { Combobox } from '@headlessui/react'
 import { useColetasContext } from '../../../../contexts/ColetasContext'
+import { Link } from 'react-router-dom'
+import { useFetchData } from '../../../../hooks/useFetchData'
 
 const queryCollectFormSchema = z.object({
   address: z.string().nonempty('Digite um endereço'),
   category: z.string().optional(),
 })
 
-const categories = ['Óleo', 'Tecnologia', 'Resíduos']
-
 export function QueryCollectForm() {
-  const {
-    updateUserAddressCoordinates,
-    mapRef,
-    error: apiError,
-  } = useColetasContext()
   const fieldsId = useId()
-
   const {
     ready,
     value,
@@ -47,6 +41,16 @@ export function QueryCollectForm() {
       language: 'pt-BR',
     },
   })
+
+  const {
+    updateUserAddressCoordinates,
+    mapRef,
+    error: apiError,
+  } = useColetasContext()
+
+  const { data: categories, isLoading } = useFetchData(
+    '/categories-collection-points',
+  )
 
   const queryCollect = useForm({
     resolver: zodResolver(queryCollectFormSchema),
@@ -154,17 +158,23 @@ export function QueryCollectForm() {
             render={({ field }) => {
               return (
                 <Select
-                  disabled={!ready || apiError}
+                  disabled={!ready || apiError || isLoading}
                   placeholder="Selecione uma categoria"
                   {...field}
                 >
-                  {categories.map((category) => {
-                    return (
-                      <SelectItem key={category} value={category.toLowerCase()}>
-                        {category}
-                      </SelectItem>
-                    )
-                  })}
+                  {categories ? (
+                    categories.map((category) => {
+                      return (
+                        <SelectItem key={category.id} value={category.name}>
+                          {category.name}
+                        </SelectItem>
+                      )
+                    })
+                  ) : (
+                    <SelectItem value={null}>
+                      Nenhuma categoria encontrada
+                    </SelectItem>
+                  )}
                 </Select>
               )
             }}
@@ -176,13 +186,12 @@ export function QueryCollectForm() {
           </div>
         </FormProvider>
 
-        <button
-          type="submit"
-          className={`btn ${styles.btn_collects} disabled:hover:bg-green-300 disabled:cursor-not-allowed disabled:opacity-60`}
-          disabled={!ready || apiError}
+        <Link
+          to="/pontos-de-coleta"
+          className={`btn ${styles.btn_collects} text-center`}
         >
           Ver Todos os Pontos de Coleta
-        </button>
+        </Link>
       </form>
     </ScrollReveal>
   )

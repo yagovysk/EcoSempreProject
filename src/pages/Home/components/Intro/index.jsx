@@ -80,7 +80,7 @@ export function Intro() {
             descubra locais acessíveis para reciclar e cuidar do meio
             ambiente."
             labelBtn="Ver Pontos de Coleta"
-            pathBtn="/coletas"
+            pathBtn="/buscar-coletas"
           />
         </SwiperSlide>
       </Swiper>

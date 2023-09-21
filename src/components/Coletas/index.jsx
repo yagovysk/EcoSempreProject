@@ -29,7 +29,7 @@ export function Coletas({
 
           <Link
             role="button"
-            to="/coletas"
+            to="/buscar-coletas"
             className={`btn btn-link ${styles.btnColeta}`}
           >
             {linkText}

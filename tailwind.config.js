@@ -19,6 +19,7 @@ export default {
         'talk-with-us': 'minmax(0, 39.5rem) minmax(0, 1fr)',
         'sidebar-admin': 'max-content max-content',
         'new-post-form': 'repeat(4, 1fr)',
+        'pontos-de-coletas': 'repeat(2, minmax(0, 33.6rem))',
       },
 
       fontFamily: {

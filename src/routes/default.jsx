@@ -10,6 +10,7 @@ import { Home } from '../pages/Home'
 import { LogisticaReversa } from '../pages/LogisticaReversa'
 import { MaterialList } from '../pages/MaterialList'
 import { Partners } from '../pages/Partners'
+import { BuscarColetas } from '../pages/BuscarColetas'
 import { PontosDeColeta } from '../pages/PontosDeColeta'
 import { Post } from '../pages/Post'
 import { Reforestation } from '../pages/Reforestation'
@@ -37,7 +38,15 @@ export const defaultRoutes = [
         element: <MaterialList />,
       },
       {
-        path: '/coletas',
+        path: '/buscar-coletas',
+        element: (
+          <ColetasProvider>
+            <BuscarColetas />
+          </ColetasProvider>
+        ),
+      },
+      {
+        path: '/pontos-de-coleta',
         element: (
           <ColetasProvider>
             <PontosDeColeta />

@@ -239,7 +239,7 @@ const Menu = forwardRef(function Menu(
           />
         </li>
         <li className="menu_li" onClick={handleCloseBurger}>
-          <NavLink className="menu_item" to="/coletas">
+          <NavLink className="menu_item" to="/buscar-coletas">
             Pontos de coleta
           </NavLink>
         </li>
