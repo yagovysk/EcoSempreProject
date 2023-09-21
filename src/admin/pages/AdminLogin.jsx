@@ -41,6 +41,7 @@ export function AdminLogin() {
       setError(() => false)
 
       const token = {
+        userId: authentication.userId,
         token: authentication.token,
       }
 

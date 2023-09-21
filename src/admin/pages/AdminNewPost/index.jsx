@@ -57,7 +57,7 @@ export function AdminNewPost() {
     defaultValues: {
       title: '',
       author: 'EcoSempre',
-      authorId: 4,
+      authorId: admin.userId,
       content: 'Adicione aqui o conteúdo da sua postagem',
       imageURL: '',
       categories: [],

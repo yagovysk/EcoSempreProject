@@ -45,6 +45,18 @@ export function AdminPosts() {
         </p>
       </header>
 
+      {data && data.length <= 0 && (
+        <p className="text-gray-800 text-left">
+          Não existe nenhuma postagem no Blog ainda.{' '}
+          <Link
+            to="/admin/new-post"
+            className="block mt-0.5 w-max text-green-300 border-b border-green-300"
+          >
+            Clique aqui para adicionar
+          </Link>
+        </p>
+      )}
+
       <main className="mt-10 grid gap-8 justify-center grid-cols-[repeat(auto-fit,_minmax(16.125rem,_23.125rem))]">
         {data &&
           data.map((post) => (
