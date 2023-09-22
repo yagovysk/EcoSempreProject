@@ -4,18 +4,23 @@ import { useFetchData } from '../../../hooks/useFetchData'
 import { TagsBox } from './components/TagsBox'
 import { CategoriesBox } from './components/CategoriesBox'
 import { createContext, useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { CategoriesColetas } from './components/CategoriesColetas'
+import { AddNewLabelsForm } from './components/AddNewLabelsForm'
 
-const AdminPostLabelsContext = createContext({})
+const AdminLabelsContext = createContext({})
 
-export function AdminPostLabels() {
+export function AdminLabels() {
   const tagsData = useFetchData('/tags')
   const { data: tags, isLoading: isLoadingTags } = tagsData
 
   const categoriesData = useFetchData('/category-article')
   const { data: categories, isLoading: isLoadingCategories } = categoriesData
 
-  if (isLoadingTags || isLoadingCategories) {
+  const categoriesColetasData = useFetchData('/categories-collection-points')
+  const { data: categoriesColetas, isLoading: isLoadingCategoriesColetas } =
+    categoriesColetasData
+
+  if (isLoadingTags || isLoadingCategories || isLoadingCategoriesColetas) {
     return (
       <div className="font-roboto text-zinc-900 animate-pulse">
         Carregando...
@@ -24,7 +29,7 @@ export function AdminPostLabels() {
   }
 
   return (
-    <AdminPostLabelsContext.Provider
+    <AdminLabelsContext.Provider
       value={{
         tags: {
           ...tagsData,
@@ -32,42 +37,54 @@ export function AdminPostLabels() {
         categories: {
           ...categoriesData,
         },
+        categoriesColetas: {
+          ...categoriesColetasData,
+        },
       }}
     >
       <header>
-        <HeadingAdmin>Categorias e Tags do Blog</HeadingAdmin>
-        <p className="text-sm mt-3 text-gray-600 flex items-center">
-          Para adicionar novas tags e categorias
-          <Link to="/admin/new-post" className="ml-1 text-green-300 underline">
-            clique aqui
-          </Link>
-          .
-        </p>
+        <HeadingAdmin>Categorias e Tags</HeadingAdmin>
       </header>
 
-      <main className="mt-10 flex flex-col gap-6">
-        <div className="flex gap-6 pb-8 border-b">
+      <main className="mt-10 flex flex-col gap-8">
+        <div className="flex gap-6">
           <BoxResume
-            title="Quantidade de categorias"
+            title="Quantidade de categorias no Blog"
             number={categories ? categories.length : 0}
           />
           <BoxResume
-            title="Quantidade de tags"
+            title="Quantidade de tags no Blog"
             number={tags ? tags.length : 0}
+          />
+          <BoxResume
+            title="Quantidade de categorias dos Pontos de Coleta"
+            number={categoriesColetas ? categoriesColetas.length : 0}
           />
         </div>
 
+        <hr />
+        <AddNewLabelsForm />
+        <hr />
+
         <div className="flex flex-wrap gap-8">
-          <Box title="Categorias">
+          <Box title="Categorias do Blog">
             <CategoriesBox />
           </Box>
 
-          <Box title="Tags">
+          <Box title="Tags do Blog">
             <TagsBox />
           </Box>
         </div>
+
+        <hr />
+
+        <div className="flex">
+          <Box title="Categorias dos Pontos de Coleta">
+            <CategoriesColetas />
+          </Box>
+        </div>
       </main>
-    </AdminPostLabelsContext.Provider>
+    </AdminLabelsContext.Provider>
   )
 }
 
@@ -81,4 +98,4 @@ function Box({ title, children }) {
   )
 }
 
-export const usePostLabels = () => useContext(AdminPostLabelsContext)
+export const useLabels = () => useContext(AdminLabelsContext)

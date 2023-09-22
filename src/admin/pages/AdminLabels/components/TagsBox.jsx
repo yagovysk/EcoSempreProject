@@ -1,9 +1,7 @@
 import { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { useAdmin } from '../../../../contexts/AdminContext'
-import { Icon } from '@iconify/react'
 import { DropdownMenu } from '../../../components/DropdownMenu'
-import { usePostLabels } from '..'
+import { useLabels } from '..'
 
 import { FormProvider, useForm } from 'react-hook-form'
 import { Input } from '../../../../components/Form/Input'
@@ -17,6 +15,10 @@ import { ButtonAdmin } from '../../../components/ButtonAdmin'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import api from '../../../../lib/axios'
+import {
+  DropdownItemDeleteLabel,
+  DropdownItemEditLabel,
+} from './DropdownItemLabel'
 
 const editTagFormSchema = z.object({
   id: z.coerce.number(),
@@ -34,14 +36,13 @@ export function TagsBox() {
       error: errorTags,
       mutate: mutateTags,
     },
-  } = usePostLabels()
+  } = useLabels()
 
   const editTagForm = useForm({
     resolver: zodResolver(editTagFormSchema),
   })
 
   const {
-    register,
     handleSubmit,
     setValue,
     formState: { errors, isSubmitting },
@@ -58,18 +59,7 @@ export function TagsBox() {
   if (errorTags && errorTags.response.status === 404) {
     return (
       <div className="font-roboto text-zinc-900 font-medium text-lg max-w-md">
-        Não existe nenhuma tag no Blog ainda. Adicione uma postagem no blog para
-        criar novas tags.
-        <Link
-          to="/admin/new-post"
-          className="flex mt-4 items-center gap-1 border-b border-transparent hover:border-b-green-300 w-max transition-all text-green-300 group"
-        >
-          Criar postagem
-          <Icon
-            icon="ph:arrow-right-bold"
-            className="w-5 h-5 transition-transform group-hover:translate-x-1 duration-300"
-          />
-        </Link>
+        Não existe nenhuma tag no Blog ainda.
       </div>
     )
   }
@@ -147,27 +137,19 @@ export function TagsBox() {
             </DropdownMenuPrimitive.Trigger>
 
             <DropdownMenu>
-              <DropdownMenuPrimitive.Item className="outline-0">
-                <button
-                  onClick={() => {
-                    handleOpenModal(tag.id)
-                    setValue('name', tag.name.replaceAll('-', ' '))
-                  }}
-                  className="flex items-center gap-2 border-2 border-blue text-blue duration-300 transition-colors p-2 hover:bg-blue hover:text-white rounded"
-                >
-                  <Icon icon="fe:edit" className="w-5 h-5" />
-                </button>
-              </DropdownMenuPrimitive.Item>
+              <DropdownItemEditLabel
+                onClick={() => {
+                  handleOpenModal(tag.id)
+                  setValue('name', tag.name.replaceAll('-', ' '))
+                  setValue('id', tag.id)
+                }}
+              />
 
-              <DropdownMenuPrimitive.Item className="outline-0">
-                <button
-                  type="button"
-                  onClick={() => handleDeleteTag(tag.id)}
-                  className="flex items-center gap-2 border-2 border-red-500 text-red-500 rounded p-2 transition-colors duration-300 hover:bg-red-500 hover:text-white"
-                >
-                  <Icon icon="ant-design:delete-filled" className="w-5 h-5" />
-                </button>
-              </DropdownMenuPrimitive.Item>
+              <DropdownItemDeleteLabel
+                type="button"
+                onClick={() => handleDeleteTag(tag.id)}
+                className="flex items-center gap-2 border-2 border-red-500 text-red-500 rounded p-2 transition-colors duration-300 hover:bg-red-500 hover:text-white"
+              />
 
               <DropdownMenuPrimitive.Arrow fill="#fff" />
             </DropdownMenu>
@@ -176,6 +158,7 @@ export function TagsBox() {
           <Dialog.Root
             open={modalId === tag.id}
             onOpenChange={() => handleOpenModal(tag.id)}
+            key={tag.id}
           >
             <AdminModal>
               <Dialog.Title className="text-zinc-800 font-IBM-plex-sans font-semibold text-2xl">
@@ -187,7 +170,7 @@ export function TagsBox() {
               <form className="mt-4" onSubmit={handleSubmit(handleEditTag)}>
                 <FormProvider {...editTagForm}>
                   <Input.Root>
-                    <Input.Field name="name" placeholder="Renomeia a sua tag" />
+                    <Input.Field name="name" placeholder="Renomeie a sua tag" />
                     {errors.name && (
                       <ErrorMessage className="!static">
                         {errors.name.message}
@@ -195,7 +178,7 @@ export function TagsBox() {
                     )}
                   </Input.Root>
 
-                  <input type="hidden" {...register('id')} value={tag.id} />
+                  <Input.Field name="id" type="hidden" value={tag.id} />
 
                   <ButtonAdmin
                     type="submit"

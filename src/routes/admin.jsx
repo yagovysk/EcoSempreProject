@@ -5,7 +5,7 @@ import {
 } from '../admin/pages/AdminEditPost'
 import { AdminLogin } from '../admin/pages/AdminLogin'
 import { AdminNewPost } from '../admin/pages/AdminNewPost'
-import { AdminPostLabels } from '../admin/pages/AdminPostLabels'
+import { AdminLabels } from '../admin/pages/AdminLabels'
 import { AdminPosts } from '../admin/pages/AdminPosts'
 import { CreateCollectionPoint } from '../admin/pages/CreateCollectionPoint'
 import { EditCollectionPoint } from '../admin/pages/EditCollectionPoint'
@@ -42,7 +42,7 @@ export const adminRoutes = {
         },
         {
           path: '/admin/post-labels',
-          element: <AdminPostLabels />,
+          element: <AdminLabels />,
         },
         {
           path: '/admin/new-collection-point',

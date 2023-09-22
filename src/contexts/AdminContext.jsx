@@ -10,10 +10,10 @@ const AdminContext = createContext({})
 
 const fetchOptions = {
   onErrorRetry: (error, key, config, revalidate, { retryCount }) => {
-    if (error.response.status === 404) return
+    if (error.request.status === 404) return
 
-    // Retry after 10 seconds
-    setTimeout(() => revalidate({ retryCount }), 10 * 1000)
+    // Retry after 60 seconds
+    setTimeout(() => revalidate({ retryCount }), 60 * 1000)
   },
   revalidateOnFocus: false,
   revalidateIfStale: false,
@@ -65,13 +65,12 @@ export function AdminProvider({ children }) {
   }
 
   if (
-    (responsePosts.error && responsePosts.error.response.status !== 404) ||
+    (responsePosts.error && responsePosts.error.request.status !== 404) ||
     (responseCollectionPoints.error &&
-      responseCollectionPoints.error.response.status !== 404) ||
-    (responseContacts.error &&
-      responseContacts.error.response.status !== 404) ||
+      responseCollectionPoints.error.request.status !== 404) ||
+    (responseContacts.error && responseContacts.error.request.status !== 404) ||
     (responseNewsletter.error &&
-      responseNewsletter.error.response.status !== 404)
+      responseNewsletter.error.request.status !== 404)
   ) {
     return (
       <div className="font-roboto p-4 text-zinc-900">

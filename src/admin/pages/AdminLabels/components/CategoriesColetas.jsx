@@ -1,53 +1,54 @@
-import * as Dialog from '@radix-ui/react-dialog'
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
-
 import { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { FormProvider, useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Icon } from '@iconify/react'
-
 import { useAdmin } from '../../../../contexts/AdminContext'
 import { DropdownMenu } from '../../../components/DropdownMenu'
-import { AdminModal } from '../../../components/AdminModal'
-import { usePostLabels } from '../../AdminPostLabels'
+import { useLabels } from '..'
+
+import { FormProvider, useForm } from 'react-hook-form'
 import { Input } from '../../../../components/Form/Input'
 import { ErrorMessage } from '../../../../components/Form/ErrorMessage'
 import { Spinner } from '../../../../components/Loader/Spinner'
+import { AdminModal } from '../../../components/AdminModal'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
 import { ButtonAdmin } from '../../../components/ButtonAdmin'
 
+import * as Dialog from '@radix-ui/react-dialog'
+import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import api from '../../../../lib/axios'
+import {
+  DropdownItemDeleteLabel,
+  DropdownItemEditLabel,
+} from './DropdownItemLabel'
 
 const editCategoryFormSchema = z.object({
   id: z.coerce.number(),
-  name: z.string().nonempty('Obrigatório'),
+  name: z.string().nonempty(),
 })
 
-export function CategoriesBox() {
+export function CategoriesColetas() {
   const [modalId, setModalId] = useState(null)
   const { admin } = useAdmin()
 
   const {
-    categories: {
-      data: categories,
-      isLoading: isLoadingCategories,
-      error: errorCategories,
-      mutate: mutateCategories,
+    categoriesColetas: {
+      data: categoriesColetas,
+      isLoading: isLoadingCategoriesColetas,
+      error: errorCategoriesColetas,
+      mutate: mutateCategoriesColetas,
     },
-  } = usePostLabels()
+  } = useLabels()
 
-  const editCategoryForm = useForm({
+  const editCategoriesForm = useForm({
     resolver: zodResolver(editCategoryFormSchema),
   })
+
   const {
-    register,
     handleSubmit,
     setValue,
     formState: { errors, isSubmitting },
-  } = editCategoryForm
+  } = editCategoriesForm
 
-  if (isLoadingCategories) {
+  if (isLoadingCategoriesColetas) {
     return (
       <div className="font-roboto text-zinc-900 animate-pulse">
         Carregando...
@@ -55,26 +56,18 @@ export function CategoriesBox() {
     )
   }
 
-  if (errorCategories && errorCategories.response.status === 404) {
+  if (
+    errorCategoriesColetas &&
+    errorCategoriesColetas.response.status === 404
+  ) {
     return (
       <div className="font-roboto text-zinc-900 font-medium text-lg max-w-md">
-        Não existe nenhuma categoria no Blog ainda. Adicione uma postagem no
-        blog para criar novas categorias.
-        <Link
-          to="/admin/new-post"
-          className="flex mt-4 items-center gap-1 border-b border-transparent hover:border-b-green-300 w-max transition-all text-green-300 group"
-        >
-          Criar postagem
-          <Icon
-            icon="ph:arrow-right-bold"
-            className="w-5 h-5 transition-transform group-hover:translate-x-1 duration-300"
-          />
-        </Link>
+        Não existe nenhuma categoria de Pontos de coleta ainda.
       </div>
     )
   }
 
-  if (errorCategories) {
+  if (errorCategoriesColetas) {
     return (
       <div className="font-roboto text-zinc-900 font-medium text-lg max-w-md">
         Ocorreu um erro no servidor. Verifique a sua conexão com a internet ou
@@ -94,9 +87,10 @@ export function CategoriesBox() {
   }
 
   async function handleEditCategory(data) {
+    console.log(data)
     try {
       await api.put(
-        '/category-article',
+        '/category-collection-points',
         {
           id: data.id,
           name: data.name,
@@ -107,7 +101,7 @@ export function CategoriesBox() {
           },
         },
       )
-      mutateCategories()
+      mutateCategoriesColetas()
       setModalId(null)
     } catch (err) {
       alert('Não conseguimos editar a categoria. Tente novamente mais tarde.')
@@ -123,7 +117,7 @@ export function CategoriesBox() {
     if (!agreed) return
 
     try {
-      await api.delete('/category-article', {
+      await api.delete('/category-collection-points', {
         data: {
           id,
         },
@@ -132,17 +126,16 @@ export function CategoriesBox() {
         },
       })
 
-      mutateCategories()
+      mutateCategoriesColetas()
     } catch (err) {
       alert(
         'Erro! Não conseguimos deletar essa categoria. Tente novamente mais tarde.',
       )
     }
   }
-
   return (
     <div className="flex flex-wrap gap-2 max-w-lg w-full">
-      {categories.map((category) => (
+      {categoriesColetas.map((category) => (
         <Fragment key={category.id}>
           <DropdownMenuPrimitive.Root modal={false}>
             <DropdownMenuPrimitive.Trigger className="py-4 px-6 duration-300 font-roboto font-medium text-left cursor-pointer transition-colors bg-white hover:bg-green-300 hover:text-white">
@@ -150,28 +143,17 @@ export function CategoriesBox() {
             </DropdownMenuPrimitive.Trigger>
 
             <DropdownMenu>
-              <DropdownMenuPrimitive.Item className="outline-0">
-                <button
-                  type="button"
-                  onClick={() => {
-                    handleOpenModal(category.id)
-                    setValue('name', category.name.replaceAll('-', ' '))
-                  }}
-                  className="flex items-center gap-2 border-2 border-blue text-blue duration-300 transition-colors p-2 hover:bg-blue hover:text-white rounded"
-                >
-                  <Icon icon="fe:edit" className="w-5 h-5" />
-                </button>
-              </DropdownMenuPrimitive.Item>
+              <DropdownItemEditLabel
+                onClick={() => {
+                  handleOpenModal(category.id)
+                  setValue('name', category.name.replaceAll('-', ' '))
+                  setValue('id', category.id)
+                }}
+              />
 
-              <DropdownMenuPrimitive.Item className="outline-0">
-                <button
-                  type="button"
-                  onClick={() => handleDeleteCategory(category.id)}
-                  className="flex items-center gap-2 border-2 border-red-500 text-red-500 rounded p-2 transition-colors duration-300 hover:bg-red-500 hover:text-white"
-                >
-                  <Icon icon="ant-design:delete-filled" className="w-5 h-5" />
-                </button>
-              </DropdownMenuPrimitive.Item>
+              <DropdownItemDeleteLabel
+                onClick={() => handleDeleteCategory(category.id)}
+              />
 
               <DropdownMenuPrimitive.Arrow fill="#fff" />
             </DropdownMenu>
@@ -192,11 +174,11 @@ export function CategoriesBox() {
                 className="mt-4"
                 onSubmit={handleSubmit(handleEditCategory)}
               >
-                <FormProvider {...editCategoryForm}>
+                <FormProvider {...editCategoriesForm}>
                   <Input.Root>
                     <Input.Field
                       name="name"
-                      placeholder="Renomeia a sua categoria"
+                      placeholder="Renomeie a sua categoria"
                     />
                     {errors.name && (
                       <ErrorMessage className="!static">
@@ -205,11 +187,7 @@ export function CategoriesBox() {
                     )}
                   </Input.Root>
 
-                  <input
-                    type="hidden"
-                    {...register('id')}
-                    value={category.id}
-                  />
+                  <Input.Field type="hidden" value={category.id} />
 
                   <ButtonAdmin
                     type="submit"

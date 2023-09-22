@@ -61,7 +61,7 @@ export function Sidebar() {
         </LinkSidebar>
 
         <LinkSidebar path="/admin/post-labels" icon="mdi:tag">
-          Categorias e Tags do Blog
+          Categorias e Tags
         </LinkSidebar>
       </nav>
     </div>
