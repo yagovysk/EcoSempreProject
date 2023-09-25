@@ -152,7 +152,7 @@ export function FormCategories() {
                   key={category.id}
                   className="bg-green-300 text-sm flex items-center gap-2 text-white py-1 px-2 rounded-lg w-max"
                 >
-                  {category.name}
+                  {category.name.replaceAll('-', ' ')}
                   <button
                     type="button"
                     className="opacity-60 transition-opacity hover:opacity-100"

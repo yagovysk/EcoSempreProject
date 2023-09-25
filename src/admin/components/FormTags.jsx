@@ -143,13 +143,13 @@ export function FormTags() {
 
         <div className="flex gap-2 mt-4">
           {!!tagsField &&
-            tagsField.map((query, index) => {
+            tagsField.map((tag, index) => {
               return (
                 <div
-                  key={query.id}
+                  key={tag.id}
                   className="bg-green-300 text-sm flex items-center gap-2 text-white py-1 px-2 rounded-lg w-max"
                 >
-                  {query.name}
+                  {tag.name.replaceAll('-', ' ')}
                   <button
                     type="button"
                     className="opacity-60 transition-opacity hover:opacity-100"
