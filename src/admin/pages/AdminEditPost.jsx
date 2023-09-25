@@ -12,9 +12,9 @@ import { PostEditorContent } from '../components/PostEditorContent'
 import { useAdmin } from '../../contexts/AdminContext'
 import { FormCategories } from '../components/FormCategories'
 import { FormTags } from '../components/FormTags'
+import { ButtonAdmin } from '../components/ButtonAdmin'
 
 import api from '../../lib/axios'
-import { ButtonAdmin } from '../components/ButtonAdmin'
 
 export async function loader({ params }) {
   let post = null
@@ -33,6 +33,8 @@ export async function loader({ params }) {
   }
 }
 
+const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i
+
 const editPostFormSchema = z.object({
   title: z
     .string()
@@ -50,10 +52,7 @@ const editPostFormSchema = z.object({
     .max(2, 'Adicione no máximo 2 categorias')
     .nonempty('Adicione pelo menos 1 categoria')
     .transform((categories) =>
-      // Remove old categories and return only its id
-      categories
-        .filter((category) => category.id_category)
-        .map((category) => category.id_category),
+      categories.map((category) => category.id_category),
     ),
   tags: z
     .array(
@@ -64,10 +63,7 @@ const editPostFormSchema = z.object({
     )
     .max(3, 'Adicione no máximo 3 tags')
     .nonempty('Adicione pelo menos 1 tag')
-    .transform((tags) =>
-      // Remove old tags and return only its id
-      tags.filter((tag) => tag.id_tag).map((tag) => tag.id_tag),
-    ),
+    .transform((tags) => tags.map((tag) => tag.id_tag)),
 })
 
 export function AdminEditPost() {
@@ -85,9 +81,10 @@ export function AdminEditPost() {
       content: post.content,
       imageURL: post.thumbnail_url,
       categories: post.categories.map((category) => ({
+        id_category: null,
         name: category,
       })),
-      tags: post.tags.map((tag) => ({ name: tag })),
+      tags: post.tags.map((tag) => ({ id_tag: null, name: tag })),
     },
   })
 
@@ -214,7 +211,7 @@ export function AdminEditPost() {
               )}
             </Input.Root>
 
-            {imageURLField && (
+            {urlRegex.test(imageURLField) && (
               <div className="col-span-full flex flex-col gap-3">
                 <span className="font-medium text-gray-800">
                   Preview da Imagem

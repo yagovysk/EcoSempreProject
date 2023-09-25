@@ -57,7 +57,7 @@ export function AdminPosts() {
         </p>
       )}
 
-      <main className="mt-10 grid gap-8 justify-center grid-cols-[repeat(auto-fit,_minmax(16.125rem,_23.125rem))]">
+      <main className="mt-10 grid gap-8 grid-cols-[repeat(auto-fit,_minmax(16.125rem,_23.125rem))]">
         {data &&
           data.map((post) => (
             <div className="relative" key={post.id}>

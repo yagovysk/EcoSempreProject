@@ -46,6 +46,8 @@ const newPostFormSchema = z.object({
     .transform((tags) => tags.map((tag) => tag.id_tag)),
 })
 
+const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i
+
 export function AdminNewPost() {
   const {
     admin,
@@ -204,7 +206,7 @@ export function AdminNewPost() {
               )}
             </Input.Root>
 
-            {imageURLField && (
+            {urlRegex.test(imageURLField) && (
               <div className="col-span-full flex flex-col gap-3">
                 <span className="font-medium text-gray-800">
                   Preview da Imagem
