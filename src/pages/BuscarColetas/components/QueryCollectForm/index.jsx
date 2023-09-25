@@ -2,7 +2,6 @@ import { z } from 'zod'
 import { Controller, FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useId } from 'react'
-import { Icon } from '@iconify/react'
 
 import { Select } from '../../../../components/Form/Select'
 import { SelectItem } from '../../../../components/Form/Select/SelectItem'
@@ -19,6 +18,7 @@ import { Combobox } from '@headlessui/react'
 import { useColetasContext } from '../../../../contexts/ColetasContext'
 import { Link } from 'react-router-dom'
 import { useFetchData } from '../../../../hooks/useFetchData'
+import { UserLocation } from '../UserLocation'
 
 const queryCollectFormSchema = z.object({
   address: z.string().nonempty('Digite um endereço'),
@@ -180,10 +180,16 @@ export function QueryCollectForm() {
             }}
           />
 
-          <div className={styles.location_input}>
-            <Icon icon="icon-park-solid:local-two" aria-hidden />
-            <span>Minha Localização Atual</span>
-          </div>
+          <UserLocation
+            onSelect={async (position) => {
+              const results = await getGeocode({
+                location: position,
+              })
+              setValue(results[0].formatted_address)
+              updateUserAddressCoordinates(position)
+              mapRef && mapRef.current.panTo(position)
+            }}
+          />
         </FormProvider>
 
         <Link
