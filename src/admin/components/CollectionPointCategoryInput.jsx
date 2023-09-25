@@ -70,7 +70,7 @@ export function CollectionPointCategoryInput() {
         .then((res) => res.data)
       setValue('category', {
         name,
-        id: newCategoryId,
+        id: newCategoryId[0],
       })
       mutate()
     } catch (err) {
