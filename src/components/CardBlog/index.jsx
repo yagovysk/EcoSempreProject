@@ -28,7 +28,9 @@ export function CardBlog({ post, ...props }) {
       </div>
 
       <section className={styles.content_text}>
-        <h3 className={styles.title}>{post.title}</h3>
+        <h3 title={post.title} className={styles.title}>
+          {post.title}
+        </h3>
 
         <div className={styles.timestamp_wrapper}>
           <span>{timestamp}</span>

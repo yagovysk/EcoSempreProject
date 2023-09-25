@@ -51,7 +51,7 @@
 
 .title {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -138,5 +138,11 @@
   }
   .btn {
     margin-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 827px) {
+  .title {
+    display: block;
   }
 }

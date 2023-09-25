@@ -69,16 +69,14 @@ export function Blog() {
             </article>
           </ScrollReveal>
 
-          <ScrollReveal origin="top">
-            <div className={styles.pagination_container}>
-              <Pagination
-                postsPerPage={POSTS_PER_PAGE}
-                currentPage={currentPage}
-                onNextPage={setCurrentPage}
-                postsLength={posts.length}
-              />
-            </div>
-          </ScrollReveal>
+          <div className={styles.pagination_container}>
+            <Pagination
+              postsPerPage={POSTS_PER_PAGE}
+              currentPage={currentPage}
+              onNextPage={setCurrentPage}
+              postsLength={posts.length}
+            />
+          </div>
         </>
       )}
     </main>
