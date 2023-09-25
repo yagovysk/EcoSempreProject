@@ -19,6 +19,7 @@ import { useColetasContext } from '../../../../contexts/ColetasContext'
 import { Link } from 'react-router-dom'
 import { useFetchData } from '../../../../hooks/useFetchData'
 import { UserLocation } from '../UserLocation'
+import { Spinner } from '../../../../components/Loader/Spinner'
 
 const queryCollectFormSchema = z.object({
   address: z.string().nonempty('Digite um endereço'),
@@ -137,7 +138,13 @@ export function QueryCollectForm() {
                         ))
                       ) : (
                         <Combobox.Option className="px-4 py-1 text-sm text-gray-[#3A3A3C]">
-                          Nenhum endereço encontrado
+                          {loading ? (
+                            <div className="grid place-content-center">
+                              <Spinner className="border-zinc-200 border-b-zinc-500" />
+                            </div>
+                          ) : (
+                            'Nenhum endereço encontrado'
+                          )}
                         </Combobox.Option>
                       )}
                     </Combobox.Options>
