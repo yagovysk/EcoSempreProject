@@ -101,7 +101,7 @@ export function ContactsTable() {
                           >
                             {contact.email}
                           </a>{' '}
-                          |<div>{contact.phone}</div>
+                          |<div>{formatInput.phone(contact.phone)}</div>
                         </address>
 
                         <div className="grid border-t pt-3 mt-2">
