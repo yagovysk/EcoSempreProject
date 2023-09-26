@@ -90,7 +90,7 @@ export function AdminLabels() {
 
 function Box({ title, children }) {
   return (
-    <div className="text-blue flex flex-col gap-6 bg-[#f4f4f4] py-8 px-10 rounded-lg overflow-hidden border-t-4 border-t-green-300">
+    <div className="text-blue flex flex-col max-h-[24rem] overflow-y-auto gap-6 bg-[#f4f4f4] py-8 px-10 rounded-lg overflow-hidden border-t-4 border-t-green-300">
       <strong className="text-lg font-bold">{title}</strong>
 
       {children}

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Fragment } from 'react'
 import { Icon } from '@iconify/react'
 import parse from 'html-react-parser'
@@ -103,9 +103,13 @@ export function Post() {
             <div className={styles.tags_wrapper}>
               {post.tags.length &&
                 post.tags.map((tag) => (
-                  <span className={styles.tag} key={tag}>
+                  <Link
+                    to={`/buscar?tag=${tag}`}
+                    className={styles.tag}
+                    key={tag}
+                  >
                     {tag.replaceAll('-', ' ')}
-                  </span>
+                  </Link>
                 ))}
             </div>
 

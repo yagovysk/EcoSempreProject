@@ -133,6 +133,10 @@
   transition: 0.3s;
 }
 
+.tag:hover {
+  background-color: #0e2b5c;
+}
+
 .social_media_wrapper {
   display: flex;
   align-items: center;

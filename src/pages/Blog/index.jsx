@@ -27,11 +27,7 @@ export function Blog() {
 
   const [currentPage, setCurrentPage] = useState(0)
 
-  const {
-    data: posts,
-    isLoading,
-    error,
-  } = useFetchData(`/articles?page=${currentPage + 1}&limit=${POSTS_PER_PAGE}`)
+  const { data: posts, isLoading, error } = useFetchData(`/articles`)
 
   if (!isLoading && error) {
     throw new Response('', {

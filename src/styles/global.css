@@ -17,6 +17,16 @@
   height: 100%;
 }
 
+body *::-webkit-scrollbar {
+  width: 6px;
+  background-color: #f1f3f5;
+  border-radius: 0.9rem;
+}
+
+body *::-webkit-scrollbar-thumb {
+  background-color: #d5d7da;
+  border-radius: 0.9rem;
+}
 button {
   cursor: pointer;
 }
