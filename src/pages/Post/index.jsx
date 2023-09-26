@@ -101,16 +101,17 @@ export function Post() {
 
           <section className={styles.wrapper_footer_post}>
             <div className={styles.tags_wrapper}>
-              {post.tags.length &&
-                post.tags.map((tag) => (
-                  <Link
-                    to={`/buscar?tag=${tag}`}
-                    className={styles.tag}
-                    key={tag}
-                  >
-                    {tag.replaceAll('-', ' ')}
-                  </Link>
-                ))}
+              {post.tags.length
+                ? post.tags.map((tag) => (
+                    <Link
+                      to={`/buscar?tag=${tag}`}
+                      className={styles.tag}
+                      key={tag}
+                    >
+                      {tag.replaceAll('-', ' ')}
+                    </Link>
+                  ))
+                : null}
             </div>
 
             <div className={styles.social_media_wrapper}>

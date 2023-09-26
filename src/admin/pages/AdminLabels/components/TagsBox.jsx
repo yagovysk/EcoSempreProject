@@ -113,7 +113,7 @@ export function TagsBox() {
     try {
       await api.delete('/tag', {
         data: {
-          tag_id: id,
+          id,
         },
         headers: {
           Authorization: `Bearer ${admin.token}`,
@@ -167,7 +167,11 @@ export function TagsBox() {
                 &quot;
               </Dialog.Title>
 
-              <form className="mt-4" onSubmit={handleSubmit(handleEditTag)}>
+              <form
+                encType="x-www-form-urlencoded"
+                className="mt-4"
+                onSubmit={handleSubmit(handleEditTag)}
+              >
                 <FormProvider {...editTagForm}>
                   <Input.Root>
                     <Input.Field name="name" placeholder="Renomeie a sua tag" />
