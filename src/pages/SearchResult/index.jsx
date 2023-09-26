@@ -26,45 +26,59 @@ export async function loader({ request }) {
   const category = url.searchParams.get('category')
   const tag = url.searchParams.get('tag')
 
-  const posts = await api
-    .get(`/articles?page=1&limit=10`)
-    .then((response) => response.data)
-    .catch((err) => {
-      throw new Response('', {
-        status: err.request.status || 500,
-        statusText: err.request.statusText || 'Internal Server Error',
-      })
-    })
+  const filteredPostsByTag =
+    tag &&
+    (await api
+      .get(`/articles/tag/${tag}`)
+      .then((response) => response.data)
+      .catch((err) => {
+        throw new Response('', {
+          status: err.request.status || 500,
+          statusText: err.request.statusText || 'Internal Server Error',
+        })
+      }))
 
-  if (!posts) {
+  if (filteredPostsByTag) {
     return {
-      posts: [],
+      posts: filteredPostsByTag,
+      tag,
     }
   }
 
-  const filteredPostsByTitle =
-    q &&
-    posts.filter((post) => post.title.toLowerCase().includes(q.toLowerCase()))
-
   const filteredPostsByCategory =
-    category && posts.filter((post) => post.categories.includes(category))
+    category &&
+    (await api
+      .get(`/articles/category/${category}`)
+      .then((response) => response.data)
+      .catch((err) => {
+        throw new Response('', {
+          status: err.request.status || 500,
+          statusText: err.request.statusText || 'Internal Server Error',
+        })
+      }))
 
-  const filteredPostsByTag =
-    tag && posts.filter((post) => post.tags.includes(tag))
-
-  if (category) {
+  if (filteredPostsByCategory) {
     return {
       posts: filteredPostsByCategory,
       category,
     }
   }
 
-  if (tag) {
-    return {
-      posts: filteredPostsByTag,
-      tag,
-    }
-  }
+  const posts =
+    q &&
+    (await api
+      .get(`/articles`)
+      .then((response) => response.data)
+      .catch((err) => {
+        throw new Response('', {
+          status: err.request.status || 500,
+          statusText: err.request.statusText || 'Internal Server Error',
+        })
+      }))
+
+  const filteredPostsByTitle = posts
+    ? posts.filter((post) => post.title.toLowerCase().includes(q.toLowerCase()))
+    : []
 
   return { posts: filteredPostsByTitle, q, category, tag }
 }
