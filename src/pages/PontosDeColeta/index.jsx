@@ -30,8 +30,8 @@ export function PontosDeColeta() {
 
   if (error) {
     throw new Response('', {
-      status: error.response.status || 500,
-      statusText: error.response.statusText || 'Internal Server Error',
+      status: error.request.status || 500,
+      statusText: error.request.statusText || 'Internal Server Error',
     })
   }
 

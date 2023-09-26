@@ -130,7 +130,7 @@ export function BuscarColetas() {
                     Oops! Parece que ocorreu um erro
                   </Toast.Title>
                   <Toast.Description className="text-sm text-gray-800">
-                    {apiError.response.status === 404
+                    {apiError.request.status === 404
                       ? 'Oops! Não conseguimos encontrar nenhum ponto de coleta cadastrado no momento.'
                       : 'Não conseguimos conectar ao servidor. Verifique sua conexão de internet ou tente novamente mais tarde.'}
                   </Toast.Description>
