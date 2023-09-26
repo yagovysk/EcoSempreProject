@@ -15,14 +15,14 @@
   border-radius: 0.9rem;
 }
 
-.parceirosCard a {
+.parceirosCard .partner_wrapper {
   display: block;
   transition: 0.3s ease;
   border-radius: 0.3rem;
   filter: grayscale(1);
   user-select: none;
 }
-.parceirosCard a:hover {
+.parceirosCard .partner_wrapper:hover {
   transform: translateY(-4px);
   filter: grayscale(0);
 }

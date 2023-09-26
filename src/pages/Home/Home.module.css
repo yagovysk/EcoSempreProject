@@ -87,14 +87,16 @@
 
 .idParceiros {
   background: #f6f7f8;
-  padding: 3.125rem 1.5rem 0.25rem 1.5rem;
+  padding: 3.125rem 1.5rem 0 1.5rem;
 }
+.idParceiros::-webkit-scrollbar,
 .idParceiros *::-webkit-scrollbar {
   height: 5px;
   background: #f6f7f8;
   border-radius: 0.9rem;
 }
 
+.idParceiros::-webkit-scrollbar-thumb,
 .idParceiros *::-webkit-scrollbar-thumb {
   background-color: #b0b5ba;
   border-radius: 0.9rem;
@@ -135,6 +137,10 @@
     border-top: 2px solid #eaeaea;
     overflow-x: auto;
   }
+  .idParceiros::-webkit-scrollbar {
+    background: #fff;
+  }
+
   .wrapper_parceiros_card {
     padding: 0;
     width: auto;

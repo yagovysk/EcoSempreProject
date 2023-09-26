@@ -20,3 +20,9 @@
   background-color: #b0b5ba;
   border-radius: 0.9rem;
 }
+
+@media (max-width: 630px) {
+  .partners_card_container {
+    padding: 2.5rem 4.5rem;
+  }
+}
