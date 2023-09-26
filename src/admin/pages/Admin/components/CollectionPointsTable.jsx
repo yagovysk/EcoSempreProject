@@ -3,6 +3,7 @@ import { useAdmin } from '../../../../contexts/AdminContext'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AdminModal } from '../../../components/AdminModal'
+import { formatInput } from '../../../../utils/formatInput'
 
 import * as Dialog from '@radix-ui/react-dialog'
 import api from '../../../../lib/axios'
@@ -85,7 +86,9 @@ export function CollectionPointsTable() {
                         </Dialog.Title>
                         <Dialog.Description className="text-gray-600 whitespace-pre-wrap mt-2">
                           <div>Endereço: {collectionPoint.address} </div>
-                          <div>CEP: {collectionPoint.cep} </div>
+                          <div>
+                            CEP: {formatInput.cep(collectionPoint.cep)}{' '}
+                          </div>
                           <div>Estado: {collectionPoint.state} </div>
                           <div>Cidade: {collectionPoint.city} </div>
                           <div>Tamanho do coletor: {collectionPoint.size}</div>

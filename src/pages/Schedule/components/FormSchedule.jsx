@@ -8,6 +8,8 @@ import { Textarea } from '../../../components/Form/Textarea'
 import { ErrorMessage } from '../../../components/Form/ErrorMessage'
 import { ImageInput } from './ImageInput'
 
+import { formatInput } from '../../../utils/formatInput'
+
 const states = ['Acre', 'Amapá', 'Amazonas', 'Bahia', 'Ceará', 'Paraíba']
 const cities = [
   'Águia Branca',
@@ -52,20 +54,57 @@ export function FormSchedule() {
       </LabelInput>
 
       <LabelInput label="Telefone">
-        <Input.Root>
-          <Input.Field
-            name="phone"
-            placeholder="Digite um número de telefone"
-          />
-          {errors.phone && <ErrorMessage>{errors.phone.message}</ErrorMessage>}
-        </Input.Root>
+        <Controller
+          name="phone"
+          control={control}
+          render={({ field }) => {
+            return (
+              <Input.Root>
+                <input
+                  className={`input-form ${
+                    errors.phone &&
+                    'border-red-500 shadow-error animate-shake focus:border-red-500 focus:shadow-error'
+                  }`}
+                  placeholder="Digite um número de telefone"
+                  {...field}
+                  onChange={(e) => {
+                    field.onChange(formatInput.phone(e.target.value))
+                  }}
+                />
+                {errors.phone && (
+                  <ErrorMessage>{errors.phone.message}</ErrorMessage>
+                )}
+              </Input.Root>
+            )
+          }}
+        />
       </LabelInput>
 
       <LabelInput label="CEP">
-        <Input.Root>
-          <Input.Field name="cep" placeholder="00000-000" />
-          {errors.cep && <ErrorMessage>{errors.cep.message}</ErrorMessage>}
-        </Input.Root>
+        <Controller
+          name="cep"
+          control={control}
+          render={({ field }) => {
+            return (
+              <Input.Root>
+                <input
+                  className={`input-form ${
+                    errors.cep &&
+                    'border-red-500 shadow-error animate-shake focus:border-red-500 focus:shadow-error'
+                  }`}
+                  placeholder="00000-000"
+                  {...field}
+                  onChange={(e) => {
+                    field.onChange(formatInput.cep(e.target.value))
+                  }}
+                />
+                {errors.cep && (
+                  <ErrorMessage>{errors.cep.message}</ErrorMessage>
+                )}
+              </Input.Root>
+            )
+          }}
+        />
       </LabelInput>
 
       <LabelInput label="Estado" className="relative">

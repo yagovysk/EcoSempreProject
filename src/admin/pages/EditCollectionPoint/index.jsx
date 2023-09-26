@@ -14,11 +14,11 @@ const editCollectionPointFormSchema = z.object({
   id: z.coerce.number(),
   name: z.string().nonempty('Obrigatório'),
   address: z.string().nonempty('Obrigatório'),
-  cep: z.coerce
-    .number({
-      invalid_type_error: 'Deve conter apenas números',
-    })
-    .min(8, 'CEP inválido'),
+  cep: z
+    .string()
+    .nonempty('Obrigatório')
+    .min(9, 'CEP inválido')
+    .max(9, 'CEP inválido'),
   state: z.string().nonempty('Obrigatório'),
   city: z.string().nonempty('Obrigatório'),
   size: z.string().nonempty('Obrigatório').max(2, 'Tamanho inválido'),

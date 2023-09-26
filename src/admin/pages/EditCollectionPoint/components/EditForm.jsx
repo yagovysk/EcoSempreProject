@@ -4,6 +4,7 @@ import { Input } from '../../../../components/Form/Input'
 import { Select } from '../../../../components/Form/Select'
 import { SelectItem } from '../../../../components/Form/Select/SelectItem'
 import { CollectionPointCategoryInput } from '../../../components/CollectionPointCategoryInput'
+import { formatInput } from '../../../../utils/formatInput'
 
 export function EditForm() {
   const {
@@ -39,10 +40,30 @@ export function EditForm() {
 
       <label className="flex flex-col gap-2">
         <span className="font-medium">CEP</span>
-        <Input.Field name="cep" placeholder="Ex: 00000-00" />
-        {errors.cep && (
-          <ErrorMessage className="!static">{errors.cep.message}</ErrorMessage>
-        )}
+        <Controller
+          name="cep"
+          control={control}
+          render={({ field }) => {
+            return (
+              <Input.Root>
+                <input
+                  className={`input-form ${
+                    errors.cep &&
+                    'border-red-500 shadow-error animate-shake focus:border-red-500 focus:shadow-error'
+                  }`}
+                  placeholder="00000-000"
+                  {...field}
+                  onChange={(e) => {
+                    field.onChange(formatInput.cep(e.target.value))
+                  }}
+                />
+                {errors.cep && (
+                  <ErrorMessage>{errors.cep.message}</ErrorMessage>
+                )}
+              </Input.Root>
+            )
+          }}
+        />
       </label>
 
       <label className="flex col-span-2 flex-col gap-2">

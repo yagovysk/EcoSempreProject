@@ -1,7 +1,7 @@
 import { useId, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { z } from 'zod'
-import { FormProvider, useForm } from 'react-hook-form'
+import { Controller, FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { FormSubmitted } from '../FormSubmitted'
@@ -15,6 +15,7 @@ import * as Toast from '../Toast'
 
 import api from '../../lib/axios'
 import styles from './FormTalkWithUs.module.css'
+import { formatInput } from '../../utils/formatInput'
 
 const talkWithUsFormSchema = z.object({
   name: z
@@ -31,7 +32,8 @@ const talkWithUsFormSchema = z.object({
   phone: z
     .string()
     .nonempty('* O campo está vazio')
-    .min(10, '* Digite um número de telefone válido')
+    .min(15, '* Digite um número de telefone válido')
+    .max(16, '* Digite um número de telefone válido')
     .trim(),
   subject: z
     .string()
@@ -50,12 +52,16 @@ export function FormTalkWithUs() {
 
   const talkWithUsForm = useForm({
     resolver: zodResolver(talkWithUsFormSchema),
+    defaultValues: {
+      phone: '',
+    },
   })
 
   const {
     handleSubmit,
     formState: { errors, isSubmitting, isSubmitSuccessful },
     reset,
+    control,
   } = talkWithUsForm
 
   async function onSubmit(data) {
@@ -129,19 +135,34 @@ export function FormTalkWithUs() {
                 )}
               </Input.Root>
 
-              <Input.Root>
-                <Input.Field
-                  placeholder="Telefone"
-                  name="phone"
-                  aria-label="Seu telefone"
-                  aria-describedby={`${fieldId}-phone`}
-                />
-                {errors.phone && (
-                  <ErrorMessage id={`${fieldId}-phone`}>
-                    {errors.phone.message}
-                  </ErrorMessage>
-                )}
-              </Input.Root>
+              <Controller
+                name="phone"
+                control={control}
+                render={({ field }) => {
+                  return (
+                    <Input.Root>
+                      <input
+                        className={`input-form ${
+                          errors.phone &&
+                          'border-red-500 shadow-error animate-shake focus:border-red-500 focus:shadow-error'
+                        }`}
+                        placeholder="Telefone"
+                        {...field}
+                        onChange={(e) => {
+                          field.onChange(formatInput.phone(e.target.value))
+                        }}
+                        aria-label="Seu telefone"
+                        aria-describedby={`${fieldId}-phone`}
+                      />
+                      {errors.phone && (
+                        <ErrorMessage id={`${fieldId}-phone`}>
+                          {errors.phone.message}
+                        </ErrorMessage>
+                      )}
+                    </Input.Root>
+                  )
+                }}
+              />
 
               <Input.Root>
                 <Input.Field

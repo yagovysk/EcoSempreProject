@@ -46,12 +46,12 @@ const scheduleSchema = z.object({
     .string()
     .nonempty('Obrigatório')
     .min(8, 'Telefone inválido')
-    .max(11, 'Telefone inválido'),
-  cep: z.coerce
-    .number({
-      invalid_type_error: 'Deve conter apenas números',
-    })
-    .min(8, 'CEP inválido'),
+    .max(16, 'Telefone inválido'),
+  cep: z
+    .string()
+    .nonempty('Obrigatório')
+    .min(8, 'CEP inválido')
+    .max(9, 'CEP inválido'),
   state: z.string().nonempty('Obrigatório'),
   city: z.string().nonempty('Obrigatório'),
   materials: z.string().nonempty('Obrigatório').trim(),
@@ -102,7 +102,6 @@ export const Schedule = () => {
   } = scheduleForm
 
   async function onSubmit(data) {
-    console.log(data)
     try {
       setIsLoading(() => true)
       await api.post('/schedule-pickup', {

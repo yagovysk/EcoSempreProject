@@ -3,6 +3,7 @@ import { dateFormatter } from '../../../../utils/dateFormatter'
 import { Icon } from '@iconify/react'
 import { useAdmin } from '../../../../contexts/AdminContext'
 import { AdminModal } from '../../../components/AdminModal'
+import { formatInput } from '../../../../utils/formatInput'
 
 import * as Dialog from '@radix-ui/react-dialog'
 import api from '../../../../lib/axios'
@@ -133,7 +134,7 @@ export function ContactsTable() {
                       <span className="text-gray-500">{contact.message}</span>
                     </td>
                     <td className="p-4 bg-zinc-50 max-w-[15rem]">
-                      {contact.phone}
+                      {formatInput.phone(contact.phone)}
                     </td>
                     <td className="p-4 bg-zinc-50 max-w-[15rem]">
                       {dateFormatter(contact.createdAt)}
