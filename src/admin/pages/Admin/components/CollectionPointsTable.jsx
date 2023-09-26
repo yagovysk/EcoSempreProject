@@ -119,7 +119,8 @@ export function CollectionPointsTable() {
                     </td>
 
                     <td className="p-4 bg-zinc-50 overflow-hidden text-ellipsis">
-                      {collectionPoint.address} - CEP: {collectionPoint.cep}
+                      {collectionPoint.address} - CEP:{' '}
+                      {formatInput.cep(collectionPoint.cep)}
                     </td>
 
                     <td className="p-4 bg-zinc-50 capitalize">
