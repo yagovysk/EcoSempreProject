@@ -1,56 +1,76 @@
-import { Admin } from '../admin/pages/Admin'
-import {
-  AdminEditPost,
-  loader as editPostLoader,
-} from '../admin/pages/AdminEditPost'
-import { AdminLogin } from '../admin/pages/AdminLogin'
-import { AdminNewPost } from '../admin/pages/AdminNewPost'
-import { AdminLabels } from '../admin/pages/AdminLabels'
-import { AdminPosts } from '../admin/pages/AdminPosts'
-import { CreateCollectionPoint } from '../admin/pages/CreateCollectionPoint'
-import { EditCollectionPoint } from '../admin/pages/EditCollectionPoint'
-import { AdminLayout } from '../layouts/AdminLayout'
 import { ErrorPage } from '../pages/ErrorPage'
 
 export const adminRoutes = {
   children: [
     {
       path: '/admin/login',
-      element: <AdminLogin />,
+      async lazy() {
+        const { AdminLogin } = await import('../admin/pages/AdminLogin')
+        return { Component: AdminLogin }
+      },
     },
     {
       path: '/admin',
-      element: <AdminLayout />,
+      async lazy() {
+        const { AdminLayout } = await import('../layouts/AdminLayout')
+        return { Component: AdminLayout }
+      },
       errorElement: <ErrorPage />,
       children: [
         {
           path: '/admin',
-          element: <Admin />,
+          async lazy() {
+            const { Admin } = await import('../admin/pages/Admin')
+            return { Component: Admin }
+          },
         },
         {
           path: '/admin/new-post',
-          element: <AdminNewPost />,
+          async lazy() {
+            const { AdminNewPost } = await import('../admin/pages/AdminNewPost')
+            return { Component: AdminNewPost }
+          },
         },
         {
           path: '/admin/posts',
-          element: <AdminPosts />,
+          async lazy() {
+            const { AdminPosts } = await import('../admin/pages/AdminPosts')
+            return { Component: AdminPosts }
+          },
         },
         {
           path: '/admin/edit/post/:key',
-          element: <AdminEditPost />,
-          loader: editPostLoader,
+          async lazy() {
+            const { AdminEditPost, loader } = await import(
+              '../admin/pages/AdminEditPost'
+            )
+            return { Component: AdminEditPost, loader }
+          },
         },
         {
           path: '/admin/post-labels',
-          element: <AdminLabels />,
+          async lazy() {
+            const { AdminLabels } = await import('../admin/pages/AdminLabels')
+            return { Component: AdminLabels }
+          },
         },
         {
           path: '/admin/new-collection-point',
-          element: <CreateCollectionPoint />,
+          async lazy() {
+            const { CreateCollectionPoint } = await import(
+              '../admin/pages/CreateCollectionPoint'
+            )
+            return { Component: CreateCollectionPoint }
+          },
         },
         {
           path: '/admin/edit-collection-point/:id',
-          element: <EditCollectionPoint />,
+          async lazy() {
+            const { EditCollectionPoint } = await import(
+              '../admin/pages/EditCollectionPoint'
+            )
+            return { Component: EditCollectionPoint }
+          },
         },
       ],
     },

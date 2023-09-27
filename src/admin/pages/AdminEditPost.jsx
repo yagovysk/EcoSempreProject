@@ -23,8 +23,8 @@ export async function loader({ params }) {
     post = await api.get(`/article/${params.key}`).then((res) => res.data)
   } catch (err) {
     throw new Response('', {
-      status: err.response.status,
-      statusText: err.response.statusText,
+      status: err.request.status || 500,
+      statusText: err.request.statusText || 'Internal Server Error',
     })
   }
 

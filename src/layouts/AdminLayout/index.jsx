@@ -15,7 +15,7 @@ export function AdminLayout() {
           <Outlet />
 
           {navigation.state === 'loading' && (
-            <div className="fixed inset-0 bg-white/50 grid place-content-center">
+            <div className="fixed inset-0 z-50 bg-white/50 grid place-content-center">
               <Dots />
             </div>
           )}
