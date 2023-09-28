@@ -122,8 +122,16 @@ export function CategoriesBox() {
         },
       })
 
+      alert('Categoria deletada com sucesso!')
       mutateCategories()
     } catch (err) {
+      if (err.request.status === 422) {
+        alert(
+          'Erro! Não conseguimos deletar essa categoria pois ela pertence a uma postagem do Blog.',
+        )
+        return
+      }
+
       alert(
         'Erro! Não conseguimos deletar essa categoria. Tente novamente mais tarde.',
       )

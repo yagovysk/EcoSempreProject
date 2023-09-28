@@ -120,8 +120,15 @@ export function TagsBox() {
         },
       })
 
+      alert('Tag deletada com sucesso!')
       mutateTags()
     } catch (err) {
+      if (err.request.status === 422) {
+        alert(
+          'Erro! Não conseguimos deletar essa tag pois ela pertence a uma postagem do Blog.',
+        )
+        return
+      }
       alert(
         'Erro! Não conseguimos deletar essa tag. Tente novamente mais tarde.',
       )
