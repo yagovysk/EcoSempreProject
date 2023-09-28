@@ -1,3 +1,6 @@
+import { z } from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { HeadingAdmin } from '../components/HeadingAdmin'
 import { useAdmin } from '../../contexts/AdminContext'
 import { CardBlog } from '../../components/CardBlog'
@@ -6,14 +9,54 @@ import api from '../../lib/axios'
 
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+
+const searchPostsFormSchema = z.object({
+  query: z.string(),
+})
+
+const INITIAL_QUANTITY_POSTS = 6
 
 export function AdminPosts() {
+  const [amountPostsPerView, setAmountPostsPerView] = useState(
+    INITIAL_QUANTITY_POSTS,
+  )
   const {
-    posts: { data, mutate, isValidating },
+    posts: { data, mutate },
     admin,
   } = useAdmin()
 
-  console.log(isValidating)
+  const { watch, register } = useForm({
+    resolver: zodResolver(searchPostsFormSchema),
+    defaultValues: {
+      query: '',
+    },
+  })
+  const querySearch = watch('query')
+
+  const posts = data
+    ? data
+        .filter((post) =>
+          post.title.toLowerCase().includes(querySearch.toLowerCase().split()),
+        )
+        .slice(0, amountPostsPerView)
+    : []
+
+  useEffect(() => {
+    function handleLoadPosts() {
+      const isEndOfScroll =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight
+      if (isEndOfScroll) {
+        setAmountPostsPerView((state) => state + INITIAL_QUANTITY_POSTS)
+      }
+    }
+
+    window.addEventListener('scroll', handleLoadPosts)
+
+    return () => {
+      window.removeEventListener('scroll', handleLoadPosts)
+    }
+  }, [])
 
   async function handleDeletePost(id) {
     const agreed = confirm('Você tem certeza que deseja deletar essa postagem?')
@@ -45,6 +88,16 @@ export function AdminPosts() {
         </p>
       </header>
 
+      <div className="border-b flex items-center gap-4 max-w-3xl">
+        <Icon icon="fa6-solid:magnifying-glass" className="text-blue w-5 h-5" />
+        <input
+          type="text"
+          className="font-IBM-plex-sans text-lg py-5 outline-none text-zinc-500 placeholder:text-zinc-500 font-medium w-full"
+          placeholder="Digite aqui para buscar uma postagem"
+          {...register('query')}
+        />
+      </div>
+
       {data && data.length <= 0 && (
         <p className="text-gray-800 text-left">
           Não existe nenhuma postagem no Blog ainda.{' '}
@@ -58,8 +111,8 @@ export function AdminPosts() {
       )}
 
       <main className="mt-10 grid gap-8 grid-cols-[repeat(auto-fit,_minmax(16.125rem,_23.125rem))]">
-        {data &&
-          data.map((post) => (
+        {posts &&
+          posts.map((post) => (
             <div className="relative" key={post.id}>
               <CardBlog className="h-full" post={post} />
 
