@@ -10,8 +10,6 @@ import { ErrorMessage } from '../../components/Form/ErrorMessage'
 import { Spinner } from '../../components/Loader/Spinner'
 import { PostEditorContent } from '../components/PostEditorContent'
 import { useAdmin } from '../../contexts/AdminContext'
-import { FormCategories } from '../components/FormCategories'
-import { FormTags } from '../components/FormTags'
 import { ButtonAdmin } from '../components/ButtonAdmin'
 
 import api from '../../lib/axios'
@@ -42,28 +40,6 @@ const editPostFormSchema = z.object({
     .max(70, 'Tamanho máximo de caracteres excedido. '),
   content: z.string().nonempty('Obrigatório'),
   imageURL: z.string().url('URL inválida'),
-  categories: z
-    .array(
-      z.object({
-        id_category: z.number(),
-        name: z.string().transform((name) => name.split()),
-      }),
-    )
-    .max(2, 'Adicione no máximo 2 categorias')
-    .nonempty('Adicione pelo menos 1 categoria')
-    .transform((categories) =>
-      categories.map((category) => category.id_category),
-    ),
-  tags: z
-    .array(
-      z.object({
-        name: z.string().transform((name) => name.split()),
-        id_tag: z.number().min(1),
-      }),
-    )
-    .max(3, 'Adicione no máximo 3 tags')
-    .nonempty('Adicione pelo menos 1 tag')
-    .transform((tags) => tags.map((tag) => tag.id_tag)),
 })
 
 export function AdminEditPost() {
@@ -80,11 +56,6 @@ export function AdminEditPost() {
       title: post.title,
       content: post.content,
       imageURL: post.thumbnail_url,
-      categories: post.categories.map((category) => ({
-        id_category: null,
-        name: category,
-      })),
-      tags: post.tags.map((tag) => ({ id_tag: null, name: tag })),
     },
   })
 
@@ -109,8 +80,6 @@ export function AdminEditPost() {
           title: data.title,
           content: data.content,
           thumbnail_url: data.imageURL,
-          tags_ids: data.tags,
-          categories: data.categories,
         },
         {
           headers: {
@@ -226,9 +195,6 @@ export function AdminEditPost() {
                 </div>
               </div>
             )}
-
-            <FormCategories />
-            <FormTags />
 
             <ButtonAdmin
               type="submit"

@@ -1,5 +1,13 @@
-import { createContext, useState, useRef, useContext, useCallback } from 'react'
+import {
+  createContext,
+  useState,
+  useRef,
+  useContext,
+  useCallback,
+  useEffect,
+} from 'react'
 import { useFetchData } from '../hooks/useFetchData'
+import { getGeocode, getLatLng } from 'use-places-autocomplete'
 
 const ColetasContext = createContext({})
 
@@ -25,6 +33,29 @@ export function ColetasProvider({ children }) {
       lng: -48.0183334,
     },
   )
+
+  async function addCoordinatesInCollectionPoints(collectionPoints) {
+    if (!collectionPoints) return []
+
+    return await Promise.all(
+      collectionPoints.map((collectionPoint) => {
+        const results = getGeocode({
+          address: collectionPoint.address,
+        })
+
+        const { lat, lng } = getLatLng(results[0])
+
+        const collectionPointWithCoordinates = {
+          ...collectionPoint,
+          location: {
+            lat,
+            lng,
+          },
+        }
+        return collectionPointWithCoordinates
+      }),
+    )
+  }
 
   const pontosDeColeta = data
     ? data.map((ponto, index) => {

@@ -17,8 +17,8 @@ const editCollectionPointFormSchema = z.object({
   cep: z
     .string()
     .nonempty('Obrigatório')
-    .min(9, 'CEP inválido')
-    .max(9, 'CEP inválido'),
+    .transform((cep) => cep.replace('-', ''))
+    .refine((cep) => cep.length === 8, 'CEP inválido'),
   state: z.string().nonempty('Obrigatório'),
   city: z.string().nonempty('Obrigatório'),
   size: z.string().nonempty('Obrigatório').max(2, 'Tamanho inválido'),

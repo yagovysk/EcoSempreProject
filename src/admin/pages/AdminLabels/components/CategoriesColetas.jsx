@@ -87,7 +87,6 @@ export function CategoriesColetas() {
   }
 
   async function handleEditCategory(data) {
-    console.log(data)
     try {
       await api.put(
         '/category-collection-points',
@@ -141,6 +140,7 @@ export function CategoriesColetas() {
       )
     }
   }
+
   return (
     <div className="flex flex-wrap gap-2 max-w-lg w-full">
       {categoriesColetas.map((category) => (

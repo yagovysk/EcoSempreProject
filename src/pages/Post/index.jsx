@@ -29,7 +29,8 @@ export function Post() {
 
   const categories =
     !isLoadingPost &&
-    post.categories.map((category) => category.replaceAll('-', ' '))
+    post.categories &&
+    post.categories.map((category) => category.name.replaceAll('-', ' '))
 
   const stringCategories = !isLoadingPost && categories.join(', ')
   const breadcrumb = !isLoadingPost && [
@@ -106,9 +107,9 @@ export function Post() {
                     <Link
                       to={`/buscar?tag=${tag}`}
                       className={styles.tag}
-                      key={tag}
+                      key={tag.id}
                     >
-                      {tag.replaceAll('-', ' ')}
+                      {tag.name.replaceAll('-', ' ')}
                     </Link>
                   ))
                 : null}

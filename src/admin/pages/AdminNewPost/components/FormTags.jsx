@@ -1,12 +1,12 @@
 import { useFieldArray, useFormContext } from 'react-hook-form'
-import { ErrorMessage } from '../../components/Form/ErrorMessage'
-import { useFetchData } from '../../hooks/useFetchData'
+import { ErrorMessage } from '../../../../components/Form/ErrorMessage'
+import { useFetchData } from '../../../../hooks/useFetchData'
 import { Combobox } from '@headlessui/react'
 import { Icon } from '@iconify/react'
 import { useState } from 'react'
-import { useAdmin } from '../../contexts/AdminContext'
-import { Spinner } from '../../components/Loader/Spinner'
-import api from '../../lib/axios'
+import { useAdmin } from '../../../../contexts/AdminContext'
+import { Spinner } from '../../../../components/Loader/Spinner'
+import api from '../../../../lib/axios'
 
 export function FormTags() {
   const [query, setQuery] = useState('')
@@ -141,7 +141,7 @@ export function FormTags() {
           </Combobox.Options>
         </Combobox>
 
-        <div className="flex gap-2 mt-4">
+        <div className="flex flex-wrap gap-2 mt-4">
           {!!tagsField &&
             tagsField.map((tag, index) => {
               return (

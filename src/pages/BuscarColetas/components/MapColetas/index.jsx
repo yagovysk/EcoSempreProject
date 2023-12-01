@@ -1,12 +1,10 @@
 /* eslint-disable no-undef */
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback } from 'react'
 
 import { Circle, Marker, GoogleMap, OverlayView } from '@react-google-maps/api'
 
 import { Marker as CustomMarker } from '../Marker'
 import { useColetasContext } from '../../../../contexts/ColetasContext'
-import { Loader } from '../Loader'
-import { useFetchData } from '../../../../hooks/useFetchData'
 
 const center = {
   lat: -15.8398885,
@@ -36,8 +34,6 @@ export function MapColetas() {
     },
     [mapRef],
   )
-
-  console.log(userAddressCoordinates)
 
   return (
     <div className="w-full h-full">

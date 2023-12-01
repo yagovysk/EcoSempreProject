@@ -45,13 +45,13 @@ const scheduleSchema = z.object({
   phone: z
     .string()
     .nonempty('Obrigatório')
-    .min(8, 'Telefone inválido')
-    .max(16, 'Telefone inválido'),
+    .transform((phone) => phone.replaceAll(/\W/g, ''))
+    .refine((phone) => phone.length >= 8 < 12, 'Telefone inválido'),
   cep: z
     .string()
     .nonempty('Obrigatório')
-    .min(8, 'CEP inválido')
-    .max(9, 'CEP inválido'),
+    .transform((cep) => cep.replace('-', ''))
+    .refine((cep) => cep.length === 8, 'CEP inválido'),
   state: z.string().nonempty('Obrigatório'),
   city: z.string().nonempty('Obrigatório'),
   materials: z.string().nonempty('Obrigatório').trim(),

@@ -5,12 +5,17 @@ import { Select } from '../../../../components/Form/Select'
 import { SelectItem } from '../../../../components/Form/Select/SelectItem'
 import { CollectionPointCategoryInput } from '../../../components/CollectionPointCategoryInput'
 import { formatInput } from '../../../../utils/formatInput'
+import { StatesSelectInput } from '../../../../components/StatesSelectInput'
+import { StateCitiesSelectInput } from '../../../../components/StateCitiesSelectInput'
 
 export function CreateForm() {
   const {
     formState: { errors },
     control,
+    watch,
   } = useFormContext()
+
+  const state = watch('state')
 
   return (
     <>
@@ -73,13 +78,7 @@ export function CreateForm() {
           control={control}
           render={({ field }) => {
             return (
-              <Select placeholder="Selecione o estado" {...field}>
-                {states.map((state, index) => (
-                  <SelectItem key={index} value={state}>
-                    {state}
-                  </SelectItem>
-                ))}
-              </Select>
+              <StatesSelectInput placeholder="Selecione o estado" {...field} />
             )
           }}
         />
@@ -97,13 +96,12 @@ export function CreateForm() {
           control={control}
           render={({ field }) => {
             return (
-              <Select placeholder="Selecione a cidade" {...field}>
-                {cities.map((city, index) => (
-                  <SelectItem key={index} value={city}>
-                    {city}
-                  </SelectItem>
-                ))}
-              </Select>
+              <StateCitiesSelectInput
+                state={state}
+                placeholder="Selecione a cidade"
+                disabled={!state}
+                {...field}
+              />
             )
           }}
         />
@@ -141,19 +139,5 @@ export function CreateForm() {
     </>
   )
 }
-
-const states = ['Acre', 'Amapá', 'Amazonas', 'Bahia', 'Ceará', 'Paraíba']
-const cities = [
-  'Águia Branca',
-  'Atalaia',
-  'Arapiraca',
-  'Batalha',
-  'Belém',
-  'Salvador',
-  'São Paulo',
-  'Monteiro',
-  'João Pessoa',
-  'Lucena',
-]
 
 const sizes = ['P', 'M', 'G', 'GG']

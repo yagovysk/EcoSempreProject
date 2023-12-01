@@ -1,6 +1,8 @@
 import { Controller, useFormContext } from 'react-hook-form'
 
 import { Input } from '../../../components/Form/Input'
+import { StatesSelectInput } from '../../../components/StatesSelectInput'
+import { StateCitiesSelectInput } from '../../../components/StateCitiesSelectInput'
 import { Spinner } from '../../../components/Loader/Spinner'
 import { Select } from '../../../components/Form/Select'
 import { SelectItem } from '../../../components/Form/Select/SelectItem'
@@ -10,7 +12,6 @@ import { ImageInput } from './ImageInput'
 
 import { formatInput } from '../../../utils/formatInput'
 
-const states = ['Acre', 'Amapá', 'Amazonas', 'Bahia', 'Ceará', 'Paraíba']
 const cities = [
   'Águia Branca',
   'Atalaia',
@@ -28,7 +29,10 @@ export function FormSchedule() {
   const {
     control,
     formState: { isSubmitting, errors },
+    watch,
   } = useFormContext()
+
+  const state = watch('state')
 
   return (
     <>
@@ -113,13 +117,7 @@ export function FormSchedule() {
           control={control}
           render={({ field }) => {
             return (
-              <Select placeholder="Selecione o estado" {...field}>
-                {states.map((state, index) => (
-                  <SelectItem key={index} value={state}>
-                    {state}
-                  </SelectItem>
-                ))}
-              </Select>
+              <StatesSelectInput placeholder="Selecione o estado" {...field} />
             )
           }}
         />
@@ -133,18 +131,12 @@ export function FormSchedule() {
           control={control}
           render={({ field }) => {
             return (
-              <Select
+              <StateCitiesSelectInput
+                disabled={!state}
+                state={state}
                 placeholder="Selecione a cidade"
                 {...field}
-                value={field.value}
-                onValueChange={field.onChange}
-              >
-                {cities.map((city, index) => (
-                  <SelectItem key={index} value={city}>
-                    {city}
-                  </SelectItem>
-                ))}
-              </Select>
+              />
             )
           }}
         />
